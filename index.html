@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>방텐더 - 내 방에서 즐기는 바텐더</title>
+    <link rel="stylesheet" href="src/css/main.css">
+    <script src="https://cdn.jsdelivr.net/npm/jwt-decode@3.1.2/build/jwt-decode.min.js"></script>
+</head>
+
+<body>
+    <header>
+        <a href="index.html">Logo</a>
+        <nav>
+            <a href="">주류</a>
+            <a href="">칵테일</a>
+            <a href="">방텐더봇</a>
+            <a href="">주변 매장 찾기</a>
+        </nav>
+        <div class="search-bar">
+            <input type="search" placeholder="Search">
+            <button>검색</button>
+        </div>
+        <div class="user">
+            <div class="user">
+                <button id="logout-button" style="display: none;">로그아웃</button>
+                <a href="" id="auth-link">
+                    <button class="profile-button" id="auth-button"></button>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="tip">
+            <p>Tips : 그거 아셨나요? 맨해튼은 칵테일의 여왕이라는 별명을 가지고 있습니다.</p>
+        </div>
+        <div class="cocktail-section">
+            <h2 class="cocktail-title">오늘의<br>추천<br>칵테일</h2>
+            <div class="cocktail-grid" id="recommended-cocktails">
+                <!-- 추천 칵테일 데이터가 여기에 동적으로 추가됩니다 -->
+            </div>
+        </div>
+        <hr class="divider">
+        <div class="cocktail-section">
+            <div class="cocktail-grid" id="personalized-cocktails">
+                <!-- 맞춤 칵테일 데이터가 여기에 동적으로 추가됩니다 -->
+            </div>
+            <h2 class="cocktail-title">사용자<br>맞춤<br>칵테일</h2>
+        </div>
+    </main>
+    <script src="src/js/main.js" defer></script>
+</body>
+
+</html>
