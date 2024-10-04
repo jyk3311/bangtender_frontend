@@ -78,3 +78,83 @@ main {
     object-fit: cover;
     border-radius: 4px;
 }
+/* liqur_detail 페이지 스타일 */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+/* 위와 이름이 같아 일단 주석 -> 분리해야하지않을까,, */
+
+/* .tip {
+    background-color: #e0f2f1;
+    padding: 10px;
+    margin-bottom: 20px;
+} */
+.main-content {
+    display: flex;
+    background-color: #e0f2f1;
+    padding: 20px;
+    position: relative;
+}
+.vertical-text {
+    writing-mode: vertical-rl;
+    text-orientation: upright;
+    font-size: 2.5rem;
+    padding: 20px 10px;
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+}
+.content-wrapper {
+    display: flex;
+    margin-left: 60px;
+    width: 100%;
+}
+.liquor-image {
+    flex: 0 0 200px;
+    height: 200px;
+    margin-right: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #cccccc;
+}
+.liquor-image div {
+    text-align: center;
+    color: #666666;
+    font-size: 1.2rem;
+}
+.liquor-info {
+    flex: 1;
+}
+.product-info h2 {
+    margin-top: 0;
+}
+.liquor-description {
+    margin-top: 20px;
+    padding: 20px;
+    background-color: #eeeeee;
+}
+
+
+footer {
+    background-color: #eeeeee;
+    padding: 1rem;
+    border-top: 1px solid #317c77;
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.team-members a {
+    color: #317c77;
+    text-decoration: none;
+    margin-right: 1rem;
+}
