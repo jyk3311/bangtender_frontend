@@ -1,3 +1,5 @@
+import { logoutUser } from './logout.js';
+
 document.addEventListener('DOMContentLoaded', async function () {
     const authLink = document.getElementById('auth-link');
     const authButton = document.getElementById('auth-button');
@@ -13,28 +15,8 @@ document.addEventListener('DOMContentLoaded', async function () {
             logoutButton.style.display = 'inline';  // 로그아웃 버튼 보이기
 
             // 로그아웃 버튼 클릭 시 이벤트
-            logoutButton.addEventListener('click', async function () {
-                try {
-                    const response = await fetch('http://localhost:8000/api/v1/accounts/logout/', {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json',
-                            //개발중이라 잠시 주석 처리함
-                            //'Authorization': `Bearer ${token}`
-                        }
-                    });
-
-                    if (response.ok) {
-                        // 로그아웃 성공 시
-                        localStorage.removeItem('access_token');  // 토큰 삭제
-                        alert('로그아웃 되었습니다.');
-                        window.location.href = '/';
-                    } else {
-                        alert('로그아웃에 실패했습니다.');
-                    }
-                } catch (error) {
-                    console.error('로그아웃 요청 중 오류가 발생했습니다:', error);
-                }
+            logoutButton.addEventListener('click', function () {
+                logoutUser(token);
             });
         } catch (error) {
             console.error('토큰 디코딩 중 오류가 발생했습니다:', error);
