@@ -19,7 +19,8 @@ document.addEventListener('DOMContentLoaded', async function () {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json',
-                            'Authorization': `Bearer ${token}`
+                            //개발중이라 잠시 주석 처리함
+                            //'Authorization': `Bearer ${token}`
                         }
                     });
 
