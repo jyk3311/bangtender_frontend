@@ -25,6 +25,15 @@
             <label for="address">주소:</label>
             <input type="text" id="address" name="address" required><br><br>
 
+            <h2>내가 보유한 술</h2>
+            <div id="owned-liquors"></div>
+
+            <h2>좋아하는 술</h2>
+            <div id="liked-liquors"></div>
+
+            <h2>싫어하는 술</h2>
+            <div id="disliked-liquors"></div>
+
             <button type="submit">수정하기</button>
         </form>
         <p id="message"></p>
@@ -44,7 +53,6 @@
                         'Content-Type': 'application/json'
                     }
                 });
-                console.log(response)
                 if (response.ok) {
                     const userData = await response.json();
 
