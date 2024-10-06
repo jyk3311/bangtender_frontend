@@ -49,7 +49,7 @@ let nextUrl = 'http://localhost:8000/api/v1/cocktail/';
             if (isNearBottom()) {
                 loadMoreCocktails();
             }
-        }
+        }  
 
         loadMoreCocktails();
 

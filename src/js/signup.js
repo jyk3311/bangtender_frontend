@@ -39,7 +39,15 @@ document.getElementById('signup-form').addEventListener('submit', async function
 
         if (response.ok) {
             // 성공 처리
+            const accessToken = data.access_token;
+            const refreshToken = data.refresh_token
+
+            // 토큰을 로컬스토리지에 저장
+            localStorage.setItem('access_token', accessToken);
+            localStorage.setItem('refresh_token', refreshToken);
+
             document.getElementById('form-message').innerHTML = '회원가입 되셨습니다.';
+            window.location.href = "/";
         } else {
             // 오류가 있으면 필드별로 출력
             data.message.forEach(error => {
@@ -67,4 +75,13 @@ document.getElementById('signup-form').addEventListener('submit', async function
         console.error('Error:', error);
         document.getElementById('form-message').innerHTML = '서버 에러';
     }
+});
+
+document.getElementById('postcode-button').addEventListener('click', function () {
+    new daum.Postcode({
+        oncomplete: function (data) {
+            // 사용자가 선택한 주소를 주소 입력 필드에 자동 입력
+            document.getElementById('address').value = data.address;
+        }
+    }).open();
 });
