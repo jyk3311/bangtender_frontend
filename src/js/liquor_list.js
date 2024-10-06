@@ -21,11 +21,19 @@ function displayLiquors(liquors) {
         const liquorItem = document.createElement('div');
         liquorItem.className = 'liquor-item';
         liquorItem.innerHTML = `
-            <img src="${liquor.img}" alt="${liquor.name}">
+            <img src="${liquor.img}" alt="${liquor.name}" class="liquor-img" data-id="${liquor.id}">
             <h3>${liquor.name}</h3>
             <p>Price: ${liquor.price} 원</p>
         `;
         liquorList.appendChild(liquorItem);
+    });
+
+
+    document.querySelectorAll('.liquor-img').forEach(img => {
+        img.addEventListener('click', function () {
+            const liquorId = this.getAttribute('data-id');
+            window.location.href = `/pages/liquor_detail.html?id=${liquorId}`; // 상세 페이지로 이동
+        });
     });
 }
 
