@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>게시글 작성</title>
+    <link rel="stylesheet" href="../src/post.css">
+</head>
+<body>
+<div class="container">
+    <h1>게시글 작성</h1>
+
+        <p>이름: <span id="name"></span></p>
+        <p>분류: <span id="classification"></span></p>
+        <p>내용: <span id="content"></span></p>
+        <p>맛: <span id="taste"></span></p>
+        <p>abv: <span id="abv">4</span></p>
+        <p>가격: <span id="price"></span></p>
+
+        <!-- 파일 업로드 -->
+        <div class="mb-3">
+            <label for="formFile" class="form-label">Default file input example</label>
+            <input class="form-control" type="file" id="formFile">
+        </div>
+
+        <button type="submit">작성</button>
+    </form>
+</div>
+<script src="../src/js/post.js"></script>
+</body>
+</html>
