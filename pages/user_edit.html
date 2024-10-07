@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>회원 정보 수정</title>
+    <link rel="stylesheet" href="src/css/main.css">
     <script src="https://cdn.jsdelivr.net/npm/jwt-decode@3.1.2/build/jwt-decode.min.js"></script>
 </head>
 
@@ -26,13 +27,40 @@
             <input type="text" id="address" name="address" required><br><br>
 
             <h2>내가 보유한 술</h2>
-            <div id="owned-liquors"></div>
+            <!-- 검색 기능 추가 -->
+            <div class="search"><input type="text" placeholder="검색어" /><button class="search-btn">🔍</button></div>
+            <!-- 해시태그 선택 기능 추가 -->
+            <div class="search-liquor">
+                <div class="skill-tags">
+                    <label><input type="checkbox" name="liquor[]" value="#보유술">#보유술</label>
+                    <label class="selected"><input type="checkbox" name="liquor[]" value="#보유술" checked>#보유술</label>
+                    <!-- 필요한 해시태그 추가 -->
+                </div>
+            </div>
 
             <h2>좋아하는 술</h2>
-            <div id="liked-liquors"></div>
+            <!-- 검색 기능 추가 -->
+            <div class="search"><input type="text" placeholder="검색어" /><button class="search-btn">🔍</button></div>
+            <!-- 해시태그 선택 기능 추가 -->
+            <div class="search-liquor">
+                <div class="skill-tags">
+                    <label><input type="checkbox" name="liquor[]" value="#좋아하는술">#좋아하는술</label>
+                    <label><input type="checkbox" name="liquor[]" value="#좋아하는술">#좋아하는술</label>
+                    <!-- 추가 해시태그 -->
+                </div>
+            </div>
 
             <h2>싫어하는 술</h2>
-            <div id="disliked-liquors"></div>
+            <!-- 검색 기능 추가 -->
+            <div class="search"><input type="text" placeholder="검색어" /><button class="search-btn">🔍</button></div>
+            <!-- 해시태그 선택 기능 추가 -->
+            <div class="search-liquor">
+                <div class="skill-tags">
+                    <label><input type="checkbox" name="liquor[]" value="#싫어하는 술">#싫어하는 술</label>
+                    <label><input type="checkbox" name="liquor]" value="#싫어하는 술">#싫어하는 술</label>
+                    <!-- 추가 해시태그 -->
+                </div>
+            </div>
 
             <button type="submit">수정하기</button>
         </form>
@@ -101,6 +129,16 @@
             });
         });
 
+    // 해시태그 선택 기능
+    document.querySelectorAll('.skill-tags input[type="checkbox"]').forEach(function(checkbox) {
+            checkbox.addEventListener('change', function() {
+                if (this.checked) {
+                    this.parentElement.classList.add('selected');
+                } else {
+                    this.parentElement.classList.remove('selected');
+                }
+            });
+        });
     </script>
 </body>
 

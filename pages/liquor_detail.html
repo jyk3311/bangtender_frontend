@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>방텐더 주류 디테일 페이지</title>
+    <link rel="stylesheet" href="src/css/main.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="main-content">
+            <div class="vertical-text"><span id="classification"></span></div>
+            <div class="content-wrapper">
+                <!-- 이미지 삽입 -->
+                    <div class="liquor-image">
+                        <img src="해당 이미지.jpg" class="rounded" alt="주류 이미지">
+                    </div>
+                    <!-- 주류 디테일 정보 -->
+                <div class="liquor-info">
+                        <p>이름: <span id="name"></span></p>
+                        <p>분류: <span id="classification"></span></p>
+                        <p>맛: <span id="taste"></span></p>
+                        <p>abv: <span id="abv"></span></p>
+                        <p>가격: <span id="price"></span></p>
+                </div>
+            </div>
+        </div>
+        <!-- 설명(특징, 생산지, 원료) -->
+        <div class="liquor-content">
+            <h4>내용:</h4>
+            <p><span id="content"></span></p>
+        </div> 
+    </div>
+</body>
+</html>
