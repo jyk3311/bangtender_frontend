@@ -7,6 +7,7 @@
     <title>회원 정보 수정</title>
     <link rel="stylesheet" href="src/css/main.css">
     <script src="https://cdn.jsdelivr.net/npm/jwt-decode@3.1.2/build/jwt-decode.min.js"></script>
+    <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 </head>
 
 <body>
@@ -24,7 +25,8 @@
             <input type="email" id="email" name="email" required><br><br>
 
             <label for="address">주소:</label>
-            <input type="text" id="address" name="address" required><br><br>
+            <input type="text" id="address" name="address" required>
+            <button type="button" id="postcode-button">우편번호 찾기</button>
 
             <h2>내가 보유한 술</h2>
             <!-- 검색 기능 추가 -->
@@ -126,6 +128,14 @@
                 } catch (error) {
                     console.error('Error updating user data:', error);
                 }
+            });
+            document.getElementById('postcode-button').addEventListener('click', function () {
+                new daum.Postcode({
+                    oncomplete: function (data) {
+                        // 선택한 주소 정보를 주소 입력 필드에 설정
+                        document.getElementById('address').value = data.address;
+                    }
+                }).open();
             });
         });
 

@@ -14,6 +14,7 @@
         <h1>내 프로필</h1>
         <button id="edit-profile"><a href="user_edit.html">회원 정보 수정</a></button>
         <button id="delete-account"><a href="delete_account.html">회원 탈퇴</a></button>
+        <button id="admin-button" style="display: none;"><a href="admin.html">관리자 페이지로 이동</a></button>
     </header>
 
     <section>
@@ -33,7 +34,7 @@
             }
 
             try {
-                // 토큰에서 username 추출
+                // 토큰에서 userid 추출
                 const decodedToken = jwt_decode(token);
                 const id = decodedToken.user_id;
                 // API로 유저 데이터 요청
@@ -53,6 +54,11 @@
                     document.getElementById('name').textContent = data.name;
                     document.getElementById('email').textContent = data.email;
                     document.getElementById('address').textContent = data.address;
+
+                    if (data.is_superuser) {
+                        const adminButton = document.getElementById('admin-button');
+                        adminButton.style.display = 'inline-block';
+                    }
 
                 } else {
                     alert('프로필 정보를 불러오는 데 실패했습니다.');
