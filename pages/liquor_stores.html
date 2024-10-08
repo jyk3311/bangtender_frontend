@@ -4,8 +4,7 @@
 <head>
     <meta charset="utf-8">
     <title>주변 주류 매장 찾기</title>
-    <script type="text/javascript"
-        src="//dapi.kakao.com/v2/maps/sdk.js?appkey=fedb2f51880885316cb2df51f7e50d73&libraries=services"></script>
+    <script type="text/javascript" src="../src/js/config.js"></script>
 </head>
 
 <body>
@@ -13,97 +12,103 @@
     <div id="result"></div>
 
     <script>
-        fetch('http://localhost:8000/api/v1/subcontents/map/', {
-            method: 'GET',
-            headers: {
-                'Authorization': 'Bearer ' + localStorage.getItem('access_token')
-            }
-        })
-            .then(response => response.json())
-            .then(data => {
-                if (data.address) {
-                    var geocoder = new kakao.maps.services.Geocoder();
+        function loadKakaoMapSDK() {
+            const script = document.createElement("script");
+            script.src = `//dapi.kakao.com/v2/maps/sdk.js?appkey=${config.apikey}&libraries=services&autoload=false`;
+            document.head.appendChild(script);
+            script.onload = function () {
+                kakao.maps.load(function () {
+                    initMap();
+                });
+            };
+        }
 
-                    // 주소를 좌표로 변환
-                    geocoder.addressSearch(data.address, function (result, status) {
-                        if (status === kakao.maps.services.Status.OK) {
-                            var userLatitude = result[0].y;
-                            var userLongitude = result[0].x;
-
-                            var mapContainer = document.getElementById('map');
-                            var mapOption = {
-                                center: new kakao.maps.LatLng(userLatitude, userLongitude),
-                                level: 3
-                            };
-
-                            // 지도 생성
-                            var map = new kakao.maps.Map(mapContainer, mapOption);
-
-                            // marker 이미지
-                            var MarkerImage = new kakao.maps.MarkerImage(
-                                '/src/images/user_marker.png',
-                                new kakao.maps.Size(36, 35),  // 마커 크기
-                                {
-                                    offset: new kakao.maps.Point(18, 35)  // 마커의 위치를 중앙 하단으로 설정
-                                }
-                            );
-
-                            // 현재 유저의 위치에 마커 생성
-                            var userMarker = new kakao.maps.Marker({
-                                map: map,
-                                position: new kakao.maps.LatLng(userLatitude, userLongitude),
-                                title: "현재 위치",  // 마커 위에 표시될 툴팁
-                                zIndex: 2,  // 다른 마커보다 위에 표시되도록 설정
-                                image: MarkerImage
-                            });
-
-                            // 장소 검색 객체 생성
-                            var places = new kakao.maps.services.Places();
-                            var infowindow = new kakao.maps.InfoWindow(); // 인포윈도우를 외부에서 정의
-
-                            // 주류 매장을 검색하는 함수 호출
-                            places.keywordSearch('주류', function (result, status) {
-                                if (status === kakao.maps.services.Status.OK) {
-                                    var resultDiv = document.getElementById('result');
-                                    resultDiv.innerHTML = ''; // 이전 결과를 초기화
-
-                                    // 검색 결과 출력 및 마커 생성
-                                    for (var i = 0; i < result.length; i++) {
-                                        (function (place) {
-                                            resultDiv.innerHTML += '<p>' + place.place_name + ' - ' + place.road_address_name + '</p>';
-
-                                            var marker = new kakao.maps.Marker({
-                                                map: map,
-                                                position: new kakao.maps.LatLng(place.y, place.x)
-                                            });
-
-                                            // 마커 클릭 시 인포윈도우 생성
-                                            kakao.maps.event.addListener(marker, 'click', function () {
-                                                // 인포윈도우를 닫고 새로운 내용으로 업데이트
-                                                infowindow.close();
-                                                infowindow.setContent('<div style="padding:5px;">' + place.place_name + '<br>' + place.road_address_name + '</div>');
-                                                infowindow.open(map, marker);
-                                            });
-                                        })(result[i]); // 클로저를 사용하여 각 마커에 대한 place 정보를 유지
-                                    }
-                                } else {
-                                    alert("주변 주류 매장을 찾을 수 없습니다.");
-                                }
-                            }, {
-                                location: new kakao.maps.LatLng(userLatitude, userLongitude),
-                                radius: 2000
-                            });
-                        } else {
-                            alert("주소를 찾을 수 없습니다.");
-                        }
-                    });
-                } else {
-                    alert(data.message);
+        function initMap() {
+            fetch('http://localhost:8000/api/v1/subcontents/map/', {
+                method: 'GET',
+                headers: {
+                    'Authorization': 'Bearer ' + localStorage.getItem('access_token')
                 }
             })
-            .catch(error => {
-                console.error('Error fetching user address:', error);
-            });
+                .then(response => response.json())
+                .then(data => {
+                    if (data.address) {
+                        var geocoder = new kakao.maps.services.Geocoder();
+
+                        geocoder.addressSearch(data.address, function (result, status) {
+                            if (status === kakao.maps.services.Status.OK) {
+                                var userLatitude = result[0].y;
+                                var userLongitude = result[0].x;
+
+                                var mapContainer = document.getElementById('map');
+                                var mapOption = {
+                                    center: new kakao.maps.LatLng(userLatitude, userLongitude),
+                                    level: 3
+                                };
+
+                                var map = new kakao.maps.Map(mapContainer, mapOption);
+
+                                var MarkerImage = new kakao.maps.MarkerImage(
+                                    '/src/images/user_marker.png',
+                                    new kakao.maps.Size(36, 35),
+                                    {
+                                        offset: new kakao.maps.Point(18, 35)
+                                    }
+                                );
+
+                                var userMarker = new kakao.maps.Marker({
+                                    map: map,
+                                    position: new kakao.maps.LatLng(userLatitude, userLongitude),
+                                    title: "현재 위치",
+                                    zIndex: 2,
+                                    image: MarkerImage
+                                });
+
+                                var places = new kakao.maps.services.Places();
+                                var infowindow = new kakao.maps.InfoWindow();
+
+                                places.keywordSearch('주류', function (result, status) {
+                                    if (status === kakao.maps.services.Status.OK) {
+                                        var resultDiv = document.getElementById('result');
+                                        resultDiv.innerHTML = '';
+
+                                        for (var i = 0; i < result.length; i++) {
+                                            (function (place) {
+                                                resultDiv.innerHTML += '<p>' + place.place_name + ' - ' + place.road_address_name + '</p>';
+
+                                                var marker = new kakao.maps.Marker({
+                                                    map: map,
+                                                    position: new kakao.maps.LatLng(place.y, place.x)
+                                                });
+
+                                                kakao.maps.event.addListener(marker, 'click', function () {
+                                                    infowindow.close();
+                                                    infowindow.setContent('<div style="padding:5px;">' + place.place_name + '<br>' + place.road_address_name + '</div>');
+                                                    infowindow.open(map, marker);
+                                                });
+                                            })(result[i]);
+                                        }
+                                    } else {
+                                        alert("주변 주류 매장을 찾을 수 없습니다.");
+                                    }
+                                }, {
+                                    location: new kakao.maps.LatLng(userLatitude, userLongitude),
+                                    radius: 2000
+                                });
+                            } else {
+                                alert("주소를 찾을 수 없습니다.");
+                            }
+                        });
+                    } else {
+                        alert(data.message);
+                    }
+                })
+                .catch(error => {
+                    console.error('Error fetching user address:', error);
+                });
+        }
+
+        loadKakaoMapSDK();
     </script>
 </body>
 
