@@ -5,7 +5,40 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>프로필 페이지</title>
-    <link rel="stylesheet" href="src/css/main.css">
+    <style>/* 프로필 스타일 */
+        .profile-header, header {
+            background-color: #2a9d8f;
+            padding: 1rem;
+            text-align: center;
+            color: white;
+        }
+        
+        .profile-content, .main-content {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 1rem;
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        button, .profile-actions button {
+            background-color: #317c77;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        
+        button:hover, .profile-actions button:hover {
+            background-color: #264653;
+        }
+        
+        .profile-actions button a {
+            color: white;
+            text-decoration: none;
+        }</style>
     <script src="https://cdn.jsdelivr.net/npm/jwt-decode@3.1.2/build/jwt-decode.min.js"></script>
 </head>
 

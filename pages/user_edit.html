@@ -5,7 +5,170 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>회원 정보 수정</title>
-    <link rel="stylesheet" href="src/css/main.css">
+    <style>
+        /* 전체적인 페이지 스타일 */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4; /* 밝은 회색 배경 */
+}
+
+header {
+    background-color: #317c77;
+    padding: 1rem;
+    text-align: center;
+    border-bottom: 2px solid #264653;
+}
+
+header a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+/* 메인 컨테이너 스타일 */
+main {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 박스 그림자 */
+}
+
+h1 {
+    font-size: 2rem;
+    color: #264653;
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+/* 폼 스타일 */
+form label {
+    font-size: 1rem;
+    color: #264653;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+form input[type="text"],
+form input[type="email"] {
+    width: 100%;
+    padding: 0.75rem;
+    margin-bottom: 1rem;
+    border: 1px solid #317c77;
+    border-radius: 4px;
+    font-size: 1rem;
+    box-sizing: border-box;
+}
+
+/* 우편번호 버튼 스타일 */
+button[type="button"],
+button[type="submit"] {
+    background-color: #264653;
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    display: inline-block;
+    margin-top: 0.5rem;
+}
+
+button[type="button"]:hover,
+button[type="submit"]:hover {
+    background-color: #1b3943;
+}
+
+/* 검색 및 드롭다운 스타일 */
+.search {
+    position: relative;
+    margin-bottom: 1.5rem;
+}
+
+.search input[type="text"] {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.search-btn {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: #264653;
+    color: white;
+    border: none;
+    padding: 0.5rem;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+/* 드롭다운 스타일 */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-height: 200px;
+    overflow-y: auto;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    z-index: 100;
+    top: calc(100% + 5px);
+}
+
+.dropdown-content label {
+    display: block;
+    padding: 10px;
+    cursor: pointer;
+    color: #333;
+}
+
+.dropdown-content label:hover {
+    background-color: #f1f1f1;
+}
+
+input[type="checkbox"] {
+    margin-right: 10px;
+}
+
+/* 선택된 해시태그 스타일 */
+.skill-tags label {
+    margin-right: 10px;
+    display: inline-block;
+    font-size: 1rem;
+    padding: 0.5rem;
+    background-color: #f1f1f1;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    color: #333;
+    cursor: pointer;
+}
+
+.skill-tags label.selected {
+    background-color: #317c77;
+    color: white;
+    border-color: #317c77;
+}
+
+/* 메세지 출력 스타일 */
+#message {
+    margin-top: 1rem;
+    font-size: 1rem;
+    color: #317c77;
+    text-align: center;
+}
+
+    </style>
     <script src="https://cdn.jsdelivr.net/npm/jwt-decode@3.1.2/build/jwt-decode.min.js"></script>
     <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 </head>
@@ -30,38 +193,23 @@
 
             <h2>내가 보유한 술</h2>
             <!-- 검색 기능 추가 -->
-            <div class="search"><input type="text" placeholder="검색어" /><button class="search-btn">🔍</button></div>
-            <!-- 해시태그 선택 기능 추가 -->
-            <div class="search-liquor">
-                <div class="skill-tags">
-                    <label><input type="checkbox" name="liquor[]" value="#보유술">#보유술</label>
-                    <label class="selected"><input type="checkbox" name="liquor[]" value="#보유술" checked>#보유술</label>
-                    <!-- 필요한 해시태그 추가 -->
-                </div>
+            <div class="search">
+                <input type="text" id="search-owned-liquor" placeholder="보유한 술 검색어 입력">
+                <div id="owned-liquor-results" class="dropdown-content"></div> <!-- 검색 결과 표시될 드롭다운 -->
             </div>
 
             <h2>좋아하는 술</h2>
             <!-- 검색 기능 추가 -->
-            <div class="search"><input type="text" placeholder="검색어" /><button class="search-btn">🔍</button></div>
-            <!-- 해시태그 선택 기능 추가 -->
-            <div class="search-liquor">
-                <div class="skill-tags">
-                    <label><input type="checkbox" name="liquor[]" value="#좋아하는술">#좋아하는술</label>
-                    <label><input type="checkbox" name="liquor[]" value="#좋아하는술">#좋아하는술</label>
-                    <!-- 추가 해시태그 -->
-                </div>
+            <div class="search">
+                <input type="text" id="search-liked-liquor" placeholder="좋아하는 술 검색어 입력">
+                <div id="liked-liquor-results" class="dropdown-content"></div> <!-- 검색 결과 표시될 드롭다운 -->
             </div>
 
             <h2>싫어하는 술</h2>
             <!-- 검색 기능 추가 -->
-            <div class="search"><input type="text" placeholder="검색어" /><button class="search-btn">🔍</button></div>
-            <!-- 해시태그 선택 기능 추가 -->
-            <div class="search-liquor">
-                <div class="skill-tags">
-                    <label><input type="checkbox" name="liquor[]" value="#싫어하는 술">#싫어하는 술</label>
-                    <label><input type="checkbox" name="liquor]" value="#싫어하는 술">#싫어하는 술</label>
-                    <!-- 추가 해시태그 -->
-                </div>
+            <div class="search">
+                <input type="text" id="search-disliked-liquor" placeholder="싫어하는 술 검색어 입력">
+                <div id="disliked-liquor-results" class="dropdown-content"></div> <!-- 검색 결과 표시될 드롭다운 -->
             </div>
 
             <button type="submit">수정하기</button>
@@ -85,7 +233,6 @@
                 });
                 if (response.ok) {
                     const userData = await response.json();
-
                     document.getElementById('name').value = userData.name;
                     document.getElementById('email').value = userData.email;
                     document.getElementById('address').value = userData.address;
@@ -129,25 +276,52 @@
                     console.error('Error updating user data:', error);
                 }
             });
+
             document.getElementById('postcode-button').addEventListener('click', function () {
                 new daum.Postcode({
                     oncomplete: function (data) {
-                        // 선택한 주소 정보를 주소 입력 필드에 설정
                         document.getElementById('address').value = data.address;
                     }
                 }).open();
             });
-        });
 
-    // 해시태그 선택 기능
-    document.querySelectorAll('.skill-tags input[type="checkbox"]').forEach(function(checkbox) {
-            checkbox.addEventListener('change', function() {
-                if (this.checked) {
-                    this.parentElement.classList.add('selected');
-                } else {
-                    this.parentElement.classList.remove('selected');
-                }
-            });
+            // 검색 기능 예시 데이터 (가상 데이터)
+            const liquorList = ["글렌피딕 15년", "발렌타인 17년 ", "발렌타인 30년", "바카디", "몽키 47"];
+
+            // 공통 검색 함수
+            function searchLiquor(inputId, resultId) {
+                const searchInput = document.getElementById(inputId);
+                const resultsDropdown = document.getElementById(resultId);
+
+                searchInput.addEventListener('input', function () {
+                    const query = searchInput.value.toLowerCase();
+                    resultsDropdown.innerHTML = '';
+
+                    if (query) {
+                        const filteredResults = liquorList.filter(item => item.toLowerCase().includes(query));
+                        filteredResults.forEach(result => {
+                            const label = document.createElement('label');
+                            label.innerHTML = `<input type="checkbox" value="${result}"> ${result}`;
+                            resultsDropdown.appendChild(label);
+                        });
+
+                        resultsDropdown.style.display = 'block';
+                    } else {
+                        resultsDropdown.style.display = 'none';
+                    }
+                });
+
+                document.addEventListener('click', function (event) {
+                    if (!event.target.closest('.search')) {
+                        resultsDropdown.style.display = 'none';
+                    }
+                });
+            }
+
+            // 각각의 술 검색 입력 필드에 대해 검색 기능 적용
+            searchLiquor('search-owned-liquor', 'owned-liquor-results');
+            searchLiquor('search-liked-liquor', 'liked-liquor-results');
+            searchLiquor('search-disliked-liquor', 'disliked-liquor-results');
         });
     </script>
 </body>
