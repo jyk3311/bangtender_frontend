@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>주변 주류 매장 찾기</title>
+  </head>
+
+  <body>
+    <div id="map" style="width: 100%; height: 400px"></div>
+    <div id="result"></div>
+
+    <script>
+      function initMap() {
+        const script = document.createElement("script");
+        script.src =
+          "//dapi.kakao.com/v2/maps/sdk.js?appkey=fedb2f51880885316cb2df51f7e50d73&libraries=services&autoload=false";
+        // autoload=false로 설정하면 kakao.maps.load() 함수를 호출해야만 지도 API를 사용할 수 있습니다! 동적으로 스크립트를 로딩하고 있기 때문에 이렇게 설정해야 합니다.
+        script.onload = function () {
+          // 스크립트 로딩 확인되면 콜백 함수 순차적으로 실행합니다.
+          kakao.maps.load(function () {
+            const target_address = "서울시 강서구 허준로 234"; // 저희집입니다... fetch로 map 데이터 받아오셔서 처리해주세요.
+            const geocoder = new kakao.maps.services.Geocoder();
+
+            geocoder.addressSearch(target_address, function (result, status) {
+              if (status === kakao.maps.services.Status.OK) {
+                const userLatitude = result[0].y;
+                const userLongitude = result[0].x;
+
+                const mapContainer = document.getElementById("map");
+                const mapOption = {
+                  center: new kakao.maps.LatLng(userLatitude, userLongitude),
+                  level: 3,
+                };
+
+                const map = new kakao.maps.Map(mapContainer, mapOption);
+                const places = new kakao.maps.services.Places();
+                const infowindow = new kakao.maps.InfoWindow();
+
+                // 마커 부분은 잠시 제외했습니다. 기존 코드에서 차용해서 추가하시면 됩니다.
+
+                places.keywordSearch(
+                  "주류",
+                  function (result, status) {
+                    if (status === kakao.maps.services.Status.OK) {
+                      const resultDiv = document.getElementById("result");
+                      resultDiv.innerHTML = "";
+
+                      result.forEach((place) => {
+                        resultDiv.innerHTML += `<p>${place.place_name} - ${place.road_address_name}</p>`;
+
+                        const marker = new kakao.maps.Marker({
+                          map: map,
+                          position: new kakao.maps.LatLng(place.y, place.x),
+                        });
+
+                        kakao.maps.event.addListener(
+                          marker,
+                          "click",
+                          function () {
+                            infowindow.close();
+                            infowindow.setContent(
+                              `<div style="padding:5px;">${place.place_name}<br>${place.road_address_name}</div>`
+                            );
+                            infowindow.open(map, marker);
+                          }
+                        );
+                      });
+                    } else {
+                      alert("주변 주류 매장을 찾을 수 없습니다.");
+                    }
+                  },
+                  {
+                    location: new kakao.maps.LatLng(
+                      userLatitude,
+                      userLongitude
+                    ),
+                    radius: 2000, // 반경 2km 이내라 한번 잘 조절하셔서 사용자들이 편하게 찾을 수 있게 해보시는 것이 좋을 것 같습니다!
+                  }
+                );
+              } else {
+                alert("주소를 찾을 수 없습니다."); // alert보다는 다른 방법으로 사용자에게 알려주는 것이 좋을 것 같습니다. 주소를 입력받는다던가 등등...
+              }
+            });
+          });
+        };
+        document.head.appendChild(script); // head에 script를 추가합니다.
+      }
+
+      initMap();
+    </script>
+  </body>
+</html>
