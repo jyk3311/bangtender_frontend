@@ -3,23 +3,156 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+    <title>로그인</title>
+    <style>
+        /* 로그인 페이지 스타일 */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #eeeeee;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+header {
+    background-color: #eeeeee;
+    padding: 1rem;
+    border-bottom: 1px solid #317c77;
+}
+
+.header-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    width: 150px;
+}
+
+main {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+}
+
+.login-container {
+    background-color: #92c1bd;
+    padding: 2rem;
+    border-radius: 10px;
+    width: 100%;
+    max-width: 400px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+h2 {
+    color: #317c77;
+    margin-bottom: 1.5rem;
+}
+
+.form-group {
+    margin-bottom: 1rem;
+    text-align: left;
+}
+
+label {
+    font-size: 1rem;
+    color: #317c77;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+input {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #317c77;
+    border-radius: 4px;
+}
+
+.login-button {
+    background-color: #317c77;
+    color: white;
+    border: none;
+    padding: 0.75rem;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 1rem;
+}
+
+.login-button:hover {
+    background-color: #265f63;
+}
+
+#message {
+    margin-top: 1rem;
+    color: #317c77;
+}
+
+/* 회원가입 링크 스타일 */
+.signup-link {
+    margin-top: 1.5rem;
+}
+
+.signup-link p {
+    margin-bottom: 0.5rem;
+    color: #317c77;
+}
+
+.signup-button {
+    background-color: #317c77;
+    color: white;
+    border: none;
+    padding: 0.75rem 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.signup-button a {
+    color: white;
+    text-decoration: none;
+}
+
+.signup-button:hover {
+    background-color: #1b3943;
+}
+
+    </style>
 </head>
 <body>
-    <h2>Login</h2>
-    <form id="login-form">
-        <label for="username">Username:</label>
-        <input type="text" id="username" name="username" required>
-        <br>
+    <div class="login-container">
+        <h2>로그인</h2> 
+        <form id="login-form">
+            <div class="form-group">
+                <label for="username">ID:</label>
+                <input type="text" id="username" name="username" required>
+            </div>
 
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="password" required>
-        <br>
+            <div class="form-group">
+                <label for="password">비밀번호:</label>
+                <input type="password" id="password" name="password" required>
+            </div>
 
-        <button type="submit">Login</button>
-    </form>
+            <button type="submit" class="login-button">로그인</button> <!-- 로그인 버튼 -->
+        </form>
 
-    <div id="message"></div>
+        <div id="message"></div> 
+
+        <!-- 회원가입 버튼 추가 -->
+        <div class="signup-link">
+            <button class="signup-button">
+                <a href="signup.html">회원가입</a> 
+            </button>
+        </div>
+    </div>
 
     <script src="../src/js/login.js"></script>
 </body>
