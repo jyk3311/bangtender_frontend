@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>챗봇 페이지</title>
-    
+
     <style>
         /* 챗봇 페이지 스타일 */
-
         body {
             font-family: 'Arial', sans-serif;
             margin: 0;
@@ -63,8 +63,29 @@
             flex-direction: column;
             justify-content: flex-start;
             overflow-y: auto;
+            /* 세로 스크롤만 허용 */
             padding: 10px;
-            margin-bottom: 80px; /* 공간 확보 */
+            margin-bottom: 80px;
+            max-height: calc(100vh - 200px);
+            /* 최대 높이 설정 */
+        }
+
+        /* 스크롤바 스타일링 (선택사항) */
+        .chat-area::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .chat-area::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+
+        .chat-area::-webkit-scrollbar-thumb {
+            background: #888;
+            border-radius: 4px;
+        }
+
+        .chat-area::-webkit-scrollbar-thumb:hover {
+            background: #555;
         }
 
         .chat-messages {
@@ -78,6 +99,8 @@
             padding: 10px;
             border-radius: 10px;
             position: relative;
+            word-wrap: break-word;
+            word-break: break-word;
         }
 
         .user-message {
@@ -100,6 +123,7 @@
             align-self: flex-start;
             background-color: #317c77;
             color: white;
+            /* 텍스트 색상을 흰색으로 변경 */
             margin-left: 40px;
         }
 
@@ -121,6 +145,17 @@
             top: -5px;
             border-radius: 50%;
             background-color: #808080;
+        }
+
+        /* 추가: 봇 아이콘 내부에 이미지나 텍스트 추가 */
+        .bot-icon::after {
+            content: '🤖';
+            /* 로봇 이모지 또는 원하는 텍스트/이미지로 변경 가능 */
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 20px;
         }
 
         .input-area {
@@ -151,7 +186,6 @@
             cursor: pointer;
             outline: none;
         }
-
     </style>
 </head>
 
@@ -162,35 +196,19 @@
 
             <div class="chat-container">
                 <div class="chat-area">
-                    <div class="chat-messages">
-                        <div class="message user-message">
-                            초보자가 만들기 쉬운 칵테일을 추천해줘. 맛은 단맛이면 좋겠어.
-                        </div>
-                        <div class="message bot-message">
-                            <div class="bot-icon"></div>
-                            사용자 질문에 대한 방텐더봇의 대답<br>
-                            1. 칵테일 링크<br>
-                            2. 제조법<br>
-                            3. 연관되는 술
-                        </div>
-                        <div class="message user-message">
-                            그럼 가격대가 3만원 이하인 위스키는 어떤 것들이 있어?
-                        </div>
-                        <div class="message bot-message">
-                            <div class="bot-icon"></div>
-                            사용자 질문에 대한 방텐더봇의 대답<br>
-                            1. 술의 종류<br>
-                            2. 사이트 내 링크
-                        </div>
+                    <div class="chat-messages" id="chat-messages">
                     </div>
                 </div>
 
                 <div class="input-area">
-                    <input type="text" placeholder="방텐더 봇에게 물어볼 질문을 적어주세요.">
-                    <button>전송</button>
+                    <input type="text" id="user-input" placeholder="방텐더 봇에게 물어볼 질문을 적어주세요.">
+                    <button id="send-button">전송</button>
                 </div>
             </div>
         </div>
     </div>
+
+    <script src="../src/js/bot.js"></script>
 </body>
+
 </html>
