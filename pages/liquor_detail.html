@@ -1,23 +1,89 @@
 <!DOCTYPE html>
 <html lang="ko">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>주류 상세 정보</title>
+    <title>방텐더 주류 디테일 페이지</title>
+    <style>/* liqur_detail 페이지 스타일 */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .main-content {
+            display: flex;
+            background-color: #e0f2f1;
+            padding: 20px;
+            position: relative;
+        }
+        .vertical-text {
+            writing-mode: vertical-rl;
+            text-orientation: upright;
+            font-size: 2.5rem;
+            padding: 20px 10px;
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        .content-wrapper {
+            display: flex;
+            margin-left: 60px;
+            width: 100%;
+        }
+        .liquor-image {
+            flex: 0 0 200px;
+            height: 200px;
+            margin-right: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #cccccc;
+        }
+        .liquor-image div {
+            text-align: center;
+            color: #666666;
+            font-size: 1.2rem;
+        }
+        .liquor-info {
+            flex: 1;
+        }
+        .product-info h2 {
+            margin-top: 0;
+        }
+        .liquor-description {
+            margin-top: 20px;
+            padding: 20px;
+            background-color: #eeeeee;
+        }</style>
 </head>
 
 <body>
-    <h1 id="liquor-name">주류 상세 정보</h1>
-    <div id="liquor-detail">
-        <img id="liquor-img" src="" alt="Liquor Image">
-        <p id="liquor-classification"></p>
-        <p id="liquor-content"></p>
-        <p id="liquor-taste"></p>
-        <p id="liquor-abv"></p>
-        <p id="liquor-price"></p>
+    <div class="container" id="liquor-detail">
+        <div class="main-content">
+            <div class="vertical-text"><span id="classification"></span></div>
+            <div class="content-wrapper">
+                <!-- 이미지 삽입 -->
+                    <div class="liquor-img">
+                        <img src="해당 이미지.jpg" class="rounded" alt="주류 이미지">
+                    </div>
+                    <!-- 주류 디테일 정보 -->
+                <div class="liquor-info">
+                        <p><span id="liquor-name"></span></p>
+                        <p>분류: <span id="liquor-classification"></span></p>
+                        <p>맛: <span id="liquor-taste"></span></p>
+                        <p>abv: <span id="liquor-abv"></span></p>
+                        <p>가격: <span id="liquor-price"></span></p>
+                </div>
+            </div>
+        </div>
+        <!-- 설명(특징, 생산지, 원료) -->
+        <div class="liquor-content">
+            <h4>내용:</h4>
+            <p><span id="content"></span></p>
+        </div> 
     </div>
     <script src="../src/js/liquor_detail.js" defer></script>
 </body>
-
 </html>
