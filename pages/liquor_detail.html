@@ -4,13 +4,62 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>방텐더 주류 디테일 페이지</title>
-    <style>/* liqur_detail 페이지 스타일 */
+    <style>
+
+html, body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 20px;
+        background-color: #f4f4f4;
+        min-height: 100vh; /* 전체 페이지가 화면 높이를 가득 채우도록 설정 */
+        flex-direction: column;
+    }
+    
+    /* liqur_detail 페이지 스타일 */
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 20px;
         }
-        
+        header {
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+nav a {
+    color: #317c77;
+    text-decoration: none;
+    margin-right: 1rem;
+    white-space: nowrap;
+}
+.nav-divider {
+    border: 0;
+    border-top: 1px solid #2a9d8f;
+    margin-bottom: 1.5rem;
+}
+.search-bar input {
+    padding: 0.5rem;
+    border: none;
+    border-radius: 20px 0 0 20px;
+}
+.search-bar button {
+    background-color: #264653;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 0 20px 20px 0;
+    cursor: pointer;
+}
+.profile-button {
+    background-color: #264653;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
         .main-content {
             display: flex;
             background-color: #e0f2f1;
@@ -56,10 +105,53 @@
             margin-top: 20px;
             padding: 20px;
             background-color: #eeeeee;
-        }</style>
+        }
+
+        footer {
+            background-color: #eeeeee;
+            padding: 1rem;
+            border-top: 1px solid #317c77;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .team-members a {
+            color: #317c77;
+            text-decoration: none;
+            margin-right: 1rem;
+        }
+        </style>
 </head>
 
 <body>
+    <header>
+        <a href="/">Logo</a>
+        <nav>
+            <a href="pages/liquor_list.html">주류</a>
+            <a href="pages/cocktail_list.html">칵테일</a>
+            <a href="pages/bot.html">방텐더봇</a>
+            <a href="pages/liquor_stores.html">주변 매장 찾기</a>
+        </nav>
+        <div class="search-bar">
+            <input type="search" placeholder="Search">
+            <button>검색</button>
+        </div>
+        <div class="user">
+            <button id="logout-button" style="display: none;">로그아웃</button>
+            <a href="" id="auth-link">
+                <button class="profile-button" id="auth-button"></button> <!-- 버튼에 "로그인" 텍스트 추가 -->
+            </a>
+            
+        </div>
+    </header>
+    <hr class="nav-divider">
+
     <div class="container" id="liquor-detail">
         <div class="main-content">
             <div class="vertical-text"><span id="classification"></span></div>
@@ -84,6 +176,18 @@
             <p><span id="content"></span></p>
         </div> 
     </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="team-members">
+                <a href="https://queseraseralife.tistory.com/" target="_blank">김동민</a>
+                <a href="https://zhelddustmq.tistory.com/" target="_blank">김진영</a>
+                <a href="https://velog.io/@mimi3123832/posts" target="_blank">남지민</a>
+                <a href="https://insight986.tistory.com/" target="_blank">배민석</a>
+            </div>
+            <p>&copy; 2024 방텐더. All rights reserved.</p>
+        </div>
+    </footer>
     <script src="../src/js/liquor_detail.js" defer></script>
 </body>
 </html>

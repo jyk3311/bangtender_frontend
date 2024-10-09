@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 
 <head>
     <meta charset="UTF-8">
@@ -7,17 +7,77 @@
     <title>Sign Up</title>
     <style>
         /* 회원가입 페이지 스타일 */
-        body {
+        html, body {
             font-family: 'Arial', sans-serif;
             margin: 0;
             padding: 0;
             background-color: #eeeeee;
             display: flex;
-            justify-content: center;
-            align-items: center;
             min-height: 100vh;
+            flex-direction: column;
         }
 
+        body {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            
+        }
+
+        header {
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav a {
+            color: #317c77;
+            text-decoration: none;
+            margin-right: 1rem;
+            white-space: nowrap;
+        }
+
+        .nav-divider {
+            border: 0;
+            border-top: 1px solid #2a9d8f;
+            width: 100%;
+            margin-bottom: 1.5rem;
+        }
+
+        /* 검색창과 버튼 레이아웃 */
+        .search-bar {
+            display: flex;
+            align-items: center;
+            max-width: 250px;
+            width: 100%;
+        }
+
+        .search-bar input {
+            padding: 0.5rem;
+            border: none;
+            border-radius: 20px 0 0 20px;
+    
+        }
+
+        .search-bar button {
+        background-color: #264653;
+        color: white;
+        border: none;
+        padding: 0.5rem 1rem;
+        border-radius: 0 20px 20px 0;
+        cursor: pointer;
+        }
+        .profile-button {
+            background-color: #264653;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            cursor: pointer;
+        }
+
+        /* 본문 중앙 배치 */
         .signup-form-container {
             background-color: #92c1bd;
             padding: 2rem;
@@ -26,6 +86,7 @@
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             text-align: center;
+            margin: 0 auto; /* 본문을 중간에 배치 */
         }
 
         h1 {
@@ -37,7 +98,7 @@
             display: block;
             margin-bottom: 0.5rem;
             color: #317c77;
-            text-align: left; /* 왼쪽 정렬 */
+            text-align: left;
         }
 
         input {
@@ -53,7 +114,7 @@
             padding: 0.5rem 1rem;
             border-radius: 4px;
             cursor: pointer;
-            width: 50%; /* 버튼을 세로로 배치하고 가로 길이 100%로 설정 */
+            width: 50%;
             margin-top: 1rem;
             border: none;
         }
@@ -61,8 +122,8 @@
         .signup-button {
             background-color: #317c77;
             color: #eeeeee;
-            width: 80%; /* Sign Up 버튼의 가로 길이를 약간 더 길게 설정 */
-            margin-top: 1.5rem; /* 간격 추가 */
+            width: 80%;
+            margin-top: 1.5rem;
         }
 
         .signup-button:hover {
@@ -88,14 +149,57 @@
 
         /* 버튼 사이 간격 */
         button:not(:last-child) {
-            margin-bottom: 1rem; /* 버튼 사이 간격 추가 */
+            margin-bottom: 1rem;
         }
+
+        footer {
+            background-color: #eeeeee;
+            padding: 1rem;
+            border-top: 1px solid #317c77;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .team-members a {
+            color: #317c77;
+            text-decoration: none;
+            margin-right: 1rem;
+        }
+
     </style>
     <!-- Daum 주소 검색 API -->
     <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 </head>
 
 <body>
+    <header>
+        <a href="/">Logo</a>
+        <nav>
+            <a href="pages/liquor_list.html">주류</a>
+            <a href="pages/cocktail_list.html">칵테일</a>
+            <a href="pages/bot.html">방텐더봇</a>
+            <a href="pages/liquor_stores.html">주변 매장 찾기</a>
+        </nav>
+        <div class="search-bar">
+            <input type="search" placeholder="Search">
+            <button>검색</button>
+        </div>
+        <div class="user">
+            <button id="logout-button" style="display: none;">로그아웃</button>
+            <a href="" id="auth-link">
+                <button class="profile-button" id="auth-button">프로필</button> <!-- 프로필 버튼에 텍스트 추가 -->
+            </a>
+        </div>
+    </header>
+
+    <hr class="nav-divider">
+
     <div class="signup-form-container">
         <h1>회원가입</h1>
         <form id="signup-form">
@@ -122,7 +226,6 @@
             <label for="address">주소:</label>
             <input type="text" id="address" name="address" required>
 
-            <!-- 버튼 그룹 -->
             <button type="button" class="postcode-button" id="postcode-button">우편번호 찾기</button>
             <button type="submit" class="signup-button">회원 가입</button>
 
@@ -131,6 +234,18 @@
 
         <div id="form-message"></div>
     </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="team-members">
+                <a href="https://queseraseralife.tistory.com/" target="_blank">김동민</a>
+                <a href="https://zhelddustmq.tistory.com/" target="_blank">김진영</a>
+                <a href="https://velog.io/@mimi3123832/posts" target="_blank">남지민</a>
+                <a href="https://insight986.tistory.com/" target="_blank">배민석</a>
+            </div>
+            <p>&copy; 2024 방텐더. All rights reserved.</p>
+        </div>
+    </footer>
 
     <script src="../src/js/signup.js"></script>
 </body>

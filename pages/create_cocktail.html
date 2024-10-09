@@ -4,79 +4,163 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>칵테일 작성</title>
-    <style>body {
-        font-family: Arial, sans-serif;
-        margin: 0;
-        padding: 20px;
-        background-color: #f4f4f4;
+    <style>
+        html, body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+            min-height: 100vh; /* 전체 페이지가 화면 높이를 가득 채우도록 설정 */
+            flex-direction: column;
+        }
+        
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #eeeeee;
+            padding: 30px;
+            border: 1px solid #ccc;
+        }
+        header {
+        padding: 1rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
     }
-    
-    .container {
-        max-width: 600px;
-        margin: 0 auto;
-        background-color: #eeeeee;
-        padding: 30px;
-        border: 1px solid #ccc;
+    nav a {
+        color: #317c77;
+        text-decoration: none;
+        margin-right: 1rem;
+        white-space: nowrap;
     }
-    
-    h1 {
-        font-size: 24px;
-        margin-bottom: 20px;
-        text-align: center;
+    .nav-divider {
+        border: 0;
+        border-top: 1px solid #2a9d8f;
+        margin-bottom: 1.5rem;
     }
-    
-    label {
-        display: block;
-        margin-bottom: 8px;
-        font-weight: bold;
+    .search-bar input {
+        padding: 0.5rem;
+        border: none;
+        border-radius: 20px 0 0 20px;
     }
-    
-    input[type="text"], textarea {
-        width: 100%;
-        padding: 10px;
-        margin-bottom: 15px;
-        border: 1px solid #ccc;
-        border-radius: 5px;
-        font-size: 16px;
-    }
-    
-    textarea {
-        height: 200px;
-        resize: vertical;
-    }
-    
-    p {
-        margin: 10px 0;
-        font-size: 16px;
-    }
-    
-    .image-container {
-        text-align: center;
-        margin-top: 20px;
-    }
-    
-    .image-container img {
-        max-width: 100%;
-        height: auto;
-        border-radius: 5px;
-    }
-    
-    button {
-        display: inline-block;
-        padding: 10px 20px;
-        background-color: #317c77;
+    .search-bar button {
+        background-color: #264653;
         color: white;
         border: none;
-        border-radius: 5px;
+        padding: 0.5rem 1rem;
+        border-radius: 0 20px 20px 0;
         cursor: pointer;
     }
-    
-    button:disabled {
-        background-color: #ccc;
+    .profile-button {
+        background-color: #264653;
+        color: white;
+        border: none;
+        padding: 0.5rem 1rem;
+        border-radius: 20px;
+        cursor: pointer;
     }
+        h1 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+        
+        input[type="text"], textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        
+        textarea {
+            height: 200px;
+            resize: vertical;
+        }
+        
+        p {
+            margin: 10px 0;
+            font-size: 16px;
+        }
+        
+        .image-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+        
+        .image-container img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 5px;
+        }
+        
+        button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #317c77;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        
+        button:disabled {
+            background-color: #ccc;
+        }
+    
+        footer {
+                background-color: #eeeeee;
+                padding: 1rem;
+                border-top: 1px solid #317c77;
+            }
+    
+            .footer-content {
+                max-width: 1200px;
+                margin: 0 auto;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+    
+            .team-members a {
+                color: #317c77;
+                text-decoration: none;
+                margin-right: 1rem;
+            }
     </style>
 </head>
 <body>
+
+    <header>
+        <a href="/">Logo</a>
+        <nav>
+            <a href="pages/liquor_list.html">주류</a>
+            <a href="pages/cocktail_list.html">칵테일</a>
+            <a href="pages/bot.html">방텐더봇</a>
+            <a href="pages/liquor_stores.html">주변 매장 찾기</a>
+        </nav>
+        <div class="search-bar">
+            <input type="search" placeholder="Search">
+            <button>검색</button>
+        </div>
+        <div class="user">
+            <button id="logout-button" style="display: none;">로그아웃</button>
+            <a href="" id="auth-link">
+                <button class="profile-button" id="auth-button">로그인</button> <!-- 버튼에 "로그인" 텍스트 추가 -->
+            </a>
+            
+        </div>
+    </header>
+
+    <hr class="nav-divider">
+
 <div class="container">
     <h1>칵테일 작성</h1>
     <form id="post-form">
@@ -106,6 +190,19 @@
         <button type="submit">작성</button>
     </form>
 </div>
+
+<footer>
+    <div class="footer-content">
+        <div class="team-members">
+            <a href="https://queseraseralife.tistory.com/" target="_blank">김동민</a>
+            <a href="https://zhelddustmq.tistory.com/" target="_blank">김진영</a>
+            <a href="https://velog.io/@mimi3123832/posts" target="_blank">남지민</a>
+            <a href="https://insight986.tistory.com/" target="_blank">배민석</a>
+        </div>
+        <p>&copy; 2024 방텐더. All rights reserved.</p>
+    </div>
+</footer>
+
 <script src="../src/js/post.js"></script>
 </body>
 </html>
