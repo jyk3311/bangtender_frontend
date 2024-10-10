@@ -24,37 +24,68 @@
         }
 
         nav a {
-    color: #317c77;
-    text-decoration: none;
-    margin-right: 1rem;
-    white-space: nowrap;
-    }
-    .nav-divider {
-        border: 0;
-        border-top: 1px solid #2a9d8f;
-        margin-bottom: 1.5rem;
-    }
-    .search-bar input {
-        padding: 0.5rem;
-        border: none;
-        border-radius: 20px 0 0 20px;
-    }
-    .search-bar button {
+            color: #317c77;
+            text-decoration: none;
+            margin-right: 1rem;
+            white-space: nowrap;
+        }
+
+        .nav-divider {
+            border: 0;
+            border-top: 1px solid #2a9d8f;
+            width: 100%;
+            margin-bottom: 1.5rem;
+        }
+
+        /* 검색창과 버튼 레이아웃 */
+        .search-bar {
+            display: flex;
+            align-items: center;
+            max-width: 250px;
+            width: 100%;
+        }
+
+        .search-bar input {
+            padding: 0.5rem;
+            border: none;
+            border-radius: 20px 0 0 20px;
+    
+        }
+
+        .search-bar button {
         background-color: #264653;
         color: white;
         border: none;
         padding: 0.5rem 1rem;
         border-radius: 0 20px 20px 0;
         cursor: pointer;
-    }
-    .profile-button {
-        background-color: #264653;
-        color: white;
-        border: none;
-        padding: 0.5rem 1rem;
-        border-radius: 20px;
-        cursor: pointer;
-    }
+        }
+        .profile-button {
+            background-color: #264653;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            cursor: pointer;
+        }
+
+        /* 본문 중앙 배치 */
+        .signup-form-container {
+            background-color: #92c1bd;
+            padding: 2rem;
+            width: 100%;
+            max-width: 500px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            margin: 0 auto; /* 본문을 중간에 배치 */
+        }
+
+        /* 로고 이미지 스타일 */
+        .logo img {
+            height: 60px; /* 네브바에 적합한 크기 설정 */
+            width: auto;  /* 비율 유지 */
+        }
 
         /* 메인 컨테이너 스타일 */
         main {
