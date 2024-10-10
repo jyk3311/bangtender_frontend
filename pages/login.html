@@ -84,6 +84,12 @@ header {
     align-items: center;
 }
 
+/* 로고 이미지 스타일 */
+.logo img {
+            height: 40px; /* 네브바에 적합한 크기 설정 */
+            width: auto;  /* 비율 유지 */
+        }
+
 
 main {
     flex-grow: 1;
@@ -197,12 +203,15 @@ footer {
 </head>
 <body>
     <header>
-        <a href="/">Logo</a>
+        <!-- 로고 이미지 추가 -->
+        <a href="/" class="logo">
+            <img src="../src/images/001.png" alt="Logo">
+        </a>
         <nav>
-            <a href="pages/liquor_list.html">주류</a>
-            <a href="pages/cocktail_list.html">칵테일</a>
-            <a href="pages/bot.html">방텐더봇</a>
-            <a href="pages/liquor_stores.html">주변 매장 찾기</a>
+            <a href="liquor_list.html">주류</a>
+            <a href="cocktail_list.html">칵테일</a>
+            <a href="bot.html">방텐더봇</a>
+            <a href="liquor_stores.html">주변 매장 찾기</a>
         </nav>
         <div class="search-bar">
             <input type="search" placeholder="Search">
@@ -210,7 +219,7 @@ footer {
         </div>
         <div class="user">
             <button id="logout-button" style="display: none;">로그아웃</button>
-            <a href="" id="auth-link">
+            <a href="profile.html" id="auth-link">
                 <button class="profile-button" id="auth-button">프로필</button> <!-- 버튼에 "로그인" 텍스트 추가 -->
             </a>
             
