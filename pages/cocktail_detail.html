@@ -52,6 +52,13 @@ nav a {
     cursor: pointer;
 }
 
+/* 로고 이미지 스타일 */
+.logo img {
+            height: 40px; /* 네브바에 적합한 크기 설정 */
+            width: auto;  /* 비율 유지 */
+        }
+
+
 /* container 스타일 */
 .container {
             max-width: 1200px;
@@ -152,7 +159,11 @@ footer {
 <body>
 
     <header>
-        <a href="/">Logo</a>
+        <!-- 로고 이미지 추가 -->
+        <a href="/" class="logo">
+            <img src="../src/images/001.png" alt="Logo">
+        </a>
+        
         <nav>
             <a href="pages/liquor_list.html">주류</a>
             <a href="pages/cocktail_list.html">칵테일</a>
@@ -197,7 +208,7 @@ footer {
                 <p><span id="cocktail-content"></span></p>
             </div>
         </div>    
-    </main>
+    </main>s
     <footer>
         <div class="footer-content">
             <div class="team-members">

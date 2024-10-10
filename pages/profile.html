@@ -5,57 +5,185 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>프로필 페이지</title>
-    <style>/* 프로필 스타일 */
-        .profile-header, header {
-            background-color: #2a9d8f;
-            padding: 1rem;
-            text-align: center;
-            color: white;
+    <style>
+        /* 전체적인 페이지 스타일 */
+        html, body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            min-height: 100vh;
+            flex-direction: column;
         }
-        
-        .profile-content, .main-content {
-            max-width: 1200px;
+
+        header {
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav a {
+    color: #317c77;
+    text-decoration: none;
+    margin-right: 1rem;
+    white-space: nowrap;
+    }
+    .nav-divider {
+        border: 0;
+        border-top: 1px solid #2a9d8f;
+        margin-bottom: 1.5rem;
+    }
+    .search-bar input {
+        padding: 0.5rem;
+        border: none;
+        border-radius: 20px 0 0 20px;
+    }
+    .search-bar button {
+        background-color: #264653;
+        color: white;
+        border: none;
+        padding: 0.5rem 1rem;
+        border-radius: 0 20px 20px 0;
+        cursor: pointer;
+    }
+    .profile-button {
+        background-color: #264653;
+        color: white;
+        border: none;
+        padding: 0.5rem 1rem;
+        border-radius: 20px;
+        cursor: pointer;
+    }
+
+        /* 메인 컨테이너 스타일 */
+        main {
+            max-width: 800px;
             margin: 2rem auto;
-            padding: 1rem;
-            background-color: #ffffff;
+            padding: 2rem;
+            background-color: white;
             border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
-        
+
+        h1 {
+            font-size: 2rem;
+            color: #264653;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        section p {
+            font-size: 1rem;
+            color: #264653;
+            margin-bottom: 1rem;
+        }
+
+        section span {
+            font-weight: bold;
+            color: #264653;
+        }
+
+        /* 버튼 스타일 */
         button, .profile-actions button {
-            background-color: #317c77;
+            background-color: #264653;
             color: white;
             border: none;
-            padding: 0.5rem 1rem;
+            padding: 0.75rem 1.5rem;
             border-radius: 4px;
             cursor: pointer;
+            transition: background-color 0.3s;
+            margin: 1rem 0.5rem;
         }
-        
+
         button:hover, .profile-actions button:hover {
             background-color: #264653;
         }
-        
-        .profile-actions button a {
-            color: white;
+
+        .profile-actions {
+            display: flex;
+            justify-content: center;
+            margin-top: 2rem;
+        }
+
+        footer {
+            background-color: #eeeeee;
+            padding: 1rem;
+            border-top: 1px solid #317c77;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .team-members a {
+            color: #317c77;
             text-decoration: none;
-        }</style>
+            margin-right: 1rem;
+        }
+    </style>
     <script src="https://cdn.jsdelivr.net/npm/jwt-decode@3.1.2/build/jwt-decode.min.js"></script>
 </head>
 
 <body>
     <header>
-        <h1>내 프로필</h1>
-        <button id="edit-profile"><a href="user_edit.html">회원 정보 수정</a></button>
-        <button id="delete-account"><a href="delete_account.html">회원 탈퇴</a></button>
-        <button id="admin-button" style="display: none;"><a href="admin.html">관리자 페이지로 이동</a></button>
+        <a href="/" class="logo">
+            <img src="../src/images/001.png" alt="Logo" height="40">
+        </a>
+        <nav>
+            <a href="liquor_list.html">주류</a>
+            <a href="cocktail_list.html">칵테일</a>
+            <a href="bot.html">방텐더봇</a>
+            <a href="liquor_stores.html">주변 매장 찾기</a>
+        </nav>
+        <div class="user">
+            <button id="logout-button" style="display: none;">로그아웃</button>
+            <a href="profile.html" id="auth-link">
+                <button class="profile-button" id="auth-button">프로필</button>
+            </a>
+        </div>
     </header>
 
-    <section>
-        <p>아이디: <span id="username"></span></p>
-        <p>이름: <span id="name"></span></p>
-        <p>이메일: <span id="email"></span></p>
-        <p>주소: <span id="address"></span></p>
-    </section>
+    <hr class="nav-divider">
+
+    <main>
+        <h1>내 프로필</h1>
+
+        <section>
+            <p>아이디: <span id="username"></span></p>
+            <p>이름: <span id="name"></span></p>
+            <p>이메일: <span id="email"></span></p>
+            <p>주소: <span id="address"></span></p>
+        </section>
+
+        <div class="profile-actions">
+            <button id="edit-profile">
+                <a href="user_edit.html" style="color: white; text-decoration: none;">회원 정보 수정</a>
+            </button>
+            <button id="delete-account">
+                <a href="delete_account.html" style="color: white; text-decoration: none;">회원 탈퇴</a>
+            </button>
+            <button id="admin-button" style="display: none;">
+                <a href="admin.html" style="color: white; text-decoration: none;">관리자 페이지로 이동</a>
+            </button>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="team-members">
+                <a href="https://queseraseralife.tistory.com/" target="_blank">김동민</a>
+                <a href="https://zhelddustmq.tistory.com/" target="_blank">김진영</a>
+                <a href="https://velog.io/@mimi3123832/posts" target="_blank">남지민</a>
+                <a href="https://insight986.tistory.com/" target="_blank">배민석</a>
+            </div>
+            <p>&copy; 2024 방텐더. All rights reserved.</p>
+        </div>
+    </footer>
 
     <script>
         document.addEventListener('DOMContentLoaded', async function () {
@@ -67,10 +195,8 @@
             }
 
             try {
-                // 토큰에서 userid 추출
                 const decodedToken = jwt_decode(token);
                 const id = decodedToken.user_id;
-                // API로 유저 데이터 요청
                 const response = await fetch(`http://localhost:8000/api/v1/accounts/${id}/`, {
                     method: 'GET',
                     headers: {
@@ -81,8 +207,6 @@
 
                 if (response.ok) {
                     const data = await response.json();
-
-                    // 프로필 데이터를 페이지에 표시
                     document.getElementById('username').textContent = data.username;
                     document.getElementById('name').textContent = data.name;
                     document.getElementById('email').textContent = data.email;
@@ -92,7 +216,6 @@
                         const adminButton = document.getElementById('admin-button');
                         adminButton.style.display = 'inline-block';
                     }
-
                 } else {
                     alert('프로필 정보를 불러오는 데 실패했습니다.');
                 }
