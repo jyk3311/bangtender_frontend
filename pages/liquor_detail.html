@@ -1,64 +1,72 @@
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>방텐더 주류 디테일 페이지</title>
     <style>
+        html,
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+            min-height: 100vh;
+            /* 전체 페이지가 화면 높이를 가득 채우도록 설정 */
+            flex-direction: column;
+        }
 
-html, body {
-        font-family: Arial, sans-serif;
-        margin: 0;
-        padding: 20px;
-        background-color: #f4f4f4;
-        min-height: 100vh; /* 전체 페이지가 화면 높이를 가득 채우도록 설정 */
-        flex-direction: column;
-    }
-    
-    /* liqur_detail 페이지 스타일 */
+        /* liqur_detail 페이지 스타일 */
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 20px;
         }
+
         header {
-    padding: 1rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-nav a {
-    color: #317c77;
-    text-decoration: none;
-    margin-right: 1rem;
-    white-space: nowrap;
-}
-.nav-divider {
-    border: 0;
-    border-top: 1px solid #2a9d8f;
-    margin-bottom: 1.5rem;
-}
-.search-bar input {
-    padding: 0.5rem;
-    border: none;
-    border-radius: 20px 0 0 20px;
-}
-.search-bar button {
-    background-color: #264653;
-    color: white;
-    border: none;
-    padding: 0.5rem 1rem;
-    border-radius: 0 20px 20px 0;
-    cursor: pointer;
-}
-.profile-button {
-    background-color: #264653;
-    color: white;
-    border: none;
-    padding: 0.5rem 1rem;
-    border-radius: 20px;
-    cursor: pointer;
-}
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav a {
+            color: #317c77;
+            text-decoration: none;
+            margin-right: 1rem;
+            white-space: nowrap;
+        }
+
+        .nav-divider {
+            border: 0;
+            border-top: 1px solid #2a9d8f;
+            margin-bottom: 1.5rem;
+        }
+
+        .search-bar input {
+            padding: 0.5rem;
+            border: none;
+            border-radius: 20px 0 0 20px;
+        }
+
+        .search-bar button {
+            background-color: #264653;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 0 20px 20px 0;
+            cursor: pointer;
+        }
+
+        .profile-button {
+            background-color: #264653;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            cursor: pointer;
+        }
 
         .main-content {
             display: flex;
@@ -66,6 +74,7 @@ nav a {
             padding: 20px;
             position: relative;
         }
+
         .vertical-text {
             writing-mode: vertical-rl;
             text-orientation: upright;
@@ -76,11 +85,13 @@ nav a {
             top: 50%;
             transform: translateY(-50%);
         }
+
         .content-wrapper {
             display: flex;
             margin-left: 60px;
             width: 100%;
         }
+
         .liquor-image {
             flex: 0 0 200px;
             height: 200px;
@@ -90,17 +101,21 @@ nav a {
             align-items: center;
             background-color: #cccccc;
         }
+
         .liquor-image div {
             text-align: center;
             color: #666666;
             font-size: 1.2rem;
         }
+
         .liquor-info {
             flex: 1;
         }
+
         .product-info h2 {
             margin-top: 0;
         }
+
         .liquor-description {
             margin-top: 20px;
             padding: 20px;
@@ -126,7 +141,7 @@ nav a {
             text-decoration: none;
             margin-right: 1rem;
         }
-        </style>
+    </style>
 </head>
 
 <body>
@@ -147,7 +162,7 @@ nav a {
             <a href="profile.html" id="auth-link">
                 <button class="profile-button" id="auth-button">프로필</button> <!-- 버튼에 "로그인" 텍스트 추가 -->
             </a>
-            
+
         </div>
     </header>
     <hr class="nav-divider">
@@ -157,24 +172,24 @@ nav a {
             <div class="vertical-text"><span id="classification"></span></div>
             <div class="content-wrapper">
                 <!-- 이미지 삽입 -->
-                    <div class="liquor-img">
-                        <img src="해당 이미지.jpg" class="rounded" alt="주류 이미지">
-                    </div>
-                    <!-- 주류 디테일 정보 -->
+                <div class="liquor-img">
+                    <img id="liquor-img" class="rounded" alt="주류 이미지">
+                </div>
+                <!-- 주류 디테일 정보 -->
                 <div class="liquor-info">
-                        <p><span id="liquor-name"></span></p>
-                        <p>분류: <span id="liquor-classification"></span></p>
-                        <p>맛: <span id="liquor-taste"></span></p>
-                        <p>abv: <span id="liquor-abv"></span></p>
-                        <p>가격: <span id="liquor-price"></span></p>
+                    <p><span id="liquor-name"></span></p>
+                    <p>분류: <span id="liquor-classification"></span></p>
+                    <p>맛: <span id="liquor-taste"></span></p>
+                    <p>abv: <span id="liquor-abv"></span></p>
+                    <p>가격: <span id="liquor-price"></span></p>
                 </div>
             </div>
         </div>
         <!-- 설명(특징, 생산지, 원료) -->
         <div class="liquor-content">
-            <h4>내용:</h4>
-            <p><span id="content"></span></p>
-        </div> 
+            <h4></h4>
+            <p>내용: <span id="liquor-content"></span></p>
+        </div>
     </div>
 
     <footer>
@@ -190,4 +205,5 @@ nav a {
     </footer>
     <script src="../src/js/liquor_detail.js" defer></script>
 </body>
+
 </html>
