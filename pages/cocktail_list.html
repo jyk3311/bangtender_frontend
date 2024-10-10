@@ -5,6 +5,51 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>칵테일 목록</title>
     <style>
+        /* 헤더 스타일 */
+        body {
+        font-family: 'Arial', sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #eeeeee;
+        }
+        header {
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        nav a {
+            color: #317c77;
+            text-decoration: none;
+            margin-right: 1rem;
+            white-space: nowrap;
+        }
+        .nav-divider {
+            border: 0;
+            border-top: 1px solid #2a9d8f;
+            margin-bottom: 1.5rem;
+        }
+        .search-bar input {
+            padding: 0.5rem;
+            border: none;
+            border-radius: 20px 0 0 20px;
+        }
+        .search-bar button {
+            background-color: #264653;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 0 20px 20px 0;
+            cursor: pointer;
+        }
+        .profile-button {
+            background-color: #264653;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            cursor: pointer;
+        }
         /* 그리드 레이아웃 설정 */
         .cocktail-grid {
             display: grid;
@@ -37,12 +82,70 @@
             font-size: 1.2rem;
             color: #333;
         }
+        
+        /* 푸터 스타일 */
+        footer {
+            background-color: #eeeeee;
+            padding: 1rem;
+            border-top: 1px solid #317c77;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .team-members a {
+            color: #317c77;
+            text-decoration: none;
+            margin-right: 1rem;
+        }
     </style>
 </head>
 <body>
+
+    <header>
+        <a href="/">Logo</a>
+        <nav>
+            <a href="pages/liquor_list.html">주류</a>
+            <a href="pages/cocktail_list.html">칵테일</a>
+            <a href="pages/bot.html">방텐더봇</a>
+            <a href="pages/liquor_stores.html">주변 매장 찾기</a>
+        </nav>
+        <div class="search-bar">
+            <input type="search" placeholder="Search">
+            <button>검색</button>
+        </div>
+        <div class="user">
+            <button id="logout-button" style="display: none;">로그아웃</button>
+            <a href="" id="auth-link">
+                <button class="profile-button" id="auth-button">프로필</button>
+            </a>
+        </div>
+    </header>
+    <hr class="nav-divider">
+
+    <main>
     <h1>칵테일 목록</h1>
     <div id="cocktail-list" class="cocktail-grid"></div>
     <div id="loading">추가 데이터 로딩중...</div>
+
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="team-members">
+                <a href="https://queseraseralife.tistory.com/" target="_blank">김동민</a>
+                <a href="https://zhelddustmq.tistory.com/" target="_blank">김진영</a>
+                <a href="https://velog.io/@mimi3123832/posts" target="_blank">남지민</a>
+                <a href="https://insight986.tistory.com/" target="_blank">배민석</a>
+            </div>
+            <p>&copy; 2024 방텐더. All rights reserved.</p>
+        </div>
+    </footer>
 
     <script src="../src/js/cocktail_list.js" defer></script>
 </body>

@@ -3,10 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>방텐더 주류 디테일 페이지</title>
+    <title>게시글 수정</title>
     <style>
-
-html, body {
+        html, body {
         font-family: Arial, sans-serif;
         margin: 0;
         padding: 20px;
@@ -14,12 +13,13 @@ html, body {
         min-height: 100vh; /* 전체 페이지가 화면 높이를 가득 채우도록 설정 */
         flex-direction: column;
     }
-    
-    /* liqur_detail 페이지 스타일 */
         .container {
-            max-width: 1200px;
+            max-width: 600px;
             margin: 0 auto;
-            padding: 20px;
+            background-color: #eeeeee;
+            padding: 30px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
         }
         header {
     padding: 1rem;
@@ -59,54 +59,50 @@ nav a {
     border-radius: 20px;
     cursor: pointer;
 }
-
-        .main-content {
-            display: flex;
-            background-color: #e0f2f1;
-            padding: 20px;
-            position: relative;
-        }
-        .vertical-text {
-            writing-mode: vertical-rl;
-            text-orientation: upright;
-            font-size: 2.5rem;
-            padding: 20px 10px;
-            position: absolute;
-            left: 0;
-            top: 50%;
-            transform: translateY(-50%);
-        }
-        .content-wrapper {
-            display: flex;
-            margin-left: 60px;
-            width: 100%;
-        }
-        .liquor-image {
-            flex: 0 0 200px;
-            height: 200px;
-            margin-right: 20px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background-color: #cccccc;
-        }
-        .liquor-image div {
+        /* 페이지 제목 */
+        h1 {
+            font-size: 24px;
+            margin-bottom: 20px;
             text-align: center;
-            color: #666666;
-            font-size: 1.2rem;
         }
-        .liquor-info {
-            flex: 1;
+        
+        /* 입력 필드 스타일 */
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
         }
-        .product-info h2 {
-            margin-top: 0;
+        
+        input[type="text"], input[type="number"], textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
         }
-        .liquor-description {
-            margin-top: 20px;
-            padding: 20px;
-            background-color: #eeeeee;
+        
+        /* 텍스트 영역 */
+        textarea {
+            height: 150px;
+            resize: vertical;
         }
-
+        
+        /* 제출 버튼 */
+        button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: #317c77;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        
+        button:hover {
+            background-color: #265a59;
+        }
         footer {
             background-color: #eeeeee;
             padding: 1rem;
@@ -126,17 +122,17 @@ nav a {
             text-decoration: none;
             margin-right: 1rem;
         }
+
         </style>
 </head>
-
 <body>
     <header>
         <a href="/">Logo</a>
         <nav>
-            <a href="liquor_list.html">주류</a>
-            <a href="cocktail_list.html">칵테일</a>
-            <a href="bot.html">방텐더봇</a>
-            <a href="liquor_stores.html">주변 매장 찾기</a>
+            <a href="pages/liquor_list.html">주류</a>
+            <a href="pages/cocktail_list.html">칵테일</a>
+            <a href="pages/bot.html">방텐더봇</a>
+            <a href="pages/liquor_stores.html">주변 매장 찾기</a>
         </nav>
         <div class="search-bar">
             <input type="search" placeholder="Search">
@@ -152,30 +148,38 @@ nav a {
     </header>
     <hr class="nav-divider">
 
-    <div class="container" id="liquor-detail">
-        <div class="main-content">
-            <div class="vertical-text"><span id="classification"></span></div>
-            <div class="content-wrapper">
-                <!-- 이미지 삽입 -->
-                    <div class="liquor-img">
-                        <img src="해당 이미지.jpg" class="rounded" alt="주류 이미지">
-                    </div>
-                    <!-- 주류 디테일 정보 -->
-                <div class="liquor-info">
-                        <p><span id="liquor-name"></span></p>
-                        <p>분류: <span id="liquor-classification"></span></p>
-                        <p>맛: <span id="liquor-taste"></span></p>
-                        <p>abv: <span id="liquor-abv"></span></p>
-                        <p>가격: <span id="liquor-price"></span></p>
+    <main>
+        <div class="container">
+            <h1>게시글 수정</h1>
+            <form id="post-edit-form">
+                <label for="name">이름:</label>
+                <input type="text" id="name" name="name" required><br><br>
+        
+                <label for="classification">분류:</label>
+                <input type="text" id="classification" name="classification" required><br><br>
+        
+                <label for="content">내용:</label>
+                <textarea id="content" name="content" required></textarea><br><br>
+        
+                <label for="taste">맛:</label>
+                <input type="text" id="taste" name="taste" required><br><br>
+        
+                <label for="abv">abv:</label>
+                <input type="number" id="abv" name="abv" required><br><br>
+        
+                <label for="price">가격:</label>
+                <input type="number" id="price" name="price" required><br><br>
+        
+                <!-- 파일 업로드 포함 -->
+                <div class="mb-3">
+                    <label for="formFile" class="form-label">파일 업로드</label>
+                    <input class="form-control" type="file" id="formFile">
                 </div>
-            </div>
+        
+                <button type="submit">작성</button>
+            </form>
         </div>
-        <!-- 설명(특징, 생산지, 원료) -->
-        <div class="liquor-content">
-            <h4>내용:</h4>
-            <p><span id="content"></span></p>
-        </div> 
-    </div>
+    </main>
 
     <footer>
         <div class="footer-content">
@@ -188,6 +192,7 @@ nav a {
             <p>&copy; 2024 방텐더. All rights reserved.</p>
         </div>
     </footer>
-    <script src="../src/js/liquor_detail.js" defer></script>
+
+<script src="../src/js/edit_liquor.js"></script> 
 </body>
 </html>

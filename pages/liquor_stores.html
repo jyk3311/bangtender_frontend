@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>주변 주류 매장 찾기</title>
+    <script type="text/javascript" src="../src/js/config.js"></script>
+</head>
+
+<body>
+    <div id="map" style="width:100%;height:400px;"></div>
+    <div id="result"></div>
+
+    <script>
+        function loadKakaoMapSDK() {
+            const script = document.createElement("script");
+            script.src = `//dapi.kakao.com/v2/maps/sdk.js?appkey=${config.apikey}&libraries=services&autoload=false`;
+            document.head.appendChild(script);
+            script.onload = function () {
+                kakao.maps.load(function () {
+                    initMap();
+                });
+            };
+        }
+
+        function initMap() {
+            fetch('http://localhost:8000/api/v1/subcontents/map/', {
+                method: 'GET',
+                headers: {
+                    'Authorization': 'Bearer ' + localStorage.getItem('access_token')
+                }
+            })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.address) {
+                        var geocoder = new kakao.maps.services.Geocoder();
+
+                        geocoder.addressSearch(data.address, function (result, status) {
+                            if (status === kakao.maps.services.Status.OK) {
+                                var userLatitude = result[0].y;
+                                var userLongitude = result[0].x;
+
+                                var mapContainer = document.getElementById('map');
+                                var mapOption = {
+                                    center: new kakao.maps.LatLng(userLatitude, userLongitude),
+                                    level: 3
+                                };
+
+                                var map = new kakao.maps.Map(mapContainer, mapOption);
+
+                                var MarkerImage = new kakao.maps.MarkerImage(
+                                    '/src/images/user_marker.png',
+                                    new kakao.maps.Size(36, 35),
+                                    {
+                                        offset: new kakao.maps.Point(18, 35)
+                                    }
+                                );
+
+                                var userMarker = new kakao.maps.Marker({
+                                    map: map,
+                                    position: new kakao.maps.LatLng(userLatitude, userLongitude),
+                                    title: "현재 위치",
+                                    zIndex: 2,
+                                    image: MarkerImage
+                                });
+
+                                var places = new kakao.maps.services.Places();
+                                var infowindow = new kakao.maps.InfoWindow();
+
+                                places.keywordSearch('주류', function (result, status) {
+                                    if (status === kakao.maps.services.Status.OK) {
+                                        var resultDiv = document.getElementById('result');
+                                        resultDiv.innerHTML = '';
+
+                                        for (var i = 0; i < result.length; i++) {
+                                            (function (place) {
+                                                resultDiv.innerHTML += '<p>' + place.place_name + ' - ' + place.road_address_name + '</p>';
+
+                                                var marker = new kakao.maps.Marker({
+                                                    map: map,
+                                                    position: new kakao.maps.LatLng(place.y, place.x)
+                                                });
+
+                                                kakao.maps.event.addListener(marker, 'click', function () {
+                                                    infowindow.close();
+                                                    infowindow.setContent('<div style="padding:5px;">' + place.place_name + '<br>' + place.road_address_name + '</div>');
+                                                    infowindow.open(map, marker);
+                                                });
+                                            })(result[i]);
+                                        }
+                                    } else {
+                                        alert("주변 주류 매장을 찾을 수 없습니다.");
+                                    }
+                                }, {
+                                    location: new kakao.maps.LatLng(userLatitude, userLongitude),
+                                    radius: 2000
+                                });
+                            } else {
+                                alert("주소를 찾을 수 없습니다.");
+                            }
+                        });
+                    } else {
+                        alert(data.message);
+                    }
+                })
+                .catch(error => {
+                    console.error('Error fetching user address:', error);
+                });
+        }
+
+        loadKakaoMapSDK();
+    </script>
+</body>
+
+</html>
