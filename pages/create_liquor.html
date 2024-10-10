@@ -1,121 +1,132 @@
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>주류 작성</title>
     <style>
-    html, body {
-        font-family: Arial, sans-serif;
-        margin: 0;
-        padding: 20px;
-        background-color: #f4f4f4;
-        min-height: 100vh; /* 전체 페이지가 화면 높이를 가득 채우도록 설정 */
-        flex-direction: column;
-    }
-    
-    .container {
-        max-width: 600px;
-        margin: 0 auto;
-        background-color: #eeeeee;
-        padding: 30px;
-        border: 1px solid #ccc;
-    }
-    header {
-    padding: 1rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-nav a {
-    color: #317c77;
-    text-decoration: none;
-    margin-right: 1rem;
-    white-space: nowrap;
-}
-.nav-divider {
-    border: 0;
-    border-top: 1px solid #2a9d8f;
-    margin-bottom: 1.5rem;
-}
-.search-bar input {
-    padding: 0.5rem;
-    border: none;
-    border-radius: 20px 0 0 20px;
-}
-.search-bar button {
-    background-color: #264653;
-    color: white;
-    border: none;
-    padding: 0.5rem 1rem;
-    border-radius: 0 20px 20px 0;
-    cursor: pointer;
-}
-.profile-button {
-    background-color: #264653;
-    color: white;
-    border: none;
-    padding: 0.5rem 1rem;
-    border-radius: 20px;
-    cursor: pointer;
-}
-    h1 {
-        font-size: 24px;
-        margin-bottom: 20px;
-        text-align: center;
-    }
-    
-    label {
-        display: block;
-        margin-bottom: 8px;
-        font-weight: bold;
-    }
-    
-    input[type="text"], textarea {
-        width: 100%;
-        padding: 10px;
-        margin-bottom: 15px;
-        border: 1px solid #ccc;
-        border-radius: 5px;
-        font-size: 16px;
-    }
-    
-    textarea {
-        height: 200px;
-        resize: vertical;
-    }
-    
-    p {
-        margin: 10px 0;
-        font-size: 16px;
-    }
-    
-    .image-container {
-        text-align: center;
-        margin-top: 20px;
-    }
-    
-    .image-container img {
-        max-width: 100%;
-        height: auto;
-        border-radius: 5px;
-    }
-    
-    button {
-        display: inline-block;
-        padding: 10px 20px;
-        background-color: #317c77;
-        color: white;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-    }
-    
-    button:disabled {
-        background-color: #ccc;
-    }
+        html,
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+            min-height: 100vh;
+            /* 전체 페이지가 화면 높이를 가득 채우도록 설정 */
+            flex-direction: column;
+        }
 
-    footer {
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #eeeeee;
+            padding: 30px;
+            border: 1px solid #ccc;
+        }
+
+        header {
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav a {
+            color: #317c77;
+            text-decoration: none;
+            margin-right: 1rem;
+            white-space: nowrap;
+        }
+
+        .nav-divider {
+            border: 0;
+            border-top: 1px solid #2a9d8f;
+            margin-bottom: 1.5rem;
+        }
+
+        .search-bar input {
+            padding: 0.5rem;
+            border: none;
+            border-radius: 20px 0 0 20px;
+        }
+
+        .search-bar button {
+            background-color: #264653;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 0 20px 20px 0;
+            cursor: pointer;
+        }
+
+        .profile-button {
+            background-color: #264653;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            cursor: pointer;
+        }
+
+        h1 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        textarea {
+            height: 200px;
+            resize: vertical;
+        }
+
+        p {
+            margin: 10px 0;
+            font-size: 16px;
+        }
+
+        .image-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .image-container img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 5px;
+        }
+
+        button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #317c77;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:disabled {
+            background-color: #ccc;
+        }
+
+        footer {
             background-color: #eeeeee;
             padding: 1rem;
             border-top: 1px solid #317c77;
@@ -155,55 +166,56 @@ nav a {
             <a href="" id="auth-link">
                 <button class="profile-button" id="auth-button">프로필</button> <!-- 버튼에 "로그인" 텍스트 추가 -->
             </a>
-            
+
         </div>
     </header>
     <hr class="nav-divider">
-<main>
-    <div class="container">
-        <h1>주류 작성</h1>
-        <form id="post-form">
-            <label for="name">이름:</label>
-            <input type="text" id="name" name="name" placeholder="이름을 입력하세요" required><br><br>
-    
-            <label for="classification">분류:</label>
-            <input type="text" id="classification" name="classification" placeholder="분류를 입력하세요" required><br><br>
-    
-            <label for="content">내용:</label>
-            <textarea id="content" name="content" placeholder="내용을 입력하세요" required></textarea><br><br>
-    
-            <label for="taste">맛:</label>
-            <input type="text" id="taste" name="taste" placeholder="맛을 입력하세요" required><br><br>
-    
-            <label for="abv">abv:</label>
-            <input type="number" id="abv" name="abv" placeholder="도수를 입력하세요" required><br><br>
-    
-            <label for="price">가격:</label>
-            <input type="number" id="price" name="price" placeholder="가격을 입력하세요" required><br><br>
-            <!-- 파일 업로드 -->
-            <div class="mb-3">
-                <label for="formFile" class="form-label">파일 업로드</label>
-                <input class="form-control" type="file" id="formFile">
-            </div>
-    
-            <button type="submit">작성</button>
-        </form>
-    </div>
-</main>
+    <main>
+        <div class="container">
+            <h1>주류 작성</h1>
+            <form id="post-form">
+                <label for="name">이름:</label>
+                <input type="text" id="name" name="name" placeholder="이름을 입력하세요" required><br><br>
 
+                <label for="classification">분류:</label>
+                <input type="text" id="classification" name="classification" placeholder="분류를 입력하세요" required><br><br>
 
-<footer>
-    <div class="footer-content">
-        <div class="team-members">
-            <a href="https://queseraseralife.tistory.com/" target="_blank">김동민</a>
-            <a href="https://zhelddustmq.tistory.com/" target="_blank">김진영</a>
-            <a href="https://velog.io/@mimi3123832/posts" target="_blank">남지민</a>
-            <a href="https://insight986.tistory.com/" target="_blank">배민석</a>
+                <label for="content">내용:</label>
+                <textarea id="content" name="content" placeholder="내용을 입력하세요" required></textarea><br><br>
+
+                <label for="taste">맛:</label>
+                <input type="text" id="taste" name="taste" placeholder="맛을 입력하세요" required><br><br>
+
+                <label for="abv">abv:</label>
+                <input type="number" id="abv" name="abv" placeholder="도수를 입력하세요" required><br><br>
+
+                <label for="price">가격:</label>
+                <input type="number" id="price" name="price" placeholder="가격을 입력하세요" required><br><br>
+                <!-- 파일 업로드 -->
+                <div class="mb-3">
+                    <label for="formFile" class="form-label">파일 업로드</label>
+                    <input class="form-control" type="file" id="formFile" name="img">
+                </div>
+
+                <button type="submit">작성</button>
+            </form>
         </div>
-        <p>&copy; 2024 방텐더. All rights reserved.</p>
-    </div>
-</footer>
+    </main>
 
-<script src="../src/js/create_liquor.js"></script>
+
+    <footer>
+        <div class="footer-content">
+            <div class="team-members">
+                <a href="https://queseraseralife.tistory.com/" target="_blank">김동민</a>
+                <a href="https://zhelddustmq.tistory.com/" target="_blank">김진영</a>
+                <a href="https://velog.io/@mimi3123832/posts" target="_blank">남지민</a>
+                <a href="https://insight986.tistory.com/" target="_blank">배민석</a>
+            </div>
+            <p>&copy; 2024 방텐더. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="../src/js/create_liquor.js"></script>
 </body>
+
 </html>
