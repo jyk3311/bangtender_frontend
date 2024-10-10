@@ -5,61 +5,112 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>칵테일 상세 정보</title>
-    <style>/* cocktail_detail */
-        #cocktail-detail {
-            display: flex;
-            background-color: #fff;
-            border: 1px solid #ccc;
-            border-radius: 5px;
+    <style>
+        /* container 스타일 */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
             padding: 20px;
-            margin-top: 20px;
-            align-items: flex-start;
         }
 
-        /* 이미지 스타일 */
-        #cocktail-img {
-            max-width: 400px;
-            border-radius: 5px;
+        /* 메인 콘텐츠 스타일 */
+        .main-content {
+            display: flex;
+            background-color: #e0f2f1;
+            padding: 20px;
+            position: relative;
+        }
+
+        /* 세로 텍스트 스타일 */
+        .vertical-text {
+            writing-mode: vertical-rl;
+            text-orientation: upright;
+            font-size: 2.5rem;
+            padding: 20px 10px;
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        /* 콘텐츠 래퍼 스타일 */
+        .content-wrapper {
+            display: flex;
+            margin-left: 60px;
+            width: 100%;
+            align-items: flex-start; /* 수직 정렬을 맞춤 */
+        }
+
+        /* 이미지 섹션 스타일 */
+        .cocktail-img {
+            flex: 0 0 200px;
+            height: 200px;
             margin-right: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #cccccc;
         }
 
-        /* 칵테일 정보 스타일 */
-        #cocktail-detail p {
+        .cocktail-img img {
+            max-width: 100%;
+            max-height: 100%;
+            border-radius: 5px;
+        }
+
+        /* 칵테일 정보 섹션 스타일 */
+        .cocktail-info {
+            flex: 1;
+        }
+
+        .cocktail-info p {
+            font-size: 16px;
             margin: 10px 0;
-            font-size: 16px;
-            line-height: 1.6;
         }
 
-        #cocktail-ingredients,
-        #cocktail-taste,
-        #cocktail-abv,
-        #cocktail-created-at,
-        #cocktail-updated-at {
-            margin-bottom: 10px;
-        }
-
-        /* 컨텐츠(내용) 스타일 */
-        #cocktail-content {
-            flex-basis: 100%;
+        /* 칵테일 설명 섹션 스타일 */
+        .cocktail-content {
             margin-top: 20px;
-            padding-top: 10px;
-            border-top: 1px solid #ccc;
-            font-size: 16px;
-            color: #666;
-        }</style>
+            padding: 20px;
+            background-color: #eeeeee;
+        }
+
+        /* 칵테일 이름 스타일 - 사진과 겹치지 않도록 설정 */
+        #cocktail-name {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            position: relative; /* 부모 요소에 의존적인 위치 */
+        }
+    </style>
 </head>
 
 <body>
-    <h1 id="cocktail-name">칵테일 상세 정보</h1>
-    <div id="cocktail-detail">
-        <img id="cocktail-img" src="" alt="Cocktail Image">
-        <p id="cocktail-content"></p>
-        <p id="cocktail-ingredients"></p>
-        <p id="cocktail-taste"></p>
-        <p id="cocktail-abv"></p>
-        <p id="cocktail-created-at"></p>
-        <p id="cocktail-updated-at"></p>
+    <div class="container" id="cocktail-detail">
+        <div class="main-content">
+            <div class="vertical-text"><span id="cocktail-name-vertical"></span></div>
+            <div class="content-wrapper">
+                <!-- 이미지 삽입 -->
+                <div class="cocktail-img">
+                    <img id="cocktail-img" src="" alt="칵테일 이미지">
+                </div>
+                <!-- 칵테일 디테일 정보 -->
+                <div class="cocktail-info">
+                    <p id="cocktail-name"></p>
+                    <p><span id="cocktail-ingredients"></span></p>
+                    <p><span id="cocktail-taste"></span></p>
+                    <p>ABV: <span id="cocktail-abv"></span></p>
+                    <p>생성 날짜: <span id="cocktail-created-at"></span></p>
+                    <p>업데이트 날짜: <span id="cocktail-updated-at"></span></p>
+                </div>
+            </div>
+        </div>
+        <!-- 설명(내용) -->
+        <div class="cocktail-content">
+            <h4>제조법:</h4>
+            <p><span id="cocktail-content"></span></p>
+        </div>
     </div>
+
     <script src="../src/js/cocktail_detail.js" defer></script>
 </body>
 

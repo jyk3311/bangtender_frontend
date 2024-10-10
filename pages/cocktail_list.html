@@ -1,42 +1,49 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>칵테일 목록</title>
     <style>
-        /* 주류 항목별 페이지 스타일 */
+        /* 그리드 레이아웃 설정 */
         .cocktail-grid {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);  /* 4개 품목이 1줄에 */
-            gap: 2rem;
+            grid-template-columns: repeat(4, 1fr); /* 4열 그리드 */
+            gap: 2rem; /* 칵테일 항목 사이의 간격 */
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
         }
-        
+
+        /* 각 칵테일 항목 스타일 */
         .cocktail-item {
             background-color: #eeeeee;
             border-radius: 8px;
             overflow: hidden;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            text-align: center;
         }
-        
+
+        /* 칵테일 이미지 스타일 */
         .cocktail-item img {
             width: 100%;
-            height: 200px;
+            height: 250px;
             object-fit: cover;
         }
-        
-        .cocktail-info {
-            padding: 1rem;
-        }</style>
-</head>
 
+        /* 칵테일 텍스트 스타일 */
+        .cocktail-item p {
+            margin: 10px 0;
+            font-size: 1.2rem;
+            color: #333;
+        }
+    </style>
+</head>
 <body>
     <h1>칵테일 목록</h1>
-    <div id="cocktail-list" class="cocktail-list"></div>
-    <div id="loading">추가 데이터 로딩중</div>
+    <div id="cocktail-list" class="cocktail-grid"></div>
+    <div id="loading">추가 데이터 로딩중...</div>
 
-    <script src="../src/js/cocktail_list.js"></script>
+    <script src="../src/js/cocktail_list.js" defer></script>
 </body>
-
 </html>
