@@ -25,29 +25,32 @@ document.addEventListener('DOMContentLoaded', async () => {
             const imgElement = document.createElement('img');
             imgElement.src = `http://localhost:8000${cocktail.img}`;
             imgElement.alt = cocktail.name;
+            imgElement.addEventListener('click', () => {
+                window.location.href = `pages/cocktail_detail.html?id=${cocktail.id}`;  // 상세 페이지로 이동
+            });
             cocktailItem.appendChild(imgElement);
             recommendedContainer.appendChild(cocktailItem);
         });
 
         // 사용자 맞춤 칵테일 표시
         if (data.user_liquor_list && typeof data.user_liquor_list !== 'string') {
-            const personalizedCocktails = data.user_liquor_list;
-            const personalizedContainer = document.getElementById('personalized-cocktails');
-            personalizedContainer.innerHTML = '';
+            const userCocktails = data.user_liquor_list;
+            const userContainer = document.getElementById('personalized-cocktails');
+            userContainer.innerHTML = '';
 
-            personalizedCocktails.forEach(cocktail => {
+            userCocktails.forEach(cocktail => {
                 const cocktailItem = document.createElement('div');
                 cocktailItem.classList.add('cocktail-item');
                 const imgElement = document.createElement('img');
                 imgElement.src = `http://localhost:8000${cocktail.img}`;
                 imgElement.alt = cocktail.name;
                 cocktailItem.appendChild(imgElement);
-                personalizedContainer.appendChild(cocktailItem);
+                userContainer.appendChild(cocktailItem);
             });
         } else {
             // 사용자 맞춤 데이터가 없을 때 메시지 출력
-            const personalizedContainer = document.getElementById('personalized-cocktails');
-            personalizedContainer.innerHTML = '<p>사용자 데이터가 등록되지 않았습니다.</p>';
+            const userContainer = document.getElementById('personalized-cocktails');
+            userContainer.innerHTML = '<p>사용자 데이터가 등록되지 않았습니다.</p>';
         }
 
     } catch (error) {
