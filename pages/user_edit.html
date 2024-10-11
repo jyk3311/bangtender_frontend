@@ -8,198 +8,190 @@
     <style>
         /* 전체적인 페이지 스타일 */
         html,body {
-    font-family: 'Arial', sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f4f4f4; /* 밝은 회색 배경 */
-    min-height: 100vh; /* 전체 페이지가 화면 높이를 가득 채우도록 설정 */
-    flex-direction: column;
-}
-
-header {
-    padding: 1rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-nav a {
-    color: #317c77;
-    text-decoration: none;
-    margin-right: 1rem;
-    white-space: nowrap;
-}
-.nav-divider {
-    border: 0;
-    border-top: 1px solid #2a9d8f;
-    margin-bottom: 1.5rem;
-}
-.search-bar input {
-    padding: 0.5rem;
-    border: none;
-    border-radius: 20px 0 0 20px;
-}
-.search-bar button {
-    background-color: #264653;
-    color: white;
-    border: none;
-    padding: 0.5rem 1rem;
-    border-radius: 0 20px 20px 0;
-    cursor: pointer;
-}
-.profile-button {
-    background-color: #264653;
-    color: white;
-    border: none;
-    padding: 0.5rem 1rem;
-    border-radius: 20px;
-    cursor: pointer;
-}
-/* 로고 이미지 스타일 */
-.logo img {
-            height: 60px; /* 네브바에 적합한 크기 설정 */
-            width: auto;  /* 비율 유지 */
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4; 
         }
 
-/* 메인 컨테이너 스타일 */
-main {
-    max-width: 800px;
-    margin: 2rem auto;
-    padding: 2rem;
-    background-color: white;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 박스 그림자 */
-}
+        header {
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
 
-h1 {
-    font-size: 2rem;
-    color: #264653;
-    margin-bottom: 1.5rem;
-    text-align: center;
-}
+        nav a {
+            color: #317c77;
+            text-decoration: none;
+            margin-right: 1rem;
+            white-space: nowrap;
+        }
 
-/* 폼 스타일 */
-form label {
-    font-size: 1rem;
-    color: #264653;
-    display: block;
-    margin-bottom: 0.5rem;
-}
+        .nav-divider {
+            border: 0;
+            border-top: 1px solid #2a9d8f;
+            margin-bottom: 1.5rem;
+        }
 
-form input[type="text"],
-form input[type="email"] {
-    width: 100%;
-    padding: 0.75rem;
-    margin-bottom: 1rem;
-    border: 1px solid #317c77;
-    border-radius: 4px;
-    font-size: 1rem;
-    box-sizing: border-box;
-}
+        .search-bar input {
+            padding: 0.5rem;
+            border: none;
+            border-radius: 20px 0 0 20px;
+        }
 
-/* 우편번호 버튼 스타일 */
-button[type="button"],
-button[type="submit"] {
-    background-color: #264653;
-    color: white;
-    border: none;
-    padding: 0.75rem 1.5rem;
-    font-size: 1rem;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-    display: inline-block;
-    margin-top: 0.5rem;
-}
+        .search-bar button {
+            background-color: #264653;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 0 20px 20px 0;
+            cursor: pointer;
+        }
 
-button[type="button"]:hover,
-button[type="submit"]:hover {
-    background-color: #1b3943;
-}
+        .profile-button {
+            background-color: #264653;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            cursor: pointer;
+        }
 
-/* 검색 및 드롭다운 스타일 */
-.search {
-    position: relative;
-    margin-bottom: 1.5rem;
-}
+        /* 로고 이미지 스타일 */
+        .logo img {
+            height: 60px;
+            width: auto;
+        }
 
-.search input[type="text"] {
-    width: 100%;
-    padding: 0.75rem;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-}
+        /* 메인 컨테이너 스타일 */
+        main {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 박스 그림자 */
+        }
 
-.search-btn {
-    position: absolute;
-    right: 10px;
-    top: 50%;
-    transform: translateY(-50%);
-    background-color: #264653;
-    color: white;
-    border: none;
-    padding: 0.5rem;
-    border-radius: 4px;
-    cursor: pointer;
-}
+        h1 {
+            font-size: 2rem;
+            color: #264653;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
 
-/* 드롭다운 스타일 */
-.dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: #f9f9f9;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    width: 100%;
-    max-height: 200px;
-    overflow-y: auto;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    z-index: 100;
-    top: calc(100% + 5px);
-}
+        /* 폼 스타일 */
+        form label {
+            font-size: 1rem;
+            color: #264653;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
 
-.dropdown-content label {
-    display: block;
-    padding: 10px;
-    cursor: pointer;
-    color: #333;
-}
+        form input[type="text"],
+        form input[type="email"] {
+            width: 100%;
+            padding: 0.75rem;
+            margin-bottom: 1rem;
+            border: 1px solid #317c77;
+            border-radius: 4px;
+            font-size: 1rem;
+            box-sizing: border-box;
+        }
 
-.dropdown-content label:hover {
-    background-color: #f1f1f1;
-}
+        /* 우편번호 버튼 스타일 */
+        button[type="button"],
+        button[type="submit"] {
+            background-color: #264653;
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            font-size: 1rem;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            display: inline-block;
+            margin-top: 0.5rem;
+        }
 
-input[type="checkbox"] {
-    margin-right: 10px;
-}
+        button[type="button"]:hover,
+        button[type="submit"]:hover {
+            background-color: #1b3943;
+        }
 
-/* 선택된 해시태그 스타일 */
-.skill-tags label {
-    margin-right: 10px;
-    display: inline-block;
-    font-size: 1rem;
-    padding: 0.5rem;
-    background-color: #f1f1f1;
-    border: 1px solid #ccc;
-    border-radius: 20px;
-    color: #333;
-    cursor: pointer;
-}
+        /* 검색 및 드롭다운 스타일 */
+        .search {
+            position: relative;
+            margin-bottom: 1.5rem;
+        }
 
-.skill-tags label.selected {
-    background-color: #317c77;
-    color: white;
-    border-color: #317c77;
-}
+        .search input[type="text"] {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
 
-/* 메세지 출력 스타일 */
-#message {
-    margin-top: 1rem;
-    font-size: 1rem;
-    color: #317c77;
-    text-align: center;
-}
+        /* 드롭다운 스타일 */
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-height: 200px;
+            overflow-y: auto;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            z-index: 100;
+            top: calc(100% + 5px);
+        }
+
+        .dropdown-content label {
+            display: block;
+            padding: 10px;
+            cursor: pointer;
+            color: #333;
+        }
+
+        .dropdown-content label:hover {
+            background-color: #f1f1f1;
+        }
+
+        /* 주류 항목 태그 스타일 */
+        .tag {
+            display: inline-block;
+            padding: 0.4rem 1rem;
+            background-color: #ffffff; /* 배경색 흰색 */
+            color: #264653; /* 글자 색 */
+            border: 2px solid #264653; /* 테두리 색 */
+            border-radius: 20px;
+            margin: 0.3rem;
+            position: relative;
+            font-size: 0.9rem;
+        }
+
+        .tag span {
+            margin-left: 0.5rem;
+            cursor: pointer;
+        }
+
+
+        /* 태그 X에 마우스 커서가 갈 때 */
+        .tag span:hover {
+            color: #264653;
+        }
+
+        /* 선택된 태그 영역 */
+        .selected-tags {
+            display: flex;
+            flex-wrap: wrap;
+            margin-top: 0.5rem;
+        }
+
+        
 
         footer {
             background-color: #eeeeee;
@@ -220,7 +212,6 @@ input[type="checkbox"] {
             text-decoration: none;
             margin-right: 1rem;
         }
-
     </style>
     <script src="https://cdn.jsdelivr.net/npm/jwt-decode@3.1.2/build/jwt-decode.min.js"></script>
     <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
@@ -245,9 +236,8 @@ input[type="checkbox"] {
         <div class="user">
             <button id="logout-button" style="display: none;">로그아웃</button>
             <a href="profile.html" id="auth-link">
-                <button class="profile-button" id="auth-button">프로필</button> <!-- 버튼에 "로그인" 텍스트 추가 -->
+                <button class="profile-button" id="auth-button">프로필</button>
             </a>
-            
         </div>
     </header>
     <hr class="nav-divider">
@@ -269,27 +259,30 @@ input[type="checkbox"] {
             <!-- 검색 기능 추가 -->
             <div class="search">
                 <input type="text" id="search-owned-liquor" placeholder="보유한 술 검색어 입력">
-                <div id="owned-liquor-results" class="dropdown-content"></div> <!-- 검색 결과 표시될 드롭다운 -->
+                <div id="owned-liquor-results" class="dropdown-content"></div>
             </div>
+            <!-- 태그 표시 -->
+            <div class="selected-tags" id="owned-liquor-tags"></div>
 
             <h2>좋아하는 술</h2>
-            <!-- 검색 기능 추가 -->
             <div class="search">
                 <input type="text" id="search-liked-liquor" placeholder="좋아하는 술 검색어 입력">
-                <div id="liked-liquor-results" class="dropdown-content"></div> <!-- 검색 결과 표시될 드롭다운 -->
+                <div id="liked-liquor-results" class="dropdown-content"></div>
             </div>
+            <div class="selected-tags" id="liked-liquor-tags"></div>
 
             <h2>싫어하는 술</h2>
-            <!-- 검색 기능 추가 -->
             <div class="search">
                 <input type="text" id="search-disliked-liquor" placeholder="싫어하는 술 검색어 입력">
-                <div id="disliked-liquor-results" class="dropdown-content"></div> <!-- 검색 결과 표시될 드롭다운 -->
+                <div id="disliked-liquor-results" class="dropdown-content"></div>
             </div>
+            <div class="selected-tags" id="disliked-liquor-tags"></div>
 
             <button type="submit">수정하기</button>
         </form>
         <p id="message"></p>
     </main>
+
     <footer>
         <div class="footer-content">
             <div class="team-members">
@@ -370,11 +363,22 @@ input[type="checkbox"] {
                 }).open();
             });
 
-            // 검색 기능 예시 데이터 (가상 데이터)
-            const liquorList = ["글렌피딕 15년", "발렌타인 17년 ", "발렌타인 30년", "바카디", "몽키 47"];
+            const liquorList = ["글렌피딕 15년", "발렌타인 17년", "발렌타인 30년", "바카디", "몽키 47"];
+
+            // 태그 추가 함수
+            function addTag(tagContainerId, tagText) {
+                const tagContainer = document.getElementById(tagContainerId);
+                const tag = document.createElement('div');
+                tag.classList.add('tag');
+                tag.innerHTML = `${tagText} <span>&times;</span>`;
+                tag.querySelector('span').addEventListener('click', () => {
+                    tag.remove(); // 태그 삭제
+                });
+                tagContainer.appendChild(tag);
+            }
 
             // 공통 검색 함수
-            function searchLiquor(inputId, resultId) {
+            function searchLiquor(inputId, resultId, tagContainerId) {
                 const searchInput = document.getElementById(inputId);
                 const resultsDropdown = document.getElementById(resultId);
 
@@ -387,6 +391,11 @@ input[type="checkbox"] {
                         filteredResults.forEach(result => {
                             const label = document.createElement('label');
                             label.innerHTML = `<input type="checkbox" value="${result}"> ${result}`;
+                            label.addEventListener('click', function () {
+                                if (label.querySelector('input').checked) {
+                                    addTag(tagContainerId, result);
+                                }
+                            });
                             resultsDropdown.appendChild(label);
                         });
 
@@ -403,13 +412,13 @@ input[type="checkbox"] {
                 });
             }
 
-            // 각각의 술 검색 입력 필드에 대해 검색 기능 적용
-            searchLiquor('search-owned-liquor', 'owned-liquor-results');
-            searchLiquor('search-liked-liquor', 'liked-liquor-results');
-            searchLiquor('search-disliked-liquor', 'disliked-liquor-results');
+            searchLiquor('search-owned-liquor', 'owned-liquor-results', 'owned-liquor-tags');
+            searchLiquor('search-liked-liquor', 'liked-liquor-results', 'liked-liquor-tags');
+            searchLiquor('search-disliked-liquor', 'disliked-liquor-results', 'disliked-liquor-tags');
         });
 
     </script>
 </body>
 
 </html>
+
