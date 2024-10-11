@@ -2,65 +2,73 @@
 <html lang="ko">
 
 <head>
-    
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>칵테일 상세 정보</title>
     <style>
         body {
-    font-family: 'Arial', sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #eeeeee;
-}
-header {
-    padding: 1rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-nav a {
-    color: #317c77;
-    text-decoration: none;
-    margin-right: 1rem;
-    white-space: nowrap;
-}
-.nav-divider {
-    border: 0;
-    border-top: 1px solid #2a9d8f;
-    margin-bottom: 1.5rem;
-}
-.search-bar input {
-    padding: 0.5rem;
-    border: none;
-    border-radius: 20px 0 0 20px;
-}
-.search-bar button {
-    background-color: #264653;
-    color: white;
-    border: none;
-    padding: 0.5rem 1rem;
-    border-radius: 0 20px 20px 0;
-    cursor: pointer;
-}
-.profile-button {
-    background-color: #264653;
-    color: white;
-    border: none;
-    padding: 0.5rem 1rem;
-    border-radius: 20px;
-    cursor: pointer;
-}
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #eeeeee;
+        }
 
-/* 로고 이미지 스타일 */
-.logo img {
-            height: 60px; /* 네브바에 적합한 크기 설정 */
-            width: auto;  /* 비율 유지 */
+        header {
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav a {
+            color: #317c77;
+            text-decoration: none;
+            margin-right: 1rem;
+            white-space: nowrap;
+        }
+
+        .nav-divider {
+            border: 0;
+            border-top: 1px solid #2a9d8f;
+            margin-bottom: 1.5rem;
+        }
+
+        .search-bar input {
+            padding: 0.5rem;
+            border: none;
+            border-radius: 20px 0 0 20px;
+        }
+
+        .search-bar button {
+            background-color: #264653;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 0 20px 20px 0;
+            cursor: pointer;
+        }
+
+        .profile-button {
+            background-color: #264653;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            cursor: pointer;
+        }
+
+        /* 로고 이미지 스타일 */
+        .logo img {
+            height: 60px;
+            /* 네브바에 적합한 크기 설정 */
+            width: auto;
+            /* 비율 유지 */
         }
 
 
-/* container 스타일 */
-.container {
+        /* container 스타일 */
+        .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 20px;
@@ -86,20 +94,24 @@ nav a {
             top: 50%;
             transform: translateY(-50%);
         }
-         /* 팁 추가 */
+
+        /* 팁 추가 */
         .tip {
-            background-color: #B6D5D3; 
+            background-color: #B6D5D3;
             opacity: 0.6;
             padding: 0.1rem;
-            width: auto; /* 문장 길이에 맞춰 자동 조정 */
+            width: auto;
+            /* 문장 길이에 맞춰 자동 조정 */
             border-radius: 4px;
             margin-bottom: 2rem;
-            display: inline-block; /* 박스를 텍스트 길이에 맞게 조정 */
+            display: inline-block;
+            /* 박스를 텍스트 길이에 맞게 조정 */
             text-align: center;
         }
 
         .tip-container {
-            text-align: center; /* 부모 컨테이너에 중앙 정렬 */
+            text-align: center;
+            /* 부모 컨테이너에 중앙 정렬 */
             margin-bottom: 2rem;
         }
 
@@ -108,7 +120,8 @@ nav a {
             display: flex;
             margin-left: 60px;
             width: 100%;
-            align-items: flex-start; /* 수직 정렬을 맞춤 */
+            align-items: flex-start;
+            /* 수직 정렬을 맞춤 */
         }
 
         /* 이미지 섹션 스타일 */
@@ -131,7 +144,8 @@ nav a {
         /* 칵테일 정보 섹션 스타일 */
         .cocktail-info {
             flex: 1;
-            text-align: left; /* 왼쪽 정렬 적용 */
+            text-align: left;
+            /* 왼쪽 정렬 적용 */
         }
 
         .cocktail-info p {
@@ -144,7 +158,8 @@ nav a {
             margin-top: 20px;
             padding: 20px;
             background-color: #eeeeee;
-            text-align: left; /* 왼쪽 정렬 적용 */
+            text-align: left;
+            /* 왼쪽 정렬 적용 */
 
         }
 
@@ -152,27 +167,29 @@ nav a {
         #cocktail-name {
             font-size: 2rem;
             margin-bottom: 20px;
-            position: relative; /* 부모 요소에 의존적인 위치 */
+            position: relative;
+            /* 부모 요소에 의존적인 위치 */
         }
 
-footer {
-    background-color: #eeeeee;
-    padding: 1rem;
-    border-top: 1px solid #317c77;
-}
-.footer-content {
-    max-width: 1200px;
-    margin: 0 auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-.team-members a {
-    color: #317c77;
-    text-decoration: none;
-    margin-right: 1rem;
-}
+        footer {
+            background-color: #eeeeee;
+            padding: 1rem;
+            border-top: 1px solid #317c77;
+        }
 
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .team-members a {
+            color: #317c77;
+            text-decoration: none;
+            margin-right: 1rem;
+        }
     </style>
 </head>
 
@@ -205,34 +222,34 @@ footer {
     <main>
         <div class="tip-container">
             <div class="tip" id="tip-box">
-            <p id="tip-content">Tips : 그거 아셨나요? 맨해튼은 칵테일의 여왕이라는 별명을 가지고 있습니다.</p>
-        </div>
-
-        <div class="container" id="cocktail-detail">
-            <div class="main-content">
-                <div class="vertical-text"><span id="cocktail-name-vertical"></span></div>
-                <div class="content-wrapper">
-                    <!-- 이미지 삽입 -->
-                    <div class="cocktail-img">
-                        <img id="cocktail-img" src="" alt="칵테일 이미지">
-                    </div>
-                    <!-- 칵테일 디테일 정보 -->
-                    <div class="cocktail-info">
-                        <p id="cocktail-name"></p>
-                        <p><span id="cocktail-ingredients"></span></p>
-                        <p><span id="cocktail-taste"></span></p>
-                        <p>ABV: <span id="cocktail-abv"></span></p>
-                        <p><span id="cocktail-created-at"></span></p>
-                        <p><span id="cocktail-updated-at"></span></p>
+                <p id="tip-content">Tips : 그거 아셨나요? 맨해튼은 칵테일의 여왕이라는 별명을 가지고 있습니다.</p>
+            </div>
+            <button id="bookmark-button" class="profile-button"></button>
+            <div class="container" id="cocktail-detail">
+                <div class="main-content">
+                    <div class="vertical-text"><span id="cocktail-name-vertical"></span></div>
+                    <div class="content-wrapper">
+                        <!-- 이미지 삽입 -->
+                        <div class="cocktail-img">
+                            <img id="cocktail-img" src="" alt="칵테일 이미지">
+                        </div>
+                        <!-- 칵테일 디테일 정보 -->
+                        <div class="cocktail-info">
+                            <p id="cocktail-name"></p>
+                            <p><span id="cocktail-ingredients"></span></p>
+                            <p><span id="cocktail-taste"></span></p>
+                            <p>ABV: <span id="cocktail-abv"></span></p>
+                            <p><span id="cocktail-created-at"></span></p>
+                            <p><span id="cocktail-updated-at"></span></p>
+                        </div>
                     </div>
                 </div>
+                <!-- 설명(내용) -->
+                <div class="cocktail-content">
+                    <h4>제조법:</h4>
+                    <p><span id="cocktail-content"></span></p>
+                </div>
             </div>
-            <!-- 설명(내용) -->
-            <div class="cocktail-content">
-                <h4>제조법:</h4>
-                <p><span id="cocktail-content"></span></p>
-            </div>
-        </div>    
     </main>s
     <footer>
         <div class="footer-content">
