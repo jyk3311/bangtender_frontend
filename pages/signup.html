@@ -89,6 +89,12 @@
             margin: 0 auto; /* 본문을 중간에 배치 */
         }
 
+        /* 로고 이미지 스타일 */
+        .logo img {
+            height: 60px; /* 네브바에 적합한 크기 설정 */
+            width: auto;  /* 비율 유지 */
+        }
+
         h1 {
             color: #317c77;
             margin-bottom: 1.5rem;
@@ -179,7 +185,10 @@
 
 <body>
     <header>
-        <a href="/">Logo</a>
+        <!-- 로고 이미지 추가 -->
+        <a href="/" class="logo">
+            <img src="../src/images/001.png" alt="Logo">
+        </a>
         <nav>
             <a href="liquor_list.html">주류</a>
             <a href="cocktail_list.html">칵테일</a>

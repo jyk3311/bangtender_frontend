@@ -26,48 +26,48 @@
         }
 
         header {
-            padding: 1rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        nav a {
-            color: #317c77;
-            text-decoration: none;
-            margin-right: 1rem;
-            white-space: nowrap;
-        }
-
-        .nav-divider {
-            border: 0;
-            border-top: 1px solid #2a9d8f;
-            margin-bottom: 1.5rem;
-        }
-
-        .search-bar input {
-            padding: 0.5rem;
-            border: none;
-            border-radius: 20px 0 0 20px;
-        }
-
-        .search-bar button {
-            background-color: #264653;
-            color: white;
-            border: none;
-            padding: 0.5rem 1rem;
-            border-radius: 0 20px 20px 0;
-            cursor: pointer;
-        }
-
-        .profile-button {
-            background-color: #264653;
-            color: white;
-            border: none;
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
-            cursor: pointer;
-        }
+        padding: 1rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    nav a {
+        color: #317c77;
+        text-decoration: none;
+        margin-right: 1rem;
+        white-space: nowrap;
+    }
+    .nav-divider {
+        border: 0;
+        border-top: 1px solid #2a9d8f;
+        margin-bottom: 1.5rem;
+    }
+    .search-bar input {
+        padding: 0.5rem;
+        border: none;
+        border-radius: 20px 0 0 20px;
+    }
+    .search-bar button {
+        background-color: #264653;
+        color: white;
+        border: none;
+        padding: 0.5rem 1rem;
+        border-radius: 0 20px 20px 0;
+        cursor: pointer;
+    }
+    .profile-button {
+        background-color: #264653;
+        color: white;
+        border: none;
+        padding: 0.5rem 1rem;
+        border-radius: 20px;
+        cursor: pointer;
+    }
+    /* 로고 이미지 스타일 */
+    .logo img {
+            height: 60px; /* 네브바에 적합한 크기 설정 */
+            width: auto;  /* 비율 유지 */
+        }    
 
         h1 {
             font-size: 24px;
@@ -151,7 +151,10 @@
 <body>
 
     <header>
-        <a href="/">Logo</a>
+        <!-- 로고 이미지 추가 -->
+        <a href="/" class="logo">
+            <img src="../src/images/001.png" alt="Logo">
+        </a>
         <nav>
             <a href="liquor_list.html">주류</a>
             <a href="cocktail_list.html">칵테일</a>

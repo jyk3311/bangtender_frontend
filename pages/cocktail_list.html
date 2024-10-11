@@ -50,6 +50,29 @@
             border-radius: 20px;
             cursor: pointer;
         }
+
+        /* 로고 이미지 스타일 */
+        .logo img {
+            height: 60px; /* 네브바에 적합한 크기 설정 */
+            width: auto;  /* 비율 유지 */
+        }
+        /* 팁 추가 */
+        .tip {
+            background-color: #B6D5D3; 
+            opacity: 0.6;
+            padding: 0.1rem;
+            width: auto; /* 문장 길이에 맞춰 자동 조정 */
+            border-radius: 4px;
+            margin-bottom: 2rem;
+            display: inline-block; /* 박스를 텍스트 길이에 맞게 조정 */
+            text-align: center;
+        }
+
+        .tip-container {
+            text-align: center; /* 부모 컨테이너에 중앙 정렬 */
+            margin-bottom: 2rem;
+        }
+
         /* 그리드 레이아웃 설정 */
         .cocktail-grid {
             display: grid;
@@ -108,7 +131,10 @@
 <body>
 
     <header>
-        <a href="/">Logo</a>
+        <!-- 로고 이미지 추가 -->
+        <a href="/" class="logo">
+            <img src="../src/images/001.png" alt="Logo">
+        </a>
         <nav>
             <a href="liquor_list.html">주류</a>
             <a href="cocktail_list.html">칵테일</a>
@@ -129,6 +155,11 @@
     <hr class="nav-divider">
 
     <main>
+        <div class="tip-container">
+            <div class="tip" id="tip-box">
+            <p id="tip-content">Tips : 그거 아셨나요? 맨해튼은 칵테일의 여왕이라는 별명을 가지고 있습니다.</p>
+        </div>
+        
     <h1>칵테일 목록</h1>
     <div id="cocktail-list" class="cocktail-grid"></div>
     <div id="loading">추가 데이터 로딩중...</div>
