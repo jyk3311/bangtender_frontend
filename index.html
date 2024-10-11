@@ -21,35 +21,72 @@
             align-items: center;
         }
 
+        /* 네비게이션 바 전체 스타일 추가*/
+        nav {
+            display: flex;
+            /* 가로 배치 */
+            align-items: center;
+        }
+
+
         /* 드롭다운 하위 항목 스타일 */
         nav li {
             position: relative;
             list-style: none;
+            margin-right: 1rem;
+            /* 각 하위 항목 간 간격 조정*/
         }
 
         nav a {
             color: #317c77;
             text-decoration: none;
+            /*  해당 태그의 밑줄을 제거 */
             margin-right: 1rem;
             white-space: nowrap;
         }
 
-        /* 드롭다운 메뉴 기본 스타일 */
+        nav li a {
+            color: #317c77;
+            text-decoration: none;
+            padding: 0.5rem;
+            display: block;
+            white-space: nowrap;
+            position: relative;
+        }
+
+        /* 밑줄 애니메이션 추가 */
+        nav li a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background-color: #317c77;
+            /* 밑줄 색상 (원하는 색으로 변경 가능) */
+            left: 0;
+            bottom: 0;
+            transition: width 0;
+        }
+
+        nav li a:hover::after {
+            width: 100%;
+            /* 마우스 커서가 올라가면 밑줄이 전체로 나타남 */
+        }
+
         nav li ul {
             display: none;
             position: absolute;
             top: 100%;
             left: 0;
-            background-color: #ffffff;
+            background-color: #eeeeee;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             padding: 0;
             margin: 0;
             border-radius: 4px;
             z-index: 10;
-            width: 150px;
+            width: 110px;
         }
 
-        /* 드롭다운 메뉴 항목 스타일 */
+        /* 드롭다운 하위 항목 스타일 */
         nav li ul li {
             border-bottom: 1px solid #ddd;
             /* 노트줄처럼 하위 항목에 가로줄 추가 */
@@ -72,6 +109,7 @@
             color: #ffffff;
         }
 
+        /* 드롭다운 표시 */
         nav li:hover ul {
             display: block;
             /* 주류 항목에 마우스가 올라갔을 때 서브 메뉴 표시 */
@@ -106,6 +144,29 @@
             border-radius: 20px;
             cursor: pointer;
         }
+
+        /* 로그아웃 버튼 스타일 */
+        #logout-button {
+            background-color: white;
+            /* 흰색 배경 */
+            color: #264653;
+            /* 글자색: 어두운 초록 */
+            border: 1px solid #264653;
+            /* 테두리색 */
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            /* 전환 효과 */
+        }
+
+        #logout-button:hover {
+            background-color: #264653;
+            /* 호버 시 배경색 변경 */
+            color: white;
+            /* 호버 시 글자색 변경 */
+        }
+
 
         /* 로고 이미지 스타일 */
         .logo img {
@@ -155,7 +216,8 @@
             margin: 0 1rem;
             white-space: normal;
             line-height: 1.5;
-            border-radius: 4px;
+            border-radius: 0 px;
+            /* 사진 모서리 둥글게 하는 기능 나중에 추가 */
         }
 
         .cocktail-title-one {
@@ -216,31 +278,37 @@
         </a>
         <nav>
             <li>
-                <a href="#">주류</a>
-                <ul> <!--드롭다운 메뉴 추가 -->
-                    <a href="pages/liquor_list.html">럼</a>
-                    <a href="pages/liquor_list.html">리큐르</a>
-                    <a href="pages/liquor_list.html">보드카</a>
-                    <a href="pages/liquor_list.html">브랜디</a>
-                    <a href="pages/liquor_list.html">위스키</a>
-                    <a href="pages/liquor_list.html">진</a>
-                    <a href="pages/liquor_list.html">기타</a>
+                <a href="pages/liquor_list.html">주류</a> <!-- '주류' 상위 링크는 liquor_list.html로 이동 -->
+                <ul> <!-- 드롭다운 메뉴 -->
+                    <li><a href="pages/rum_list.html">럼</a></li>
+                    <li><a href="pages/liqueur_list.html">리큐르</a></li>
+                    <li><a href="pages/vodka_list.html">보드카</a></li>
+                    <li><a href="pages/brandy_list.html">브랜디</a></li>
+                    <li><a href="pages/whisky_list.html">위스키</a></li>
+                    <li><a href="pages/gin_list.html">진</a></li>
+                    <li><a href="pages/other_list.html">기타</a></li>
                 </ul>
             </li>
-            <a href="pages/cocktail_list.html">칵테일</a>
-            <a href="pages/bot.html">방텐더봇</a>
-            <a href="pages/liquor_stores.html">주변 매장 찾기</a>
+            <!-- 칵테일 메뉴 -->
+            <li><a href="pages/cocktail_list.html">칵테일</a></li>
+
+            <!-- 방텐더봇 메뉴 -->
+            <li><a href="pages/bot.html">방텐더봇</a></li>
+
+            <!-- 주변 매장 찾기 메뉴 -->
+            <li><a href="pages/liquor_stores.html">주변 매장 찾기</a></li>
         </nav>
         <div class="search-bar">
             <input type="search" placeholder="Search">
             <button>검색</button>
         </div>
         <div class="user">
-            <button id="logout-button" style="display: none;">로그아웃</button>
-            <a href="" id="auth-link">
-                <button class="profile-button" id="auth-button"></button>
+            <button id="logout-button">로그아웃</button>
+            <a href="profile.html" id="auth-link">
+                <button class="profile-button" id="auth-button">프로필</button>
             </a>
         </div>
+
     </header>
 
     <hr class="nav-divider">
