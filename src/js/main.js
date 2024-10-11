@@ -1,4 +1,5 @@
 import { logoutUser } from './logout.js';
+import { searchBar } from './search_bar.js';
 
 document.addEventListener('DOMContentLoaded', async function () {
     const authLink = document.getElementById('auth-link');
@@ -28,4 +29,6 @@ document.addEventListener('DOMContentLoaded', async function () {
         authButton.textContent = '로그인';
         logoutButton.style.display = 'none';  // 로그아웃 버튼 숨기기
     }
+
+    searchBar();
 });
