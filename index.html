@@ -14,7 +14,8 @@
         }
 
         header {
-            padding: 0.5rem; /* 세로 폭 줄이기 */
+            padding: 0.5rem;
+            /* 세로 폭 줄이기 */
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -50,11 +51,13 @@
 
         /* 드롭다운 메뉴 항목 스타일 */
         nav li ul li {
-            border-bottom: 1px solid #ddd; /* 노트줄처럼 하위 항목에 가로줄 추가 */
+            border-bottom: 1px solid #ddd;
+            /* 노트줄처럼 하위 항목에 가로줄 추가 */
         }
 
         nav li ul li:last-child {
-            border-bottom: none; /* 마지막 항목에는 가로줄 제거 */
+            border-bottom: none;
+            /* 마지막 항목에는 가로줄 제거 */
         }
 
         nav li ul li a {
@@ -70,7 +73,8 @@
         }
 
         nav li:hover ul {
-            display: block; /* 주류 항목에 마우스가 올라갔을 때 서브 메뉴 표시 */
+            display: block;
+            /* 주류 항목에 마우스가 올라갔을 때 서브 메뉴 표시 */
         }
 
         .nav-divider {
@@ -117,18 +121,21 @@
         }
 
         .tip {
-            background-color: #B6D5D3; 
+            background-color: #B6D5D3;
             opacity: 0.6;
             padding: 0.1rem;
-            width: auto; /* 문장 길이에 맞춰 자동 조정 */
+            width: auto;
+            /* 문장 길이에 맞춰 자동 조정 */
             border-radius: 4px;
             margin-bottom: 2rem;
-            display: inline-block; /* 박스를 텍스트 길이에 맞게 조정 */
+            display: inline-block;
+            /* 박스를 텍스트 길이에 맞게 조정 */
             text-align: center;
         }
 
         .tip-container {
-            text-align: center; /* 부모 컨테이너에 중앙 정렬 */
+            text-align: center;
+            /* 부모 컨테이너에 중앙 정렬 */
             margin-bottom: 2rem;
         }
 
@@ -170,13 +177,15 @@
             width: 100%;
             height: 200px;
             object-fit: contain;
-            border-radius: 30px; /* 이미지 자체에 둥근 모서리 적용 (근데 안됌)*/
-            
+            border-radius: 30px;
+            /* 이미지 자체에 둥근 모서리 적용 (근데 안됌)*/
+
         }
 
         footer {
             background-color: #eeeeee;
-            padding: 0.5rem; /* 세로 폭 줄이기 */
+            padding: 0.5rem;
+            /* 세로 폭 줄이기 */
             border-top: 1px solid #317c77;
             display: flex;
             justify-content: center;
@@ -208,7 +217,7 @@
         <nav>
             <li>
                 <a href="#">주류</a>
-                <ul>    <!--드롭다운 메뉴 추가 -->
+                <ul> <!--드롭다운 메뉴 추가 -->
                     <a href="pages/liquor_list.html">럼</a>
                     <a href="pages/liquor_list.html">리큐르</a>
                     <a href="pages/liquor_list.html">보드카</a>
@@ -240,8 +249,10 @@
     <main>
         <div class="tip-container">
             <div class="tip" id="tip-box">
-            <p id="tip-content">Tips : 그거 아셨나요? 맨해튼은 칵테일의 여왕이라는 별명을 가지고 있습니다.</p>
+                <p id="tip-content"></p>
+            </div>
         </div>
+
         <div class="cocktail-section">
             <h2 class="cocktail-title-one">
                 <span style="color: #3b3434;">오늘의</span><br>
@@ -249,19 +260,15 @@
                 <span style="color: #3b3434;">칵테일</span>
             </h2>
             <div class="cocktail-grid" id="recommended-cocktails">
-                <!-- 추천 칵테일 이미지 3개 -->
-                <div class="cocktail-item"><img src="../src/images/데킬라 선라이즈.png" alt="칵테일 1"></div>
-                <div class="cocktail-item"><img src="../src/images/동해.png" alt="칵테일 2"></div>
-                <div class="cocktail-item"><img src="../src/images/드라이 마티니.png" alt="칵테일 3"></div>
+                <!-- JS에서 동적으로 추천 칵테일 이미지를 삽입 -->
             </div>
         </div>
+
         <hr class="divider">
+
         <div class="cocktail-section">
             <div class="cocktail-grid" id="personalized-cocktails">
-                <!-- 맞춤 칵테일 이미지 3개 -->
-                <div class="cocktail-item"><img src="../src/images/블루 하와이.png" alt="칵테일 4"></div>
-                <div class="cocktail-item"><img src="../src/images/올드 패션드.png" alt="칵테일 5"></div>
-                <div class="cocktail-item"><img src="../src/images/코스모폴리탄.png" alt="칵테일 6"></div>
+                <!-- JS에서 동적으로 사용자 맞춤 칵테일 이미지를 삽입 -->
             </div>
             <h2 class="cocktail-title-two">
                 <span style="color: #3b3434;">사용자</span><br>
@@ -270,6 +277,37 @@
             </h2>
         </div>
     </main>
+    <!-- <main>
+    <div class="tip-container">
+        <div class="tip" id="tip-box">
+            <p id="tip-content">Tips : 그거 아셨나요? 맨해튼은 칵테일의 여왕이라는 별명을 가지고 있습니다.</p>
+        </div>
+    </div>
+
+    <div class="cocktail-section">
+        <h2 class="cocktail-title-one">
+            <span style="color: #3b3434;">오늘의</span><br>
+            <span style="color: #3b3434;">추천</span><br>
+            <span style="color: #3b3434;">칵테일</span>
+        </h2>
+        <div class="cocktail-grid" id="recommended-cocktails">
+            JS에서 동적으로 추천 칵테일 이미지를 삽입
+        </div>
+    </div>
+
+    <hr class="divider">
+
+    <div class="cocktail-section">
+        <div class="cocktail-grid" id="personalized-cocktails">
+            JS에서 동적으로 사용자 맞춤 칵테일 이미지를 삽입
+        </div>
+        <h2 class="cocktail-title-two">
+            <span style="color: #3b3434;">사용자</span><br>
+            <span style="color: #3b3434;">맞춤</span><br>
+            <span style="color: #3b3434;">칵테일</span>
+        </h2>
+    </div>
+</main> -->
 
     <footer>
         <div class="footer-content">
