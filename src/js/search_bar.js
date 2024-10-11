@@ -1,4 +1,4 @@
-export function initializeSearchBar() {
+export function searchBar() {
     const searchBar = document.querySelector('.search-bar input[type="search"]');
     const searchButton = document.querySelector('.search-bar button');
 

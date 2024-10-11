@@ -1,5 +1,5 @@
 import { logoutUser } from './logout.js';
-import { initializeSearchBar } from './search_bar.js';
+import { searchBar } from './search_bar.js';
 
 document.addEventListener('DOMContentLoaded', async function () {
     const authLink = document.getElementById('auth-link');
@@ -30,6 +30,5 @@ document.addEventListener('DOMContentLoaded', async function () {
         logoutButton.style.display = 'none';  // 로그아웃 버튼 숨기기
     }
 
-    // search_bar.js의 검색 바 초기화 함수 호출
-    initializeSearchBar();
+    searchBar();
 });
