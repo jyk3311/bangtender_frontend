@@ -20,11 +20,57 @@
             align-items: center;
         }
 
+        /* 드롭다운 하위 항목 스타일 */
+        nav li {
+            position: relative;
+            list-style: none;
+        }
+
         nav a {
             color: #317c77;
             text-decoration: none;
             margin-right: 1rem;
             white-space: nowrap;
+        }
+
+        /* 드롭다운 메뉴 기본 스타일 */
+        nav li ul {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: #ffffff;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 0;
+            margin: 0;
+            border-radius: 4px;
+            z-index: 10;
+            width: 150px;
+        }
+
+        /* 드롭다운 메뉴 항목 스타일 */
+        nav li ul li {
+            border-bottom: 1px solid #ddd; /* 노트줄처럼 하위 항목에 가로줄 추가 */
+        }
+
+        nav li ul li:last-child {
+            border-bottom: none; /* 마지막 항목에는 가로줄 제거 */
+        }
+
+        nav li ul li a {
+            display: block;
+            padding: 0.75rem 1rem;
+            white-space: nowrap;
+            color: #317c77;
+        }
+
+        nav li ul li a:hover {
+            background-color: #317c77;
+            color: #ffffff;
+        }
+
+        nav li:hover ul {
+            display: block; /* 주류 항목에 마우스가 올라갔을 때 서브 메뉴 표시 */
         }
 
         .nav-divider {
@@ -160,7 +206,18 @@
             <img src="src/images/001.png" alt="Logo">
         </a>
         <nav>
-            <a href="pages/liquor_list.html">주류</a>
+            <li>
+                <a href="#">주류</a>
+                <ul>    <!--드롭다운 메뉴 추가 -->
+                    <a href="pages/liquor_list.html">럼</a>
+                    <a href="pages/liquor_list.html">리큐르</a>
+                    <a href="pages/liquor_list.html">보드카</a>
+                    <a href="pages/liquor_list.html">브랜디</a>
+                    <a href="pages/liquor_list.html">위스키</a>
+                    <a href="pages/liquor_list.html">진</a>
+                    <a href="pages/liquor_list.html">기타</a>
+                </ul>
+            </li>
             <a href="pages/cocktail_list.html">칵테일</a>
             <a href="pages/bot.html">방텐더봇</a>
             <a href="pages/liquor_stores.html">주변 매장 찾기</a>
