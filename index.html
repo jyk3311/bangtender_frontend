@@ -136,6 +136,23 @@
             cursor: pointer;
         }
 
+        /* 로그아웃 버튼 스타일 */
+        #logout-button {
+            background-color: white; /* 흰색 배경 */
+            color: #264653; /* 글자색: 어두운 초록 */
+            border: 1px solid #264653; /* 테두리색 */
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, color 0.3s ease; /* 전환 효과 */
+        }
+
+        #logout-button:hover {
+            background-color: #264653; /* 호버 시 배경색 변경 */
+            color: white; /* 호버 시 글자색 변경 */
+        }
+
+
         /* 로고 이미지 스타일 */
         .logo img {
             height: 60px;
@@ -265,11 +282,12 @@
             <button>검색</button>
         </div>
         <div class="user">
-            <button id="logout-button" style="display: none;">로그아웃</button>
-            <a href="" id="auth-link">
-                <button class="profile-button" id="auth-button"></button>
+            <button id="logout-button">로그아웃</button>
+            <a href="profile.html" id="auth-link">
+                <button class="profile-button" id="auth-button">프로필</button>
             </a>
         </div>
+        
     </header>
 
     <hr class="nav-divider">
