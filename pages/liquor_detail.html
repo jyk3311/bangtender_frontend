@@ -69,10 +69,12 @@
         }
 
         /* 로고 이미지 스타일 */
-.logo img {
-            height: 60px; /* 네브바에 적합한 크기 설정 */
-            width: auto;  /* 비율 유지 */
-}
+        .logo img {
+            height: 60px;
+            /* 네브바에 적합한 크기 설정 */
+            width: auto;
+            /* 비율 유지 */
+        }
 
         .main-content {
             display: flex;
@@ -128,113 +130,126 @@
             background-color: #eeeeee;
         }
 
-/* container 스타일 */
-.container {
+        /* container 스타일 */
+        .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 20px;
         }
 
 
-.main-content {
-    display: flex;
-    background-color: #e0f2f1;
-    padding: 20px;
-    position: relative;
-}
+        .main-content {
+            display: flex;
+            background-color: #e0f2f1;
+            padding: 20px;
+            position: relative;
+        }
 
-/* 팁 추가 */
-.tip {
-            background-color: #B6D5D3; 
+        /* 팁 추가 */
+        .tip {
+            background-color: #B6D5D3;
             opacity: 0.6;
             padding: 0.1rem;
-            width: auto; /* 문장 길이에 맞춰 자동 조정 */
+            width: auto;
+            /* 문장 길이에 맞춰 자동 조정 */
             border-radius: 4px;
             margin-bottom: 2rem;
-            display: inline-block; /* 박스를 텍스트 길이에 맞게 조정 */
+            display: inline-block;
+            /* 박스를 텍스트 길이에 맞게 조정 */
             text-align: center;
         }
 
 
         .tip-container {
-            text-align: center; /* 부모 컨테이너에 중앙 정렬 */
+            text-align: center;
+            /* 부모 컨테이너에 중앙 정렬 */
             margin-bottom: 2rem;
         }
 
- /* 세로 텍스트 스타일 */
-.vertical-text {
-    writing-mode: vertical-rl;
-    text-orientation: upright;
-    font-size: 2.5rem;
-    padding: 20px 10px;
-    position: absolute;
-    left: 0;
-    top: 50%;
-    transform: translateY(-50%);
-}
-.content-wrapper {
-    display: flex;
-    margin-left: 60px;
-    width: 100%;
-    align-items: flex-start; /* 수직 정렬을 맞춤 */
-}
-.liquor-img {
-    flex: 0 0 200px;
-    height: 200px;
-    margin-right: 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #cccccc;
-}
-.liquor-img img {
-    max-width: 100%;
-    max-height: 100%;
-    border-radius: 5px;
-}
-.liquor-info {
-    flex: 1;
-    text-align: left; /* 왼쪽 정렬 적용 */
-}
-.product-info p {
-    font-size: 16px;
-    margin: 10px 0;
-}
-/* 주류 설명 섹션 스타일 */
-.liquor-content {
-    margin-top: 20px;
-    padding: 20px;
-    background-color: #eeeeee;
-    text-align: left; /* 왼쪽 정렬 적용 */
-}
+        /* 세로 텍스트 스타일 */
+        .vertical-text {
+            writing-mode: vertical-rl;
+            text-orientation: upright;
+            font-size: 2.5rem;
+            padding: 20px 10px;
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+        }
 
-/* 주류 이름 스타일 - 사진과 겹치지 않도록 설정 */
-#liquor-name {
-    font-size: 2rem;
-    margin-bottom: 20px;
-    position: relative; /* 부모 요소에 의존적인 위치 */
-    }
+        .content-wrapper {
+            display: flex;
+            margin-left: 60px;
+            width: 100%;
+            align-items: flex-start;
+            /* 수직 정렬을 맞춤 */
+        }
 
-footer {
-    background-color: #eeeeee;
-    padding: 1rem;
-    border-top: 1px solid #317c77;
-}
+        .liquor-img {
+            flex: 0 0 200px;
+            height: 200px;
+            margin-right: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #cccccc;
+        }
 
-.footer-content {
-    max-width: 1200px;
-    margin: 0 auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
+        .liquor-img img {
+            max-width: 100%;
+            max-height: 100%;
+            border-radius: 5px;
+        }
 
-.team-members a {
-    color: #317c77;
-    text-decoration: none;
-    margin-right: 1rem;
-}
-        </style>
+        .liquor-info {
+            flex: 1;
+            text-align: left;
+            /* 왼쪽 정렬 적용 */
+        }
+
+        .product-info p {
+            font-size: 16px;
+            margin: 10px 0;
+        }
+
+        /* 주류 설명 섹션 스타일 */
+        .liquor-content {
+            margin-top: 20px;
+            padding: 20px;
+            background-color: #eeeeee;
+            text-align: left;
+            /* 왼쪽 정렬 적용 */
+        }
+
+        /* 주류 이름 스타일 - 사진과 겹치지 않도록 설정 */
+        #liquor-name {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            position: relative;
+            /* 부모 요소에 의존적인 위치 */
+        }
+
+        footer {
+            background-color: #eeeeee;
+            padding: 1rem;
+            border-top: 1px solid #317c77;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .team-members a {
+            color: #317c77;
+            text-decoration: none;
+            margin-right: 1rem;
+        }
+    </style>
 
 </head>
 
@@ -268,34 +283,34 @@ footer {
     <main>
         <div class="tip-container">
             <div class="tip" id="tip-box">
-            <p id="tip-content">Tips : 그거 아셨나요? 맨해튼은 칵테일의 여왕이라는 별명을 가지고 있습니다.</p>
-        </div>
-
-        <div class="container" id="liquor-detail">
-            <div class="main-content">
-                <div class="vertical-text"><span id="classification"></span></div>
-                <div class="content-wrapper">
-                    <!-- 이미지 삽입 -->
+                <p id="tip-content">Tips : 그거 아셨나요? 맨해튼은 칵테일의 여왕이라는 별명을 가지고 있습니다.</p>
+            </div>
+            <button id="bookmark-button" class="profile-button"></button>
+            <div class="container" id="liquor-detail">
+                <div class="main-content">
+                    <div class="vertical-text"><span id="classification"></span></div>
+                    <div class="content-wrapper">
+                        <!-- 이미지 삽입 -->
                         <div class="liquor-img">
-                            <img id= "liquor-img" src="" alt="주류 이미지">
+                            <img id="liquor-img" src="" alt="주류 이미지">
                         </div>
                         <!-- 주류 디테일 정보 -->
-                    <div class="liquor-info">
+                        <div class="liquor-info">
                             <p><span id="liquor-name"></span></p>
                             <p>분류: <span id="liquor-classification"></span></p>
                             <p>맛: <span id="liquor-taste"></span></p>
                             <p>ABV: <span id="liquor-abv"></span></p>
                             <p>가격: <span id="liquor-price"></span></p>
-                    </div>
+                        </div>
 
+                    </div>
+                </div>
+                <!-- 설명(특징, 생산지, 원료) -->
+                <div class="liquor-content">
+                    <h4>내용:</h4>
+                    <p><span id="liquor-content"></span></p>
                 </div>
             </div>
-            <!-- 설명(특징, 생산지, 원료) -->
-            <div class="liquor-content">
-                <h4>내용:</h4>
-                <p><span id="liquor-content"></span></p>
-            </div> 
-        </div>
     </main>
 
     <footer>

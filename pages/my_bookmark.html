@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>내 북마크</title>
+    <script src="https://cdn.jsdelivr.net/npm/jwt-decode/build/jwt-decode.min.js"></script>
+</head>
+
+<body>
+    <h1>내 북마크</h1>
+
+    <section>
+        <h2>북마크한 주류</h2>
+        <div class="grid-container" id="liquor-bookmarks">
+        </div>
+    </section>
+
+    <section>
+        <h2>북마크한 칵테일</h2>
+        <div class="grid-container" id="cocktail-bookmarks">
+        </div>
+    </section>
+
+    <p id="no-bookmarks-message" style="display: none;">북마크한 항목이 없습니다.</p>
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', async function () {
+            const token = localStorage.getItem('access_token');
+            if (!token) {
+                alert("로그인이 필요합니다.");
+                window.location.href = '/pages/login.html';
+                return;
+            }
+
+            try {
+                // JWT 토큰에서 user_id 추출
+                const decodedToken = jwt_decode(token);
+                const userId = decodedToken.user_id;
+
+                // 북마크 데이터 요청
+                const response = await fetch(`http://localhost:8000/api/v1/accounts/${userId}/bookmark/`, {
+                    method: 'GET',
+                    headers: {
+                        'Authorization': `Bearer ${token}`,
+                        'Content-Type': 'application/json'
+                    }
+                });
+
+                if (!response.ok) {
+                    throw new Error('북마크 데이터를 불러오는 데 실패했습니다.');
+                }
+
+                const data = await response.json();
+                const liquorBookmarks = data.liquor;
+                const cocktailBookmarks = data.cocktail;
+
+                const liquorContainer = document.getElementById('liquor-bookmarks');
+                const cocktailContainer = document.getElementById('cocktail-bookmarks');
+                const noBookmarksMessage = document.getElementById('no-bookmarks-message');
+
+                liquorContainer.innerHTML = '';
+                cocktailContainer.innerHTML = '';
+
+                // 북마크한 주류 표시
+                if (liquorBookmarks.length > 0) {
+                    liquorBookmarks.forEach(liquor => {
+                        const liquorItem = document.createElement('div');
+                        liquorItem.classList.add('bookmark-item');
+                        const imgElement = document.createElement('img');
+                        imgElement.src = `http://localhost:8000${liquor.img}`;
+                        imgElement.alt = liquor.name;
+                        imgElement.addEventListener('click', () => {
+                            window.location.href = `liquor_detail.html?id=${liquor.id}`;  // 주류 상세 페이지로 이동
+                        });
+                        liquorItem.appendChild(imgElement);
+                        liquorContainer.appendChild(liquorItem);
+                    });
+                }
+
+                // 북마크한 칵테일 표시
+                if (cocktailBookmarks.length > 0) {
+                    cocktailBookmarks.forEach(cocktail => {
+                        const cocktailItem = document.createElement('div');
+                        cocktailItem.classList.add('bookmark-item');
+                        const imgElement = document.createElement('img');
+                        imgElement.src = `http://localhost:8000${cocktail.img}`;
+                        imgElement.alt = cocktail.name;
+                        imgElement.addEventListener('click', () => {
+                            window.location.href = `cocktail_detail.html?id=${cocktail.id}`;  // 칵테일 상세 페이지로 이동
+                        });
+                        cocktailItem.appendChild(imgElement);
+                        cocktailContainer.appendChild(cocktailItem);
+                    });
+                }
+
+                // 북마크한 항목이 없을 때 메시지 표시
+                if (liquorBookmarks.length === 0 && cocktailBookmarks.length === 0) {
+                    noBookmarksMessage.style.display = 'block';
+                }
+
+            } catch (error) {
+                console.error('북마크 데이터를 불러오는 중 오류 발생:', error);
+                alert('북마크 데이터를 불러오는 데 오류가 발생했습니다.');
+            }
+        });
+    </script>
+</body>
+
+</html>
