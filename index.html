@@ -7,113 +7,183 @@
     <title>메인 페이지</title>
     <style>
         body {
-    font-family: 'Arial', sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #eeeeee;
-}
-header {
-    padding: 1rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-nav a {
-    color: #317c77;
-    text-decoration: none;
-    margin-right: 1rem;
-    white-space: nowrap;
-}
-.nav-divider {
-    border: 0;
-    border-top: 1px solid #2a9d8f;
-    margin-bottom: 1.5rem;
-}
-.search-bar input {
-    padding: 0.5rem;
-    border: none;
-    border-radius: 20px 0 0 20px;
-}
-.search-bar button {
-    background-color: #264653;
-    color: white;
-    border: none;
-    padding: 0.5rem 1rem;
-    border-radius: 0 20px 20px 0;
-    cursor: pointer;
-}
-.profile-button {
-    background-color: #264653;
-    color: white;
-    border: none;
-    padding: 0.5rem 1rem;
-    border-radius: 20px;
-    cursor: pointer;
-}
-
-/* 메인 본문 스타일 */
-main {
-    max-width: 1200px;
-    margin: 2rem auto;
-    padding: 0 1rem;
-}
-
-.tip {
-    background-color: #92c1bd;
-    padding: 0.5rem;
-    width: 70%;
-    border-radius: 4px;
-    margin-bottom: 2rem;
-    margin: 1rem auto;
-}
-
-.cocktail-section {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 2rem;
-    text-align: left;
-}
-
-.cocktail-title-one {
-    font-size: 2rem;
-    color: #2a9d8f;
-    margin: 0 1rem;
-    white-space: normal;
-    line-height: 1.5;
-    text-align: left;
-}
-
-.cocktail-title-two {
-    font-size: 2rem;
-    color: #2a9d8f;
-    margin: 0 1rem;
-    white-space: normal;
-    line-height: 1.5;
-    text-align: right;
-}
-
-.cocktail-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1rem;
-    flex-grow: 1;
-}
-
-.cocktail-item img {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
-    border-radius: 4px;
-}
-
-footer {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
             background-color: #eeeeee;
-            padding: 1rem;
+        }
+
+        header {
+            padding: 0.5rem; /* 세로 폭 줄이기 */
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        /* 드롭다운 하위 항목 스타일 */
+        nav li {
+            position: relative;
+            list-style: none;
+        }
+
+        nav a {
+            color: #317c77;
+            text-decoration: none;
+            margin-right: 1rem;
+            white-space: nowrap;
+        }
+
+        /* 드롭다운 메뉴 기본 스타일 */
+        nav li ul {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: #ffffff;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 0;
+            margin: 0;
+            border-radius: 4px;
+            z-index: 10;
+            width: 150px;
+        }
+
+        /* 드롭다운 메뉴 항목 스타일 */
+        nav li ul li {
+            border-bottom: 1px solid #ddd; /* 노트줄처럼 하위 항목에 가로줄 추가 */
+        }
+
+        nav li ul li:last-child {
+            border-bottom: none; /* 마지막 항목에는 가로줄 제거 */
+        }
+
+        nav li ul li a {
+            display: block;
+            padding: 0.75rem 1rem;
+            white-space: nowrap;
+            color: #317c77;
+        }
+
+        nav li ul li a:hover {
+            background-color: #317c77;
+            color: #ffffff;
+        }
+
+        nav li:hover ul {
+            display: block; /* 주류 항목에 마우스가 올라갔을 때 서브 메뉴 표시 */
+        }
+
+        .nav-divider {
+            border: 0;
+            border-top: 1px solid #2a9d8f;
+            margin-bottom: 1.5rem;
+        }
+
+        .search-bar input {
+            padding: 0.5rem;
+            border: none;
+            border-radius: 20px 0 0 20px;
+        }
+
+        .search-bar button {
+            background-color: #264653;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 0 20px 20px 0;
+            cursor: pointer;
+        }
+
+        .profile-button {
+            background-color: #264653;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            cursor: pointer;
+        }
+
+        /* 로고 이미지 스타일 */
+        .logo img {
+            height: 60px;
+            width: auto;
+        }
+
+        /* 메인 본문 스타일 */
+        main {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        .tip {
+            background-color: #B6D5D3; 
+            opacity: 0.6;
+            padding: 0.1rem;
+            width: auto; /* 문장 길이에 맞춰 자동 조정 */
+            border-radius: 4px;
+            margin-bottom: 2rem;
+            display: inline-block; /* 박스를 텍스트 길이에 맞게 조정 */
+            text-align: center;
+        }
+
+        .tip-container {
+            text-align: center; /* 부모 컨테이너에 중앙 정렬 */
+            margin-bottom: 2rem;
+        }
+
+
+
+        .cocktail-section {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 2rem;
+            text-align: left;
+        }
+
+        .cocktail-title-one,
+        .cocktail-title-two {
+            font-size: 2rem;
+            color: #2a9d8f;
+            margin: 0 1rem;
+            white-space: normal;
+            line-height: 1.5;
+            border-radius: 4px;
+        }
+
+        .cocktail-title-one {
+            text-align: left;
+        }
+
+        .cocktail-title-two {
+            text-align: right;
+        }
+
+        .cocktail-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            flex-grow: 1;
+        }
+
+        .cocktail-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: contain;
+            border-radius: 30px; /* 이미지 자체에 둥근 모서리 적용 (근데 안됌)*/
+            
+        }
+
+        footer {
+            background-color: #eeeeee;
+            padding: 0.5rem; /* 세로 폭 줄이기 */
             border-top: 1px solid #317c77;
+            display: flex;
+            justify-content: center;
         }
 
         .footer-content {
-            max-width: 1200px;
+            max-width: 500px;
             margin: 0 auto;
             display: flex;
             justify-content: space-between;
@@ -131,9 +201,23 @@ footer {
 <body>
 
     <header>
-        <a href="/">Logo</a>
+        <!-- 로고 이미지 추가 -->
+        <a href="/" class="logo">
+            <img src="src/images/001.png" alt="Logo">
+        </a>
         <nav>
-            <a href="pages/liquor_list.html">주류</a>
+            <li>
+                <a href="#">주류</a>
+                <ul>    <!--드롭다운 메뉴 추가 -->
+                    <a href="pages/liquor_list.html">럼</a>
+                    <a href="pages/liquor_list.html">리큐르</a>
+                    <a href="pages/liquor_list.html">보드카</a>
+                    <a href="pages/liquor_list.html">브랜디</a>
+                    <a href="pages/liquor_list.html">위스키</a>
+                    <a href="pages/liquor_list.html">진</a>
+                    <a href="pages/liquor_list.html">기타</a>
+                </ul>
+            </li>
             <a href="pages/cocktail_list.html">칵테일</a>
             <a href="pages/bot.html">방텐더봇</a>
             <a href="pages/liquor_stores.html">주변 매장 찾기</a>
@@ -145,7 +229,7 @@ footer {
         <div class="user">
             <button id="logout-button" style="display: none;">로그아웃</button>
             <a href="" id="auth-link">
-                <button class="profile-button" id="auth-button">프로필</button>
+                <button class="profile-button" id="auth-button"></button>
             </a>
         </div>
     </header>
@@ -154,8 +238,9 @@ footer {
 
     <!-- 본문 내용 -->
     <main>
-        <div class="tip">
-            <p>Tips : 그거 아셨나요? 맨해튼은 칵테일의 여왕이라는 별명을 가지고 있습니다.</p>
+        <div class="tip-container">
+            <div class="tip" id="tip-box">
+            <p id="tip-content">Tips : 그거 아셨나요? 맨해튼은 칵테일의 여왕이라는 별명을 가지고 있습니다.</p>
         </div>
         <div class="cocktail-section">
             <h2 class="cocktail-title-one">
@@ -164,15 +249,21 @@ footer {
                 <span style="color: #3b3434;">칵테일</span>
             </h2>
             <div class="cocktail-grid" id="recommended-cocktails">
-                <!-- 추천 칵테일 데이터가 여기에 동적으로 추가됩니다 -->
+                <!-- 추천 칵테일 이미지 3개 -->
+                <div class="cocktail-item"><img src="../src/images/데킬라 선라이즈.png" alt="칵테일 1"></div>
+                <div class="cocktail-item"><img src="../src/images/동해.png" alt="칵테일 2"></div>
+                <div class="cocktail-item"><img src="../src/images/드라이 마티니.png" alt="칵테일 3"></div>
             </div>
         </div>
         <hr class="divider">
         <div class="cocktail-section">
             <div class="cocktail-grid" id="personalized-cocktails">
-                <!-- 맞춤 칵테일 데이터가 여기에 동적으로 추가됩니다 -->
+                <!-- 맞춤 칵테일 이미지 3개 -->
+                <div class="cocktail-item"><img src="../src/images/블루 하와이.png" alt="칵테일 4"></div>
+                <div class="cocktail-item"><img src="../src/images/올드 패션드.png" alt="칵테일 5"></div>
+                <div class="cocktail-item"><img src="../src/images/코스모폴리탄.png" alt="칵테일 6"></div>
             </div>
-            <h2 class="cocktail-title-two" style="float: right;">
+            <h2 class="cocktail-title-two">
                 <span style="color: #3b3434;">사용자</span><br>
                 <span style="color: #3b3434;">맞춤</span><br>
                 <span style="color: #3b3434;">칵테일</span>
@@ -196,4 +287,3 @@ footer {
 </body>
 
 </html>
-

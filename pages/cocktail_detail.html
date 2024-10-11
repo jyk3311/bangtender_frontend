@@ -52,12 +52,20 @@ nav a {
     cursor: pointer;
 }
 
+/* 로고 이미지 스타일 */
+.logo img {
+            height: 60px; /* 네브바에 적합한 크기 설정 */
+            width: auto;  /* 비율 유지 */
+        }
+
+
 /* container 스타일 */
 .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 20px;
         }
+
 
         /* 메인 콘텐츠 스타일 */
         .main-content {
@@ -77,6 +85,22 @@ nav a {
             left: 0;
             top: 50%;
             transform: translateY(-50%);
+        }
+         /* 팁 추가 */
+        .tip {
+            background-color: #B6D5D3; 
+            opacity: 0.6;
+            padding: 0.1rem;
+            width: auto; /* 문장 길이에 맞춰 자동 조정 */
+            border-radius: 4px;
+            margin-bottom: 2rem;
+            display: inline-block; /* 박스를 텍스트 길이에 맞게 조정 */
+            text-align: center;
+        }
+
+        .tip-container {
+            text-align: center; /* 부모 컨테이너에 중앙 정렬 */
+            margin-bottom: 2rem;
         }
 
         /* 콘텐츠 래퍼 스타일 */
@@ -107,6 +131,7 @@ nav a {
         /* 칵테일 정보 섹션 스타일 */
         .cocktail-info {
             flex: 1;
+            text-align: left; /* 왼쪽 정렬 적용 */
         }
 
         .cocktail-info p {
@@ -119,6 +144,8 @@ nav a {
             margin-top: 20px;
             padding: 20px;
             background-color: #eeeeee;
+            text-align: left; /* 왼쪽 정렬 적용 */
+
         }
 
         /* 칵테일 이름 스타일 - 사진과 겹치지 않도록 설정 */
@@ -152,12 +179,16 @@ footer {
 <body>
 
     <header>
-        <a href="/">Logo</a>
+        <!-- 로고 이미지 추가 -->
+        <a href="/" class="logo">
+            <img src="../src/images/001.png" alt="Logo">
+        </a>
+
         <nav>
-            <a href="pages/liquor_list.html">주류</a>
-            <a href="pages/cocktail_list.html">칵테일</a>
-            <a href="pages/bot.html">방텐더봇</a>
-            <a href="pages/liquor_stores.html">주변 매장 찾기</a>
+            <a href="liquor_list.html">주류</a>
+            <a href="cocktail_list.html">칵테일</a>
+            <a href="bot.html">방텐더봇</a>
+            <a href="liquor_stores.html">주변 매장 찾기</a>
         </nav>
         <div class="search-bar">
             <input type="search" placeholder="Search">
@@ -165,13 +196,18 @@ footer {
         </div>
         <div class="user">
             <button id="logout-button" style="display: none;">로그아웃</button>
-            <a href="" id="auth-link">
+            <a href="profile.html" id="auth-link">
                 <button class="profile-button" id="auth-button">프로필</button>
             </a>
         </div>
     </header>
 
     <main>
+        <div class="tip-container">
+            <div class="tip" id="tip-box">
+            <p id="tip-content">Tips : 그거 아셨나요? 맨해튼은 칵테일의 여왕이라는 별명을 가지고 있습니다.</p>
+        </div>
+
         <div class="container" id="cocktail-detail">
             <div class="main-content">
                 <div class="vertical-text"><span id="cocktail-name-vertical"></span></div>
@@ -197,7 +233,7 @@ footer {
                 <p><span id="cocktail-content"></span></p>
             </div>
         </div>    
-    </main>
+    </main>s
     <footer>
         <div class="footer-content">
             <div class="team-members">
