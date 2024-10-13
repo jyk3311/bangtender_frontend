@@ -4,325 +4,310 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>메인 페이지</title>
+    <title>방텐더 - 메인 페이지</title>
     <style>
-        body {
-            font-family: 'Arial', sans-serif;
+        :root {
+        /* 메인페이지에서 사용할 색상을 변수로 정의해 재사용하는 방법 */
+            --primary-color: #2c3e50;
+            --secondary-color: #34495e;
+            --accent-color: #D96704;
+            --background-color: #ecf0f1;
+            --text-color: #2c3e50;
+        }
+        /* 모든 요소의 기본 여백과 패딩을 제거 & 박스 모델 통일 */
+        * {
             margin: 0;
             padding: 0;
-            background-color: #eeeeee;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            line-height: 1.6;          /* 텍스트 줄 간격 조정 */
         }
 
         header {
-            padding: 0.5rem; /* 세로 폭 줄이기 */
+            background-color: var(--primary-color);
+            padding: 14px 8px 8px 20px;
+            position: sticky;         /* 스크롤 시에도 상단에 고정 */
+            top: 0;
+            z-index: 1000;            /* 다른 요소 위에 표시 */
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .header-content {
             display: flex;
-            justify-content: space-between;
-            align-items: center;
+            justify-content: space-between;     /* 좌우로 배치 */
+            align-items: center;                /* 세로 정렬 가운데 */
+            max-width: 1200px;
+            margin: 0 auto;                     /* 가운데 정렬 */
         }
 
-        /* 네비게이션 바 전체 스타일 추가*/
-        nav {
-            display: flex; /* 가로 배치 */
-            align-items: center;
+        .logo img {
+            height: 60px;
+            width: auto;
         }
 
-
-        /* 드롭다운 하위 항목 스타일 */
-        nav li {
+        nav ul {
+            display: flex;
+            list-style-type: none;
+        }
+        /* 내비게이션 요소들간 간격 설정 */
+        nav ul li {
             position: relative;
-            list-style: none;
-            margin-right: 1rem;  /* 각 하위 항목 간 간격 조정*/
+            margin-right: 1.5rem;
         }
-
+        /* 내비게이션 링크 스타일 */
         nav a {
-            color: #317c77;
-            text-decoration: none;      /*  해당 태그의 밑줄을 제거 */
-            margin-right: 1rem;
-            white-space: nowrap;
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
         }
 
-        nav li a {
-            color: #317c77;
-            text-decoration: none;
-            padding: 0.5rem;
-            display: block;
-            white-space: nowrap;
-            position: relative;
-            }
+        nav a:hover {
+            color: var(--accent-color); /* 마우스 커서 가면 해당 색상으로 변경 */
+        }
 
-        /* 밑줄 애니메이션 추가 */
-        nav li a::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            background-color: #317c77; /* 밑줄 색상 (원하는 색으로 변경 가능) */
-            left: 0;
-            bottom: 0;
-            transition: width 0;
-            }
-
-        nav li a:hover::after {
-            width: 100%; /* 마우스 커서가 올라가면 밑줄이 전체로 나타남 */
-            }
-
-        nav li ul {
-            display: none;
+        nav ul ul {
+            display: none;             /* 드롭다운 메뉴 숨김 */
             position: absolute;
             top: 100%;
             left: 0;
-            background-color: #eeeeee;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            padding: 0;
-            margin: 0;
+            background-color: var(--secondary-color);    /* 배경색 설정 */
             border-radius: 4px;
-            z-index: 10;
-            width: 110px;
+            padding: 0.5rem 0;
+            min-width: 150px;
         }
 
-        /* 드롭다운 하위 항목 스타일 */
-        nav li ul li {
-            border-bottom: 1px solid #ddd; /* 노트줄처럼 하위 항목에 가로줄 추가 */
+        /* 마우스 커서가 상위 항목에 올라가면 하위 항목이 표시 */
+        nav ul li:hover > ul {
+            display: block;   
         }
 
-        nav li ul li:last-child {
-            border-bottom: none; /* 마지막 항목에는 가로줄 제거 */
+        /* 드롭다운 항목들간 간격 설정 */
+        nav ul ul li {
+            margin: 0;
+            padding: 0.5rem 1rem;
         }
-
-        nav li ul li a {
+        /* 드롭다운 항목 텍스트 색상 */
+        nav ul ul li a {
+            color: #fff;
             display: block;
-            padding: 0.75rem 1rem;
-            white-space: nowrap;
-            color: #317c77;
+        }
+        /* 드롭다운 항목에 마우스 커서가 올라갔을 때 배경색 설정 */
+        nav ul ul li a:hover {
+            background-color: rgba(255,255,255,0.1);
         }
 
-        nav li ul li a:hover {
-            background-color: #317c77;
-            color: #ffffff;
-        }
-
-        /* 드롭다운 표시 */
-        nav li:hover ul {
-            display: block; /* 주류 항목에 마우스가 올라갔을 때 서브 메뉴 표시 */
-        }
-
-        .nav-divider {
-            border: 0;
-            border-top: 1px solid #2a9d8f;
-            margin-bottom: 1.5rem;
+        .search-bar {
+            display: flex;
+            align-items: center;
         }
 
         .search-bar input {
             padding: 0.5rem;
             border: none;
             border-radius: 20px 0 0 20px;
+            outline: none;               /* 선택 시 윤곽선 제거 */
         }
 
         .search-bar button {
-            background-color: #264653;
-            color: white;
+            background-color: var(--accent-color);
+            color: #fff;
             border: none;
             padding: 0.5rem 1rem;
             border-radius: 0 20px 20px 0;
             cursor: pointer;
+            transition: background-color 0.3s ease;
         }
 
-        .profile-button {
-            background-color: #264653;
-            color: white;
-            border: none;
+        /* 검색 버튼에 마우스 커서가 올라갔을 때 색상 변화 */
+        .search-bar button:hover {
+            background-color: #c0392b;
+        }
+
+        .user-actions button {
+            background-color: transparent;
+            color: #fff;
+            border: 1px solid #fff;
             padding: 0.5rem 1rem;
+            margin-left: 0.5rem;
             border-radius: 20px;
             cursor: pointer;
+            transition: all 0.3s ease;
         }
 
-        /* 로그아웃 버튼 스타일 */
-        #logout-button {
-            background-color: white; /* 흰색 배경 */
-            color: #264653; /* 글자색: 어두운 초록 */
-            border: 1px solid #264653; /* 테두리색 */
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
-            cursor: pointer;
-            transition: background-color 0.3s ease, color 0.3s ease; /* 전환 효과 */
+        .user-actions button:hover {
+            background-color: #fff;
+            color: var(--primary-color);
         }
 
-        #logout-button:hover {
-            background-color: #264653; /* 호버 시 배경색 변경 */
-            color: white; /* 호버 시 글자색 변경 */
-        }
-
-
-        /* 로고 이미지 스타일 */
-        .logo img {
-            height: 60px;
-            width: auto;
-        }
-
-        /* 메인 본문 스타일 */
         main {
             max-width: 1200px;
             margin: 2rem auto;
             padding: 0 1rem;
         }
 
-        .tip {
-            background-color: #B6D5D3; 
-            opacity: 0.6;
-            padding: 0.1rem;
-            width: auto; /* 문장 길이에 맞춰 자동 조정 */
-            border-radius: 4px;
-            margin-bottom: 2rem;
-            display: inline-block; /* 박스를 텍스트 길이에 맞게 조정 */
-            text-align: center;
-        }
-
         .tip-container {
-            text-align: center; /* 부모 컨테이너에 중앙 정렬 */
+            background-color: #fff;
+            border-radius: 8px;
+            padding: 1rem;
             margin-bottom: 2rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
 
-
+        .tip {
+            font-style: italic;          /* 기울임꼴 */
+            color: var(--secondary-color);
+        }
 
         .cocktail-section {
             display: flex;
             justify-content: space-between;
-            margin-bottom: 2rem;
-            text-align: left;
+            margin-bottom: 3rem;
+            align-items: center;
         }
 
-        .cocktail-title-one,
-        .cocktail-title-two {
-            font-size: 2rem;
-            color: #2a9d8f;
-            margin: 0 1rem;
-            white-space: normal;
-            line-height: 1.5;
-            border-radius: 0 px;     /* 사진 모서리 둥글게 하는 기능 나중에 추가 */
-        }
-
-        .cocktail-title-one {
-            text-align: left;
-        }
-
-        .cocktail-title-two {
-            text-align: right;
+        .cocktail-title {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            flex: 0 0 30%;
+            text-align: center;
         }
 
         .cocktail-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 1rem;
-            flex-grow: 1;
+            gap: 1.5rem;
+            flex: 0 0 65%;
+        }
+
+        .cocktail-item {
+            position: relative;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);    /* 그림자 추가 */
+            transition: transform 0.3s ease;            /* 애니메이션 추가 */
+        }
+        /* 칵테일 항목에 마우스 커를 올리면 약간 올라오는 효과 */
+        .cocktail-item:hover {
+            transform: translateY(-5px);
         }
 
         .cocktail-item img {
             width: 100%;
-            height: 200px;
-            object-fit: contain;
-            border-radius: 30px; /* 이미지 자체에 둥근 모서리 적용 (근데 안됌)*/
-            
+            height: 250px;
+            object-fit: cover;        /* 이미지가 비율 유지하며 꽉 채워짐 */
+        }
+        /* 칵테일 이미지에 커서 올라가면 나타날 반투명 오버레이 */
+        .cocktail-item::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0.7) 100%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .cocktail-item:hover::after {
+            opacity: 1;
         }
 
         footer {
-            background-color: #eeeeee;
-            padding: 0.5rem; /* 세로 폭 줄이기 */
-            border-top: 1px solid #317c77;
-            display: flex;
-            justify-content: center;
+            background-color: var(--primary-color);
+            color: #fff;
+            padding: 2rem 0;
+            margin-top: 3rem;
         }
 
         .footer-content {
-            max-width: 500px;
+            max-width: 1200px;
             margin: 0 auto;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            padding: 0 1rem;
         }
 
         .team-members a {
-            color: #317c77;
+            color: #fff;
             text-decoration: none;
             margin-right: 1rem;
+            transition: color 0.3s ease;
+        }
+
+        .team-members a:hover {
+            color: var(--accent-color);
         }
     </style>
 </head>
 
 <body>
-
     <header>
-        <!-- 로고 이미지 추가 -->
-        <a href="/" class="logo">
-            <img src="src/images/001.png" alt="Logo">
-        </a>
-        <nav>
-            <li>
-                <a href="pages/liquor_list.html">주류</a> <!-- '주류' 상위 링크는 liquor_list.html로 이동 -->
-                <ul> <!-- 드롭다운 메뉴 -->
-                    <li><a href="pages/rum_list.html">럼</a></li>
-                    <li><a href="pages/liqueur_list.html">리큐르</a></li>
-                    <li><a href="pages/vodka_list.html">보드카</a></li>
-                    <li><a href="pages/brandy_list.html">브랜디</a></li>
-                    <li><a href="pages/whisky_list.html">위스키</a></li>
-                    <li><a href="pages/gin_list.html">진</a></li>
-                    <li><a href="pages/other_list.html">기타</a></li>
-                </ul>
-            </li>
-            <!-- 칵테일 메뉴 -->
-            <li><a href="pages/cocktail_list.html">칵테일</a></li>
-
-            <!-- 방텐더봇 메뉴 -->
-            <li><a href="pages/bot.html">방텐더봇</a></li>
-
-            <!-- 주변 매장 찾기 메뉴 -->
-            <li><a href="pages/liquor_stores.html">주변 매장 찾기</a></li>
-        </nav>
-        <div class="search-bar">
-            <input type="search" placeholder="Search">
-            <button>검색</button>
-        </div>
-        <div class="user">
-            <button id="logout-button">로그아웃</button>
-            <a href="profile.html" id="auth-link">
-                <button class="profile-button" id="auth-button">프로필</button>
+        <div class="header-content">
+            <a href="/" class="logo">
+                <img src="src/images/002.png" alt="방텐더 로고">
             </a>
+            <nav>
+                <ul>
+                    <li>
+                        <a href="pages/liquor_list.html">주류</a>
+                        <ul>
+                            <li><a href="pages/rum_list.html">럼</a></li>
+                            <li><a href="pages/liqueur_list.html">리큐르</a></li>
+                            <li><a href="pages/vodka_list.html">보드카</a></li>
+                            <li><a href="pages/brandy_list.html">브랜디</a></li>
+                            <li><a href="pages/whisky_list.html">위스키</a></li>
+                            <li><a href="pages/gin_list.html">진</a></li>
+                            <li><a href="pages/other_list.html">기타</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="pages/cocktail_list.html">칵테일</a></li>
+                    <li><a href="pages/bot.html">방텐더봇</a></li>
+                    <li><a href="pages/liquor_stores.html">주변 매장 찾기</a></li>
+                </ul>
+            </nav>
+            <div class="search-bar">
+                <input type="search" placeholder="검색...">
+                <button>검색</button>
+            </div>
+            <div class="user">
+                <button id="logout-button" style="display: none;">로그아웃</button>
+                <a href="profile.html" id="auth-link">
+                    <button class="profile-button" id="auth-button">프로필</button>
+                </a>
+            </div>
         </div>
-        
     </header>
 
-    <hr class="nav-divider">
-
-    <!-- 본문 내용 -->
     <main>
         <div class="tip-container">
-            <div class="tip" id="tip-box">
-            <p id="tip-content">Tips : 그거 아셨나요? 맨해튼은 칵테일의 여왕이라는 별명을 가지고 있습니다.</p>
+            <p class="tip" id="tip-content">Tips : 그거 아셨나요? 맨해튼은 칵테일의 여왕이라는 별명을 가지고 있습니다.</p>
         </div>
         <div class="cocktail-section">
-            <h2 class="cocktail-title-one">
-                <span style="color: #3b3434;">오늘의</span><br>
-                <span style="color: #3b3434;">추천</span><br>
-                <span style="color: #3b3434;">칵테일</span>
+            <h2 class="cocktail-title">
+                오늘의<br>추천<br>칵테일
             </h2>
             <div class="cocktail-grid" id="recommended-cocktails">
-                <!-- 추천 칵테일 이미지 3개 -->
-                <div class="cocktail-item"><img src="../src/images/데킬라 선라이즈.png" alt="칵테일 1"></div>
-                <div class="cocktail-item"><img src="../src/images/동해.png" alt="칵테일 2"></div>
-                <div class="cocktail-item"><img src="../src/images/드라이 마티니.png" alt="칵테일 3"></div>
+                <div class="cocktail-item"><img src="../src/images/데킬라 선라이즈.png" alt="데킬라 선라이즈"></div>
+                <div class="cocktail-item"><img src="../src/images/동해.png" alt="동해"></div>
+                <div class="cocktail-item"><img src="../src/images/드라이 마티니.png" alt="드라이 마티니"></div>
             </div>
         </div>
-        <hr class="divider">
         <div class="cocktail-section">
             <div class="cocktail-grid" id="personalized-cocktails">
-                <!-- 맞춤 칵테일 이미지 3개 -->
-                <div class="cocktail-item"><img src="../src/images/블루 하와이.png" alt="칵테일 4"></div>
-                <div class="cocktail-item"><img src="../src/images/올드 패션드.png" alt="칵테일 5"></div>
-                <div class="cocktail-item"><img src="../src/images/코스모폴리탄.png" alt="칵테일 6"></div>
+                <div class="cocktail-item"><img src="../src/images/블루 하와이.png" alt="블루 하와이"></div>
+                <div class="cocktail-item"><img src="../src/images/올드 패션드.png" alt="올드 패션드"></div>
+                <div class="cocktail-item"><img src="../src/images/코스모폴리탄.png" alt="코스모폴리탄"></div>
             </div>
-            <h2 class="cocktail-title-two">
-                <span style="color: #3b3434;">사용자</span><br>
-                <span style="color: #3b3434;">맞춤</span><br>
-                <span style="color: #3b3434;">칵테일</span>
+            <h2 class="cocktail-title">
+                사용자<br>맞춤<br>칵테일
             </h2>
         </div>
     </main>
