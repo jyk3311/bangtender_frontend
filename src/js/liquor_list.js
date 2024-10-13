@@ -1,16 +1,22 @@
 let nextUrl = 'http://localhost:8000/api/v1/liquor/';
 let isLoading = false;
 
+// URL에서 쿼리 파라미터 가져오기 함수
+function getQueryParam(param) {
+    const urlParams = new URLSearchParams(window.location.search);
+    return urlParams.get(param);
+}
+
 // API에서 주류 정보를 가져오는 함수
 async function fetchLiquors(url) {
     try {
         const response = await fetch(url);
         if (!response.ok) {
-            throw new Error('Network response was not ok');
+            throw new Error('서버 상태가 이상합니다.');
         }
         return await response.json();
     } catch (error) {
-        console.error('Error fetching liquors:', error);
+        console.error('error:', error);
     }
 }
 
@@ -28,26 +34,37 @@ function displayLiquors(liquors) {
         liquorList.appendChild(liquorItem);
     });
 
-
+    // 클릭 시 상세 페이지로 이동하는 이벤트 추가
     document.querySelectorAll('.liquor-img').forEach(img => {
         img.addEventListener('click', function () {
             const liquorId = this.getAttribute('data-id');
-            window.location.href = `/pages/liquor_detail.html?id=${liquorId}`; // 상세 페이지로 이동
+            window.location.href = `/pages/liquor_detail.html?id=${liquorId}`;  // 상세 페이지로 이동
         });
     });
 }
 
-// 더 많은 주류 데이터를 로드하는 함수
+// 더 많은 주류 데이터를 로드하는 함수 (페이지네이션 적용)
 async function loadMoreLiquors() {
     if (isLoading || !nextUrl) return;
-
     isLoading = true;
     document.getElementById('loading').style.display = 'block';
 
-    const data = await fetchLiquors(nextUrl);
-    if (data) {
-        displayLiquors(data.data.records);
-        nextUrl = data.data.next; // 다음 페이지 URL 업데이트
+    const classification = getQueryParam('classification');
+    let url = new URL(nextUrl, window.location.origin);
+
+    if (classification) {
+        url.searchParams.set('classification', classification);
+    }
+
+    try {
+        const data = await fetchLiquors(url.toString());
+        if (data && data.data) {
+            displayLiquors(data.data.records);
+            nextUrl = data.data.next;
+        }
+    } catch (error) {
+        console.error('error:', error);
+    } finally {
         isLoading = false;
         document.getElementById('loading').style.display = 'none';
     }

@@ -31,6 +31,15 @@ export function navbar() {
         logoutButton.style.display = 'none';  // 로그아웃 버튼 숨기기
     }
 
+    // 주류 카테고리 클릭 이벤트 처리
+    document.querySelectorAll('.category-link').forEach(link => {
+        link.addEventListener('click', function (e) {
+            e.preventDefault();  // 기본 동작 방지
+            const classification = this.dataset.classification;  // data-classification 값을 가져옴
+            window.location.href = `pages/liquor_list.html?classification=${classification}`;  // 해당 분류에 맞는 주류 페이지로 이동
+        });
+    });
+
     // 검색
     searchBar();
 }
