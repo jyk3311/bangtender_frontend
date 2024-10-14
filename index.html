@@ -163,19 +163,20 @@
 
         /* 프로필 버튼 아이콘 스타일 */
         .profile-button {
-            background-color: transparent; /* 배경색 제거 */
+            background-color: var(--light-text-color); /* 배경색 제거 */
             border: none;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            color: var(--light-text-color);
+    padding: 0.5rem 1rem;
+    margin-left: 0.5rem;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+            color: var(--dark-bg-color);
         }
-        /* 아이콘 클릭 시 링크 이동 */
-        .profile-button img {
-            width: 30px;
-            height: auto;
-            margin-left: 0.5rem;
-        }
+        .profile-button:hover {
+    background-color: var(--primary-color);
+    color: var(--light-text-color);
+}
+
 
         /* 배경 이미지 */
         .background-image {
@@ -388,7 +389,7 @@
             <div class="user-actions">
                 <button id="logout-button">로그아웃</button>
                 <a href="pages/profile.html" id="auth-link">
-    <button class="profile-button"><img src="src/images/profile-icon.png" alt="프로필 아이콘"></button>
+    <button class="profile-button" id="auth-button"><img src="src/images/profile-icon.png" alt="프로필 아이콘"></button>
 </a>
             </div>
         </div>
