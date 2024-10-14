@@ -279,14 +279,21 @@
         <nav>
             <li>
                 <a href="pages/liquor_list.html">주류</a> <!-- '주류' 상위 링크는 liquor_list.html로 이동 -->
-                <ul> <!-- 드롭다운 메뉴 -->
-                    <li><a href="pages/rum_list.html">럼</a></li>
-                    <li><a href="pages/liqueur_list.html">리큐르</a></li>
-                    <li><a href="pages/vodka_list.html">보드카</a></li>
-                    <li><a href="pages/brandy_list.html">브랜디</a></li>
-                    <li><a href="pages/whisky_list.html">위스키</a></li>
-                    <li><a href="pages/gin_list.html">진</a></li>
-                    <li><a href="pages/other_list.html">기타</a></li>
+                <ul>
+                    <li><a href="pages/liquor_list.html?classification=rum" class="category-link"
+                            data-classification="rum">럼</a></li>
+                    <li><a href="pages/liquor_list.html?classification=liqueur" class="category-link"
+                            data-classification="liqueur">리큐르</a></li>
+                    <li><a href="pages/liquor_list.html?classification=vodka" class="category-link"
+                            data-classification="vodka">보드카</a></li>
+                    <li><a href="pages/liquor_list.html?classification=brandy" class="category-link"
+                            data-classification="brandy">브랜디</a></li>
+                    <li><a href="pages/liquor_list.html?classification=whiskey" class="category-link"
+                            data-classification="whiskey">위스키</a></li>
+                    <li><a href="pages/liquor_list.html?classification=gin" class="category-link"
+                            data-classification="gin">진</a></li>
+                    <li><a href="pages/liquor_list.html?classification=others" class="category-link"
+                            data-classification="others">기타</a></li>
                 </ul>
             </li>
             <!-- 칵테일 메뉴 -->
@@ -341,41 +348,11 @@
             <h2 class="cocktail-title-two">
                 <span style="color: #3b3434;">사용자</span><br>
                 <span style="color: #3b3434;">맞춤</span><br>
-                <span style="color: #3b3434;">칵테일</span>
+                <span style="color: #3b3434;">주류</span>
             </h2>
         </div>
     </main>
-    <!-- <main>
-    <div class="tip-container">
-        <div class="tip" id="tip-box">
-            <p id="tip-content">Tips : 그거 아셨나요? 맨해튼은 칵테일의 여왕이라는 별명을 가지고 있습니다.</p>
-        </div>
-    </div>
 
-    <div class="cocktail-section">
-        <h2 class="cocktail-title-one">
-            <span style="color: #3b3434;">오늘의</span><br>
-            <span style="color: #3b3434;">추천</span><br>
-            <span style="color: #3b3434;">칵테일</span>
-        </h2>
-        <div class="cocktail-grid" id="recommended-cocktails">
-            JS에서 동적으로 추천 칵테일 이미지를 삽입
-        </div>
-    </div>
-
-    <hr class="divider">
-
-    <div class="cocktail-section">
-        <div class="cocktail-grid" id="personalized-cocktails">
-            JS에서 동적으로 사용자 맞춤 칵테일 이미지를 삽입
-        </div>
-        <h2 class="cocktail-title-two">
-            <span style="color: #3b3434;">사용자</span><br>
-            <span style="color: #3b3434;">맞춤</span><br>
-            <span style="color: #3b3434;">칵테일</span>
-        </h2>
-    </div>
-</main> -->
 
     <footer>
         <div class="footer-content">

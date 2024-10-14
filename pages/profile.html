@@ -7,7 +7,8 @@
     <title>프로필 페이지</title>
     <style>
         /* 전체적인 페이지 스타일 */
-        html, body {
+        html,
+        body {
             font-family: 'Arial', sans-serif;
             margin: 0;
             padding: 0;
@@ -49,17 +50,18 @@
             padding: 0.5rem;
             border: none;
             border-radius: 20px 0 0 20px;
-    
+
         }
 
         .search-bar button {
-        background-color: #264653;
-        color: white;
-        border: none;
-        padding: 0.5rem 1rem;
-        border-radius: 0 20px 20px 0;
-        cursor: pointer;
+            background-color: #264653;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 0 20px 20px 0;
+            cursor: pointer;
         }
+
         .profile-button {
             background-color: #264653;
             color: white;
@@ -78,13 +80,16 @@
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             text-align: center;
-            margin: 0 auto; /* 본문을 중간에 배치 */
+            margin: 0 auto;
+            /* 본문을 중간에 배치 */
         }
 
         /* 로고 이미지 스타일 */
         .logo img {
-            height: 60px; /* 네브바에 적합한 크기 설정 */
-            width: auto;  /* 비율 유지 */
+            height: 60px;
+            /* 네브바에 적합한 크기 설정 */
+            width: auto;
+            /* 비율 유지 */
         }
 
         /* 메인 컨테이너 스타일 */
@@ -116,7 +121,8 @@
         }
 
         /* 버튼 스타일 */
-        button, .profile-actions button {
+        button,
+        .profile-actions button {
             background-color: #264653;
             color: white;
             border: none;
@@ -127,7 +133,8 @@
             margin: 1rem 0.5rem;
         }
 
-        button:hover, .profile-actions button:hover {
+        button:hover,
+        .profile-actions button:hover {
             background-color: #264653;
         }
 
@@ -197,6 +204,9 @@
             </button>
             <button id="delete-account">
                 <a href="delete_account.html" style="color: white; text-decoration: none;">회원 탈퇴</a>
+            </button>
+            <button id="my-bookmark">
+                <a href="my_bookmark.html" style="color: white; text-decoration: none;">내 북마크 목록 보기</a>
             </button>
             <button id="admin-button" style="display: none;">
                 <a href="admin.html" style="color: white; text-decoration: none;">관리자 페이지로 이동</a>

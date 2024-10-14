@@ -18,7 +18,7 @@ document.getElementById('post-form').addEventListener('submit', async (event) =>
         if (response.status === 201) {
             // 성공적으로 등록되었을 때
             alert('게시글이 성공적으로 등록되었습니다.');
-            window.location.href = '../pages/liquor-list.html';
+            window.location.href = '../pages/liquor_list.html';
         } else if (response.status === 403) {
             // 관리자가 아닌 경우
             alert('접근 불가 / 관리자만 가능합니다.');
