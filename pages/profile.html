@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>프로필 페이지</title>
     <style>
+
         /* 헤더 스타일 */
         :root {
             /* 메인페이지에서 사용할 색상을 변수로 정의해 재사용하는 방법 */
@@ -19,6 +20,7 @@
 
         /* 모든 요소의 기본 여백과 패딩을 제거 & 박스 모델 통일 */
         * {
+
             margin: 0;
             padding: 0;
             box-sizing: border-box;
@@ -147,6 +149,7 @@ body {
         .search-bar button {
             background-color: var(--accent-color); 
             color: var(--light-text-color);
+
             border: none;
             padding: 0.5rem 1rem;
             border-radius: 0 20px 20px 0;
@@ -198,6 +201,29 @@ body {
                 .profile-button:hover {
             background-color: var(--primary-color);
             color: var(--light-text-color);
+        /* 본문 중앙 배치 */
+        .signup-form-container {
+            background-color: #92c1bd;
+            padding: 2rem;
+            width: 100%;
+            max-width: 500px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            margin: 0 auto;
+            /* 본문을 중간에 배치 */
+        }
+
+
+        /* 메인 컨테이너 스타일 */
+        main {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
         }
 
         h1 {
@@ -218,8 +244,10 @@ body {
             color: #264653;
         }
 
+
         /* 버튼 스타일
         button, .profile-actions button {
+
             background-color: #264653;
             color: white;
             border: none;
@@ -230,7 +258,8 @@ body {
             margin: 1rem 0.5rem;
         }
 
-        button:hover, .profile-actions button:hover {
+        button:hover,
+        .profile-actions button:hover {
             background-color: #264653;
         }
 
@@ -333,6 +362,9 @@ body {
             </button>
             <button id="delete-account">
                 <a href="delete_account.html" style="color: white; text-decoration: none;">회원 탈퇴</a>
+            </button>
+            <button id="my-bookmark">
+                <a href="my_bookmark.html" style="color: white; text-decoration: none;">내 북마크 목록 보기</a>
             </button>
             <button id="admin-button" style="display: none;">
                 <a href="admin.html" style="color: white; text-decoration: none;">관리자 페이지로 이동</a>

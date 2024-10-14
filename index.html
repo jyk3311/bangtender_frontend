@@ -47,7 +47,6 @@
 
         body {
             font-family: 'Noto Sans KR', sans-serif;
-            /* font-family: 'Danjo-bold-Regular'; */
             background-color: var(--background-color);
             color: var(--dark-bg-color);
             line-height: 1.6; /* 텍스트 줄 간격 조정 */
@@ -271,6 +270,7 @@
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
             position: relative;
             top: 105px;
+
         }
 
         .tip {
@@ -302,7 +302,8 @@
             color: var(--primary-color);
             flex: 0 0 30%;
             text-align: center;
-        }
+
+            }
 
         .cocktail-grid {
             display: grid;
@@ -327,6 +328,7 @@
 
         .cocktail-item img {
             width: 100%;
+
             height: 250px;
             object-fit: cover;
         }
@@ -359,6 +361,7 @@
             margin-top: 3rem;
             position: relative;
             top: 250px;
+
         }
 
         .footer-content {
@@ -385,9 +388,48 @@
 
 <body>
     <header>
-        <div class="header-content">
-            <a href="/" class="logo">
-                <img src="src/images/002.png" alt="방텐더 로고">
+        <div class="header-content"><!-- 로고 이미지 추가 -->
+        <a href="/" class="logo">
+            <img src="src/images/002.png" alt="Logo">
+        </a>
+        <nav>
+            <li>
+                <a href="pages/liquor_list.html">주류</a> <!-- '주류' 상위 링크는 liquor_list.html로 이동 -->
+                <ul>
+                    <li><a href="pages/liquor_list.html?classification=rum" class="category-link"
+                            data-classification="rum">럼</a></li>
+                    <li><a href="pages/liquor_list.html?classification=liqueur" class="category-link"
+                            data-classification="liqueur">리큐르</a></li>
+                    <li><a href="pages/liquor_list.html?classification=vodka" class="category-link"
+                            data-classification="vodka">보드카</a></li>
+                    <li><a href="pages/liquor_list.html?classification=brandy" class="category-link"
+                            data-classification="brandy">브랜디</a></li>
+                    <li><a href="pages/liquor_list.html?classification=whiskey" class="category-link"
+                            data-classification="whiskey">위스키</a></li>
+                    <li><a href="pages/liquor_list.html?classification=gin" class="category-link"
+                            data-classification="gin">진</a></li>
+                    <li><a href="pages/liquor_list.html?classification=others" class="category-link"
+                            data-classification="others">기타</a></li>
+                </ul>
+            </li>
+            <!-- 칵테일 메뉴 -->
+            <li><a href="pages/cocktail_list.html">칵테일</a></li>
+
+            <!-- 방텐더봇 메뉴 -->
+            <li><a href="pages/bot.html">방텐더봇</a></li>
+
+            <!-- 주변 매장 찾기 메뉴 -->
+            <li><a href="pages/liquor_stores.html">주변 매장 찾기</a></li>
+        </nav>
+        <div class="search-bar">
+            <input type="search" placeholder="Search">
+            <button>검색</button>
+        </div>
+        <div class="user">
+            <button id="logout-button">로그아웃</button>
+            <a href="profile.html" id="auth-link">
+                <button class="profile-button" id="auth-button">프로필</button>
+>>>>>>> dev
             </a>
             <nav>
                 <ul>
@@ -415,11 +457,11 @@
             <div class="user-actions">
                 <button id="logout-button">로그아웃</button>
                 <a href="pages/profile.html" id="auth-link">
-                <button id="auth-button" class="profile-button"></button>
+    <button class="profile-button" ></button>
 </a>
             </div>
         </div>
-    </header>
+    </div></header>
 
     <!-- 배경 이미지 섹션 -->
     <div class="background-image">
@@ -437,30 +479,29 @@
     <main>
         <div class="tip-container">
             <p class="tip" id="tip-content">Tips : 그거 아셨나요? 맨해튼은 칵테일의 여왕이라는 별명을 가지고 있습니다.</p>
+
         </div>
 
         <div class="cocktail-section">
             <h2 class="cocktail-title">
-                오늘의<br><span class="highlight">추천</span><br>칵테일
+                오늘의<br><span class="highlight">추천</span><br>주류
             </h2>
 
             <div class="cocktail-grid" id="recommended-cocktails">
-                <a href="pages/tequila_sunrise.html" class="cocktail-item"><img src="../src/images/데킬라 선라이즈.png" alt="데킬라 선라이즈"></a>
-                <a href="pages/east_sea.html" class="cocktail-item"><img src="../src/images/동해.png" alt="동해"></a>
-                <a href="pages/dry_martini.html" class="cocktail-item"><img src="../src/images/드라이 마티니.png" alt="드라이 마티니"></a>
+
+                <!-- JS에서 동적으로 추천 칵테일 이미지를 삽입 -->
             </div>
         </div>
 
-        <div class="divider"></div> <!-- 점선 구분선 -->
+        <hr class="divider">    <!-- 점선 구분선 -->
 
         <div class="cocktail-section">
-            <div class="cocktail-grid" id="personalized-cocktails">
-                <a href="pages/blue_hawaii.html" class="cocktail-item"><img src="../src/images/블루 하와이.png" alt="블루 하와이"></a>
-                <a href="pages/old_fashioned.html" class="cocktail-item"><img src="../src/images/올드 패션드.png" alt="올드 패션드"></a>
-                <a href="pages/cosmopolitan.html" class="cocktail-item"><img src="../src/images/코스모폴리탄.png" alt="코스모폴리탄"></a>
+            <div class="cocktail-grid" id="user-liquors">
+                <!-- JS에서 동적으로 사용자 맞춤 주류 이미지를 삽입 -->
             </div>
             <h2 class="cocktail-title">
-                사용자<br><span class="highlight">맞춤</span><br>칵테일
+                사용자<br><span class="highlight">맞춤</span><br>주류
+
             </h2>
 
         </div>
@@ -480,6 +521,7 @@
 
     <script type="module" src="src/js/main.js"></script>
 </body>
+
 
 </html>
 

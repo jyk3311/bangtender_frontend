@@ -206,7 +206,6 @@ body {
             padding: 20px;
         }
 
-    
 
         .main-content {
             display: flex;
@@ -262,20 +261,21 @@ body {
             background-color: #eeeeee;
         }
 
-/* container 스타일 */
-.container {
+        /* container 스타일 */
+        .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 20px;
         }
 
 
-.main-content {
-    display: flex;
-    background-color: #e0f2f1;
-    padding: 20px;
-    position: relative;
-}
+        .main-content {
+            display: flex;
+            background-color: #e0f2f1;
+            padding: 20px;
+            position: relative;
+        }
+
 
  /* 세로 텍스트 스타일 */
 .vertical-text {
@@ -323,13 +323,23 @@ body {
     background-color: #eeeeee;
     text-align: left; /* 왼쪽 정렬 적용 */
 }
-
 /* 주류 이름 스타일 - 사진과 겹치지 않도록 설정 */
 #liquor-name {
-    font-size: 2rem;
-    margin-bottom: 20px;
-    position: relative; /* 부모 요소에 의존적인 위치 */
-    }
+            font-size: 2rem;
+            margin-bottom: 20px;
+            position: relative;
+            /* 부모 요소에 의존적인 위치 */
+        }
+
+
+        .content-wrapper {
+            display: flex;
+            margin-left: 60px;
+            width: 100%;
+            align-items: flex-start;
+            /* 수직 정렬을 맞춤 */
+        }
+
 
     /* 푸터 스타일 */
     footer {
@@ -365,6 +375,7 @@ body {
             color: var(--accent-color);
         }
         </style>
+
 
 </head>
 
@@ -408,32 +419,34 @@ body {
     <hr class="nav-divider">
 
 
-    <main>
-        <div class="container" id="liquor-detail">
-            <div class="main-content">
-                <div class="vertical-text"><span id="classification"></span></div>
-                <div class="content-wrapper">
-                    <!-- 이미지 삽입 -->
+    <main>     
+            <button id="bookmark-button" class="profile-button"></button>
+            <div class="container" id="liquor-detail">
+                <div class="main-content">
+                    <div class="vertical-text"><span id="classification"></span></div>
+                    <div class="content-wrapper">
+                        <!-- 이미지 삽입 -->
+
                         <div class="liquor-img">
-                            <img id= "liquor-img" src="" alt="주류 이미지">
+                            <img id="liquor-img" src="" alt="주류 이미지">
                         </div>
                         <!-- 주류 디테일 정보 -->
-                    <div class="liquor-info">
+                        <div class="liquor-info">
                             <p><span id="liquor-name"></span></p>
                             <p>분류: <span id="liquor-classification"></span></p>
                             <p>맛: <span id="liquor-taste"></span></p>
                             <p>ABV: <span id="liquor-abv"></span></p>
                             <p>가격: <span id="liquor-price"></span></p>
-                    </div>
+                        </div>
 
+                    </div>
+                </div>
+                <!-- 설명(특징, 생산지, 원료) -->
+                <div class="liquor-content">
+                    <h4>내용:</h4>
+                    <p><span id="liquor-content"></span></p>
                 </div>
             </div>
-            <!-- 설명(특징, 생산지, 원료) -->
-            <div class="liquor-content">
-                <h4>내용:</h4>
-                <p><span id="liquor-content"></span></p>
-            </div> 
-        </div>
     </main>
 
     <footer>

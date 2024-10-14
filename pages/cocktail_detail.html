@@ -2,7 +2,7 @@
 <html lang="ko">
 
 <head>
-    
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>칵테일 상세 정보</title>
@@ -201,8 +201,8 @@ body {
 }
 
 
-/* container 스타일 */
-.container {
+        /* container 스타일 */
+        .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 20px;
@@ -228,14 +228,15 @@ body {
             top: 50%;
             transform: translateY(-50%);
         }
-        
+
 
         /* 콘텐츠 래퍼 스타일 */
         .content-wrapper {
             display: flex;
             margin-left: 60px;
             width: 100%;
-            align-items: flex-start; /* 수직 정렬을 맞춤 */
+            align-items: flex-start;
+            /* 수직 정렬을 맞춤 */
         }
 
         /* 이미지 섹션 스타일 */
@@ -258,7 +259,8 @@ body {
         /* 칵테일 정보 섹션 스타일 */
         .cocktail-info {
             flex: 1;
-            text-align: left; /* 왼쪽 정렬 적용 */
+            text-align: left;
+            /* 왼쪽 정렬 적용 */
         }
 
         .cocktail-info p {
@@ -271,7 +273,8 @@ body {
             margin-top: 20px;
             padding: 20px;
             background-color: #eeeeee;
-            text-align: left; /* 왼쪽 정렬 적용 */
+            text-align: left;
+            /* 왼쪽 정렬 적용 */
 
         }
 
@@ -279,16 +282,21 @@ body {
         #cocktail-name {
             font-size: 2rem;
             margin-bottom: 20px;
-            position: relative; /* 부모 요소에 의존적인 위치 */
+            position: relative;
+            /* 부모 요소에 의존적인 위치 */
         }
 
-        footer {
+        /* 푸터 스타일 */
+footer {
             background-color: var(--primary-color);
             color: #fff;
             padding: 2rem 0;
             margin-top: 3rem;
             position: relative;
-            top: 250px;
+            bottom: 0px;
+            height: 10rem;
+            
+            
         }
 
         .footer-content {
@@ -354,32 +362,32 @@ body {
     </header>
 
     <main>
-
-        <div class="container" id="cocktail-detail">
-            <div class="main-content">
-                <div class="vertical-text"><span id="cocktail-name-vertical"></span></div>
-                <div class="content-wrapper">
-                    <!-- 이미지 삽입 -->
-                    <div class="cocktail-img">
-                        <img id="cocktail-img" src="" alt="칵테일 이미지">
-                    </div>
-                    <!-- 칵테일 디테일 정보 -->
-                    <div class="cocktail-info">
-                        <p id="cocktail-name"></p>
-                        <p><span id="cocktail-ingredients"></span></p>
-                        <p><span id="cocktail-taste"></span></p>
-                        <p>ABV: <span id="cocktail-abv"></span></p>
-                        <p><span id="cocktail-created-at"></span></p>
-                        <p><span id="cocktail-updated-at"></span></p>
+            <button id="bookmark-button" class="profile-button"></button>
+            <div class="container" id="cocktail-detail">
+                <div class="main-content">
+                    <div class="vertical-text"><span id="cocktail-name-vertical"></span></div>
+                    <div class="content-wrapper">
+                        <!-- 이미지 삽입 -->
+                        <div class="cocktail-img">
+                            <img id="cocktail-img" src="" alt="칵테일 이미지">
+                        </div>
+                        <!-- 칵테일 디테일 정보 -->
+                        <div class="cocktail-info">
+                            <p id="cocktail-name"></p>
+                            <p><span id="cocktail-ingredients"></span></p>
+                            <p><span id="cocktail-taste"></span></p>
+                            <p>ABV: <span id="cocktail-abv"></span></p>
+                            <p><span id="cocktail-created-at"></span></p>
+                            <p><span id="cocktail-updated-at"></span></p>
+                        </div>
                     </div>
                 </div>
+                <!-- 설명(내용) -->
+                <div class="cocktail-content">
+                    <h4>제조법:</h4>
+                    <p><span id="cocktail-content"></span></p>
+                </div>
             </div>
-            <!-- 설명(내용) -->
-            <div class="cocktail-content">
-                <h4>제조법:</h4>
-                <p><span id="cocktail-content"></span></p>
-            </div>
-        </div>    
     </main>s
     <footer>
         <div class="footer-content">

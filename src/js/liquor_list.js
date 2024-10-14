@@ -1,72 +1,95 @@
-let nextUrl = 'http://localhost:8000/api/v1/liquor/';
-let isLoading = false;
+import { navbar } from './navbar.js';
 
-// API에서 주류 정보를 가져오는 함수
-async function fetchLiquors(url) {
-    try {
-        const response = await fetch(url);
-        if (!response.ok) {
-            throw new Error('Network response was not ok');
+document.addEventListener('DOMContentLoaded', () => {
+    navbar();
+
+    let nextUrl = 'http://localhost:8000/api/v1/liquor/';
+    let isLoading = false;
+
+    // URL에서 쿼리 파라미터 가져오기 함수
+    function getQueryParam(param) {
+        const urlParams = new URLSearchParams(window.location.search);
+        return urlParams.get(param);
+    }
+
+    // API에서 주류 정보를 가져오는 함수
+    async function fetchLiquors(url) {
+        try {
+            const response = await fetch(url);
+            if (!response.ok) {
+                throw new Error('서버 상태가 이상합니다.');
+            }
+            return await response.json();
+        } catch (error) {
+            console.error('error:', error);
         }
-        return await response.json();
-    } catch (error) {
-        console.error('Error fetching liquors:', error);
     }
-}
 
-// 주류 정보를 화면에 표시하는 함수
-function displayLiquors(liquors) {
-    const liquorList = document.getElementById('liquor-list');
-    liquors.forEach(liquor => {
-        const liquorItem = document.createElement('div');
-        liquorItem.className = 'liquor-item';
-        liquorItem.innerHTML = `
-            <img src="${liquor.img}" alt="${liquor.name}" class="liquor-img" data-id="${liquor.id}">
-            <h3>${liquor.name}</h3>
-            <p>Price: ${liquor.price} 원</p>
-        `;
-        liquorList.appendChild(liquorItem);
-    });
-
-
-    document.querySelectorAll('.liquor-img').forEach(img => {
-        img.addEventListener('click', function () {
-            const liquorId = this.getAttribute('data-id');
-            window.location.href = `/pages/liquor_detail.html?id=${liquorId}`; // 상세 페이지로 이동
+    // 주류 정보를 화면에 표시하는 함수
+    function displayLiquors(liquors) {
+        const liquorList = document.getElementById('liquor-list');
+        liquors.forEach(liquor => {
+            const liquorItem = document.createElement('div');
+            liquorItem.className = 'liquor-item';
+            liquorItem.innerHTML = `
+                <img src="${liquor.img}" alt="${liquor.name}" class="liquor-img" data-id="${liquor.id}">
+                <h3>${liquor.name}</h3>
+                <p>Price: ${liquor.price} 원</p>
+            `;
+            liquorList.appendChild(liquorItem);
         });
-    });
-}
 
-// 더 많은 주류 데이터를 로드하는 함수
-async function loadMoreLiquors() {
-    if (isLoading || !nextUrl) return;
-
-    isLoading = true;
-    document.getElementById('loading').style.display = 'block';
-
-    const data = await fetchLiquors(nextUrl);
-    if (data) {
-        displayLiquors(data.data.records);
-        nextUrl = data.data.next; // 다음 페이지 URL 업데이트
-        isLoading = false;
-        document.getElementById('loading').style.display = 'none';
+        // 클릭 시 상세 페이지로 이동하는 이벤트 추가
+        document.querySelectorAll('.liquor-img').forEach(img => {
+            img.addEventListener('click', function () {
+                const liquorId = this.getAttribute('data-id');
+                window.location.href = `/pages/liquor_detail.html?id=${liquorId}`;  // 상세 페이지로 이동
+            });
+        });
     }
-}
 
-// 화면 하단 근처에 도달했는지 체크하는 함수
-function isNearBottom() {
-    return window.innerHeight + window.scrollY >= document.body.offsetHeight - 300;
-}
+    // 더 많은 주류 데이터를 로드하는 함수
+    async function loadMoreLiquors() {
+        if (isLoading || !nextUrl) return;
+        isLoading = true;
+        document.getElementById('loading').style.display = 'block';
 
-// 스크롤 이벤트 핸들러
-function handleScroll() {
-    if (isNearBottom()) {
-        loadMoreLiquors();
+        const classification = getQueryParam('classification');
+        let url = new URL(nextUrl, window.location.origin);
+
+        if (classification) {
+            url.searchParams.set('classification', classification);
+        }
+
+        try {
+            const data = await fetchLiquors(url.toString());
+            if (data && data.data) {
+                displayLiquors(data.data.records);
+                nextUrl = data.data.next;
+            }
+        } catch (error) {
+            console.error('error:', error);
+        } finally {
+            isLoading = false;
+            document.getElementById('loading').style.display = 'none';
+        }
     }
-}
 
-// 초기 주류 데이터를 로드
-loadMoreLiquors();
+    // 화면 하단 근처에 도달했는지 체크하는 함수
+    function isNearBottom() {
+        return window.innerHeight + window.scrollY >= document.body.offsetHeight - 300;
+    }
 
-// 스크롤 이벤트 추가
-window.addEventListener('scroll', handleScroll);
+    // 스크롤 이벤트 핸들러
+    function handleScroll() {
+        if (isNearBottom()) {
+            loadMoreLiquors();
+        }
+    }
+
+    // 초기 주류 데이터를 로드
+    loadMoreLiquors();
+
+    // 스크롤 이벤트 추가
+    window.addEventListener('scroll', handleScroll);
+});

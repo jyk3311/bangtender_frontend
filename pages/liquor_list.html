@@ -7,6 +7,7 @@
     <title>주류 목록</title>
     <style>
         /* 헤더 스타일 */
+
         :root {
             /* 메인페이지에서 사용할 색상을 변수로 정의해 재사용하는 방법 */
             --primary-color: #2c3e50;
@@ -53,6 +54,7 @@ body {
             line-height: 1.6; /* 텍스트 줄 간격 조정 */
         }
 
+
         header {
             font-family: 'S-CoreDream-3Light';
             background-color: var(--primary-color);
@@ -70,6 +72,7 @@ body {
             max-width: 1200px;
             margin: 0 auto;
         }
+
 
         .logo img {
             height: 60px;
@@ -92,6 +95,7 @@ body {
         }
 
         /* 내비게이션 링크 스타일 */
+
         nav a {
             color: var(--light-text-color);
             text-decoration: none;
@@ -153,6 +157,7 @@ body {
             cursor: pointer;
             transition: background-color 0.3s ease;
         }
+
 
         .search-bar button:hover {
             background-color: var(--primary-color); 
@@ -223,8 +228,10 @@ body {
         /* 그리드 레이아웃 설정 */
         .liquor-grid {
             display: grid;
-            grid-template-columns: repeat(4, 1fr); /* 4열 그리드 */
-            gap: 2rem; /* 주류 항목 사이의 간격 */
+            grid-template-columns: repeat(4, 1fr);
+            /* 4열 그리드 */
+            gap: 2rem;
+            /* 주류 항목 사이의 간격 */
             max-width: 1200px;
             margin: 0 auto;
             padding: 20px;
@@ -283,7 +290,7 @@ body {
         .team-members a:hover {
             color: var(--accent-color);
         }
-        </style>
+    </style>
 </head>
 
 <body>
@@ -329,14 +336,14 @@ body {
     <main>
         <div class="tip-container">
             <div class="tip" id="tip-box">
-            <p id="tip-content">Tips : 그거 아셨나요? 맨해튼은 칵테일의 여왕이라는 별명을 가지고 있습니다.</p>
-        </div>
-        
-    <h1>주류 목록</h1>
-    <div id="liquor-list" class="liquor-grid"></div>
-    <div id="loading">추가 데이터 로딩중...</div>
+                <p id="tip-content">Tips : 그거 아셨나요? 맨해튼은 칵테일의 여왕이라는 별명을 가지고 있습니다.</p>
+            </div>
+
+            <h1>주류 목록</h1>
+            <div id="liquor-list" class="liquor-grid"></div>
+            <div id="loading" style="display: none;">추가 데이터 로딩중...</div>
     </main>
-    
+
 
     <footer>
         <div class="footer-content">
@@ -350,7 +357,7 @@ body {
         </div>
     </footer>
 
-    <script src="../src/js/liquor_list.js" defer></script>
+    <script type="module" src="../src/js/liquor_list.js" defer></script>
 </body>
 
 </html>
