@@ -107,24 +107,46 @@
 
 <body>
     <header>
-        <a href="/" class="logo">
-            <img src="../src/images/001.png" alt="Logo">
-        </a>
-        <nav>
-            <a href="liquor_list.html">주류</a>
-            <a href="cocktail_list.html">칵테일</a>
-            <a href="bot.html">방텐더봇</a>
-            <a href="liquor_stores.html">주변 매장 찾기</a>
-        </nav>
-        <div class="search-bar">
-            <input type="search" placeholder="Search">
-            <button>검색</button>
-        </div>
-        <div class="user">
-            <button id="logout-button" style="display: none;">로그아웃</button>
-            <a href="profile.html" id="auth-link">
-                <button class="profile-button" id="auth-button">프로필</button>
+        <div class="header-content">
+            <a href="/" class="logo">
+                <img src="/src/images/002.png" alt="방텐더 로고">
             </a>
+            <nav>
+                <ul>
+                    <li>
+                        <a href="liquor_list.html">주류</a> <!-- '주류' 상위 링크는 liquor_list.html로 이동 -->
+                        <ul>
+                            <li><a href="liquor_list.html" class="category-link" data-classification="럼">럼</a>
+                            </li>
+                            <li><a href="liquor_list.html" class="category-link" data-classification="리큐르">리큐르</a>
+                            </li>
+                            <li><a href="liquor_list.html" class="category-link" data-classification="보드카">보드카</a>
+                            </li>
+                            <li><a href="liquor_list.html" class="category-link" data-classification="브랜디">브랜디</a>
+                            </li>
+                            <li><a href="liquor_list.html" class="category-link" data-classification="위스키">위스키</a>
+                            </li>
+                            <li><a href="liquor_list.html" class="category-link" data-classification="진">진</a>
+                            </li>
+                            <li><a href="liquor_list.html" class="category-link" data-classification="others">기타</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li><a href="cocktail_list.html">칵테일</a></li>
+                    <li><a href="bot.html">방텐더봇</a></li>
+                    <li><a href="liquor_stores.html">주변 매장 찾기</a></li>
+                </ul>
+            </nav>
+            <div class="search-bar">
+                <input type="search" placeholder="검색...">
+                <button>검색</button>
+            </div>
+            <div class="user-actions">
+                <button id="logout-button">로그아웃</button>
+                <a href="profile.html" id="auth-link">
+                <button id="auth-button" class="profile-button">프로필</button>
+</a>
+            </div>
         </div>
     </header>
     <hr class="nav-divider">

@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             headers['Authorization'] = `Bearer ${token}`;
         }
 
-        const response = await fetch('http://localhost:8000/api/v1/subcontents/', {
+        const response = await fetch('http://43.203.219.114/api/v1/subcontents/', {
             method: 'GET',
             headers: headers,
         });
