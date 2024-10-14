@@ -22,15 +22,39 @@
             padding: 0;
             box-sizing: border-box;
         }
+        /* 폰트 임포트 */
+    /* 숙명눈꽃체*/
+    @font-face {
+    font-family: 'SMUSnowflake-Bold';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/2409-2@1.0/SMUSnowflake-Bold.woff2') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+}
+/* 조선일보명조체 */
+@font-face {
+    font-family: 'Chosunilbo_myungjo';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/Chosunilbo_myungjo.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+/* 에스코어드림 */
+@font-face {
+    font-family: 'S-CoreDream-3Light';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-3Light.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
 
         body {
             font-family: 'Noto Sans KR', sans-serif;
+            /* font-family: 'Danjo-bold-Regular'; */
             background-color: var(--background-color);
             color: var(--dark-bg-color);
             line-height: 1.6; /* 텍스트 줄 간격 조정 */
         }
 
         header {
+            font-family: 'S-CoreDream-3Light';
             background-color: var(--primary-color);
             padding: 14px 8px 8px 20px;
             position: sticky; /* 스크롤 시에도 상단에 고정 */
@@ -54,6 +78,7 @@
 
         /* 내비게이션 스타일 */
         nav ul {
+            
             display: flex;
             list-style-type: none;
             padding: 0;
@@ -120,7 +145,7 @@
         }
 
         .search-bar button {
-            background-color: var(--accent-color); /* 요청에 따라 되돌린 색상 */
+            background-color: var(--accent-color); 
             color: var(--light-text-color);
             border: none;
             padding: 0.5rem 1rem;
@@ -130,20 +155,16 @@
         }
 
         .search-bar button:hover {
-            background-color: var(--primary-color); /* 요청에 따라 호버 색상 복원 */
+            background-color: var(--primary-color); 
         }
 
         /* 버튼 스타일 */
         .user-actions {
             display: flex;
             align-items: center;
+            
         }
 
-        /* 프로필 버튼 스타일 추가 */
-        .user {
-            display: flex;
-            align-items: center;
-        }
 
         .user-actions button {
             
@@ -154,6 +175,8 @@
             border-radius: 20px;
             cursor: pointer;
             transition: all 0.3s ease;
+            font-weight: 800;          /* 버튼 텍스트 굵기 조절*/
+            font-family: 'S-CoreDream-3Light';
         }
 
         .user-actions button:hover {
@@ -202,6 +225,7 @@
         }
 
         .background-text {
+            
             text-align: center;
             color: var(--light-text-color);
             position: relative;
@@ -250,6 +274,7 @@
         }
 
         .tip {
+            font-family: 'Chosunilbo_myungjo';
             font-style: italic;
             color: var(--secondary-color);
         }
@@ -272,6 +297,7 @@
         }
 
         .cocktail-title {
+            font-family: 'SMUSnowflake-Bold';
             font-size: 2.5rem;
             color: var(--primary-color);
             flex: 0 0 30%;
@@ -389,7 +415,7 @@
             <div class="user-actions">
                 <button id="logout-button">로그아웃</button>
                 <a href="pages/profile.html" id="auth-link">
-    <button class="profile-button" id="auth-button"><img src="src/images/profile-icon.png" alt="프로필 아이콘"></button>
+    <button class="profile-button" id="auth-button"></button>
 </a>
             </div>
         </div>
