@@ -22,50 +22,58 @@
             padding: 0;
             box-sizing: border-box;
         }
+
         /* 폰트 임포트 */
-    /* 숙명눈꽃체 (임시)*/
-    @font-face {
-    font-family: 'SMUSnowflake-Bold';
-    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/2409-2@1.0/SMUSnowflake-Bold.woff2') format('woff2');
-    font-weight: 700;
-    font-style: normal;
-}
-/* 조선일보명조체 */
-@font-face {
-    font-family: 'Chosunilbo_myungjo';
-    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/Chosunilbo_myungjo.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-}
-/* 에스코어드림 */
-@font-face {
-    font-family: 'S-CoreDream-3Light';
-    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-3Light.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-}
+        /* 숙명눈꽃체 (임시)*/
+        @font-face {
+            font-family: 'SMUSnowflake-Bold';
+            src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/2409-2@1.0/SMUSnowflake-Bold.woff2') format('woff2');
+            font-weight: 700;
+            font-style: normal;
+        }
+
+        /* 조선일보명조체 */
+        @font-face {
+            font-family: 'Chosunilbo_myungjo';
+            src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/Chosunilbo_myungjo.woff') format('woff');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        /* 에스코어드림 */
+        @font-face {
+            font-family: 'S-CoreDream-3Light';
+            src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-3Light.woff') format('woff');
+            font-weight: normal;
+            font-style: normal;
+        }
 
         body {
             font-family: 'Noto Sans KR', sans-serif;
             background-color: var(--background-color);
             color: var(--dark-bg-color);
-            line-height: 1.6; /* 텍스트 줄 간격 조정 */
+            line-height: 1.6;
+            /* 텍스트 줄 간격 조정 */
         }
 
         header {
             font-family: 'S-CoreDream-3Light';
             background-color: var(--primary-color);
             padding: 14px 8px 8px 20px;
-            position: sticky; /* 스크롤 시에도 상단에 고정 */
+            position: sticky;
+            /* 스크롤 시에도 상단에 고정 */
             top: 0;
-            z-index: 1000; /* 다른 요소 위에 표시 */
+            z-index: 1000;
+            /* 다른 요소 위에 표시 */
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
         }
 
         .header-content {
             display: flex;
-            justify-content: space-between; /* 좌우로 배치 */
-            align-items: center; /* 세로 정렬 가운데 */
+            justify-content: space-between;
+            /* 좌우로 배치 */
+            align-items: center;
+            /* 세로 정렬 가운데 */
             max-width: 1200px;
             margin: 0 auto;
         }
@@ -77,7 +85,7 @@
 
         /* 내비게이션 스타일 */
         nav ul {
-            
+
             display: flex;
             list-style-type: none;
             padding: 0;
@@ -99,15 +107,18 @@
         }
 
         nav a:hover {
-            color: var(--accent-color); /* 마우스 커서 가면 해당 색상으로 변경 */
+            color: var(--accent-color);
+            /* 마우스 커서 가면 해당 색상으로 변경 */
         }
 
         nav ul ul {
-            display: none; /* 드롭다운 메뉴 숨김 */
+            display: none;
+            /* 드롭다운 메뉴 숨김 */
             position: absolute;
             top: 100%;
             left: 0;
-            background-color: var(--secondary-color); /* 배경색 설정 */
+            background-color: var(--secondary-color);
+            /* 배경색 설정 */
             border-radius: 4px;
             padding: 0.5rem 0;
             min-width: 150px;
@@ -115,7 +126,7 @@
         }
 
         /* 마우스 커서가 상위 항목에 올라가면 하위 항목이 표시 */
-        nav ul li:hover > ul {
+        nav ul li:hover>ul {
             display: block;
         }
 
@@ -133,18 +144,20 @@
         .search-bar {
             display: flex;
             align-items: center;
-            margin-right: 1rem; /* 로그아웃/프로필 버튼과의 간격 조정 */
+            margin-right: 1rem;
+            /* 로그아웃/프로필 버튼과의 간격 조정 */
         }
 
         .search-bar input {
             padding: 0.5rem;
             border: 1px solid var(--primary-color);
             border-radius: 20px 0 0 20px;
-            outline: none; /* 선택 시 윤곽선 제거 */
+            outline: none;
+            /* 선택 시 윤곽선 제거 */
         }
 
         .search-bar button {
-            background-color: var(--accent-color); 
+            background-color: var(--accent-color);
             color: var(--light-text-color);
             border: none;
             padding: 0.5rem 1rem;
@@ -154,19 +167,19 @@
         }
 
         .search-bar button:hover {
-            background-color: var(--primary-color); 
+            background-color: var(--primary-color);
         }
 
         /* 버튼 스타일 */
         .user-actions {
             display: flex;
             align-items: center;
-            
+
         }
 
 
         .user-actions button {
-            
+
             color: var(--dark-bg-color);
             border: none;
             padding: 0.5rem 1rem;
@@ -174,7 +187,8 @@
             border-radius: 20px;
             cursor: pointer;
             transition: all 0.3s ease;
-            font-weight: 800;          /* 버튼 텍스트 굵기 조절*/
+            font-weight: 800;
+            /* 버튼 텍스트 굵기 조절*/
             font-family: 'S-CoreDream-3Light';
         }
 
@@ -185,15 +199,17 @@
 
         /* 프로필 버튼 아이콘 스타일 */
         .profile-button {
-            background-color: var(--light-text-color); /* 배경색 제거 */
+            background-color: var(--light-text-color);
+            /* 배경색 제거 */
             border: none;
             padding: 0.5rem 1rem;
             margin-left: 0.5rem;
             border-radius: 20px;
             cursor: pointer;
             transition: all 0.3s ease;
-                    color: var(--dark-bg-color);
-                }
+            color: var(--dark-bg-color);
+        }
+
         .profile-button:hover {
             background-color: var(--primary-color);
             color: var(--light-text-color);
@@ -220,15 +236,17 @@
             width: 450px;
             margin-bottom: 20px;
             position: relative;
-            left: -350px;          /* 로고 위치 왼쪽으로 */
+            left: -350px;
+            /* 로고 위치 왼쪽으로 */
         }
 
         .background-text {
-            
+
             text-align: center;
             color: var(--light-text-color);
             position: relative;
-            left: -350px;          /* 로고 위치 왼쪽으로 */
+            left: -350px;
+            /* 로고 위치 왼쪽으로 */
         }
 
         .background-text h1 {
@@ -266,7 +284,8 @@
             background-color: #fff;
             border-radius: 8px;
             padding: 1rem;
-            margin-top: -200px; /* 배경 이미지와 겹치도록 위치 조정 */
+            margin-top: -200px;
+            /* 배경 이미지와 겹치도록 위치 조정 */
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
             position: relative;
             top: 105px;
@@ -303,7 +322,7 @@
             flex: 0 0 30%;
             text-align: center;
 
-            }
+        }
 
         .cocktail-grid {
             display: grid;
@@ -390,48 +409,50 @@
         <div class="header-content">
             <a href="/" class="logo">
                 <img src="src/images/002.png" alt="방텐더 로고">
-        </a>
-        <nav>
-            <ul>
-            <li>
-                <a href="pages/liquor_list.html">주류</a> <!-- '주류' 상위 링크는 liquor_list.html로 이동 -->
-                <ul>
-                    <li><a href="pages/liquor_list.html?classification=rum" class="category-link"
-                            data-classification="rum">럼</a></li>
-                    <li><a href="pages/liquor_list.html?classification=liqueur" class="category-link"
-                            data-classification="liqueur">리큐르</a></li>
-                    <li><a href="pages/liquor_list.html?classification=vodka" class="category-link"
-                            data-classification="vodka">보드카</a></li>
-                    <li><a href="pages/liquor_list.html?classification=brandy" class="category-link"
-                            data-classification="brandy">브랜디</a></li>
-                    <li><a href="pages/liquor_list.html?classification=whiskey" class="category-link"
-                            data-classification="whiskey">위스키</a></li>
-                    <li><a href="pages/liquor_list.html?classification=gin" class="category-link"
-                            data-classification="gin">진</a></li>
-                    <li><a href="pages/liquor_list.html?classification=others" class="category-link"
-                            data-classification="others">기타</a></li>
-                </ul>
-            </li>
-            <!-- 칵테일 메뉴 -->
-            <li><a href="pages/cocktail_list.html">칵테일</a></li>
-
-            <!-- 방텐더봇 메뉴 -->
-            <li><a href="pages/bot.html">방텐더봇</a></li>
-
-            <!-- 주변 매장 찾기 메뉴 -->
-            <li><a href="pages/liquor_stores.html">주변 매장 찾기</a></li>
-        </nav>
-        <div class="search-bar">
-            <input type="search" placeholder="Search">
-            <button>검색</button>
-        </div>
-        <div class="user-actions">
-            <button id="logout-button">로그아웃</button>
-            <a href="pages/profile.html" id="auth-link">
-                <button class="profile-button" id="auth-button">프로필</button>
             </a>
+            <nav>
+                <ul>
+                    <li>
+                        <a href="pages/liquor_list.html">주류</a> <!-- '주류' 상위 링크는 liquor_list.html로 이동 -->
+                        <ul>
+                            <li><a href="pages/liquor_list.html" class="category-link" data-classification="럼">럼</a>
+                            </li>
+                            <li><a href="pages/liquor_list.html" class="category-link" data-classification="리큐르">리큐르</a>
+                            </li>
+                            <li><a href="pages/liquor_list.html" class="category-link" data-classification="보드카">보드카</a>
+                            </li>
+                            <li><a href="pages/liquor_list.html" class="category-link" data-classification="브랜디">브랜디</a>
+                            </li>
+                            <li><a href="pages/liquor_list.html" class="category-link" data-classification="위스키">위스키</a>
+                            </li>
+                            <li><a href="pages/liquor_list.html" class="category-link" data-classification="진">진</a>
+                            </li>
+                            <li><a href="pages/liquor_list.html" class="category-link"
+                                    data-classification="others">기타</a></li>
+                        </ul>
+                    </li>
+                    <!-- 칵테일 메뉴 -->
+                    <li><a href="pages/cocktail_list.html">칵테일</a></li>
+
+                    <!-- 방텐더봇 메뉴 -->
+                    <li><a href="pages/bot.html">방텐더봇</a></li>
+
+                    <!-- 주변 매장 찾기 메뉴 -->
+                    <li><a href="pages/liquor_stores.html">주변 매장 찾기</a></li>
+                </ul>
+            </nav>
+            <div class="search-bar">
+                <input type="search" placeholder="Search">
+                <button>검색</button>
+            </div>
+            <div class="user-actions">
+                <button id="logout-button">로그아웃</button>
+                <a href="pages/profile.html" id="auth-link">
+                    <button class="profile-button" id="auth-button">프로필</button>
+                </a>
+            </div>
         </div>
-    </div></header>
+    </header>
 
     <!-- 배경 이미지 섹션 -->
     <div class="background-image">
@@ -463,7 +484,7 @@
             </div>
         </div>
 
-        <hr class="divider">    <!-- 점선 구분선 -->
+        <hr class="divider"> <!-- 점선 구분선 -->
 
         <div class="cocktail-section">
             <div class="cocktail-grid" id="user-liquors">
@@ -494,4 +515,3 @@
 
 
 </html>
-
