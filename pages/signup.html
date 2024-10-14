@@ -158,10 +158,18 @@
             margin-bottom: 1rem;
         }
 
+        /* 푸터 스타일 */
         footer {
-            background-color: #eeeeee;
-            padding: 1rem;
-            border-top: 1px solid #317c77;
+            background-color: var(--primary-color);
+            color: #fff;
+            padding: 2rem 0;
+            margin-top: 3rem;
+            position: fixed;
+            bottom: 0px;
+            left: 0px;
+            width: 100%;
+            
+            
         }
 
         .footer-content {
@@ -170,12 +178,18 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            padding: 0 1rem;
         }
 
         .team-members a {
-            color: #317c77;
+            color: #fff;
             text-decoration: none;
             margin-right: 1rem;
+            transition: color 0.3s ease;
+        }
+
+        .team-members a:hover {
+            color: var(--accent-color);
         }
 
     </style>
@@ -184,26 +198,40 @@
 </head>
 
 <body>
-    <header>
-        <!-- 로고 이미지 추가 -->
-        <a href="/" class="logo">
-            <img src="../src/images/001.png" alt="Logo">
-        </a>
-        <nav>
-            <a href="liquor_list.html">주류</a>
-            <a href="cocktail_list.html">칵테일</a>
-            <a href="bot.html">방텐더봇</a>
-            <a href="liquor_stores.html">주변 매장 찾기</a>
-        </nav>
-        <div class="search-bar">
-            <input type="search" placeholder="Search">
-            <button>검색</button>
-        </div>
-        <div class="user">
-            <button id="logout-button" style="display: none;">로그아웃</button>
-            <a href="profile.html" id="auth-link">
-                <button class="profile-button" id="auth-button">프로필</button> <!-- 프로필 버튼에 텍스트 추가 -->
+    <<header>
+        <div class="header-content">
+            <a href="/" class="logo">
+                <img src="/src/images/002.png" alt="방텐더 로고">
             </a>
+            <nav>
+                <ul>
+                    <li>
+                        <a href="liquor_list.html">주류</a>
+                        <ul>
+                            <li><a href="pages/rum_list.html">럼</a></li>
+                            <li><a href="pages/liqueur_list.html">리큐르</a></li>
+                            <li><a href="pages/vodka_list.html">보드카</a></li>
+                            <li><a href="pages/brandy_list.html">브랜디</a></li>
+                            <li><a href="pages/whisky_list.html">위스키</a></li>
+                            <li><a href="pages/gin_list.html">진</a></li>
+                            <li><a href="pages/other_list.html">기타</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="cocktail_list.html">칵테일</a></li>
+                    <li><a href="bot.html">방텐더봇</a></li>
+                    <li><a href="liquor_stores.html">주변 매장 찾기</a></li>
+                </ul>
+            </nav>
+            <div class="search-bar">
+                <input type="search" placeholder="검색...">
+                <button>검색</button>
+            </div>
+            <div class="user-actions">
+                <button id="logout-button">로그아웃</button>
+                <a href="pages/profile.html" id="auth-link">
+                <button id="auth-button" class="profile-button">프로필</button>
+</a>
+            </div>
         </div>
     </header>
 

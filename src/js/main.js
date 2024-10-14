@@ -1,13 +1,12 @@
 import { logoutUser } from './logout.js';
 import { searchBar } from './search_bar.js';
 
-document.addEventListener('DOMContentLoaded', async function () {
+document.addEventListener('DOMContentLoaded', function () {
     const authLink = document.getElementById('auth-link');
     const authButton = document.getElementById('auth-button');
     const logoutButton = document.getElementById('logout-button');
 
     const token = localStorage.getItem('access_token');
-
     if (token) {
         try {
             // 유저가 인증된 경우
