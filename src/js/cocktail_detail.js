@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', async function () {
         }
 
         const cocktail = await response.json();
-        const mediaUrl = `http://localhost:8000${cocktail.img}`;
+        const mediaUrl = `${cocktail.img}`;
 
         // 칵테일 정보를 페이지에 표시
         document.getElementById('cocktail-name').textContent = cocktail.name;
