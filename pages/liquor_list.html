@@ -243,6 +243,20 @@
             color: var(--secondary-color);
         }
 
+        h1{
+            display: block;
+        font-size: 2em;
+        margin-block-start: 0.67em;
+        margin-block-end: 0.67em;
+        margin-inline-start: 0px;
+        margin-inline-end: 0px;
+        font-weight: bold;
+        unicode-bidi: isolate;
+        position: relative;
+        top: 50px;
+
+        }
+
         /* 그리드 레이아웃 설정 */
         .liquor-grid {
             display: grid;
@@ -252,7 +266,10 @@
             /* 주류 항목 사이의 간격 */
             max-width: 1200px;
             margin: 0 auto;
-            padding: 20px;
+            padding: 40px;
+            position: relative;
+            top: 50px;
+            padding-bottom: 170px;
         }
 
         /* 각 주류 항목 스타일 */
@@ -283,19 +300,10 @@
             background-color: var(--primary-color);
             color: #fff;
             padding: 2rem 0;
-<<<<<<< HEAD
             margin-top: 3rem;
-            position: relative;
+            position: fixed;
             bottom: 0;
-            width: 100%;
-            
-            
-=======
-            position: relative;
-            bottom: 0px;
-
-
->>>>>>> dev
+            width: 100%
         }
 
         .footer-content {
@@ -331,15 +339,6 @@
                     <li>
                         <a href="liquor_list.html">주류</a> <!-- '주류' 상위 링크는 liquor_list.html로 이동 -->
                         <ul>
-<<<<<<< HEAD
-                            <li><a href="rum_list.html">럼</a></li>
-                            <li><a href="liqueur_list.html">리큐르</a></li>
-                            <li><a href="vodka_list.html">보드카</a></li>
-                            <li><a href="brandy_list.html">브랜디</a></li>
-                            <li><a href="whisky_list.html">위스키</a></li>
-                            <li><a href="gin_list.html">진</a></li>
-                            <li><a href="other_list.html">기타</a></li>
-=======
                             <li><a href="liquor_list.html" class="category-link" data-classification="럼">럼</a>
                             </li>
                             <li><a href="liquor_list.html" class="category-link" data-classification="리큐르">리큐르</a>
@@ -354,7 +353,6 @@
                             </li>
                             <li><a href="liquor_list.html" class="category-link" data-classification="others">기타</a>
                             </li>
->>>>>>> dev
                         </ul>
                     </li>
                     <li><a href="cocktail_list.html">칵테일</a></li>

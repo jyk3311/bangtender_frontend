@@ -23,7 +23,7 @@
             padding: 0;
             box-sizing: border-box;
         }
-<<<<<<< HEAD
+
         
         /* 폰트 임포트 */
         /* 숙명눈꽃체 (임시) */
@@ -48,34 +48,6 @@
             font-style: normal;
         }
 
-=======
-
-        /* 폰트 임포트 */
-        /* 숙명눈꽃체 (임시)*/
-        @font-face {
-            font-family: 'SMUSnowflake-Bold';
-            src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/2409-2@1.0/SMUSnowflake-Bold.woff2') format('woff2');
-            font-weight: 700;
-            font-style: normal;
-        }
-
-        /* 조선일보명조체 */
-        @font-face {
-            font-family: 'Chosunilbo_myungjo';
-            src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/Chosunilbo_myungjo.woff') format('woff');
-            font-weight: normal;
-            font-style: normal;
-        }
-
-        /* 에스코어드림 */
-        @font-face {
-            font-family: 'S-CoreDream-3Light';
-            src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-3Light.woff') format('woff');
-            font-weight: normal;
-            font-style: normal;
-        }
-
->>>>>>> dev
         body {
             font-family: 'Noto Sans KR', sans-serif;
             background-color: var(--background-color);
@@ -114,10 +86,6 @@
 
         /* 내비게이션 스타일 */
         nav ul {
-<<<<<<< HEAD
-=======
-
->>>>>>> dev
             display: flex;
             list-style-type: none;
             padding: 0;
@@ -157,12 +125,8 @@
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
         }
 
-<<<<<<< HEAD
+
         nav ul li:hover > ul {
-=======
-        /* 마우스 커서가 상위 항목에 올라가면 하위 항목이 표시 */
-        nav ul li:hover>ul {
->>>>>>> dev
             display: block;
         }
 
@@ -178,22 +142,15 @@
         .search-bar {
             display: flex;
             align-items: center;
-            margin-right: 1rem;
-<<<<<<< HEAD
-=======
-            /* 로그아웃/프로필 버튼과의 간격 조정 */
->>>>>>> dev
+            margin-right: 1rem;         /* 로그아웃/프로필 버튼과의 간격 조정 */
+
         }
 
         .search-bar input {
             padding: 0.5rem;
             border: 1px solid var(--primary-color);
             border-radius: 20px 0 0 20px;
-            outline: none;
-<<<<<<< HEAD
-=======
-            /* 선택 시 윤곽선 제거 */
->>>>>>> dev
+            outline: none;          /* 선택 시 윤곽선 제거 */
         }
 
         .search-bar button {
@@ -210,22 +167,15 @@
             background-color: var(--primary-color);
         }
 
-<<<<<<< HEAD
-        /* 네브바 버튼 스타일 */
-        .nav-button {
-            font-family: 'S-CoreDream-3Light';
-=======
         /* 버튼 스타일 */
         .user-actions {
             display: flex;
             align-items: center;
-
         }
 
 
         .user-actions button {
 
->>>>>>> dev
             color: var(--dark-bg-color);
             border: none;
             padding: 0.5rem 1rem;
@@ -233,13 +183,8 @@
             border-radius: 20px;
             cursor: pointer;
             transition: all 0.3s ease;
-            font-weight: 800;
-<<<<<<< HEAD
-            background-color: var(--light-text-color);
-=======
-            /* 버튼 텍스트 굵기 조절*/
+            font-weight: 800;          /* 버튼 텍스트 굵기 조절*/
             font-family: 'S-CoreDream-3Light';
->>>>>>> dev
         }
 
         .nav-button:hover {
@@ -247,7 +192,7 @@
             color: var(--light-text-color);
         }
 
-<<<<<<< HEAD
+
         /* 본문 중앙 배치 */
         main {
             max-width: 800px; /* 중앙 배치 */
@@ -256,24 +201,6 @@
             background-color: #ffffff; /* 본문 배경은 흰색 */
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* 그림자 추가 */
             border-radius: 8px; /* 모서리 둥글게 */
-=======
-        /* 프로필 버튼 아이콘 스타일 */
-        .profile-button {
-            background-color: var(--light-text-color);
-            /* 배경색 제거 */
-            border: none;
-            padding: 0.5rem 1rem;
-            margin-left: 0.5rem;
-            border-radius: 20px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            color: var(--dark-bg-color);
-        }
-
-        .profile-button:hover {
-            background-color: var(--primary-color);
-            color: var(--light-text-color);
->>>>>>> dev
         }
 
         h1 {
@@ -332,11 +259,6 @@
             position: relative;
             bottom: 0;
             width: 100%;
-<<<<<<< HEAD
-=======
-
-
->>>>>>> dev
         }
 
         .footer-content {
@@ -401,11 +323,11 @@
             <div class="user-actions">
                 <button id="logout-button" class="nav-button">로그아웃</button>
                 <a href="profile.html" id="auth-link">
-<<<<<<< HEAD
+
                     <button id="auth-button" class="nav-button">프로필</button>
-=======
-                    <button id="auth-button" class="profile-button">프로필</button>
->>>>>>> dev
+
+                    <!-- <button id="auth-button" class="profile-button">프로필</button> -->
+
                 </a>
             </div>
         </div>
