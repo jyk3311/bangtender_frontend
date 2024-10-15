@@ -27,8 +27,8 @@ document.addEventListener('DOMContentLoaded', async function () {
             throw new Error('주류 정보를 불러오지 못했습니다.');
         }
         const liquor = await response.json();
-        console.log(liquor.is_superuser)
-        const mediaUrl = `http://43.203.219.114${liquor.img}`;
+        const mediaUrl = `${liquor.img}`;
+        console.log(mediaUrl)
 
         // 주류 정보를 페이지에 표시
         document.getElementById('liquor-name').textContent = liquor.name;
