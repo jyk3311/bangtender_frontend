@@ -186,29 +186,30 @@
         .profile-button {
             background-color: var(--light-text-color); /* 배경색 제거 */
             border: none;
-    padding: 0.5rem 1rem;
-    margin-left: 0.5rem;
-    border-radius: 20px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-            color: var(--dark-bg-color);
+            padding: 0.5rem 1rem;
+            margin-left: 0.5rem;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+                    color: var(--dark-bg-color);
+                }
+                .profile-button:hover {
+            background-color: var(--primary-color);
+            color: var(--light-text-color);
         }
-        .profile-button:hover {
-    background-color: var(--primary-color);
-    color: var(--light-text-color);
-}
 
 
 main {
+    font-family: 'S-CoreDream-3Light';
     flex-grow: 1;
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 2rem;
+    padding: 4rem;
 }
 
 .login-container {
-    background-color: #92c1bd;
+    background-color: var( --secondary-color);
     padding: 2rem;
     border-radius: 10px;
     width: 100%;
@@ -218,7 +219,7 @@ main {
 }
 
 h2 {
-    color: #317c77;
+    color: var(--light-text-color);
     margin-bottom: 1.5rem;
 }
 
@@ -226,10 +227,11 @@ h2 {
     margin-bottom: 1rem;
     text-align: left;
 }
-
+/* 아이디, 비밀번호 텍스트 스타일 */
 label {
+    
     font-size: 1rem;
-    color: #317c77;
+    color: var(--light-text-color);
     display: block;
     margin-bottom: 0.5rem;
 }
@@ -237,13 +239,14 @@ label {
 input {
     width: 100%;
     padding: 0.5rem;
-    border: 1px solid #317c77;
+    border: 1px solid var(--light-text-color);
     border-radius: 4px;
 }
 
-.login-button {
-    background-color: #317c77;
-    color: white;
+.login-button {font-family: 'S-CoreDream-3Light';
+    background-color: var(--background-color);
+    color: var(--dark-bg-color);
+    font: weight 1000px;
     border: none;
     padding: 0.75rem;
     border-radius: 4px;
@@ -272,8 +275,10 @@ input {
 }
 
 .signup-button {
-    background-color: #317c77;
-    color: white;
+    font-family: 'S-CoreDream-3Light';
+    background-color: var(--background-color);
+    color: var(--dark-bg-color);
+    font: weight 1000px;
     border: none;
     padding: 0.75rem 1rem;
     border-radius: 4px;
@@ -390,7 +395,8 @@ footer {
             <!-- 회원가입 버튼 추가 -->
             <div class="signup-link">
                 <button class="signup-button">
-                    <a href="signup.html">회원가입</a> 
+                    <a href="signup.html">
+                        <font color="#2c3e50"> 회원가입</font></a> 
                 </button>
             </div>
         </div>
