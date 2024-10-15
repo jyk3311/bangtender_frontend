@@ -218,9 +218,10 @@
 
         /* 메인 컨테이너 스타일 */
         main {
+            font-family: 'S-CoreDream-3Light';
             max-width: 800px;
-            margin: 2rem auto;
-            padding: 2rem;
+            margin: 6rem auto;
+            padding: 40px;
             background-color: white;
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -228,10 +229,15 @@
         }
 
         h1 {
+            font-family: 'SMUSnowflake-Bold';
             font-size: 2rem;
             color: #264653;
             margin-bottom: 1.5rem;
             text-align: center;
+        }
+        form {
+            margin-top: 3rem; /* 폼 전체의 상단 여백을 추가 */
+            margin-bottom: 1.5rem;
         }
 
         /* 폼 스타일 */
@@ -256,6 +262,7 @@
         /* 우편번호 버튼 스타일 */
         button[type="button"],
         button[type="submit"] {
+            font-family: 'S-CoreDream-3Light';
             background-color: #264653;
             color: white;
             border: none;
@@ -266,6 +273,7 @@
             transition: background-color 0.3s;
             display: inline-block;
             margin-top: 0.5rem;
+            margin-bottom: 60px;     /* 버튼 밑에 공간 주기 */
         }
 
         button[type="button"]:hover,
@@ -276,7 +284,7 @@
         /* 검색 및 드롭다운 스타일 */
         .search {
             position: relative;
-            margin-bottom: 1.5rem;
+            margin-bottom: 2.5rem;
         }
 
         .search input[type="text"] {
