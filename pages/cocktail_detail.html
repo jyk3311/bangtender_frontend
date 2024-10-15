@@ -23,50 +23,58 @@
             padding: 0;
             box-sizing: border-box;
         }
-        /* 폰트 임포트 */
-    /* 숙명눈꽃체 (임시)*/
-    @font-face {
-    font-family: 'SMUSnowflake-Bold';
-    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/2409-2@1.0/SMUSnowflake-Bold.woff2') format('woff2');
-    font-weight: 700;
-    font-style: normal;
-}
-/* 조선일보명조체 */
-@font-face {
-    font-family: 'Chosunilbo_myungjo';
-    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/Chosunilbo_myungjo.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-}
-/* 에스코어드림 */
-@font-face {
-    font-family: 'S-CoreDream-3Light';
-    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-3Light.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-}
 
-body {
+        /* 폰트 임포트 */
+        /* 숙명눈꽃체 (임시)*/
+        @font-face {
+            font-family: 'SMUSnowflake-Bold';
+            src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/2409-2@1.0/SMUSnowflake-Bold.woff2') format('woff2');
+            font-weight: 700;
+            font-style: normal;
+        }
+
+        /* 조선일보명조체 */
+        @font-face {
+            font-family: 'Chosunilbo_myungjo';
+            src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/Chosunilbo_myungjo.woff') format('woff');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        /* 에스코어드림 */
+        @font-face {
+            font-family: 'S-CoreDream-3Light';
+            src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-3Light.woff') format('woff');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        body {
             font-family: 'Noto Sans KR', sans-serif;
             background-color: var(--background-color);
             color: var(--dark-bg-color);
-            line-height: 1.6; /* 텍스트 줄 간격 조정 */
+            line-height: 1.6;
+            /* 텍스트 줄 간격 조정 */
         }
 
         header {
             font-family: 'S-CoreDream-3Light';
             background-color: var(--primary-color);
             padding: 14px 8px 8px 20px;
-            position: sticky; /* 스크롤 시에도 상단에 고정 */
+            position: sticky;
+            /* 스크롤 시에도 상단에 고정 */
             top: 0;
-            z-index: 1000; /* 다른 요소 위에 표시 */
+            z-index: 1000;
+            /* 다른 요소 위에 표시 */
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
         }
 
         .header-content {
             display: flex;
-            justify-content: space-between; /* 좌우로 배치 */
-            align-items: center; /* 세로 정렬 가운데 */
+            justify-content: space-between;
+            /* 좌우로 배치 */
+            align-items: center;
+            /* 세로 정렬 가운데 */
             max-width: 1200px;
             margin: 0 auto;
         }
@@ -78,7 +86,7 @@ body {
 
         /* 내비게이션 스타일 */
         nav ul {
-            
+
             display: flex;
             list-style-type: none;
             padding: 0;
@@ -100,15 +108,18 @@ body {
         }
 
         nav a:hover {
-            color: var(--accent-color); /* 마우스 커서 가면 해당 색상으로 변경 */
+            color: var(--accent-color);
+            /* 마우스 커서 가면 해당 색상으로 변경 */
         }
 
         nav ul ul {
-            display: none; /* 드롭다운 메뉴 숨김 */
+            display: none;
+            /* 드롭다운 메뉴 숨김 */
             position: absolute;
             top: 100%;
             left: 0;
-            background-color: var(--secondary-color); /* 배경색 설정 */
+            background-color: var(--secondary-color);
+            /* 배경색 설정 */
             border-radius: 4px;
             padding: 0.5rem 0;
             min-width: 150px;
@@ -116,7 +127,7 @@ body {
         }
 
         /* 마우스 커서가 상위 항목에 올라가면 하위 항목이 표시 */
-        nav ul li:hover > ul {
+        nav ul li:hover>ul {
             display: block;
         }
 
@@ -134,18 +145,20 @@ body {
         .search-bar {
             display: flex;
             align-items: center;
-            margin-right: 1rem; /* 로그아웃/프로필 버튼과의 간격 조정 */
+            margin-right: 1rem;
+            /* 로그아웃/프로필 버튼과의 간격 조정 */
         }
 
         .search-bar input {
             padding: 0.5rem;
             border: 1px solid var(--primary-color);
             border-radius: 20px 0 0 20px;
-            outline: none; /* 선택 시 윤곽선 제거 */
+            outline: none;
+            /* 선택 시 윤곽선 제거 */
         }
 
         .search-bar button {
-            background-color: var(--accent-color); 
+            background-color: var(--accent-color);
             color: var(--light-text-color);
             border: none;
             padding: 0.5rem 1rem;
@@ -155,19 +168,19 @@ body {
         }
 
         .search-bar button:hover {
-            background-color: var(--primary-color); 
+            background-color: var(--primary-color);
         }
 
         /* 버튼 스타일 */
         .user-actions {
             display: flex;
             align-items: center;
-            
+
         }
 
 
         .user-actions button {
-            
+
             color: var(--dark-bg-color);
             border: none;
             padding: 0.5rem 1rem;
@@ -175,7 +188,8 @@ body {
             border-radius: 20px;
             cursor: pointer;
             transition: all 0.3s ease;
-            font-weight: 800;          /* 버튼 텍스트 굵기 조절*/
+            font-weight: 800;
+            /* 버튼 텍스트 굵기 조절*/
             font-family: 'S-CoreDream-3Light';
         }
 
@@ -186,19 +200,21 @@ body {
 
         /* 프로필 버튼 아이콘 스타일 */
         .profile-button {
-            background-color: var(--light-text-color); /* 배경색 제거 */
+            background-color: var(--light-text-color);
+            /* 배경색 제거 */
             border: none;
-    padding: 0.5rem 1rem;
-    margin-left: 0.5rem;
-    border-radius: 20px;
-    cursor: pointer;
-    transition: all 0.3s ease;
+            padding: 0.5rem 1rem;
+            margin-left: 0.5rem;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
             color: var(--dark-bg-color);
         }
+
         .profile-button:hover {
-    background-color: var(--primary-color);
-    color: var(--light-text-color);
-}
+            background-color: var(--primary-color);
+            color: var(--light-text-color);
+        }
 
 
         /* container 스타일 */
@@ -287,7 +303,7 @@ body {
         }
 
         /* 푸터 스타일 */
-footer {
+        footer {
             background-color: var(--primary-color);
             color: #fff;
             padding: 2rem 0;
@@ -295,8 +311,8 @@ footer {
             position: relative;
             bottom: 0px;
             height: 10rem;
-            
-            
+
+
         }
 
         .footer-content {
@@ -318,7 +334,6 @@ footer {
         .team-members a:hover {
             color: var(--accent-color);
         }
-
     </style>
 </head>
 
@@ -362,40 +377,44 @@ footer {
             <div class="user-actions">
                 <button id="logout-button">로그아웃</button>
                 <a href="profile.html" id="auth-link">
-                <button id="auth-button" class="profile-button">프로필</button>
-</a>
+                    <button id="auth-button" class="profile-button">프로필</button>
+                </a>
             </div>
         </div>
     </header>
 
     <main>
-            <button id="bookmark-button" class="profile-button"></button>
-            <div class="container" id="cocktail-detail">
-                <div class="main-content">
-                    <div class="vertical-text"><span id="cocktail-name-vertical"></span></div>
-                    <div class="content-wrapper">
-                        <!-- 이미지 삽입 -->
-                        <div class="cocktail-img">
-                            <img id="cocktail-img" src="" alt="칵테일 이미지">
-                        </div>
-                        <!-- 칵테일 디테일 정보 -->
-                        <div class="cocktail-info">
-                            <p id="cocktail-name"></p>
-                            <p><span id="cocktail-ingredients"></span></p>
-                            <p><span id="cocktail-taste"></span></p>
-                            <p>ABV: <span id="cocktail-abv"></span></p>
-                            <p><span id="cocktail-created-at"></span></p>
-                            <p><span id="cocktail-updated-at"></span></p>
-                        </div>
+        <button id="bookmark-button" class="profile-button"></button>
+        <div class="container" id="cocktail-detail">
+            <div class="main-content">
+                <div class="vertical-text"><span id="cocktail-name-vertical"></span></div>
+                <div class="content-wrapper">
+                    <!-- 이미지 삽입 -->
+                    <div class="cocktail-img">
+                        <img id="cocktail-img" src="" alt="칵테일 이미지">
+                    </div>
+                    <!-- 칵테일 디테일 정보 -->
+                    <div class="cocktail-info">
+                        <p id="cocktail-name"></p>
+                        <p><span id="cocktail-ingredients"></span></p>
+                        <p><span id="cocktail-taste"></span></p>
+                        <p>ABV: <span id="cocktail-abv"></span></p>
+                        <p><span id="cocktail-created-at"></span></p>
+                        <p><span id="cocktail-updated-at"></span></p>
                     </div>
                 </div>
-                <!-- 설명(내용) -->
-                <div class="cocktail-content">
-                    <h4>제조법:</h4>
-                    <p><span id="cocktail-content"></span></p>
-                </div>
             </div>
-    </main>s
+            <!-- 설명(내용) -->
+            <div class="cocktail-content">
+                <h4>제조법:</h4>
+                <p><span id="cocktail-content"></span></p>
+            </div>
+            <div id="admin-actions" style="display: none;">
+                <button id="edit-button">수정</button>
+                <button id="delete-button">삭제</button>
+            </div>
+        </div>
+    </main>
     <footer>
         <div class="footer-content">
             <div class="team-members">

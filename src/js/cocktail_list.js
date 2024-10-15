@@ -1,19 +1,38 @@
 import { navbar } from './navbar.js';
 
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', async () => {
     navbar();
 
     let nextUrl = 'http://43.203.219.114/api/v1/cocktail/';
     let isLoading = false;
+    const addCocktailButton = document.getElementById('add-cocktail-btn');
 
-    // API에서 칵테일 정보를 가져오는 함수
+    // Access Token 포함 여부 확인 및 칵테일 목록 가져오기
     async function fetchCocktails(url) {
+        const headers = { 'Content-Type': 'application/json' };
+        const token = localStorage.getItem('access_token');
+        if (token) {
+            headers['Authorization'] = `Bearer ${token}`;
+        }
+
         try {
-            const response = await fetch(url);
+            const response = await fetch(url, { headers: headers });
             if (!response.ok) {
                 throw new Error('Network response was not ok');
             }
-            return await response.json();
+            const data = await response.json();
+
+            // is_superuser에 따라 게시물 등록 버튼 처리
+            if (data.is_superuser) {
+                addCocktailButton.style.display = 'block';
+                addCocktailButton.addEventListener('click', () => {
+                    window.location.href = '/pages/create_cocktail.html';
+                });
+            } else {
+                addCocktailButton.style.display = 'none';
+            }
+
+            return data;
         } catch (error) {
             console.error('Error fetching cocktails:', error);
         }
@@ -36,7 +55,7 @@ document.addEventListener('DOMContentLoaded', () => {
         document.querySelectorAll('.cocktail-img').forEach(img => {
             img.addEventListener('click', function () {
                 const cocktailId = this.getAttribute('data-id');
-                window.location.href = `/pages/cocktail_detail.html?id=${cocktailId}`;  // 상세 페이지로 이동
+                window.location.href = `/pages/cocktail_detail.html?id=${cocktailId}`; // 상세 페이지로 이동
             });
         });
     }
