@@ -360,9 +360,6 @@
             <button id="my-bookmark">
                 <a href="my_bookmark.html" style="color: white; text-decoration: none;">내 북마크 목록 보기</a>
             </button>
-            <button id="admin-button" style="display: none;">
-                <a href="admin.html" style="color: white; text-decoration: none;">관리자 페이지로 이동</a>
-            </button>
         </div>
     </main>
 
@@ -407,11 +404,6 @@
                     document.getElementById('name').textContent = data.name;
                     document.getElementById('email').textContent = data.email;
                     document.getElementById('address').textContent = data.address;
-
-                    if (data.is_superuser) {
-                        const adminButton = document.getElementById('admin-button');
-                        adminButton.style.display = 'inline-block';
-                    }
                 } else {
                     alert('프로필 정보를 불러오는 데 실패했습니다.');
                 }
