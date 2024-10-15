@@ -1,4 +1,8 @@
+import { navbar } from './navbar.js';
+
 document.addEventListener('DOMContentLoaded', async () => {
+    navbar();
+
     const urlParams = new URLSearchParams(window.location.search);
     const searchQuery = urlParams.get('query');
 
@@ -8,7 +12,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
 
     try {
-        const response = await fetch(`http://localhost:8000/api/v1/subcontents/search/?message=${searchQuery}`, {
+        const response = await fetch(`http://43.203.219.114/api/v1/subcontents/search/?message=${searchQuery}`, {
             method: 'GET',
         });
 

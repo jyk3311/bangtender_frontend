@@ -1,4 +1,8 @@
+import { navbar } from './navbar.js';
+
 document.getElementById('signup-form').addEventListener('submit', async function (e) {
+    navbar();
+
     e.preventDefault();
 
     const username = document.getElementById('username').value;
@@ -18,7 +22,7 @@ document.getElementById('signup-form').addEventListener('submit', async function
     };
 
     try {
-        const response = await fetch('http://localhost:8000/api/v1/accounts/', {
+        const response = await fetch('http://43.203.219.114/api/v1/accounts/', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

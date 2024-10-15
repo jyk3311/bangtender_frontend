@@ -13,33 +13,41 @@
             padding: 0;
             background-color: #eeeeee;
         }
+
         header {
             padding: 1rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
-                /* 로고 이미지 스타일 */
-                .logo img {
-            height: 60px; /* 네브바에 적합한 크기 설정 */
-            width: auto;  /* 비율 유지 */
+
+        /* 로고 이미지 스타일 */
+        .logo img {
+            height: 60px;
+            /* 네브바에 적합한 크기 설정 */
+            width: auto;
+            /* 비율 유지 */
         }
+
         nav a {
             color: #317c77;
             text-decoration: none;
             margin-right: 1rem;
             white-space: nowrap;
         }
+
         .nav-divider {
             border: 0;
             border-top: 1px solid #2a9d8f;
             margin-bottom: 1.5rem;
         }
+
         .search-bar input {
             padding: 0.5rem;
             border: none;
             border-radius: 20px 0 0 20px;
         }
+
         .search-bar button {
             background-color: #264653;
             color: white;
@@ -48,6 +56,7 @@
             border-radius: 0 20px 20px 0;
             cursor: pointer;
         }
+
         .profile-button {
             background-color: #264653;
             color: white;
@@ -56,22 +65,27 @@
             border-radius: 20px;
             cursor: pointer;
         }
+
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 20px;
         }
+
         #search-results {
             margin-top: 2rem;
         }
+
         h2 {
             color: #264653;
             margin-bottom: 1rem;
         }
+
         ul {
             list-style-type: none;
             padding: 0;
         }
+
         li {
             background-color: #eeeeee;
             padding: 10px;
@@ -79,17 +93,20 @@
             border-radius: 4px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
+
         /* 주류/칵테일 목록 그리드 */
         .result-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             gap: 2rem;
         }
+
         footer {
             background-color: #eeeeee;
             padding: 1rem;
             border-top: 1px solid #317c77;
         }
+
         .footer-content {
             max-width: 1200px;
             margin: 0 auto;
@@ -97,6 +114,7 @@
             justify-content: space-between;
             align-items: center;
         }
+
         .team-members a {
             color: #317c77;
             text-decoration: none;
@@ -144,8 +162,8 @@
             <div class="user-actions">
                 <button id="logout-button">로그아웃</button>
                 <a href="profile.html" id="auth-link">
-                <button id="auth-button" class="profile-button">프로필</button>
-</a>
+                    <button id="auth-button" class="profile-button">프로필</button>
+                </a>
             </div>
         </div>
     </header>
@@ -174,7 +192,7 @@
         </div>
     </footer>
 
-    <script src="../src/js/search.js" defer></script>
+    <script type="module" src="../src/js/search.js" defer></script>
 </body>
 
 </html>
