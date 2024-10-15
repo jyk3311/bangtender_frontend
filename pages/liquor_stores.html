@@ -357,7 +357,13 @@
         </div>
     </footer>
 
-    <script>
+    <script type="module">
+        import { navbar } from '../src/js/navbar.js';
+
+        document.addEventListener('DOMContentLoaded', () => {
+            navbar();
+        });
+
         function loadKakaoMapSDK() {
             const script = document.createElement("script");
             script.src = `//dapi.kakao.com/v2/maps/sdk.js?appkey=${config.apikey}&libraries=services&autoload=false`;
@@ -370,7 +376,7 @@
         }
 
         function initMap() {
-            fetch('http://localhost:8000/api/v1/subcontents/map/', {
+            fetch('hhttp://43.203.219.114/api/v1/subcontents/map/', {
                 method: 'GET',
                 headers: {
                     'Authorization': 'Bearer ' + localStorage.getItem('access_token')

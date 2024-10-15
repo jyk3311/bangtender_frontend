@@ -1,3 +1,9 @@
+import { navbar } from './navbar.js';
+
+document.addEventListener('DOMContentLoaded', () => {
+    navbar();
+});
+
 const chatMessages = document.getElementById('chat-messages');
 const userInput = document.getElementById('user-input');
 const sendButton = document.getElementById('send-button');
@@ -20,7 +26,7 @@ function streamMessage(message, role, messageDiv) {
 function sendMessageToBot(message) {
     const token = localStorage.getItem('access_token');  // 인증 토큰을 가져옴
 
-    fetch('http://localhost:8000/api/v1/subcontents/bangtenderbot/', {
+    fetch('http://43.203.219.114/api/v1/subcontents/bangtenderbot/', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',

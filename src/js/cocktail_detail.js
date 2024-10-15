@@ -1,10 +1,14 @@
+import { navbar } from './navbar.js';
+
 document.addEventListener('DOMContentLoaded', async function () {
+    navbar();
+
     const urlParams = new URLSearchParams(window.location.search);
     const cocktailId = urlParams.get('id');
     const bookmarkButton = document.getElementById('bookmark-button');
 
     try {
-        const response = await fetch(`http://localhost:8000/api/v1/cocktail/${cocktailId}/`);
+        const response = await fetch(`http://43.203.219.114/api/v1/cocktail/${cocktailId}/`);
         if (!response.ok) {
             throw new Error('Failed to load cocktail details');
         }

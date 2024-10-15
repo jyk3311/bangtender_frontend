@@ -37,7 +37,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             const cocktailItem = document.createElement('div');
             cocktailItem.classList.add('cocktail-item');
             const imgElement = document.createElement('img');
-            imgElement.src = `http://localhost:8000${cocktail.img}`;
+            imgElement.src = `http://43.203.219.114/${cocktail.img}`;
             imgElement.alt = cocktail.name;
             imgElement.addEventListener('click', () => {
                 window.location.href = `pages/cocktail_detail.html?id=${cocktail.id}`;  // 상세 페이지로 이동
@@ -56,7 +56,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                 const liquorItem = document.createElement('div');
                 liquorItem.classList.add('cocktail-item');
                 const imgElement = document.createElement('img');
-                imgElement.src = `http://localhost:8000${liquor.img}`;
+                imgElement.src = `http://43.203.219.114/${liquor.img}`;
                 imgElement.alt = liquor.name;
                 imgElement.addEventListener('click', () => {
                     window.location.href = `pages/liquor_detail.html?id=${liquor.id}`;  // 상세 페이지로 이동

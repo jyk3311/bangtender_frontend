@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', async function () {
 
     // 주류 정보 불러오기
     try {
-        const response = await fetch(`http://localhost:8000/api/v1/liquor/${liquorId}/`);
+        const response = await fetch(`http://43.203.219.114/api/v1/liquor/${liquorId}/`);
         if (!response.ok) {
             throw new Error('Failed to fetch liquor details');
         }

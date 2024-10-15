@@ -316,8 +316,12 @@ font-style: normal;
     </body>
 
 
-    <script>
+    <script type="module">
+        import { navbar } from '../src/js/navbar.js';
+
         document.addEventListener('DOMContentLoaded', async function () {
+            navbar();
+            
             const token = localStorage.getItem('access_token');
             if (!token) {
                 alert("로그인이 필요합니다.");
@@ -331,7 +335,7 @@ font-style: normal;
                 const userId = decodedToken.user_id;
 
                 // 북마크 데이터 요청
-                const response = await fetch(`http://localhost:8000/api/v1/accounts/${userId}/bookmark/`, {
+                const response = await fetch(`http://43.203.219.114/api/v1/accounts/${userId}/bookmark/`, {
                     method: 'GET',
                     headers: {
                         'Authorization': `Bearer ${token}`,
@@ -360,7 +364,7 @@ font-style: normal;
                         const liquorItem = document.createElement('div');
                         liquorItem.classList.add('bookmark-item');
                         const imgElement = document.createElement('img');
-                        imgElement.src = `http://localhost:8000${liquor.img}`;
+                        imgElement.src = `http://43.203.219.114${liquor.img}`;
                         imgElement.alt = liquor.name;
                         imgElement.addEventListener('click', () => {
                             window.location.href = `liquor_detail.html?id=${liquor.id}`;  // 주류 상세 페이지로 이동
@@ -376,7 +380,7 @@ font-style: normal;
                         const cocktailItem = document.createElement('div');
                         cocktailItem.classList.add('bookmark-item');
                         const imgElement = document.createElement('img');
-                        imgElement.src = `http://localhost:8000${cocktail.img}`;
+                        imgElement.src = `http://43.203.219.114${cocktail.img}`;
                         imgElement.alt = cocktail.name;
                         imgElement.addEventListener('click', () => {
                             window.location.href = `cocktail_detail.html?id=${cocktail.id}`;  // 칵테일 상세 페이지로 이동

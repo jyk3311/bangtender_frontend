@@ -9,10 +9,19 @@ export function navbar() {
 
     const token = localStorage.getItem('access_token');
 
+    // 현재 경로에서 'pages' 폴더가 있는지 확인
+    let currentPath = window.location.pathname;
+    let profilePagePath = currentPath.includes('/pages/')
+        ? 'profile.html'  // 이미 'pages' 폴더 안에 있을 때
+        : 'pages/profile.html';  // 'pages' 폴더 밖에서 접근할 때
+    let loginPagePath = currentPath.includes('/pages/')
+        ? 'login.html'
+        : 'pages/login.html';
+
     if (token) {
         try {
             // 유저가 인증된 경우
-            authLink.href = `pages/profile.html`;  // 프로필 페이지로 이동
+            authLink.href = profilePagePath;  // 프로필 페이지로 이동
             authButton.textContent = '내 프로필';
             logoutButton.style.display = 'inline';  // 로그아웃 버튼 보이기
 
@@ -26,17 +35,23 @@ export function navbar() {
         }
     } else {
         // 유저가 인증되지 않은 경우
-        authLink.href = 'pages/login.html';  // 로그인 페이지로 링크
+        authLink.href = loginPagePath;  // 로그인 페이지로 링크
         authButton.textContent = '로그인';
         logoutButton.style.display = 'none';  // 로그아웃 버튼 숨기기
     }
 
-    // 주류 카테고리 클릭 이벤트 처리
     document.querySelectorAll('.category-link').forEach(link => {
         link.addEventListener('click', function (e) {
             e.preventDefault();  // 기본 동작 방지
             const classification = this.dataset.classification;  // data-classification 값을 가져옴
-            window.location.href = `pages/liquor_list.html?classification=${classification}`;  // 해당 분류에 맞는 주류 페이지로 이동
+
+            // 주류 목록 페이지 경로 설정
+            let liquorListPagePath = currentPath.includes('/pages/')
+                ? 'liquor_list.html'
+                : 'pages/liquor_list.html';
+
+            // 페이지 이동
+            window.location.href = `${liquorListPagePath}?classification=${classification}`;
         });
     });
 
