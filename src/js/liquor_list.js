@@ -3,7 +3,7 @@ import { navbar } from './navbar.js';
 document.addEventListener('DOMContentLoaded', () => {
     navbar();
 
-    let nextUrl = 'http://localhost:8000/api/v1/liquor/';
+    let nextUrl = 'http://43.203.219.114/api/v1/liquor/';
     let isLoading = false;
 
     // URL에서 쿼리 파라미터 가져오기 함수

@@ -1,11 +1,14 @@
+import { navbar } from './navbar.js';
+
 document.getElementById('post-form').addEventListener('submit', async (event) => {
+    navbar();
     event.preventDefault();
 
     const form = document.getElementById('post-form');
     const formData = new FormData(form);
 
     try {
-        const response = await fetch('http://localhost:8000/api/v1/liquor/', {
+        const response = await fetch('http://43.203.219.114/api/v1/liquor/', {
             method: 'POST',
             headers: {
                 'Authorization': 'Bearer ' + localStorage.getItem('access_token'),

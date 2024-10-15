@@ -1,4 +1,8 @@
+import { navbar } from './navbar.js';
+
 document.addEventListener('DOMContentLoaded', function () {
+    navbar();
+
     // 주류 게시물 관리 버튼 이벤트
     document.getElementById('create-liquor').addEventListener('click', function () {
         window.location.href = 'create_liquor.html';

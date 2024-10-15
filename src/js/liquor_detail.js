@@ -1,15 +1,19 @@
+import { navbar } from './navbar.js';
+
 document.addEventListener('DOMContentLoaded', async function () {
+    navbar();
+
     const urlParams = new URLSearchParams(window.location.search);
     const liquorId = urlParams.get('id');
     const bookmarkButton = document.getElementById('bookmark-button');
 
     try {
-        const response = await fetch(`http://localhost:8000/api/v1/liquor/${liquorId}/`);
+        const response = await fetch(`http://43.203.219.114/api/v1/liquor/${liquorId}/`);
         if (!response.ok) {
             throw new Error('주류 정보를 불러오지 못했습니다.');
         }
         const liquor = await response.json();
-        const mediaUrl = `http://localhost:8000${liquor.img}`;
+        const mediaUrl = `http://43.203.219.114${liquor.img}`;
 
         // 주류 정보를 페이지에 표시
         document.getElementById('liquor-name').textContent = liquor.name;
@@ -29,7 +33,7 @@ document.addEventListener('DOMContentLoaded', async function () {
         // 북마크 버튼 클릭 이벤트 처리
         bookmarkButton.addEventListener('click', async () => {
             try {
-                const bookmarkResponse = await fetch(`http://localhost:8000/api/v1/liquor/${liquorId}/bookmark/`, {
+                const bookmarkResponse = await fetch(`http://43.203.219.114/api/v1/liquor/${liquorId}/bookmark/`, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',

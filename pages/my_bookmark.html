@@ -305,25 +305,25 @@ main {
         </a>
         <nav>
             <ul>
-            <li>
-                <a href="pages/liquor_list.html">주류</a> <!-- '주류' 상위 링크는 liquor_list.html로 이동 -->
-                <ul>
-                    <li><a href="pages/liquor_list.html?classification=rum" class="category-link"
-                            data-classification="rum">럼</a></li>
-                    <li><a href="pages/liquor_list.html?classification=liqueur" class="category-link"
-                            data-classification="liqueur">리큐르</a></li>
-                    <li><a href="pages/liquor_list.html?classification=vodka" class="category-link"
-                            data-classification="vodka">보드카</a></li>
-                    <li><a href="pages/liquor_list.html?classification=brandy" class="category-link"
-                            data-classification="brandy">브랜디</a></li>
-                    <li><a href="pages/liquor_list.html?classification=whiskey" class="category-link"
-                            data-classification="whiskey">위스키</a></li>
-                    <li><a href="pages/liquor_list.html?classification=gin" class="category-link"
-                            data-classification="gin">진</a></li>
-                    <li><a href="pages/liquor_list.html?classification=others" class="category-link"
-                            data-classification="others">기타</a></li>
-                </ul>
-            </li>
+                <li>
+                    <a href="liquor_list.html">주류</a> <!-- '주류' 상위 링크는 liquor_list.html로 이동 -->
+                    <ul>
+                        <li><a href="liquor_list.html" class="category-link" data-classification="럼">럼</a>
+                        </li>
+                        <li><a href="liquor_list.html" class="category-link" data-classification="리큐르">리큐르</a>
+                        </li>
+                        <li><a href="liquor_list.html" class="category-link" data-classification="보드카">보드카</a>
+                        </li>
+                        <li><a href="liquor_list.html" class="category-link" data-classification="브랜디">브랜디</a>
+                        </li>
+                        <li><a href="liquor_list.html" class="category-link" data-classification="위스키">위스키</a>
+                        </li>
+                        <li><a href="liquor_list.html" class="category-link" data-classification="진">진</a>
+                        </li>
+                        <li><a href="liquor_list.html" class="category-link" data-classification="others">기타</a>
+                        </li>
+                    </ul>
+                </li>
             <!-- 칵테일 메뉴 -->
             <li><a href="pages/cocktail_list.html">칵테일</a></li>
 
@@ -392,8 +392,12 @@ main {
     </body>
 
 
-    <script>
+    <script type="module">
+        import { navbar } from '../src/js/navbar.js';
+
         document.addEventListener('DOMContentLoaded', async function () {
+            navbar();
+            
             const token = localStorage.getItem('access_token');
             if (!token) {
                 alert("로그인이 필요합니다.");
@@ -407,7 +411,7 @@ main {
                 const userId = decodedToken.user_id;
 
                 // 북마크 데이터 요청
-                const response = await fetch(`http://localhost:8000/api/v1/accounts/${userId}/bookmark/`, {
+                const response = await fetch(`http://43.203.219.114/api/v1/accounts/${userId}/bookmark/`, {
                     method: 'GET',
                     headers: {
                         'Authorization': `Bearer ${token}`,
@@ -436,7 +440,7 @@ main {
                         const liquorItem = document.createElement('div');
                         liquorItem.classList.add('bookmark-item');
                         const imgElement = document.createElement('img');
-                        imgElement.src = `http://localhost:8000${liquor.img}`;
+                        imgElement.src = `http://43.203.219.114${liquor.img}`;
                         imgElement.alt = liquor.name;
                         imgElement.addEventListener('click', () => {
                             window.location.href = `liquor_detail.html?id=${liquor.id}`;  // 주류 상세 페이지로 이동
@@ -452,7 +456,7 @@ main {
                         const cocktailItem = document.createElement('div');
                         cocktailItem.classList.add('bookmark-item');
                         const imgElement = document.createElement('img');
-                        imgElement.src = `http://localhost:8000${cocktail.img}`;
+                        imgElement.src = `http://43.203.219.114${cocktail.img}`;
                         imgElement.alt = cocktail.name;
                         imgElement.addEventListener('click', () => {
                             window.location.href = `cocktail_detail.html?id=${cocktail.id}`;  // 칵테일 상세 페이지로 이동
