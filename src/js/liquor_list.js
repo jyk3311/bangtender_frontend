@@ -1,25 +1,38 @@
 import { navbar } from './navbar.js';
 
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', async () => {
     navbar();
 
     let nextUrl = 'http://43.203.219.114/api/v1/liquor/';
     let isLoading = false;
+    const addLiquorButton = document.getElementById('add-liquor-btn');
 
-    // URL에서 쿼리 파라미터 가져오기 함수
-    function getQueryParam(param) {
-        const urlParams = new URLSearchParams(window.location.search);
-        return urlParams.get(param);
-    }
-
-    // API에서 주류 정보를 가져오는 함수
+    // Access Token 포함 여부 확인 및 주류 목록 가져오기
     async function fetchLiquors(url) {
+        const headers = { 'Content-Type': 'application/json' };
+        const token = localStorage.getItem('access_token');
+        if (token) {
+            headers['Authorization'] = `Bearer ${token}`;
+        }
+
         try {
-            const response = await fetch(url);
+            const response = await fetch(url, { headers: headers });
             if (!response.ok) {
                 throw new Error('서버 상태가 이상합니다.');
             }
-            return await response.json();
+            const data = await response.json();
+
+            // is_superuser에 따라 게시물 등록 버튼 처리
+            if (data.is_superuser) {
+                addLiquorButton.style.display = 'block';
+                addLiquorButton.addEventListener('click', () => {
+                    window.location.href = '/pages/create_liquor.html';
+                });
+            } else {
+                addLiquorButton.style.display = 'none';
+            }
+
+            return data;
         } catch (error) {
             console.error('error:', error);
         }
@@ -43,7 +56,7 @@ document.addEventListener('DOMContentLoaded', () => {
         document.querySelectorAll('.liquor-img').forEach(img => {
             img.addEventListener('click', function () {
                 const liquorId = this.getAttribute('data-id');
-                window.location.href = `/pages/liquor_detail.html?id=${liquorId}`;  // 상세 페이지로 이동
+                window.location.href = `/pages/liquor_detail.html?id=${liquorId}`;
             });
         });
     }
@@ -54,7 +67,7 @@ document.addEventListener('DOMContentLoaded', () => {
         isLoading = true;
         document.getElementById('loading').style.display = 'block';
 
-        const classification = getQueryParam('classification');
+        const classification = new URLSearchParams(window.location.search).get('classification');
         let url = new URL(nextUrl, window.location.origin);
 
         if (classification) {
@@ -75,21 +88,13 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // 화면 하단 근처에 도달했는지 체크하는 함수
-    function isNearBottom() {
-        return window.innerHeight + window.scrollY >= document.body.offsetHeight - 300;
-    }
-
-    // 스크롤 이벤트 핸들러
-    function handleScroll() {
-        if (isNearBottom()) {
-            loadMoreLiquors();
-        }
-    }
-
     // 초기 주류 데이터를 로드
     loadMoreLiquors();
 
     // 스크롤 이벤트 추가
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', () => {
+        if (window.innerHeight + window.scrollY >= document.body.offsetHeight - 300) {
+            loadMoreLiquors();
+        }
+    });
 });
