@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>회원 정보 수정</title>
+    <style>
+        /* 헤더 스타일 */
+        :root {
+            /* 메인페이지에서 사용할 색상을 변수로 정의해 재사용하는 방법 */
+            --primary-color: #2c3e50;
+            --secondary-color: #34495e;
+            --accent-color: #ce7c2e;
+            --background-color: #ecf0f1;
+            --light-text-color: #fff;
+            --dark-bg-color: #2c3e50;
+        }
+
+        /* 모든 요소의 기본 여백과 패딩을 제거 & 박스 모델 통일 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* 폰트 임포트 */
+        /* 숙명눈꽃체 (임시)*/
+        @font-face {
+            font-family: 'SMUSnowflake-Bold';
+            src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/2409-2@1.0/SMUSnowflake-Bold.woff2') format('woff2');
+            font-weight: 700;
+            font-style: normal;
+        }
+
+        /* 조선일보명조체 */
+        @font-face {
+            font-family: 'Chosunilbo_myungjo';
+            src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/Chosunilbo_myungjo.woff') format('woff');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        /* 에스코어드림 */
+        @font-face {
+            font-family: 'S-CoreDream-3Light';
+            src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-3Light.woff') format('woff');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            background-color: var(--background-color);
+            color: var(--dark-bg-color);
+            line-height: 1.6;
+            /* 텍스트 줄 간격 조정 */
+        }
+
+        header {
+            font-family: 'S-CoreDream-3Light';
+            background-color: var(--primary-color);
+            padding: 14px 8px 8px 20px;
+            position: sticky;
+            /* 스크롤 시에도 상단에 고정 */
+            top: 0;
+            z-index: 1000;
+            /* 다른 요소 위에 표시 */
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            /* 좌우로 배치 */
+            align-items: center;
+            /* 세로 정렬 가운데 */
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo img {
+            height: 60px;
+            width: auto;
+        }
+
+        /* 내비게이션 스타일 */
+        nav ul {
+
+            display: flex;
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        /* 내비게이션 요소들간 간격 설정 */
+        nav ul li {
+            position: relative;
+            margin-right: 1.5rem;
+        }
+
+        /* 내비게이션 링크 스타일 */
+        nav a {
+            color: var(--light-text-color);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: var(--accent-color);
+            /* 마우스 커서 가면 해당 색상으로 변경 */
+        }
+
+        nav ul ul {
+            display: none;
+            /* 드롭다운 메뉴 숨김 */
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: var(--secondary-color);
+            /* 배경색 설정 */
+            border-radius: 4px;
+            padding: 0.5rem 0;
+            min-width: 150px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        /* 마우스 커서가 상위 항목에 올라가면 하위 항목이 표시 */
+        nav ul li:hover>ul {
+            display: block;
+        }
+
+        /* 드롭다운 항목들간 간격 설정 */
+        nav ul ul li {
+            margin: 0;
+            padding: 0.5rem 1rem;
+        }
+
+        /* 드롭다운 항목에 마우스 커서가 올라갔을 때 배경색 설정 */
+        nav ul ul li a:hover {
+            background-color: var(--secondary-color);
+        }
+
+        .search-bar {
+            display: flex;
+            align-items: center;
+            margin-right: 1rem;
+            /* 로그아웃/프로필 버튼과의 간격 조정 */
+        }
+
+        .search-bar input {
+            padding: 0.5rem;
+            border: 1px solid var(--primary-color);
+            border-radius: 20px 0 0 20px;
+            outline: none;
+            /* 선택 시 윤곽선 제거 */
+        }
+
+        .search-bar button {
+            background-color: var(--accent-color);
+            color: var(--light-text-color);
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 0 20px 20px 0;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .search-bar button:hover {
+            background-color: var(--primary-color);
+        }
+
+        /* 버튼 스타일 */
+        .user-actions {
+            display: flex;
+            align-items: center;
+
+        }
+
+
+        .user-actions button {
+
+            color: var(--dark-bg-color);
+            border: none;
+            padding: 0.5rem 1rem;
+            margin-left: 0.5rem;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 800;
+            /* 버튼 텍스트 굵기 조절*/
+            font-family: 'S-CoreDream-3Light';
+        }
+
+        .user-actions button:hover {
+            background-color: var(--primary-color);
+            color: var(--light-text-color);
+        }
+
+        /* 프로필 버튼 아이콘 스타일 */
+        .profile-button {
+            background-color: var(--light-text-color);
+            /* 배경색 제거 */
+            border: none;
+            padding: 0.5rem 1rem;
+            margin-left: 0.5rem;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            color: var(--dark-bg-color);
+        }
+
+        .profile-button:hover {
+            background-color: var(--primary-color);
+            color: var(--light-text-color);
+        }
+
+        /* 메인 컨테이너 스타일 */
+        main {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            /* 박스 그림자 */
+        }
+
+        h1 {
+            font-size: 2rem;
+            color: #264653;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        /* 폼 스타일 */
+        form label {
+            font-size: 1rem;
+            color: #264653;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        form input[type="text"],
+        form input[type="email"] {
+            width: 100%;
+            padding: 0.75rem;
+            margin-bottom: 1rem;
+            border: 1px solid #317c77;
+            border-radius: 4px;
+            font-size: 1rem;
+            box-sizing: border-box;
+        }
+
+        /* 우편번호 버튼 스타일 */
+        button[type="button"],
+        button[type="submit"] {
+            background-color: #264653;
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            font-size: 1rem;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            display: inline-block;
+            margin-top: 0.5rem;
+        }
+
+        button[type="button"]:hover,
+        button[type="submit"]:hover {
+            background-color: #1b3943;
+        }
+
+        /* 검색 및 드롭다운 스타일 */
+        .search {
+            position: relative;
+            margin-bottom: 1.5rem;
+        }
+
+        .search input[type="text"] {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        /* 드롭다운 스타일 */
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-height: 200px;
+            overflow-y: auto;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            z-index: 100;
+            top: calc(100% + 5px);
+        }
+
+        .dropdown-content label {
+            display: block;
+            padding: 10px;
+            cursor: pointer;
+            color: #333;
+        }
+
+        .dropdown-content label:hover {
+            background-color: #f1f1f1;
+        }
+
+        /* 주류 항목 태그 스타일 */
+        .tag {
+            display: inline-block;
+            padding: 0.4rem 1rem;
+            background-color: #ffffff;
+            /* 배경색 흰색 */
+            color: #264653;
+            /* 글자 색 */
+            border: 2px solid #264653;
+            /* 테두리 색 */
+            border-radius: 20px;
+            margin: 0.3rem;
+            position: relative;
+            font-size: 0.9rem;
+        }
+
+        .tag span {
+            margin-left: 0.5rem;
+            cursor: pointer;
+        }
+
+
+        /* 태그 X에 마우스 커서가 갈 때 */
+        .tag span:hover {
+            color: #264653;
+        }
+
+        /* 선택된 태그 영역 */
+        .selected-tags {
+            display: flex;
+            flex-wrap: wrap;
+            margin-top: 0.5rem;
+        }
+
+
+
+        /* 푸터 스타일 */
+        footer {
+            background-color: var(--primary-color);
+            color: #fff;
+            padding: 2rem 0;
+            position: relative;
+            bottom: 0px;
+
+
+
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 1rem;
+        }
+
+        .team-members a {
+            color: #fff;
+            text-decoration: none;
+            margin-right: 1rem;
+            transition: color 0.3s ease;
+        }
+
+        .team-members a:hover {
+            color: var(--accent-color);
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/jwt-decode@3.1.2/build/jwt-decode.min.js"></script>
+    <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+</head>
+
+<body>
+    <header>
+        <div class="header-content">
+            <a href="/" class="logo">
+                <img src="/src/images/002.png" alt="방텐더 로고">
+            </a>
+            <nav>
+                <ul>
+                    <li>
+                        <a href="liquor_list.html">주류</a> <!-- '주류' 상위 링크는 liquor_list.html로 이동 -->
+                        <ul>
+                            <li><a href="liquor_list.html" class="category-link" data-classification="럼">럼</a>
+                            </li>
+                            <li><a href="liquor_list.html" class="category-link" data-classification="리큐르">리큐르</a>
+                            </li>
+                            <li><a href="liquor_list.html" class="category-link" data-classification="보드카">보드카</a>
+                            </li>
+                            <li><a href="liquor_list.html" class="category-link" data-classification="브랜디">브랜디</a>
+                            </li>
+                            <li><a href="liquor_list.html" class="category-link" data-classification="위스키">위스키</a>
+                            </li>
+                            <li><a href="liquor_list.html" class="category-link" data-classification="진">진</a>
+                            </li>
+                            <li><a href="liquor_list.html" class="category-link" data-classification="others">기타</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li><a href="cocktail_list.html">칵테일</a></li>
+                    <li><a href="bot.html">방텐더봇</a></li>
+                    <li><a href="liquor_stores.html">주변 매장 찾기</a></li>
+                </ul>
+            </nav>
+            <div class="search-bar">
+                <input type="search" placeholder="검색...">
+                <button>검색</button>
+            </div>
+            <div class="user-actions">
+                <button id="logout-button">로그아웃</button>
+                <a href="profile.html" id="auth-link">
+                    <button id="auth-button" class="profile-button">프로필</button>
+                </a>
+            </div>
+        </div>
+    </header>
+    <hr class="nav-divider">
+
+    <main>
+        <h1>회원 정보 수정</h1>
+        <form id="user-edit-form">
+            <label for="name">이름:</label>
+            <input type="text" id="name" name="name" required><br><br>
+
+            <label for="email">이메일:</label>
+            <input type="email" id="email" name="email" required><br><br>
+
+            <label for="address">주소:</label>
+            <input type="text" id="address" name="address" required>
+            <button type="button" id="postcode-button">우편번호 찾기</button>
+
+            <h2>내가 보유한 술</h2>
+            <!-- 검색 기능 추가 -->
+            <div class="search">
+                <input type="text" id="search-owned-liquor" placeholder="보유한 술 검색어 입력">
+                <div id="owned-liquor-results" class="dropdown-content"></div>
+            </div>
+            <!-- 태그 표시 -->
+            <div class="selected-tags" id="owned-liquor-tags"></div>
+
+            <h2>좋아하는 술</h2>
+            <div class="search">
+                <input type="text" id="search-liked-liquor" placeholder="좋아하는 술 검색어 입력">
+                <div id="liked-liquor-results" class="dropdown-content"></div>
+            </div>
+            <div class="selected-tags" id="liked-liquor-tags"></div>
+
+            <h2>싫어하는 술</h2>
+            <div class="search">
+                <input type="text" id="search-disliked-liquor" placeholder="싫어하는 술 검색어 입력">
+                <div id="disliked-liquor-results" class="dropdown-content"></div>
+            </div>
+            <div class="selected-tags" id="disliked-liquor-tags"></div>
+
+            <button type="submit">수정하기</button>
+        </form>
+        <p id="message"></p>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="team-members">
+                <a href="https://queseraseralife.tistory.com/" target="_blank">김동민</a>
+                <a href="https://zhelddustmq.tistory.com/" target="_blank">김진영</a>
+                <a href="https://velog.io/@mimi3123832/posts" target="_blank">남지민</a>
+                <a href="https://insight986.tistory.com/" target="_blank">배민석</a>
+            </div>
+            <p>&copy; 2024 방텐더. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script type="module">
+        import { navbar } from '../src/js/navbar.js';
+
+        document.addEventListener('DOMContentLoaded', async function () {
+            navbar();
+
+            const token = localStorage.getItem('access_token');
+            const decodedToken = jwt_decode(token);
+            const id = decodedToken.user_id;
+
+            try {
+                const response = await fetch(`http://43.203.219.114/api/v1/accounts/${id}/`, {
+                    method: 'GET',
+                    headers: {
+                        'Authorization': `Bearer ${token}`,
+                        'Content-Type': 'application/json'
+                    }
+                });
+                if (response.ok) {
+                    const userData = await response.json();
+                    document.getElementById('name').value = userData.name;
+                    document.getElementById('email').value = userData.email;
+                    document.getElementById('address').value = userData.address;
+                } else {
+                    throw new Error('회원 정보를 불러오는 데 실패했습니다.');
+                }
+            } catch (error) {
+                console.error('Error fetching user data:', error);
+            }
+
+            const form = document.getElementById('user-edit-form');
+            form.addEventListener('submit', async function (e) {
+                e.preventDefault();
+
+                // 사용자 입력 데이터 수집
+                const name = document.getElementById('name').value;
+                const email = document.getElementById('email').value;
+                const address = document.getElementById('address').value;
+
+                // 선택된 술 데이터 수집
+                const ownedLiquorIds = collectSelectedLiquorIds('owned-liquor-tags');
+                const likedLiquorIds = collectSelectedLiquorIds('liked-liquor-tags');
+                const dislikedLiquorIds = collectSelectedLiquorIds('disliked-liquor-tags');
+
+                // '좋아하는 술'과 '싫어하는 술'의 중복 여부 확인
+                if (likedLiquorIds.some(id => dislikedLiquorIds.includes(id))) {
+                    document.getElementById('message').textContent = '좋아하는 술과 싫어하는 술에 같은 술이 담길 수 없습니다.';
+                    return;
+                }
+
+                try {
+                    // PUT 요청으로 데이터 전송
+                    const response = await fetch(`http://43.203.219.114/api/v1/accounts/${id}/`, {
+                        method: 'PUT',
+                        headers: {
+                            'Authorization': `Bearer ${token}`,
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            name: name,
+                            email: email,
+                            address: address,
+                            // 선택한 술 데이터 추가
+                            my_liquors: {
+                                owned: ownedLiquorIds,   // 내가 보유한 술 ID 리스트
+                                favorite: likedLiquorIds, // 좋아하는 술 ID 리스트
+                                disliked: dislikedLiquorIds // 싫어하는 술 ID 리스트
+                            }
+                        })
+                    });
+
+                    const result = await response.json();
+
+                    if (response.ok) {
+                        document.getElementById('message').textContent = '회원 정보가 수정되었습니다.';
+                    } else {
+                        document.getElementById('message').textContent = result.message || '수정에 실패했습니다.';
+                    }
+                } catch (error) {
+                    console.error('Error updating user data:', error);
+                }
+            });
+
+            document.getElementById('postcode-button').addEventListener('click', function () {
+                new daum.Postcode({
+                    oncomplete: function (data) {
+                        document.getElementById('address').value = data.address;
+                    }
+                }).open();
+            });
+
+            const liquorList = ["글렌피딕 15년", "발렌타인 17년", "발렌타인 30년", "바카디", "몽키 47"];
+
+            // 태그 추가 함수
+            function addTag(tagContainerId, tagText) {
+                const tagContainer = document.getElementById(tagContainerId);
+                const existingTags = Array.from(tagContainer.children).map(tag => tag.textContent.trim());
+                if (!existingTags.includes(tagText + " ×")) {
+                    const tag = document.createElement('div');
+                    tag.classList.add('tag');
+                    tag.innerHTML = `${tagText} <span>&times;</span>`;
+                    tag.querySelector('span').addEventListener('click', () => {
+                        tag.remove(); // 태그 삭제
+                    });
+                    tagContainer.appendChild(tag);
+                }
+            }
+
+            // 선택된 술 id 수집
+            function collectSelectedLiquorIds(tagContainerId) {
+                const tagContainer = document.getElementById(tagContainerId);
+                return Array.from(tagContainer.children).map(tag => liquorList.indexOf(tag.textContent.trim().slice(0, -2)));
+            }
+
+            // 보유한 술에 대한 공통 검색 함수 (중복 검사 없음)
+            function searchOwnedLiquor(inputId, resultId, tagContainerId) {
+                const searchInput = document.getElementById(inputId);
+                const resultsDropdown = document.getElementById(resultId);
+
+                searchInput.addEventListener('input', function () {
+                    const query = searchInput.value.toLowerCase();
+                    resultsDropdown.innerHTML = '';
+
+                    if (query) {
+                        const filteredResults = liquorList.filter(item => item.toLowerCase().includes(query));
+                        filteredResults.forEach(result => {
+                            const label = document.createElement('label');
+                            label.innerHTML = `<input type="checkbox" value="${result}"> ${result}`;
+                            // 체크박스 선택 시 태그 추가 or 삭제
+                            label.querySelector('input').addEventListener('change', function () {
+                                if (this.checked) {
+                                    addTag(tagContainerId, result);
+                                } else {
+                                    removeTag(tagContainerId, result); // 체크 해제 시 태그 삭제
+                                }
+                            });
+                            resultsDropdown.appendChild(label);
+                        });
+
+                        resultsDropdown.style.display = 'block';
+                    } else {
+                        resultsDropdown.style.display = 'none';
+                    }
+                });
+
+                document.addEventListener('click', function (event) {
+                    if (!event.target.closest('.search')) {
+                        resultsDropdown.style.display = 'none';
+                    }
+                });
+            }
+
+            // 좋아하는 술과 싫어하는 술에 대한 공통 검색 함수 (중복 검사 추가)
+            function searchLiquor(inputId, resultId, tagContainerId, opposingTagContainerId) {
+                const searchInput = document.getElementById(inputId);
+                const resultsDropdown = document.getElementById(resultId);
+
+                searchInput.addEventListener('input', function () {
+                    const query = searchInput.value.toLowerCase();
+                    resultsDropdown.innerHTML = '';
+
+                    if (query) {
+                        const filteredResults = liquorList.filter(item => item.toLowerCase().includes(query));
+                        filteredResults.forEach(result => {
+                            const label = document.createElement('label');
+                            label.innerHTML = `<input type="checkbox" value="${result}"> ${result}`;
+                            // 체크박스 선택 시 태그 추가 or 삭제
+                            label.querySelector('input').addEventListener('change', function () {
+                                const opposingTags = collectSelectedLiquorIds(opposingTagContainerId);
+
+                                if (this.checked) {
+                                    if (opposingTags.includes(liquorList.indexOf(result))) {
+                                        // 경고창(alert) 표시
+                                        alert('좋아하는 술과 싫어하는 술에 같은 술을 추가할 수 없습니다.');
+                                        this.checked = false; // 체크 해제
+                                    } else {
+                                        addTag(tagContainerId, result);
+                                    }
+                                } else {
+                                    removeTag(tagContainerId, result); // 체크 해제 시 태그 삭제
+                                }
+                            });
+                            resultsDropdown.appendChild(label);
+                        });
+
+                        resultsDropdown.style.display = 'block';
+                    } else {
+                        resultsDropdown.style.display = 'none';
+                    }
+                });
+
+                document.addEventListener('click', function (event) {
+                    if (!event.target.closest('.search')) {
+                        resultsDropdown.style.display = 'none';
+                    }
+                });
+            }
+
+            // 태그 삭제 함수
+            function removeTag(tagContainerId, tagText) {
+                const tagContainer = document.getElementById(tagContainerId);
+                const tags = Array.from(tagContainer.children);
+                tags.forEach(tag => {
+                    if (tag.textContent.trim().startsWith(tagText)) {
+                        tag.remove();  // 해당 태그 삭제
+                    }
+                });
+            }
+
+            // 보유한 술에 대해 적용
+            searchOwnedLiquor('search-owned-liquor', 'owned-liquor-results', 'owned-liquor-tags');
+
+            // 좋아하는 술, 싫어하는 술에 대해 적용
+            searchLiquor('search-liked-liquor', 'liked-liquor-results', 'liked-liquor-tags', 'disliked-liquor-tags');
+            searchLiquor('search-disliked-liquor', 'disliked-liquor-results', 'disliked-liquor-tags', 'liked-liquor-tags');
+        });
+
+    </script>
+</body>
+
+</html>

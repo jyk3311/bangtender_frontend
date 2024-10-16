@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>검색 결과</title>
+    <style>
+        /* 기본 스타일 설정 */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #eeeeee;
+        }
+
+        header {
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        /* 로고 이미지 스타일 */
+        .logo img {
+            height: 60px;
+            /* 네브바에 적합한 크기 설정 */
+            width: auto;
+            /* 비율 유지 */
+        }
+
+        nav a {
+            color: #317c77;
+            text-decoration: none;
+            margin-right: 1rem;
+            white-space: nowrap;
+        }
+
+        .nav-divider {
+            border: 0;
+            border-top: 1px solid #2a9d8f;
+            margin-bottom: 1.5rem;
+        }
+
+        .search-bar input {
+            padding: 0.5rem;
+            border: none;
+            border-radius: 20px 0 0 20px;
+        }
+
+        .search-bar button {
+            background-color: #264653;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 0 20px 20px 0;
+            cursor: pointer;
+        }
+
+        .profile-button {
+            background-color: #264653;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            cursor: pointer;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        #search-results {
+            margin-top: 2rem;
+        }
+
+        h2 {
+            color: #264653;
+            margin-bottom: 1rem;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            background-color: #eeeeee;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 4px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        /* 주류/칵테일 목록 그리드 */
+        .result-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+        }
+
+        footer {
+            background-color: #eeeeee;
+            padding: 1rem;
+            border-top: 1px solid #317c77;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .team-members a {
+            color: #317c77;
+            text-decoration: none;
+            margin-right: 1rem;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="header-content">
+            <a href="/" class="logo">
+                <img src="/src/images/002.png" alt="방텐더 로고">
+            </a>
+            <nav>
+                <ul>
+                    <li>
+                        <a href="liquor_list.html">주류</a> <!-- '주류' 상위 링크는 liquor_list.html로 이동 -->
+                        <ul>
+                            <li><a href="liquor_list.html" class="category-link" data-classification="럼">럼</a>
+                            </li>
+                            <li><a href="liquor_list.html" class="category-link" data-classification="리큐르">리큐르</a>
+                            </li>
+                            <li><a href="liquor_list.html" class="category-link" data-classification="보드카">보드카</a>
+                            </li>
+                            <li><a href="liquor_list.html" class="category-link" data-classification="브랜디">브랜디</a>
+                            </li>
+                            <li><a href="liquor_list.html" class="category-link" data-classification="위스키">위스키</a>
+                            </li>
+                            <li><a href="liquor_list.html" class="category-link" data-classification="진">진</a>
+                            </li>
+                            <li><a href="liquor_list.html" class="category-link" data-classification="others">기타</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li><a href="cocktail_list.html">칵테일</a></li>
+                    <li><a href="bot.html">방텐더봇</a></li>
+                    <li><a href="liquor_stores.html">주변 매장 찾기</a></li>
+                </ul>
+            </nav>
+            <div class="search-bar">
+                <input type="search" placeholder="검색...">
+                <button>검색</button>
+            </div>
+            <div class="user-actions">
+                <button id="logout-button">로그아웃</button>
+                <a href="profile.html" id="auth-link">
+                    <button id="auth-button" class="profile-button">프로필</button>
+                </a>
+            </div>
+        </div>
+    </header>
+    <hr class="nav-divider">
+
+    <div class="container">
+        <h1>검색 결과</h1>
+        <div id="search-results">
+            <h2>주류 목록</h2>
+            <ul id="liquor-list" class="result-grid"></ul>
+
+            <h2>칵테일 목록</h2>
+            <ul id="cocktail-list" class="result-grid"></ul>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="team-members">
+                <a href="https://queseraseralife.tistory.com/" target="_blank">김동민</a>
+                <a href="https://zhelddustmq.tistory.com/" target="_blank">김진영</a>
+                <a href="https://velog.io/@mimi3123832/posts" target="_blank">남지민</a>
+                <a href="https://insight986.tistory.com/" target="_blank">배민석</a>
+            </div>
+            <p>&copy; 2024 방텐더. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script type="module" src="../src/js/search.js" defer></script>
+</body>
+
+</html>
