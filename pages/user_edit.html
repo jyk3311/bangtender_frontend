@@ -564,52 +564,17 @@
             }
 
             // 검색 기능 구현
-            function searchLiquor(inputId, resultId, tagContainerId, opposingTagContainerId) {
+            function searchLiquor(inputId, resultId, tagContainerId, opposingTagContainerId = null) {
                 const searchInput = document.getElementById(inputId);
                 const resultsDropdown = document.getElementById(resultId);
 
                 searchInput.addEventListener('input', function () {
                     const query = searchInput.value.toLowerCase();
-                    resultsDropdown.innerHTML = '';
+                    updateDropdown(query);
+                });
 
-                    if (query) {
-                        const filteredResults = liquorList.filter(liquor =>
-                            liquor.name.toLowerCase().includes(query)
-                        );
-
-                        filteredResults.forEach(liquor => {
-                            const label = document.createElement('label');
-                            label.innerHTML = `<input type="checkbox" value="${liquor.id}"> ${liquor.name}`;
-
-                            const checkbox = label.querySelector('input');
-                            const selectedLiquorIds = collectSelectedLiquorIds(tagContainerId);
-
-                            if (selectedLiquorIds.includes(liquor.id)) {
-                                checkbox.checked = true;
-                            }
-
-                            checkbox.addEventListener('change', function () {
-                                const opposingTags = collectSelectedLiquorIds(opposingTagContainerId);
-
-                                if (this.checked) {
-                                    if (opposingTags.includes(liquor.id)) {
-                                        alert('좋아하는 술과 싫어하는 술에 같은 술을 추가할 수 없습니다.');
-                                        this.checked = false;
-                                    } else {
-                                        addTag(tagContainerId, liquor);
-                                    }
-                                } else {
-                                    removeTag(tagContainerId, liquor.name);
-                                }
-                            });
-
-                            resultsDropdown.appendChild(label);
-                        });
-
-                        resultsDropdown.style.display = 'block';
-                    } else {
-                        resultsDropdown.style.display = 'none';
-                    }
+                searchInput.addEventListener('click', function () {
+                    updateDropdown('');  // 전체 목록을 보여줄 때
                 });
 
                 document.addEventListener('click', function (event) {
@@ -617,6 +582,48 @@
                         resultsDropdown.style.display = 'none';
                     }
                 });
+
+                // 드롭다운을 업데이트하는 함수
+                function updateDropdown(query) {
+                    resultsDropdown.innerHTML = ''; // 기존 결과 초기화
+                    const filteredResults = query
+                        ? liquorList.filter(item => item.name.toLowerCase().includes(query))
+                        : liquorList;
+
+                    const selectedLiquorIds = collectSelectedLiquorIds(tagContainerId); // 선택된 항목 수집
+
+                    filteredResults.forEach(liquor => {
+                        const label = document.createElement('label');
+                        label.innerHTML = `<input type="checkbox" value="${liquor.id}"> ${liquor.name}`;
+
+                        const checkbox = label.querySelector('input');
+
+                        // 이전에 선택된 항목이면 체크 상태 유지
+                        if (selectedLiquorIds.includes(liquor.id)) {
+                            checkbox.checked = true;
+                        }
+
+                        checkbox.addEventListener('change', function () {
+                            if (this.checked) {
+                                if (opposingTagContainerId) {
+                                    const opposingTags = collectSelectedLiquorIds(opposingTagContainerId);
+                                    if (opposingTags.includes(liquor.id)) {
+                                        alert('좋아하는 술과 싫어하는 술에 같은 술을 추가할 수 없습니다.');
+                                        this.checked = false;
+                                        return;
+                                    }
+                                }
+                                addTag(tagContainerId, liquor);
+                            } else {
+                                removeTag(tagContainerId, liquor.name);
+                            }
+                        });
+
+                        resultsDropdown.appendChild(label);
+                    });
+
+                    resultsDropdown.style.display = filteredResults.length ? 'block' : 'none';
+                }
             }
 
             // 태그 제거 함수
@@ -672,15 +679,11 @@
                 }
             });
 
-            // 검색 기능 초기화
             searchLiquor('search-owned-liquor', 'owned-liquor-results', 'owned-liquor-tags', 'owned-liquor-tags');
             searchLiquor('search-liked-liquor', 'liked-liquor-results', 'liked-liquor-tags', 'disliked-liquor-tags');
             searchLiquor('search-disliked-liquor', 'disliked-liquor-results', 'disliked-liquor-tags', 'liked-liquor-tags');
         });
     </script>
-
-
-
 </body>
 
 </html>
