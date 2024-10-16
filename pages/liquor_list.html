@@ -243,87 +243,112 @@
         }
 
         h1{
+            font-family: 'SMUSnowflake-Bold';
             display: block;
-        font-size: 2em;
-        margin-block-start: 0.67em;
-        margin-block-end: 0.67em;
-        margin-inline-start: 0px;
-        margin-inline-end: 0px;
-        font-weight: bold;
-        unicode-bidi: isolate;
-        position: relative;
-        top: 50px;
-
-        }
-
-        /* 그리드 레이아웃 설정 */
-        .liquor-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            /* 4열 그리드 */
-            gap: 2rem;
-            /* 주류 항목 사이의 간격 */
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 40px;
+            font-size: 2em;
+            margin-block-start: 0.67em;
+            margin-block-end: 0.67em;
+            margin-inline-start: 0px;
+            margin-inline-end: 0px;
+            font-weight: bold;
+            unicode-bidi: isolate;
             position: relative;
             top: 50px;
-            padding-bottom: 170px;
-        }
 
-        /* 각 주류 항목 스타일 */
-        .liquor-item {
-            background-color: #eeeeee;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            text-align: center;
-        }
+            }
 
-        /* 주류 이미지 스타일 */
-        .liquor-item img {
-            width: 100%;
-            height: 250px;
-            object-fit: cover;
-        }
+            /* 게시물 등록 버튼(관리자만) */
+            #add-liquor-btn{
+                display: block;     /* 관리자가 로그인하면 버튼을 표시 */
+                background-color: none;
+                color: var(--primary-color);
+                padding: 0.5rem 1.2rem;
+                margin: 1.5rem 0;
+                border-radius: 6px;
+                cursor: pointer;
+                font-size: 0.8rem;
+                font-family: 'S-CoreDream-3Light';
+                font-weight: 700;
+                transition: background-color 0.3s ease;
+                position: relative;
+                bottom: -30px;
+                left: 10px;
+            }
 
-        /* 주류 텍스트 스타일 */
-        .liquor-item p {
-            margin: 10px 0;
-            font-size: 1.2rem;
-            color: #333;
-        }
+            /* 버튼 호버 시 배경색 변경 */
+            #add-liquor-btn:hover {
+                background-color: var(--primary-color);
+                color: white;
+            }
 
-        /* 푸터 스타일 */
-        footer {
-            background-color: var(--primary-color);
-            color: #fff;
-            padding: 2rem 0;
-            margin-top: 3rem;
-            position: fixed;
-            bottom: 0;
-            width: 100%
-        }
+            /* 그리드 레이아웃 설정 */
+            .liquor-grid {
+                display: grid;
+                grid-template-columns: repeat(4, 1fr);
+                /* 4열 그리드 */
+                gap: 2rem;
+                /* 주류 항목 사이의 간격 */
+                max-width: 1200px;
+                margin: 0 auto;
+                padding: 40px;
+                position: relative;
+                top: 50px;
+                padding-bottom: 170px;
+            }
 
-        .footer-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0 1rem;
-        }
+            /* 각 주류 항목 스타일 */
+            .liquor-item {
+                background-color: #eeeeee;
+                border-radius: 8px;
+                overflow: hidden;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+                text-align: center;
+            }
 
-        .team-members a {
-            color: #fff;
-            text-decoration: none;
-            margin-right: 1rem;
-            transition: color 0.3s ease;
-        }
+            /* 주류 이미지 스타일 */
+            .liquor-item img {
+                width: 100%;
+                height: 250px;
+                object-fit: cover;
+            }
 
-        .team-members a:hover {
-            color: var(--accent-color);
-        }
+            /* 주류 텍스트 스타일 */
+            .liquor-item p {
+                margin: 10px 0;
+                font-size: 1.2rem;
+                color: #333;
+            }
+
+            /* 푸터 스타일 */
+            footer {
+                background-color: var(--primary-color);
+                color: #fff;
+                padding: 2rem 0;
+                margin-top: 3rem;
+                position: fixed;
+                bottom: 0;
+                width: 100%
+            }
+
+            .footer-content {
+                max-width: 1200px;
+                margin: 0 auto;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 0 1rem;
+            }
+
+            .team-members a {
+                color: #fff;
+                text-decoration: none;
+                margin-right: 1rem;
+                transition: color 0.3s ease;
+            }
+
+            .team-members a:hover {
+                color: var(--accent-color);
+            }
     </style>
 </head>
 

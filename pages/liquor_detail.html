@@ -366,6 +366,53 @@
             /* 수직 정렬을 맞춤 */
         }
 
+        /* 게시물 수정 버튼(관리자만) */
+        #edit-button{
+                display: block;     /* 관리자가 로그인하면 버튼을 표시 */
+                background-color: none;
+                color: var(--primary-color);
+                padding: 0.5rem 1.2rem;
+                margin: 1.5rem 0;
+                border-radius: 6px;
+                cursor: pointer;
+                font-size: 0.8rem;
+                font-family: 'S-CoreDream-3Light';
+                font-weight: 700;
+                transition: background-color 0.3s ease;
+                position: relative;
+                bottom: -80px;
+                left: 73px;
+            }
+            /* 게시물 삭제 버튼(관리자만) */
+            #delete-button{
+                display: block;     /* 관리자가 로그인하면 버튼을 표시 */
+                background-color: none;
+                color: var(--primary-color);
+                padding: 0.5rem 1.2rem;
+                margin: 1.5rem 0;
+                border-radius: 6px;
+                cursor: pointer;
+                font-size: 0.8rem;
+                font-family: 'S-CoreDream-3Light';
+                font-weight: 700;
+                transition: background-color 0.3s ease;
+                position: relative;
+                bottom: -21px;
+                left: 160px;
+            }
+
+            /* 버튼 호버 시 배경색 변경 */
+            #edit-button {
+                background-color: var(--primary-color);
+                color: white;
+            }
+
+            /* 버튼 호버 시 배경색 변경 */
+            #delete-button {
+                background-color: var(--primary-color);
+                color: white;
+            }
+
 
         /* 푸터 스타일 */
         footer {
@@ -373,7 +420,7 @@
             color: #fff;
             padding: 2rem 0;
             margin-top: 3rem;
-            position: fixed;
+            position: relative;
             bottom: 0px;
             left: 0px;
             width: 100%;
