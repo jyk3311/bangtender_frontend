@@ -702,6 +702,12 @@
                 console.error('Error updating user data:', error);
             }
         });
+
+        // 중복 확인 함수 (좋아하는 술과 싫어하는 술)
+        function checkTagConflict(selectedLiquorId, opposingTagContainerId) {
+            const opposingTagIds = collectSelectedLiquorIds(opposingTagContainerId);
+            return opposingTagIds.includes(selectedLiquorId);
+        }
     });
 </script>
     
