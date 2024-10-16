@@ -683,6 +683,15 @@
             searchLiquor('search-liked-liquor', 'liked-liquor-results', 'liked-liquor-tags', 'disliked-liquor-tags');
             searchLiquor('search-disliked-liquor', 'disliked-liquor-results', 'disliked-liquor-tags', 'liked-liquor-tags');
         });
+
+        document.getElementById('postcode-button').addEventListener('click', function () {
+            new daum.Postcode({
+                oncomplete: function (data) {
+                    // 선택한 주소 정보를 주소 입력 필드에 설정
+                    document.getElementById('address').value = data.address;
+                }
+            }).open();
+        });
     </script>
 </body>
 
