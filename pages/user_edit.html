@@ -492,21 +492,28 @@
 
             const token = localStorage.getItem('access_token');
             const decodedToken = jwt_decode(token);
-            const id = decodedToken.user_id;
+            const userId = decodedToken.user_id;
+            let liquorList = [];
 
+            // 서버에서 사용자 정보 및 술 목록 불러오기
             try {
-                const response = await fetch(`http://43.203.219.114/api/v1/accounts/${id}/`, {
+                const response = await fetch(`http://43.203.219.114/api/v1/accounts/${userId}/`, {
                     method: 'GET',
                     headers: {
                         'Authorization': `Bearer ${token}`,
                         'Content-Type': 'application/json'
                     }
                 });
+
                 if (response.ok) {
-                    const userData = await response.json();
-                    document.getElementById('name').value = userData.name;
-                    document.getElementById('email').value = userData.email;
-                    document.getElementById('address').value = userData.address;
+                    const Data = await response.json();
+                    liquorList = Data.liquor_data;
+
+                    document.getElementById('name').value = Data.user_data.name;
+                    document.getElementById('email').value = Data.user_data.email;
+                    document.getElementById('address').value = Data.user_data.address;
+
+                    preselectLiquors(Data.user_data.my_liquors);
                 } else {
                     throw new Error('회원 정보를 불러오는 데 실패했습니다.');
                 }
@@ -514,49 +521,154 @@
                 console.error('Error fetching user data:', error);
             }
 
-            const form = document.getElementById('user-edit-form');
-            form.addEventListener('submit', async function (e) {
+            // 미리 선택된 술 태그 표시
+            function preselectLiquors(myLiquors) {
+                addLiquorsToTags('owned-liquor-tags', myLiquors.owned);
+                addLiquorsToTags('liked-liquor-tags', myLiquors.favorite);
+                addLiquorsToTags('disliked-liquor-tags', myLiquors.disliked);
+            }
+
+            // 각 태그 컨테이너에 술 태그 추가
+            function addLiquorsToTags(tagContainerId, liquors) {
+                liquors.forEach(item => {
+                    const liquor = liquorList.find(l => l.id === item.liquor);
+                    if (liquor) {
+                        addTag(tagContainerId, liquor);
+                    }
+                });
+            }
+
+            // 태그 추가 함수
+            function addTag(tagContainerId, liquor) {
+                const tagContainer = document.getElementById(tagContainerId);
+                const existingTags = Array.from(tagContainer.children).map(tag => tag.textContent.trim());
+
+                if (!existingTags.includes(liquor.name + " ×")) {
+                    const tag = document.createElement('div');
+                    tag.classList.add('tag');
+                    tag.setAttribute('data-id', liquor.id);
+                    tag.innerHTML = `${liquor.name} <span>&times;</span>`;
+                    tag.querySelector('span').addEventListener('click', () => {
+                        tag.remove();
+                    });
+                    tagContainer.appendChild(tag);
+                }
+            }
+
+            // 선택된 술 ID 수집
+            function collectSelectedLiquorIds(tagContainerId) {
+                const tagContainer = document.getElementById(tagContainerId);
+                return Array.from(tagContainer.children)
+                    .map(tag => parseInt(tag.getAttribute('data-id'), 10))
+                    .filter(id => !isNaN(id));
+            }
+
+            // 검색 기능 구현
+            function searchLiquor(inputId, resultId, tagContainerId, opposingTagContainerId = null) {
+                const searchInput = document.getElementById(inputId);
+                const resultsDropdown = document.getElementById(resultId);
+
+                searchInput.addEventListener('input', function () {
+                    const query = searchInput.value.toLowerCase();
+                    updateDropdown(query);
+                });
+
+                searchInput.addEventListener('click', function () {
+                    updateDropdown('');  // 전체 목록을 보여줄 때
+                });
+
+                document.addEventListener('click', function (event) {
+                    if (!event.target.closest('.search')) {
+                        resultsDropdown.style.display = 'none';
+                    }
+                });
+
+                // 드롭다운을 업데이트하는 함수
+                function updateDropdown(query) {
+                    resultsDropdown.innerHTML = ''; // 기존 결과 초기화
+                    const filteredResults = query
+                        ? liquorList.filter(item => item.name.toLowerCase().includes(query))
+                        : liquorList;
+
+                    const selectedLiquorIds = collectSelectedLiquorIds(tagContainerId); // 선택된 항목 수집
+
+                    filteredResults.forEach(liquor => {
+                        const label = document.createElement('label');
+                        label.innerHTML = `<input type="checkbox" value="${liquor.id}"> ${liquor.name}`;
+
+                        const checkbox = label.querySelector('input');
+
+                        // 이전에 선택된 항목이면 체크 상태 유지
+                        if (selectedLiquorIds.includes(liquor.id)) {
+                            checkbox.checked = true;
+                        }
+
+                        checkbox.addEventListener('change', function () {
+                            if (this.checked) {
+                                if (opposingTagContainerId) {
+                                    const opposingTags = collectSelectedLiquorIds(opposingTagContainerId);
+                                    if (opposingTags.includes(liquor.id)) {
+                                        alert('좋아하는 술과 싫어하는 술에 같은 술을 추가할 수 없습니다.');
+                                        this.checked = false;
+                                        return;
+                                    }
+                                }
+                                addTag(tagContainerId, liquor);
+                            } else {
+                                removeTag(tagContainerId, liquor.name);
+                            }
+                        });
+
+                        resultsDropdown.appendChild(label);
+                    });
+
+                    resultsDropdown.style.display = filteredResults.length ? 'block' : 'none';
+                }
+            }
+
+            // 태그 제거 함수
+            function removeTag(tagContainerId, tagText) {
+                const tagContainer = document.getElementById(tagContainerId);
+                const tags = Array.from(tagContainer.children);
+                tags.forEach(tag => {
+                    if (tag.textContent.trim().startsWith(tagText)) {
+                        tag.remove();
+                    }
+                });
+            }
+
+            // '수정하기' 버튼 클릭 시 서버로 데이터 전송
+            document.getElementById('user-edit-form').addEventListener('submit', async function (e) {
                 e.preventDefault();
 
-                // 사용자 입력 데이터 수집
                 const name = document.getElementById('name').value;
                 const email = document.getElementById('email').value;
                 const address = document.getElementById('address').value;
 
-                // 선택된 술 데이터 수집
                 const ownedLiquorIds = collectSelectedLiquorIds('owned-liquor-tags');
                 const likedLiquorIds = collectSelectedLiquorIds('liked-liquor-tags');
                 const dislikedLiquorIds = collectSelectedLiquorIds('disliked-liquor-tags');
 
-                // '좋아하는 술'과 '싫어하는 술'의 중복 여부 확인
-                if (likedLiquorIds.some(id => dislikedLiquorIds.includes(id))) {
-                    document.getElementById('message').textContent = '좋아하는 술과 싫어하는 술에 같은 술이 담길 수 없습니다.';
-                    return;
-                }
-
                 try {
-                    // PUT 요청으로 데이터 전송
-                    const response = await fetch(`http://43.203.219.114/api/v1/accounts/${id}/`, {
+                    const response = await fetch(`http://43.203.219.114/api/v1/accounts/${userId}/`, {
                         method: 'PUT',
                         headers: {
                             'Authorization': `Bearer ${token}`,
                             'Content-Type': 'application/json'
                         },
                         body: JSON.stringify({
-                            name: name,
-                            email: email,
-                            address: address,
-                            // 선택한 술 데이터 추가
+                            name,
+                            email,
+                            address,
                             my_liquors: {
-                                owned: ownedLiquorIds,   // 내가 보유한 술 ID 리스트
-                                favorite: likedLiquorIds, // 좋아하는 술 ID 리스트
-                                disliked: dislikedLiquorIds // 싫어하는 술 ID 리스트
+                                owned: ownedLiquorIds,
+                                favorite: likedLiquorIds,
+                                disliked: dislikedLiquorIds
                             }
                         })
                     });
 
                     const result = await response.json();
-
                     if (response.ok) {
                         document.getElementById('message').textContent = '회원 정보가 수정되었습니다.';
                     } else {
@@ -567,140 +679,10 @@
                 }
             });
 
-            document.getElementById('postcode-button').addEventListener('click', function () {
-                new daum.Postcode({
-                    oncomplete: function (data) {
-                        document.getElementById('address').value = data.address;
-                    }
-                }).open();
-            });
-
-            const liquorList = ["글렌피딕 15년", "발렌타인 17년", "발렌타인 30년", "바카디", "몽키 47"];
-
-            // 태그 추가 함수
-            function addTag(tagContainerId, tagText) {
-                const tagContainer = document.getElementById(tagContainerId);
-                const existingTags = Array.from(tagContainer.children).map(tag => tag.textContent.trim());
-                if (!existingTags.includes(tagText + " ×")) {
-                    const tag = document.createElement('div');
-                    tag.classList.add('tag');
-                    tag.innerHTML = `${tagText} <span>&times;</span>`;
-                    tag.querySelector('span').addEventListener('click', () => {
-                        tag.remove(); // 태그 삭제
-                    });
-                    tagContainer.appendChild(tag);
-                }
-            }
-
-            // 선택된 술 id 수집
-            function collectSelectedLiquorIds(tagContainerId) {
-                const tagContainer = document.getElementById(tagContainerId);
-                return Array.from(tagContainer.children).map(tag => liquorList.indexOf(tag.textContent.trim().slice(0, -2)));
-            }
-
-            // 보유한 술에 대한 공통 검색 함수 (중복 검사 없음)
-            function searchOwnedLiquor(inputId, resultId, tagContainerId) {
-                const searchInput = document.getElementById(inputId);
-                const resultsDropdown = document.getElementById(resultId);
-
-                searchInput.addEventListener('input', function () {
-                    const query = searchInput.value.toLowerCase();
-                    resultsDropdown.innerHTML = '';
-
-                    if (query) {
-                        const filteredResults = liquorList.filter(item => item.toLowerCase().includes(query));
-                        filteredResults.forEach(result => {
-                            const label = document.createElement('label');
-                            label.innerHTML = `<input type="checkbox" value="${result}"> ${result}`;
-                            // 체크박스 선택 시 태그 추가 or 삭제
-                            label.querySelector('input').addEventListener('change', function () {
-                                if (this.checked) {
-                                    addTag(tagContainerId, result);
-                                } else {
-                                    removeTag(tagContainerId, result); // 체크 해제 시 태그 삭제
-                                }
-                            });
-                            resultsDropdown.appendChild(label);
-                        });
-
-                        resultsDropdown.style.display = 'block';
-                    } else {
-                        resultsDropdown.style.display = 'none';
-                    }
-                });
-
-                document.addEventListener('click', function (event) {
-                    if (!event.target.closest('.search')) {
-                        resultsDropdown.style.display = 'none';
-                    }
-                });
-            }
-
-            // 좋아하는 술과 싫어하는 술에 대한 공통 검색 함수 (중복 검사 추가)
-            function searchLiquor(inputId, resultId, tagContainerId, opposingTagContainerId) {
-                const searchInput = document.getElementById(inputId);
-                const resultsDropdown = document.getElementById(resultId);
-
-                searchInput.addEventListener('input', function () {
-                    const query = searchInput.value.toLowerCase();
-                    resultsDropdown.innerHTML = '';
-
-                    if (query) {
-                        const filteredResults = liquorList.filter(item => item.toLowerCase().includes(query));
-                        filteredResults.forEach(result => {
-                            const label = document.createElement('label');
-                            label.innerHTML = `<input type="checkbox" value="${result}"> ${result}`;
-                            // 체크박스 선택 시 태그 추가 or 삭제
-                            label.querySelector('input').addEventListener('change', function () {
-                                const opposingTags = collectSelectedLiquorIds(opposingTagContainerId);
-
-                                if (this.checked) {
-                                    if (opposingTags.includes(liquorList.indexOf(result))) {
-                                        // 경고창(alert) 표시
-                                        alert('좋아하는 술과 싫어하는 술에 같은 술을 추가할 수 없습니다.');
-                                        this.checked = false; // 체크 해제
-                                    } else {
-                                        addTag(tagContainerId, result);
-                                    }
-                                } else {
-                                    removeTag(tagContainerId, result); // 체크 해제 시 태그 삭제
-                                }
-                            });
-                            resultsDropdown.appendChild(label);
-                        });
-
-                        resultsDropdown.style.display = 'block';
-                    } else {
-                        resultsDropdown.style.display = 'none';
-                    }
-                });
-
-                document.addEventListener('click', function (event) {
-                    if (!event.target.closest('.search')) {
-                        resultsDropdown.style.display = 'none';
-                    }
-                });
-            }
-
-            // 태그 삭제 함수
-            function removeTag(tagContainerId, tagText) {
-                const tagContainer = document.getElementById(tagContainerId);
-                const tags = Array.from(tagContainer.children);
-                tags.forEach(tag => {
-                    if (tag.textContent.trim().startsWith(tagText)) {
-                        tag.remove();  // 해당 태그 삭제
-                    }
-                });
-            }
-
-            // 보유한 술에 대해 적용
-            searchOwnedLiquor('search-owned-liquor', 'owned-liquor-results', 'owned-liquor-tags');
-
-            // 좋아하는 술, 싫어하는 술에 대해 적용
+            searchLiquor('search-owned-liquor', 'owned-liquor-results', 'owned-liquor-tags', 'owned-liquor-tags');
             searchLiquor('search-liked-liquor', 'liked-liquor-results', 'liked-liquor-tags', 'disliked-liquor-tags');
             searchLiquor('search-disliked-liquor', 'disliked-liquor-results', 'disliked-liquor-tags', 'liked-liquor-tags');
         });
-
     </script>
 </body>
 
