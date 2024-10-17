@@ -191,6 +191,7 @@
             font-weight: 800;
             /* 버튼 텍스트 굵기 조절*/
             font-family: 'S-CoreDream-3Light';
+            background-color:var(--background-color);
         }
 
         .user-actions button:hover {
@@ -241,8 +242,9 @@
             color: #317c77;
             text-align: left;
         }
+        
 
-        input {
+        .signup-form-container input {
             width: 100%;
             padding: 0.5rem;
             margin-bottom: 1rem;
@@ -251,7 +253,7 @@
         }
 
         /* 버튼 스타일 */
-        button {
+        .signup-form-container button {
             padding: 0.5rem 1rem;
             border-radius: 4px;
             cursor: pointer;
@@ -289,7 +291,7 @@
         }
 
         /* 버튼 사이 간격 */
-        button:not(:last-child) {
+        .signup-form-container button:not(:last-child) {
             margin-bottom: 1rem;
         }
 

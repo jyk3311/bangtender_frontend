@@ -6,105 +6,296 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>검색 결과</title>
     <style>
-        /* 기본 스타일 설정 */
-        body {
-            font-family: 'Arial', sans-serif;
+        :root {
+            /* 메인페이지에서 사용할 색상을 변수로 정의해 재사용하는 방법 */
+            --primary-color: #2c3e50;
+            --secondary-color: #34495e;
+            --accent-color: #ce7c2e;
+            --background-color: #ecf0f1;
+            --light-text-color: #fff;
+            --dark-bg-color: #2c3e50;
+            --brown-text-color: #333;
+        }
+
+        /* 모든 요소의 기본 여백과 패딩을 제거 & 박스 모델 통일 */
+        * {
             margin: 0;
             padding: 0;
-            background-color: #eeeeee;
+            box-sizing: border-box;
         }
+
+        /* 폰트 임포트 */
+        /* 숙명눈꽃체 (임시)*/
+        @font-face {
+            font-family: 'SMUSnowflake-Bold';
+            src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/2409-2@1.0/SMUSnowflake-Bold.woff2') format('woff2');
+            font-weight: 700;
+            font-style: normal;
+        }
+
+        /* 조선일보명조체 */
+        @font-face {
+            font-family: 'Chosunilbo_myungjo';
+            src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/Chosunilbo_myungjo.woff') format('woff');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        /* 에스코어드림 */
+        @font-face {
+            font-family: 'S-CoreDream-3Light';
+            src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-3Light.woff') format('woff');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        body {
+            font-family: 'S-CoreDream-3Light', sans-serif;
+            background-color: #f8f9fa;
+            color: var(--brown-text-color);
+            line-height: 1.6;
+        }
+
 
         header {
-            padding: 1rem;
+            font-family: 'S-CoreDream-3Light';
+            background-color: var(--primary-color);
+            padding: 14px 8px 8px 20px;
+            position: sticky;
+            /* 스크롤 시에도 상단에 고정 */
+            top: 0;
+            z-index: 1000;
+            /* 다른 요소 위에 표시 */
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-content {
             display: flex;
             justify-content: space-between;
+            /* 좌우로 배치 */
             align-items: center;
+            /* 세로 정렬 가운데 */
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
-        /* 로고 이미지 스타일 */
         .logo img {
             height: 60px;
-            /* 네브바에 적합한 크기 설정 */
             width: auto;
-            /* 비율 유지 */
         }
 
+        /* 내비게이션 스타일 */
+        nav ul {
+
+            display: flex;
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+
+        }
+
+
+        /* 내비게이션 요소들간 간격 설정 */
+        nav ul li {
+            position: relative;
+            margin-right: 1.5rem;
+        }
+
+        /* 내비게이션 링크 스타일 */
         nav a {
-            color: #317c77;
+            color: var(--light-text-color);
             text-decoration: none;
-            margin-right: 1rem;
-            white-space: nowrap;
+            font-weight: 500;
+            transition: color 0.3s ease;
         }
 
-        .nav-divider {
-            border: 0;
-            border-top: 1px solid #2a9d8f;
-            margin-bottom: 1.5rem;
+        nav a:hover {
+            color: var(--accent-color);
+            /* 마우스 커서 가면 해당 색상으로 변경 */
+        }
+
+        nav ul ul {
+            display: none;
+            /* 드롭다운 메뉴 숨김 */
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: var(--secondary-color);
+            /* 배경색 설정 */
+            border-radius: 4px;
+            padding: 0.5rem 0;
+            min-width: 150px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            background-color: var(--primary-color);
+        }
+
+
+        /* 마우스 커서가 상위 항목에 올라가면 하위 항목이 표시 */
+        nav ul li:hover>ul {
+            display: block;
+        }
+
+        /* 드롭다운 항목들간 간격 설정 */
+        nav ul ul li {
+            margin: 0;
+            padding: 0.5rem 1rem;
+            background-color: var(--primary-color);
+        }
+
+        /* 드롭다운 항목에 마우스 커서가 올라갔을 때 배경색 설정 */
+        nav ul ul li a:hover {
+            background-color: var(--secondary-color);
+        }
+
+        .search-bar {
+            display: flex;
+            align-items: center;
+            margin-right: 1rem;
+            /* 로그아웃/프로필 버튼과의 간격 조정 */
         }
 
         .search-bar input {
             padding: 0.5rem;
-            border: none;
+            border: 1px solid var(--primary-color);
             border-radius: 20px 0 0 20px;
+            outline: none;
+            /* 선택 시 윤곽선 제거 */
         }
 
         .search-bar button {
-            background-color: #264653;
-            color: white;
+            background-color: var(--accent-color);
+            color: var(--light-text-color);
             border: none;
             padding: 0.5rem 1rem;
             border-radius: 0 20px 20px 0;
             cursor: pointer;
+            transition: background-color 0.3s ease;
         }
 
-        .profile-button {
-            background-color: #264653;
-            color: white;
+        .search-bar button:hover {
+            background-color: var(--primary-color);
+        }
+
+        /* 버튼 스타일 */
+        .user-actions {
+            display: flex;
+            align-items: center;
+
+        }
+
+
+        .user-actions button {
+
+            color: var(--dark-bg-color);
             border: none;
             padding: 0.5rem 1rem;
+            margin-left: 0.5rem;
             border-radius: 20px;
             cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 800;
+            /* 버튼 텍스트 굵기 조절*/
+            font-family: 'S-CoreDream-3Light';
         }
 
+        .user-actions button:hover {
+            background-color: var(--primary-color);
+            color: var(--light-text-color);
+        }
+
+        /* 프로필 버튼 아이콘 스타일 */
+        .profile-button {
+            background-color: var(--light-text-color);
+            border: none;
+            padding: 0.5rem 1rem;
+            margin-left: 0.5rem;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            color: var(--dark-bg-color);
+        }
+
+        .profile-button:hover {
+            background-color: var(--primary-color);
+            color: var(--light-text-color);
+        }
+
+
+        /* 본문 컨테이너 */
         .container {
             max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
+            margin: 2rem auto;
+            padding: 2rem;
         }
 
-        #search-results {
-            margin-top: 2rem;
+        /* 검색 결과 텍스트 스타일 */
+        h1 {
+            font-family: 'SMUSnowflake-Bold';
+            color: var(--secondary-color);
         }
 
+        /* 각 목록 제목 스타일 */
         h2 {
-            color: #264653;
+            font-size: 1.8rem;
+            color: var(--secondary-color);
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        /* 검색 결과 그리드 */
+        .result-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            /* 한 줄에 최대 4개, 항목 크기는 최소 250px */
+            gap: 2rem;
+            /* 카드 사이 간격 */
+            padding: 1rem;
+        }
+
+        /* 각 항목 카드 */
+        .result-grid li {
+            background-color: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: 1rem;
+        }
+
+        .result-grid li:hover {
+            transform: translateY(-5px);
+        }
+
+        /* 이미지 스타일 */
+        .result-grid img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 4px;
             margin-bottom: 1rem;
         }
 
-        ul {
-            list-style-type: none;
-            padding: 0;
+        /* 이름 텍스트 스타일 */
+        .result-grid p {
+            font-size: 1.2rem;
+            color: #333;
+            margin: 0;
         }
 
-        li {
-            background-color: #eeeeee;
-            padding: 10px;
-            margin-bottom: 10px;
-            border-radius: 4px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-
-        /* 주류/칵테일 목록 그리드 */
-        .result-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 2rem;
-        }
 
         footer {
-            background-color: #eeeeee;
-            padding: 1rem;
-            border-top: 1px solid #317c77;
+            background-color: var(--primary-color);
+            color: #fff;
+            padding: 2rem 0;
+            margin-top: 3rem;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+
         }
 
         .footer-content {
@@ -113,12 +304,18 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            padding: 0 1rem;
         }
 
         .team-members a {
-            color: #317c77;
+            color: #fff;
             text-decoration: none;
             margin-right: 1rem;
+            transition: color 0.3s ease;
+        }
+
+        .team-members a:hover {
+            color: var(--accent-color);
         }
     </style>
 </head>
@@ -166,8 +363,8 @@
                 </a>
             </div>
         </div>
+        </div>
     </header>
-    <hr class="nav-divider">
 
     <div class="container">
         <h1>검색 결과</h1>
@@ -179,6 +376,7 @@
             <ul id="cocktail-list" class="result-grid"></ul>
         </div>
     </div>
+
 
     <footer>
         <div class="footer-content">

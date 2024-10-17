@@ -65,7 +65,7 @@ document.addEventListener('DOMContentLoaded', async function () {
         // 북마크 버튼 클릭 이벤트 처리
         bookmarkButton.addEventListener('click', async () => {
             try {
-                const bookmarkResponse = await fetch(`http://localhost:8000/api/v1/cocktail/${cocktailId}/bookmark/`, {
+                const bookmarkResponse = await fetch(`http://43.203.219.114/api/v1/cocktail/${cocktailId}/bookmark/`, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',

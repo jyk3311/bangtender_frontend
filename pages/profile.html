@@ -24,8 +24,9 @@
             box-sizing: border-box;
         }
 
+
         /* 폰트 임포트 */
-        /* 숙명눈꽃체 (임시)*/
+        /* 숙명눈꽃체 (임시) */
         @font-face {
             font-family: 'SMUSnowflake-Bold';
             src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/2409-2@1.0/SMUSnowflake-Bold.woff2') format('woff2');
@@ -57,6 +58,7 @@
             /* 텍스트 줄 간격 조정 */
         }
 
+        /* 헤더 스타일 */
         header {
             font-family: 'S-CoreDream-3Light';
             background-color: var(--primary-color);
@@ -86,7 +88,6 @@
 
         /* 내비게이션 스타일 */
         nav ul {
-
             display: flex;
             list-style-type: none;
             padding: 0;
@@ -126,18 +127,16 @@
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
         }
 
-        /* 마우스 커서가 상위 항목에 올라가면 하위 항목이 표시 */
+
         nav ul li:hover>ul {
             display: block;
         }
 
-        /* 드롭다운 항목들간 간격 설정 */
         nav ul ul li {
             margin: 0;
             padding: 0.5rem 1rem;
         }
 
-        /* 드롭다운 항목에 마우스 커서가 올라갔을 때 배경색 설정 */
         nav ul ul li a:hover {
             background-color: var(--secondary-color);
         }
@@ -147,6 +146,7 @@
             align-items: center;
             margin-right: 1rem;
             /* 로그아웃/프로필 버튼과의 간격 조정 */
+
         }
 
         .search-bar input {
@@ -175,7 +175,6 @@
         .user-actions {
             display: flex;
             align-items: center;
-
         }
 
 
@@ -193,68 +192,75 @@
             font-family: 'S-CoreDream-3Light';
         }
 
-        .user-actions button:hover {
+        .nav-button:hover {
             background-color: var(--primary-color);
             color: var(--light-text-color);
         }
 
-        /* 프로필 버튼 아이콘 스타일 */
-        .profile-button {
-            background-color: var(--light-text-color);
-            /* 배경색 제거 */
-            border: none;
-            padding: 0.5rem 1rem;
-            margin-left: 0.5rem;
-            border-radius: 20px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            color: var(--dark-bg-color);
-        }
 
-        .profile-button:hover {
-            background-color: var(--primary-color);
-            color: var(--light-text-color);
+        /* 본문 중앙 배치 */
+        main {
+            max-width: 800px;
+            /* 중앙 배치 */
+            margin: 4rem auto;
+            padding: 5rem;
+            background-color: #ffffff;
+            /* 본문 배경은 흰색 */
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            /* 그림자 추가 */
+            border-radius: 8px;
+            /* 모서리 둥글게 */
         }
 
         h1 {
+            font-family: 'SMUSnowflake-Bold';
             font-size: 2rem;
             color: #264653;
-            margin-bottom: 1.5rem;
+            margin-bottom: 2rem;
             text-align: center;
         }
 
+        section {
+            text-align: left;
+            padding: 0 2rem;
+            /* 텍스트 살짝 안쪽으로 */
+        }
+
         section p {
+            font-family: 'S-CoreDream-3Light';
             font-size: 1rem;
             color: #264653;
             margin-bottom: 1rem;
+            font-weight: 600;
+            /* 글자를 좀 더 두껍게 설정 */
         }
 
-        section span {
-            font-weight: bold;
-            color: #264653;
+        /* 본문 버튼 중앙 정렬 */
+        .profile-actions {
+            display: flex;
+            justify-content: center;
+            /* 버튼들을 중앙 정렬 */
+            margin-top: 2rem;
         }
 
-        /* 버튼 스타일
-        button, .profile-actions button {
+
+        /* 본문 버튼 스타일 */
+        .profile-button {
+            font-family: 'S-CoreDream-3Light';
             background-color: #264653;
             color: white;
             border: none;
             padding: 0.75rem 1.5rem;
             border-radius: 4px;
             cursor: pointer;
-            transition: background-color 0.3s;
+            transition: background-color 0.3s ease;
             margin: 1rem 0.5rem;
+
         }
 
-        button:hover, .profile-actions button:hover {
-            background-color: #264653;
+        .profile-button:hover {
+            background-color: var(--primary-color);
         }
-
-        .profile-actions {
-            display: flex;
-            justify-content: center;
-            margin-top: 2rem;
-        } */
 
         /* 푸터 스타일 */
         footer {
@@ -262,12 +268,9 @@
             color: #fff;
             padding: 2rem 0;
             margin-top: 3rem;
-            position: absolute;
-            bottom: 0px;
-            height: 10rem;
+            position: relative;
+            bottom: 0;
             width: 100%;
-
-
         }
 
         .footer-content {
@@ -330,9 +333,13 @@
                 <button>검색</button>
             </div>
             <div class="user-actions">
-                <button id="logout-button">로그아웃</button>
+                <button id="logout-button" class="nav-button">로그아웃</button>
                 <a href="profile.html" id="auth-link">
-                    <button id="auth-button" class="profile-button">프로필</button>
+
+                    <button id="auth-button" class="nav-button">프로필</button>
+
+                    <!-- <button id="auth-button" class="profile-button">프로필</button> -->
+
                 </a>
             </div>
         </div>
@@ -348,16 +355,21 @@
             <p>이름: <span id="name"></span></p>
             <p>이메일: <span id="email"></span></p>
             <p>주소: <span id="address"></span></p>
+            <div id="my-liquor-container">
+                <p>보유한 술: <span id="owned-liquor"></span></p>
+                <p>좋아하는 술: <span id="favorite-liquor"></span></p>
+                <p>싫어하는 술: <span id="disliked-liquor"></span></p>
+            </div>
         </section>
 
         <div class="profile-actions">
-            <button id="edit-profile">
+            <button class="profile-button">
                 <a href="user_edit.html" style="color: white; text-decoration: none;">회원 정보 수정</a>
             </button>
-            <button id="delete-account">
+            <button class="profile-button">
                 <a href="delete_account.html" style="color: white; text-decoration: none;">회원 탈퇴</a>
             </button>
-            <button id="my-bookmark">
+            <button class="profile-button">
                 <a href="my_bookmark.html" style="color: white; text-decoration: none;">내 북마크 목록 보기</a>
             </button>
         </div>
@@ -400,10 +412,15 @@
 
                 if (response.ok) {
                     const data = await response.json();
-                    document.getElementById('username').textContent = data.username;
-                    document.getElementById('name').textContent = data.name;
-                    document.getElementById('email').textContent = data.email;
-                    document.getElementById('address').textContent = data.address;
+                    console.log(data)
+                    document.getElementById('username').textContent = data.user_data.username;
+                    document.getElementById('name').textContent = data.user_data.name;
+                    document.getElementById('email').textContent = data.user_data.email;
+                    document.getElementById('address').textContent = data.user_data.address;
+
+                    displayLiquorNames('owned-liquor', data.user_data.my_liquors.owned, data.liquor_data);
+                    displayLiquorNames('favorite-liquor', data.user_data.my_liquors.favorite, data.liquor_data);
+                    displayLiquorNames('disliked-liquor', data.user_data.my_liquors.disliked, data.liquor_data);
                 } else {
                     alert('프로필 정보를 불러오는 데 실패했습니다.');
                 }
@@ -411,6 +428,16 @@
                 console.error('프로필 정보를 가져오는 중 오류가 발생했습니다:', error);
             }
         });
+        function displayLiquorNames(containerId, liquors, liquorData) {
+            const container = document.getElementById(containerId);
+            const liquorNames = liquors.map(item => {
+                const liquor = liquorData.find(l => l.id === item.liquor);
+                return liquor ? liquor.name : '잘못된 술';
+            });
+
+            container.textContent = liquorNames.length > 0 ? liquorNames.join(', ') : '목록이 비어 있습니다.';
+        }
+
     </script>
 </body>
 
