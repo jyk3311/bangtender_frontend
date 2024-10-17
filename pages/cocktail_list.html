@@ -20,7 +20,7 @@
         /* 모든 요소의 기본 여백과 패딩을 제거 & 박스 모델 통일 */
         * {
             margin: 0;
-            padding: 0;
+            padding: 0rem;
             box-sizing: border-box;
         }
 
@@ -220,6 +220,7 @@
             max-width: 1200px;
             margin: 4rem auto;
             padding: 0 1.5rem;
+            font-family: 'SMUSnowflake-Bold';
         }
 
         .tip-container {
@@ -237,6 +238,45 @@
             color: var(--secondary-color);
         }
 
+        h1{
+            display: block;
+        font-size: 2em;
+        margin-block-start: 0.67em;
+        margin-block-end: 0.67em;
+        margin-inline-start: 0px;
+        margin-inline-end: 0px;
+        font-weight: bold;
+        unicode-bidi: isolate;
+        position: relative;
+        top: 50px;
+
+        }
+
+
+        /* 게시물 등록 버튼(관리자만) */
+        #add-cocktail-btn{
+            display: block;     /* 관리자가 로그인하면 버튼을 표시 */
+            background-color: none;
+            color: var(--primary-color);
+            padding: 0.5rem 1.2rem;
+            margin: 1.5rem 0;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.8rem;
+            font-family: 'S-CoreDream-3Light';
+            font-weight: 700;
+            transition: background-color 0.3s ease;
+            position: relative;
+            bottom: -30px;
+            left: 10px;
+        }
+
+        /* 버튼 호버 시 배경색 변경 */
+        #add-cocktail-btn:hover {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
         /* 그리드 레이아웃 설정 */
         .cocktail-grid {
             display: grid;
@@ -246,11 +286,15 @@
             /* 칵테일 항목 사이의 간격 */
             max-width: 1200px;
             margin: 0 auto;
-            padding: 20px;
+            padding: 40px;
+            position: relative;
+            top: 60px;
+            padding-bottom: 170px;
         }
 
         /* 각 칵테일 항목 스타일 */
         .cocktail-item {
+            font-family: 'S-CoreDream-3Light';
             background-color: #eeeeee;
             border-radius: 8px;
             overflow: hidden;
@@ -277,10 +321,10 @@
             background-color: var(--primary-color);
             color: #fff;
             padding: 2rem 0;
-            position: relative;
-            bottom: 0px;
-
-
+            margin-top: 3rem;
+            position: fixed;
+            bottom: 0;
+            width: 100%
         }
 
         .footer-content {
