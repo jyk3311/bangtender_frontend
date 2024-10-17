@@ -44,7 +44,7 @@
             position: relative;
             padding: 20px;
             overflow-y: auto;           /* 스크롤바 추가 가능 */
-            background: linear-gradient(var(--user-msg-gradient-end), #ffffff);
+            background: linear-gradient(var(--chat-bg-gradient-start), #ffffff);
             background-size: cover;
             border: 2px solid var(--msg-border-color);
             border-radius: 12px;
@@ -122,48 +122,42 @@
 
         .user-message {
             align-self: flex-end;
-            background-color: #92c1bd;
-            color: white;
+            background: linear-gradient(var(--user-msg-gradient-end), #ffffff);
+            color: black;
             border: solid;
         }
 
-        .message {
+        .user-message {
             max-width: 70%;
             margin-bottom: 15px;
             padding: 10px;
-            border-radius: 10px;
+            border-radius: 20px 0px 15px 15px;
             position: relative;
             word-wrap: break-word;
             word-break: break-word;
-        }
-
-
-        .user-message::after {
-            content: '';
-            position: absolute;
-            right: -10px;
-            top: 10px;
-            border-top: 10px solid transparent;
-            border-bottom: 10px solid transparent;
-            border-left: 10px solid #92c1bd;
+            
         }
 
         .bot-message {
-            align-self: flex-start;
-            background-color: #317c77;
-            color: white;
-            margin-left: 40px;
-            border: solid;
+            max-width: 70%;
+            margin-bottom: 15px;
+            padding: 10px;
+            border-radius: 0px 20px 15px 15px;
+            position: relative;
+            word-wrap: break-word;
+            word-break: break-word;
+            
         }
 
-        .bot-message::before {
-            content: '';
-            position: absolute;
-            left: -10px;
-            top: 10px;
-            border-top: 10px solid transparent;
-            border-bottom: 10px solid transparent;
-            border-right: 10px solid #317c77;
+
+
+
+        .bot-message {
+            align-self: flex-start;
+            background: linear-gradient(var(--user-msg-gradient-end), #ffffff);
+            color: black;
+            margin-left: 40px;
+            border: solid;
         }
 
 
@@ -180,7 +174,7 @@
         .input-area {
             display: flex;
             padding: 10px;
-            background-color: white;
+            background-color: none;
             position: absolute;
             bottom: 0;
             left: 0;
@@ -191,7 +185,7 @@
         .input-area input {
             flex: 1;
             padding: 10px;
-            border: 1px solid #317c77;
+            border: 1px solid black;
             border-radius: 5px 0 0 5px;
             outline: none;
         }
@@ -210,9 +204,9 @@
 
         .input-area button {
             padding: 10px 20px;
-            background-color: #317c77;
-            color: #92c1bd;
-            border: none;
+            background-color: var(--accent-color);
+            color: white;
+            border: 1px solid black;
             border-radius: 0 5px 5px 0;
             cursor: pointer;
             outline: none;
