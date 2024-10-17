@@ -28,22 +28,20 @@ document.addEventListener('DOMContentLoaded', async () => {
         liquorListElement.innerHTML = '';
         cocktailListElement.innerHTML = '';
 
-        // 주류 검색 결과가 있을 경우 렌더링
+        // 주류 검색 결과 렌더링
         if (data.liquor_list.length > 0) {
             data.liquor_list.forEach(liquor => {
-                const listItem = document.createElement('li');
-                listItem.textContent = `${liquor.name} - ${liquor.classification}`;
+                const listItem = createListItem(liquor, 'liquor_detail.html');
                 liquorListElement.appendChild(listItem);
             });
         } else {
             liquorListElement.innerHTML = '<li>검색된 주류가 없습니다.</li>';
         }
 
-        // 칵테일 검색 결과가 있을 경우 렌더링
+        // 칵테일 검색 결과 렌더링
         if (data.cocktail_list.length > 0) {
             data.cocktail_list.forEach(cocktail => {
-                const listItem = document.createElement('li');
-                listItem.textContent = cocktail.name;
+                const listItem = createListItem(cocktail, 'cocktail_detail.html');
                 cocktailListElement.appendChild(listItem);
             });
         } else {
@@ -55,3 +53,26 @@ document.addEventListener('DOMContentLoaded', async () => {
         alert('검색 중 오류가 발생했습니다.');
     }
 });
+
+// 리스트 항목 생성 함수
+function createListItem(item, detailPage) {
+    const listItem = document.createElement('li');
+    listItem.classList.add('result-item');
+
+    const imgElement = document.createElement('img');
+    imgElement.src = item.img;
+    imgElement.alt = item.name;
+
+    const nameElement = document.createElement('p');
+    nameElement.textContent = item.name;
+
+    // 클릭 시 상세 페이지로 이동
+    listItem.addEventListener('click', () => {
+        window.location.href = `${detailPage}?id=${item.id}`;
+    });
+
+    listItem.appendChild(imgElement);
+    listItem.appendChild(nameElement);
+
+    return listItem;
+}
