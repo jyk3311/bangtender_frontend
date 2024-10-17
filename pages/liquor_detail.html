@@ -7,21 +7,28 @@
     <title>주류 상세 정보</title>
     <link rel="stylesheet" href="../src/css/base.css?v=0.1">
     <style>
-        
 
-        /* liqur_detail 페이지 스타일 */
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
+main{
+            background: linear-gradient(var(--user-msg-gradient-start), orange);
+            min-height: 100vh;
             padding: 20px;
+            box-sizing: border-box;
+            font-weight: 1000;
+            margin-bottom: 0%;
         }
-
 
         .main-content {
             display: flex;
             background-color: #e0f2f1;
-            padding: 20px;
             position: relative;
+            padding: 50px 20px;
+            background: linear-gradient(var(--liquor-container-color), #ffffff); /* 그라데이션 */
+            background-size: cover;
+            border: 2px solid var(--msg-border-color); /* 테두리 추가 */
+            border-radius: 12px; /* 테두리 둥글게 */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 그림자 추가 */
+            color: var(--dark-bg-color);
+            border: solid;
         }
 
         .vertical-text {
@@ -73,17 +80,10 @@
 
         /* container 스타일 */
         .container {
+            font-family: 'S-CoreDream-3Light';
             max-width: 1200px;
             margin: 0 auto;
             padding: 20px;
-        }
-
-
-        .main-content {
-            display: flex;
-            background-color: #e0f2f1;
-            padding: 20px;
-            position: relative;
         }
 
 
@@ -121,6 +121,9 @@
             max-width: 100%;
             max-height: 100%;
             border-radius: 5px;
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
         }
 
         .liquor-info {
@@ -138,9 +141,9 @@
         .liquor-content {
             margin-top: 20px;
             padding: 20px;
-            background-color: #eeeeee;
-            text-align: left;
-            /* 왼쪽 정렬 적용 */
+            background-color:none;
+            text-align: left;  /* 왼쪽 정렬 적용 */
+            color: black;
         }
 
         /* 주류 이름 스타일 - 사진과 겹치지 않도록 설정 */
@@ -148,6 +151,7 @@
             font-size: 2rem;
             margin-bottom: 20px;
             position: relative;
+            color: black;
             /* 부모 요소에 의존적인 위치 */
         }
 
@@ -156,8 +160,8 @@
             display: flex;
             margin-left: 60px;
             width: 100%;
-            align-items: flex-start;
-            /* 수직 정렬을 맞춤 */
+            align-items: flex-start;  /* 수직 정렬을 맞춤 */
+            color: black;
         }
 
         /* 게시물 수정 버튼(관리자만) */
@@ -207,8 +211,6 @@
                 color: white;
             }
 
-
-       
     </style>
 
 
