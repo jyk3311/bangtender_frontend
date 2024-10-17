@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
 
     try {
-        const response = await fetch(`http://43.203.219.114/api/v1/subcontents/search/?message=${searchQuery}`, {
+        const response = await fetch(`http://3.37.67.87/api/v1/subcontents/search/?message=${searchQuery}`, {
             method: 'GET',
         });
 

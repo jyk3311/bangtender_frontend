@@ -3,7 +3,7 @@ import { navbar } from './navbar.js';
 document.addEventListener('DOMContentLoaded', async () => {
     navbar();
 
-    let nextUrl = 'http://43.203.219.114/api/v1/cocktail/';
+    let nextUrl = 'http://3.37.67.87/api/v1/cocktail/';
     let isLoading = false;
     const addCocktailButton = document.getElementById('add-cocktail-btn');
 
