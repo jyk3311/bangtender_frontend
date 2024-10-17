@@ -20,8 +20,9 @@
             justify-content: center;
             align-items: center;
             flex-direction: column;
-            width: 100vw; /* 가로로는 화면을 다 채움 */
-            
+            width: 100vw;
+            /* 가로로는 화면을 다 채움 */
+
         }
 
         /* 로고 및 텍스트 */
@@ -109,7 +110,7 @@
             align-items: center;
             position: relative;
             top: 250px;
-            
+
         }
 
         .cocktail-title {
@@ -147,7 +148,7 @@
             width: 100%;
             height: 250px;
             object-fit: cover;
-            
+
         }
 
         .cocktail-item::after {
@@ -160,6 +161,7 @@
             background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.7) 100%);
             opacity: 0;
             transition: opacity 0.3s ease;
+            pointer-events: none;
         }
 
         .cocktail-item:hover::after {
@@ -244,7 +246,7 @@
 
         <div class="cocktail-section">
             <h2 class="cocktail-title">
-                오늘의<br><span class="highlight">추천</span><br>주류
+                오늘의<br><span class="highlight">추천</span><br>칵테일
             </h2>
 
             <div class="cocktail-grid" id="recommended-cocktails">
@@ -260,7 +262,7 @@
                 <!-- JS에서 동적으로 사용자 맞춤 주류 이미지를 삽입 -->
             </div>
             <h2 class="cocktail-title">
-                사용자<br><span class="highlight">맞춤</span><br>주류
+                사용자<br><span class="highlight">맞춤</span><br>칵테일
 
             </h2>
 
@@ -284,4 +286,3 @@
 
 
 </html>
-

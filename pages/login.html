@@ -17,17 +17,18 @@ main {
 }
 
 .login-container {
-    background-color: var( --secondary-color);
+    background-color: #fff;
     padding: 2rem;
     border-radius: 10px;
     width: 100%;
     max-width: 400px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     text-align: center;
+    border: solid;
 }
 
 h2 {
-    color: var(--light-text-color);
+    color: var(--primary-color);
     margin-bottom: 1.5rem;
 }
 
@@ -39,19 +40,21 @@ h2 {
 label {
     
     font-size: 1rem;
-    color: var(--light-text-color);
+    color: var(--primary-color);
     display: block;
     margin-bottom: 0.5rem;
+    font-weight: 1000;
 }
 
 main input {
     width: 100%;
     padding: 0.5rem;
-    border: 1px solid var(--light-text-color);
     border-radius: 4px;
+    border: 1px solid var(--primary-color);
 }
 
-.login-button {font-family: 'S-CoreDream-3Light';
+.login-button {
+    font-family: 'S-CoreDream-3Light';
     background-color: var( --accent-color);
     color: white;
     font-weight: 1000;
@@ -61,6 +64,8 @@ main input {
     cursor: pointer;
     width: 50%;
     margin-top: 1rem;
+    border: 1px solid var(--primary-color);
+    font-weight: 1000;
 }
 
 .login-button:hover {
@@ -87,7 +92,7 @@ main input {
 
 .signup-button {
     font-family: 'S-CoreDream-3Light';
-    background-color: var(--background-color);
+    background-color: white;
     color: var(--dark-bg-color);
     font-weight: 1000;
     border: none;
@@ -95,6 +100,8 @@ main input {
     border-radius: 6px;
     cursor: pointer;
     text-decoration: none; /* 밑줄 제거 */
+    border: 1px solid var(--primary-color);
+    font-weight: 1000;
 }
 
 .signup-button a {

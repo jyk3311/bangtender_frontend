@@ -24,7 +24,7 @@
             box-sizing: border-box;
         }
 
-        
+
         /* 폰트 임포트 */
         /* 숙명눈꽃체 (임시) */
         @font-face {
@@ -33,6 +33,7 @@
             font-weight: 700;
             font-style: normal;
         }
+
         /* 조선일보명조체 */
         @font-face {
             font-family: 'Chosunilbo_myungjo';
@@ -40,6 +41,7 @@
             font-weight: normal;
             font-style: normal;
         }
+
         /* 에스코어드림 */
         @font-face {
             font-family: 'S-CoreDream-3Light';
@@ -126,7 +128,7 @@
         }
 
 
-        nav ul li:hover > ul {
+        nav ul li:hover>ul {
             display: block;
         }
 
@@ -142,7 +144,8 @@
         .search-bar {
             display: flex;
             align-items: center;
-            margin-right: 1rem;         /* 로그아웃/프로필 버튼과의 간격 조정 */
+            margin-right: 1rem;
+            /* 로그아웃/프로필 버튼과의 간격 조정 */
 
         }
 
@@ -150,7 +153,8 @@
             padding: 0.5rem;
             border: 1px solid var(--primary-color);
             border-radius: 20px 0 0 20px;
-            outline: none;          /* 선택 시 윤곽선 제거 */
+            outline: none;
+            /* 선택 시 윤곽선 제거 */
         }
 
         .search-bar button {
@@ -183,7 +187,8 @@
             border-radius: 20px;
             cursor: pointer;
             transition: all 0.3s ease;
-            font-weight: 800;          /* 버튼 텍스트 굵기 조절*/
+            font-weight: 800;
+            /* 버튼 텍스트 굵기 조절*/
             font-family: 'S-CoreDream-3Light';
         }
 
@@ -195,12 +200,16 @@
 
         /* 본문 중앙 배치 */
         main {
-            max-width: 800px; /* 중앙 배치 */
+            max-width: 800px;
+            /* 중앙 배치 */
             margin: 4rem auto;
             padding: 5rem;
-            background-color: #ffffff; /* 본문 배경은 흰색 */
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* 그림자 추가 */
-            border-radius: 8px; /* 모서리 둥글게 */
+            background-color: #ffffff;
+            /* 본문 배경은 흰색 */
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            /* 그림자 추가 */
+            border-radius: 8px;
+            /* 모서리 둥글게 */
         }
 
         h1 {
@@ -213,7 +222,8 @@
 
         section {
             text-align: left;
-            padding: 0 2rem; /* 텍스트 살짝 안쪽으로 */
+            padding: 0 2rem;
+            /* 텍스트 살짝 안쪽으로 */
         }
 
         section p {
@@ -221,13 +231,15 @@
             font-size: 1rem;
             color: #264653;
             margin-bottom: 1rem;
-            font-weight: 600; /* 글자를 좀 더 두껍게 설정 */
+            font-weight: 600;
+            /* 글자를 좀 더 두껍게 설정 */
         }
 
         /* 본문 버튼 중앙 정렬 */
         .profile-actions {
             display: flex;
-            justify-content: center; /* 버튼들을 중앙 정렬 */
+            justify-content: center;
+            /* 버튼들을 중앙 정렬 */
             margin-top: 2rem;
         }
 
@@ -243,7 +255,7 @@
             cursor: pointer;
             transition: background-color 0.3s ease;
             margin: 1rem 0.5rem;
-            
+
         }
 
         .profile-button:hover {
@@ -343,6 +355,11 @@
             <p>이름: <span id="name"></span></p>
             <p>이메일: <span id="email"></span></p>
             <p>주소: <span id="address"></span></p>
+            <div id="my-liquor-container">
+                <p>보유한 술: <span id="owned-liquor"></span></p>
+                <p>좋아하는 술: <span id="favorite-liquor"></span></p>
+                <p>싫어하는 술: <span id="disliked-liquor"></span></p>
+            </div>
         </section>
 
         <div class="profile-actions">
@@ -395,10 +412,15 @@
 
                 if (response.ok) {
                     const data = await response.json();
-                    document.getElementById('username').textContent = data['user_data'].username;
-                    document.getElementById('name').textContent = data['user_data'].name;
-                    document.getElementById('email').textContent = data['user_data'].email;
-                    document.getElementById('address').textContent = data['user_data'].address;
+                    console.log(data)
+                    document.getElementById('username').textContent = data.user_data.username;
+                    document.getElementById('name').textContent = data.user_data.name;
+                    document.getElementById('email').textContent = data.user_data.email;
+                    document.getElementById('address').textContent = data.user_data.address;
+
+                    displayLiquorNames('owned-liquor', data.user_data.my_liquors.owned, data.liquor_data);
+                    displayLiquorNames('favorite-liquor', data.user_data.my_liquors.favorite, data.liquor_data);
+                    displayLiquorNames('disliked-liquor', data.user_data.my_liquors.disliked, data.liquor_data);
                 } else {
                     alert('프로필 정보를 불러오는 데 실패했습니다.');
                 }
@@ -406,6 +428,16 @@
                 console.error('프로필 정보를 가져오는 중 오류가 발생했습니다:', error);
             }
         });
+        function displayLiquorNames(containerId, liquors, liquorData) {
+            const container = document.getElementById(containerId);
+            const liquorNames = liquors.map(item => {
+                const liquor = liquorData.find(l => l.id === item.liquor);
+                return liquor ? liquor.name : '잘못된 술';
+            });
+
+            container.textContent = liquorNames.length > 0 ? liquorNames.join(', ') : '목록이 비어 있습니다.';
+        }
+
     </script>
 </body>
 

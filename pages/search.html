@@ -7,11 +7,11 @@
     <title>검색 결과</title>
     <link rel="stylesheet" href="../src/css/base.css?v=0.1">
     <style>
-
 main{
     font-family: 'S-CoreDream-3Light';
 }
-/* 본문 컨테이너 */
+
+        /* 본문 컨테이너 */
 .container {
     max-width: 1200px;
     margin: 2rem auto;
@@ -19,11 +19,8 @@ main{
 }
 /* 검색 결과 텍스트 스타일 */
 h1{
-    font-family: 'S-CoreDream-3Light';
-    color: black;
-    border: 800px;
-    margin-top: 30px;
-    line-height: 100px;
+    font-family: 'SMUSnowflake-Bold';
+    color: var(--secondary-color);
 }
 /* 각 목록 제목 스타일 */
 h2 {
@@ -53,7 +50,6 @@ h2 {
     align-items: center;
     text-align: center;
     padding: 1rem;
-    border: solid var(--secondary-color);
 }
 
 .result-grid li:hover {
@@ -125,54 +121,17 @@ h2 {
 </header>
 
 <main>
-<div class="container">
-    <h1>검색 결과</h1>
-    <div id="search-results">
-        <h2>주류 목록</h2>
-        <ul id="liquor-list" class="result-grid">
-            <li>
-                <img src="img/liquor1.jpg" alt="">
-                <p>주류 이름 1</p>
-            </li>
-            <li>
-                <img src="img/liquor2.jpg" alt="">
-                <p>주류 이름 2</p>
-            </li>
-            <li>
-                <img src="img/liquor1.jpg" alt="">
-                <p>주류 이름 3</p>
-            </li>
-            <li>
-                <img src="img/liquor2.jpg" alt="">
-                <p>주류 이름 4</p>
-            </li>
-            <!-- 추가 항목들 -->
-        </ul>
+    <div class="container">
+        <h1>검색 결과</h1>
+        <div id="search-results">
+            <h2>주류 목록</h2>
+            <ul id="liquor-list" class="result-grid"></ul>
 
-        <h2>칵테일 목록</h2>
-        <ul id="cocktail-list" class="result-grid">
-            <li>
-                <img src="img/cocktail1.jpg" alt="">
-                <p>칵테일 이름 1</p>
-            </li>
-            <li>
-                <img src="img/cocktail2.jpg" alt="">
-                <p>칵테일 이름 2</p>
-            </li>
-            <li>
-                <img src="img/cocktail1.jpg" alt="">
-                <p>칵테일 이름 3</p>
-            </li>
-            <li>
-                <img src="img/cocktail2.jpg" alt="">
-                <p>칵테일 이름 4</p>
-            </li>
-            <!-- 추가 항목들 -->
-        </ul>
+            <h2>칵테일 목록</h2>
+            <ul id="cocktail-list" class="result-grid"></ul>
+        </div>
     </div>
-</div>
 </main>
-
 
     <footer>
         <div class="footer-content">
