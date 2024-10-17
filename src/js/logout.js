@@ -1,5 +1,5 @@
 export function logoutUser() {
-    fetch("http://43.203.219.114/api/v1/accounts/logout/", {
+    fetch("http://3.37.67.87/api/v1/accounts/logout/", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"

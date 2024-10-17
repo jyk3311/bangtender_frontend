@@ -426,7 +426,7 @@
             const userId = decodedToken.user_id;
 
             // 북마크 데이터 요청
-            const response = await fetch(`http://43.203.219.114/api/v1/accounts/${userId}/bookmark/`, {
+            const response = await fetch(`http://3.37.67.87/api/v1/accounts/${userId}/bookmark/`, {
                 method: 'GET',
                 headers: {
                     'Authorization': `Bearer ${token}`,
