@@ -507,7 +507,7 @@
 
             // 서버에서 사용자 정보 및 술 목록 불러오기
             try {
-                const response = await fetch(`http://43.203.219.114/api/v1/accounts/${userId}/`, {
+                const response = await fetch(`http://3.37.67.87/api/v1/accounts/${userId}/`, {
                     method: 'GET',
                     headers: {
                         'Authorization': `Bearer ${token}`,
@@ -660,7 +660,7 @@
                 const dislikedLiquorIds = collectSelectedLiquorIds('disliked-liquor-tags');
 
                 try {
-                    const response = await fetch(`http://43.203.219.114/api/v1/accounts/${userId}/`, {
+                    const response = await fetch(`http://3.37.67.87/api/v1/accounts/${userId}/`, {
                         method: 'PUT',
                         headers: {
                             'Authorization': `Bearer ${token}`,

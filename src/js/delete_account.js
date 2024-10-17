@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 return;
             }
 
-            const url = "http://43.203.219.114/api/v1/accounts/";
+            const url = "http://3.37.67.87/api/v1/accounts/";
             const requestData = {
                 password: password
             };
