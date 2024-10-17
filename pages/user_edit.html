@@ -499,192 +499,12 @@
             const token = localStorage.getItem('access_token');
             const decodedToken = jwt_decode(token);
             const userId = decodedToken.user_id;
-<<<<<<< HEAD
-    
-            // 주류 데이터를 id와 name으로만 정의
-            const liquorData = {
-                2: { name: '발렌타인 17년' },
-                10: { name: '조니워커 블루라벨' },
-                8: { name: '조니워커 레드라벨' },
-                11: { name: '짐빔 화이트' },
-                4: { name: '발렌타인 싱글몰트 글렌버기 12년' },
-                3: { name: '발렌타인 30년' },
-                59: { name: '까뮤' },
-                5: { name: '잭 다니엘스' },
-                7: { name: '조니워커 골드 리저브' },
-                6: { name: '제임슨 블랙 배럴' },
-                64: { name: '헤네시 VSOP' },
-                70: { name: '카르파노 안티카 포뮬라' },
-                16: { name: '봄베이 사파이어' },
-                60: { name: '드 구르몽' },
-                65: { name: '헤네시 X.O' },
-                71: { name: '호세쿠엘보 에스페샬 레포사도' },
-                34: { name: '커클랜드' },
-                35: { name: '코르티챠' },
-                41: { name: '생 제르맹' },
-                61: { name: '레미 마틴' },
-                66: { name: '헨리 무니에 VSOP' },
-                55: { name: '하바나클럽 7년' },
-                62: { name: '크리스찬 드루앵' },
-                67: { name: '마티니 드라이 베르무트' },
-                54: { name: '플랜테이션 오리지널 다크 럼' },
-                53: { name: '캡틴 모건' },
-                51: { name: '올드닉' },
-                50: { name: '바톤' },
-                49: { name: '바카디 슈페리어' },
-                36: { name: '깔루아' },
-                68: { name: '마티니 비앙코' },
-                48: { name: '라 톤데나' },
-                52: { name: '론 자카파' },
-                40: { name: '블루 큐라소' },
-                42: { name: '앙고스투라 비터' },
-                46: { name: '네그리타 다크럼 시그니쳐' },
-                37: { name: '트리플 섹' },
-                47: { name: '더 크라켄 블랙 스파이스드 럼' },
-                45: { name: '피치트리' },
-                44: { name: '팔리니 리몬첼로' },
-                43: { name: '예거마이스터' },
-                39: { name: '베일리스' },
-                38: { name: '미도리' },
-                32: { name: '스카이' },
-                33: { name: '앱솔루트' },
-                28: { name: '스노우 레오파드' },
-                29: { name: '스미노프' },
-                25: { name: '단즈카' },
-                27: { name: '바톤 보드카' },
-                15: { name: '미라보 로제 드라이 진' },
-                17: { name: '비피터 진' },
-                24: { name: '길비스' },
-                22: { name: '헨드릭스 진' },
-                20: { name: '텐커레이 No.10' },
-                19: { name: '정원 진' },
-                18: { name: '산토리 수이 진' },
-                23: { name: '그레이구스' },
-                9: { name: '조니워커 블랙라벨' },
-                12: { name: '넘버 3 런던 드라이 진' },
-                13: { name: '르 진 블랑' },
-                14: { name: '몽키 47' },
-                1: { name: '글렌피딕 15년' },
-                58: { name: '1800 크리스탈리노' },
-                63: { name: '크리스티안 드루앵 라블랑슈' },
-                69: { name: '세노테 데킬라 레포사도' }
-            };
-    
-           // 태그를 추가하는 함수
-        function addTag(tagContainerId, tagText, tagValue) {
-            const tagContainer = document.getElementById(tagContainerId);
-            const existingTags = Array.from(tagContainer.children).map(tag => tag.dataset.value);
-            if (!existingTags.includes(tagValue)) {
-                const tag = document.createElement('div');
-                tag.classList.add('tag');
-                tag.dataset.value = tagValue; // ID 값 저장
-                tag.innerHTML = `${tagText} <span>&times;</span>`;
-                tag.querySelector('span').addEventListener('click', () => {
-                    tag.remove(); // 태그 삭제
-                });
-                tagContainer.appendChild(tag);
-            }
-        }
-
-        // 선택된 술 id 수집
-        function collectSelectedLiquorIds(tagContainerId) {
-            const tagContainer = document.getElementById(tagContainerId);
-            return Array.from(tagContainer.children).map(tag => tag.dataset.value); // ID 값 반환
-        }
-
-        // 드롭다운에서 선택 시 태그로 추가
-        function setupLiquorDropdown(inputId, resultId, tagContainerId, opposingTagContainerId = null) {
-            const searchInput = document.getElementById(inputId);
-            const resultsDropdown = document.getElementById(resultId);
-
-            // 검색어 입력 시 필터링된 리스트 표시
-            searchInput.addEventListener('input', function () {
-                const query = searchInput.value.toLowerCase();
-                if (query) {
-                    const filteredResults = Object.entries(liquorData).filter(([id, item]) => item.name.toLowerCase().includes(query));
-                    displayLiquorDropdown(resultsDropdown, filteredResults);
-                } else {
-                    displayLiquorDropdown(resultsDropdown, Object.entries(liquorData));  // 검색어가 없으면 모든 항목 표시
-                }
-            });
-
-            // 검색창 클릭 시 모든 주류 드롭다운으로 표시
-            searchInput.addEventListener('focus', function () {
-                displayLiquorDropdown(resultsDropdown, Object.entries(liquorData));  // 모든 항목 표시
-            });
-
-            // 드롭다운에서 체크박스를 선택하면 태그로 추가
-            resultsDropdown.addEventListener('change', function (event) {
-                if (event.target.tagName === 'INPUT' && event.target.checked) {
-                    const selectedLiquorId = event.target.value;
-                    const selectedLiquorName = liquorData[selectedLiquorId].name;
-                    if (opposingTagContainerId && checkTagConflict(selectedLiquorId, opposingTagContainerId)) {
-                        alert('좋아하는 술과 싫어하는 술에 같은 술을 추가할 수 없습니다.');
-                        event.target.checked = false;
-                    } else {
-                        addTag(tagContainerId, selectedLiquorName, selectedLiquorId); // 태그 추가
-                    }
-                }
-            });
-
-            // 외부 클릭 시 드롭다운 닫기
-            document.addEventListener('click', function (event) {
-                if (!event.target.closest('.search')) {
-                    resultsDropdown.style.display = 'none';
-                }
-            });
-        }
-
-        // 주류 리스트를 드롭다운에 표시
-        function displayLiquorDropdown(dropdown, liquors) {
-            dropdown.innerHTML = '';  // 기존 내용 삭제
-            liquors.forEach(([id, liquor]) => {
-                const label = document.createElement('label');
-                label.innerHTML = `<input type="checkbox" value="${id}"> ${liquor.name}`;
-                dropdown.appendChild(label);
-            });
-            dropdown.style.display = 'block';  // 드롭다운 표시
-        }
-
-        // 보유한 술, 좋아하는 술, 싫어하는 술에 대해 드롭다운 설정
-        setupLiquorDropdown('search-owned-liquor', 'owned-liquor-results', 'owned-liquor-tags');
-        setupLiquorDropdown('search-liked-liquor', 'liked-liquor-results', 'liked-liquor-tags', 'disliked-liquor-tags');
-        setupLiquorDropdown('search-disliked-liquor', 'disliked-liquor-results', 'disliked-liquor-tags', 'liked-liquor-tags');
-
-        // 수정하기 버튼 클릭 시, 서버로 데이터 전송
-        const form = document.getElementById('user-edit-form');
-        form.addEventListener('submit', async function (e) {
-            e.preventDefault();
-
-            // 사용자 입력 데이터 수집
-            const name = document.getElementById('name').value;
-            const email = document.getElementById('email').value;
-            const address = document.getElementById('address').value;
-
-            // 선택된 술 데이터 수집
-            const ownedLiquorIds = collectSelectedLiquorIds('owned-liquor-tags');
-            const likedLiquorIds = collectSelectedLiquorIds('liked-liquor-tags');
-            const dislikedLiquorIds = collectSelectedLiquorIds('disliked-liquor-tags');
-
-            // '좋아하는 술'과 '싫어하는 술'의 중복 여부 확인
-            if (likedLiquorIds.some(id => dislikedLiquorIds.includes(id))) {
-                document.getElementById('message').textContent = '좋아하는 술과 싫어하는 술에 같은 술이 담길 수 없습니다.';
-                return;
-            }
-=======
             let liquorList = [];
->>>>>>> dev
 
             // 서버에서 사용자 정보 및 술 목록 불러오기
             try {
-<<<<<<< HEAD
-                // 서버로 데이터 전송
-                const response = await fetch(`http://43.203.219.114/api/v1/accounts/${userId}/`, {
-                    method: 'PUT',
-=======
                 const response = await fetch(`http://43.203.219.114/api/v1/accounts/${userId}/`, {
                     method: 'GET',
->>>>>>> dev
                     headers: {
                         'Authorization': `Bearer ${token}`,
                         'Content-Type': 'application/json'
@@ -702,11 +522,6 @@
                     })
                 });
 
-<<<<<<< HEAD
-                const result = await response.json();
-                if (response.ok) {
-                    document.getElementById('message').textContent = '회원 정보가 수정되었습니다.';
-=======
                 if (response.ok) {
                     const Data = await response.json();
                     liquorList = Data.liquor_data;
@@ -716,28 +531,13 @@
                     document.getElementById('address').value = Data.user_data.address;
 
                     preselectLiquors(Data.user_data.my_liquors);
->>>>>>> dev
+
                 } else {
                     document.getElementById('message').textContent = result.message || '수정에 실패했습니다.';
                 }
             } catch (error) {
                 console.error('Error updating user data:', error);
             }
-<<<<<<< HEAD
-        });
-
-        // 중복 확인 함수 (좋아하는 술과 싫어하는 술)
-        function checkTagConflict(selectedLiquorId, opposingTagContainerId) {
-            const opposingTagIds = collectSelectedLiquorIds(opposingTagContainerId);
-            return opposingTagIds.includes(selectedLiquorId);
-        }
-    });
-</script>
-    
-    
-    
-    
-=======
 
             // 미리 선택된 술 태그 표시
             function preselectLiquors(myLiquors) {
@@ -902,7 +702,6 @@
             searchLiquor('search-disliked-liquor', 'disliked-liquor-results', 'disliked-liquor-tags', 'liked-liquor-tags');
         });
     </script>
->>>>>>> dev
 </body>
 
 </html>
