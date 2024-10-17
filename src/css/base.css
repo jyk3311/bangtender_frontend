@@ -228,11 +228,12 @@ nav ul ul li a:hover {
 main{
     background: linear-gradient(var(--user-msg-gradient-start), orange) !important;
     min-height: 100vh; /* 화면 높이에 꽉 차도록 설정 */
-    padding: 0px; /* 상하좌우 여백 */ 
+    padding: 20px; /* 상하좌우 여백 */ 
 }
 
 /* 푸터 스타일 */
 footer {
+    font-family: 'S-CoreDream-3Light';
     background-color: #ffffff;
     color: black;
     padding: 2rem 0;

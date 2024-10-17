@@ -69,8 +69,7 @@
         }
 
         main {
-            max-width: 1200px;
-            margin: 4rem auto;
+            margin: 4rem auto 0;
             font-family: 'S-CoreDream-3Light';
             min-height: 100vh; /* 화면 높이에 꽉 차도록 설정 */
             padding: 0px; /* 여백 삭제 */
@@ -86,6 +85,9 @@
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
             position: relative;
             top: 105px;
+            max-width: 1120px; /* 가로 길이 제한 */
+            margin-left: auto; /* 중앙 정렬 */
+            margin-right: auto; /* 중앙 정렬 */
 
         }
 
@@ -100,7 +102,8 @@
             border-top: 4px dotted black;
             margin: 4rem 0;
             position: relative;
-            top: 240px;
+            top: 161px;
+            border-bottom: 0;
         }
 
         .cocktail-section {
@@ -109,16 +112,17 @@
             margin-bottom: 1rem;
             align-items: center;
             position: relative;
-            top: 250px;
+            top: 171px;
 
         }
 
         .cocktail-title {
-            font-family: 'S-CoreDream-3Light';
+            font-family: 'SMUSnowflake-Bold';
             font-size: 2.5rem;
-            color: var(--primary-color);
+            color: white;
             flex: 0 0 30%;
             text-align: center;
+            -webkit-text-stroke: 1.2px black;
 
         }
 
@@ -170,7 +174,7 @@
 
         /* "추천" 텍스트에 accent-color 적용 */
         .cocktail-title span.highlight {
-            color: var(--accent-color);
+            color: var(--liquor-container-color);
         }
     </style>
 </head>
