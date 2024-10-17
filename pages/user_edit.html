@@ -492,10 +492,10 @@
 
     <script type="module">
         import { navbar } from '../src/js/navbar.js';
-    
+
         document.addEventListener('DOMContentLoaded', async function () {
             navbar();
-    
+
             const token = localStorage.getItem('access_token');
             const decodedToken = jwt_decode(token);
             const userId = decodedToken.user_id;
@@ -508,18 +508,7 @@
                     headers: {
                         'Authorization': `Bearer ${token}`,
                         'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({
-                        name: name,
-                        email: email,
-                        address: address,
-                        // 술 선택 데이터를 ID로 전송
-                        my_liquors: {
-                            owned: ownedLiquorIds,    // 보유한 술 ID 리스트
-                            favorite: likedLiquorIds, // 좋아하는 술 ID 리스트
-                            disliked: dislikedLiquorIds // 싫어하는 술 ID 리스트
-                        }
-                    })
+                    }
                 });
 
                 if (response.ok) {
@@ -531,12 +520,11 @@
                     document.getElementById('address').value = Data.user_data.address;
 
                     preselectLiquors(Data.user_data.my_liquors);
-
                 } else {
-                    document.getElementById('message').textContent = result.message || '수정에 실패했습니다.';
+                    throw new Error('회원 정보를 불러오는 데 실패했습니다.');
                 }
             } catch (error) {
-                console.error('Error updating user data:', error);
+                console.error('Error fetching user data:', error);
             }
 
             // 미리 선택된 술 태그 표시
