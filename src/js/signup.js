@@ -22,7 +22,7 @@ document.getElementById('signup-form').addEventListener('submit', async function
     };
 
     try {
-        const response = await fetch('http://3.37.67.87/api/v1/accounts/', {
+        const response = await fetch('https://api.bangtender.store/api/v1/accounts/', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

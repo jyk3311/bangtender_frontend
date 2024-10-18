@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 return;
             }
 
-            const url = "http://3.37.67.87/api/v1/accounts/";
+            const url = "https://api.bangtender.store/api/v1/accounts/";
             const requestData = {
                 password: password
             };
