@@ -3,6 +3,7 @@ import { navbar } from './navbar.js';
 document.addEventListener('DOMContentLoaded', async () => {
     navbar();
 
+    const BACKEND_URL = process.env.NEXT_PUBLIC_BACKEND_URL;
     const token = localStorage.getItem('access_token');
 
     try {
@@ -14,7 +15,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             headers['Authorization'] = `Bearer ${token}`;
         }
 
-        const response = await fetch('http://3.37.67.87/api/v1/subcontents/', {
+        const response = await fetch(`${BACKEND_URL}/api/v1/subcontents/`, {
             method: 'GET',
             headers: headers,
         });
