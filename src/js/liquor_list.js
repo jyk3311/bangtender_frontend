@@ -96,7 +96,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     // 스크롤 이벤트 추가
     window.addEventListener('scroll', () => {
-        if (window.innerHeight + window.scrollY >= document.body.offsetHeight - 100) {
+        if (window.innerHeight + window.scrollY <= document.body.offsetHeight + 350) {
             loadMoreLiquors();
         }
     });

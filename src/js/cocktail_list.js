@@ -80,15 +80,12 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     // 화면 하단 근처에 도달했는지 체크하는 함수
     function isNearBottom() {
-        return window.innerHeight + window.scrollY >= document.body.offsetHeight - 100;
+        return window.innerHeight + window.scrollY >= document.body.offsetHeight - 350;
     }
 
     // 스크롤 이벤트 핸들러
     function handleScroll() {
         if (isNearBottom()) {
-            console.log(window.innerHeight)
-            console.log(window.scrollY)
-            console.log(document.body.offsetHeight)
             loadMoreCocktails();
         }
     }
