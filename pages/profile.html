@@ -5,219 +5,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>프로필 페이지</title>
+    <link rel="stylesheet" href="../src/css/base.css?v=0.1">
     <style>
-        /* 헤더 스타일 */
-        :root {
-            /* 메인페이지에서 사용할 색상을 변수로 정의해 재사용하는 방법 */
-            --primary-color: #2c3e50;
-            --secondary-color: #34495e;
-            --accent-color: #ce7c2e;
-            --background-color: #ecf0f1;
-            --light-text-color: #fff;
-            --dark-bg-color: #2c3e50;
-        }
-
-        /* 모든 요소의 기본 여백과 패딩을 제거 & 박스 모델 통일 */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-
-        /* 폰트 임포트 */
-        /* 숙명눈꽃체 (임시) */
-        @font-face {
-            font-family: 'SMUSnowflake-Bold';
-            src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/2409-2@1.0/SMUSnowflake-Bold.woff2') format('woff2');
-            font-weight: 700;
-            font-style: normal;
-        }
-
-        /* 조선일보명조체 */
-        @font-face {
-            font-family: 'Chosunilbo_myungjo';
-            src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/Chosunilbo_myungjo.woff') format('woff');
-            font-weight: normal;
-            font-style: normal;
-        }
-
-        /* 에스코어드림 */
-        @font-face {
-            font-family: 'S-CoreDream-3Light';
-            src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-3Light.woff') format('woff');
-            font-weight: normal;
-            font-style: normal;
-        }
-
-        body {
-            font-family: 'Noto Sans KR', sans-serif;
-            background-color: var(--background-color);
-            color: var(--dark-bg-color);
-            line-height: 1.6;
-            /* 텍스트 줄 간격 조정 */
-        }
-
-        /* 헤더 스타일 */
-        header {
-            font-family: 'S-CoreDream-3Light';
-            background-color: var(--primary-color);
-            padding: 14px 8px 8px 20px;
-            position: sticky;
-            /* 스크롤 시에도 상단에 고정 */
-            top: 0;
-            z-index: 1000;
-            /* 다른 요소 위에 표시 */
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        }
-
-        .header-content {
-            display: flex;
-            justify-content: space-between;
-            /* 좌우로 배치 */
-            align-items: center;
-            /* 세로 정렬 가운데 */
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .logo img {
-            height: 60px;
-            width: auto;
-        }
-
-        /* 내비게이션 스타일 */
-        nav ul {
-            display: flex;
-            list-style-type: none;
-            padding: 0;
-            margin: 0;
-        }
-
-        /* 내비게이션 요소들간 간격 설정 */
-        nav ul li {
-            position: relative;
-            margin-right: 1.5rem;
-        }
-
-        /* 내비게이션 링크 스타일 */
-        nav a {
-            color: var(--light-text-color);
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.3s ease;
-        }
-
-        nav a:hover {
-            color: var(--accent-color);
-            /* 마우스 커서 가면 해당 색상으로 변경 */
-        }
-
-        nav ul ul {
-            display: none;
-            /* 드롭다운 메뉴 숨김 */
-            position: absolute;
-            top: 100%;
-            left: 0;
-            background-color: var(--secondary-color);
-            /* 배경색 설정 */
-            border-radius: 4px;
-            padding: 0.5rem 0;
-            min-width: 150px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        }
-
-
-        nav ul li:hover>ul {
-            display: block;
-        }
-
-        nav ul ul li {
-            margin: 0;
-            padding: 0.5rem 1rem;
-        }
-
-        nav ul ul li a:hover {
-            background-color: var(--secondary-color);
-        }
-
-        .search-bar {
-            display: flex;
-            align-items: center;
-            margin-right: 1rem;
-            /* 로그아웃/프로필 버튼과의 간격 조정 */
-
-        }
-
-        .search-bar input {
-            padding: 0.5rem;
-            border: 1px solid var(--primary-color);
-            border-radius: 20px 0 0 20px;
-            outline: none;
-            /* 선택 시 윤곽선 제거 */
-        }
-
-        .search-bar button {
-            background-color: var(--accent-color);
-            color: var(--light-text-color);
-            border: none;
-            padding: 0.5rem 1rem;
-            border-radius: 0 20px 20px 0;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
-
-        .search-bar button:hover {
-            background-color: var(--primary-color);
-        }
-
-        /* 버튼 스타일 */
-        .user-actions {
-            display: flex;
-            align-items: center;
-        }
-
-
-        .user-actions button {
-
-            color: var(--dark-bg-color);
-            border: none;
-            padding: 0.5rem 1rem;
-            margin-left: 0.5rem;
-            border-radius: 20px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-weight: 800;
-            /* 버튼 텍스트 굵기 조절*/
-            font-family: 'S-CoreDream-3Light';
-        }
-
-        .nav-button:hover {
-            background-color: var(--primary-color);
-            color: var(--light-text-color);
-        }
-
-
-        /* 본문 중앙 배치 */
-        main {
-            max-width: 800px;
-            /* 중앙 배치 */
+         /* 본문 중앙 배치 */
+        .profile-container{
+            max-width: 800px;   /* 중앙 배치 */
             margin: 4rem auto;
             padding: 5rem;
-            background-color: #ffffff;
-            /* 본문 배경은 흰색 */
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            /* 그림자 추가 */
-            border-radius: 8px;
-            /* 모서리 둥글게 */
+            background: linear-gradient(var(--liquor-container-color), #ffffff);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);     /* 그림자 추가 */
+            border-radius: 10px;   /* 모서리 둥글게 */
+            border: solid;
         }
 
         h1 {
             font-family: 'SMUSnowflake-Bold';
             font-size: 2rem;
-            color: #264653;
             margin-bottom: 2rem;
             text-align: center;
+            font-weight: bold;
+            color: white;
+            text-shadow: -1.6px 0px black, 0px 1.6px black, 1.6px 0px black, 0px -1.6px black;
+    
         }
 
         section {
@@ -229,9 +38,9 @@
         section p {
             font-family: 'S-CoreDream-3Light';
             font-size: 1rem;
-            color: #264653;
             margin-bottom: 1rem;
             font-weight: 600;
+            color: black;
             /* 글자를 좀 더 두껍게 설정 */
         }
 
@@ -241,56 +50,36 @@
             justify-content: center;
             /* 버튼들을 중앙 정렬 */
             margin-top: 2rem;
+            
         }
 
 
         /* 본문 버튼 스타일 */
         .profile-button {
             font-family: 'S-CoreDream-3Light';
-            background-color: #264653;
-            color: white;
-            border: none;
+            background-color: white;
+            color: black; /* 기본 글자색을 검정으로 설정 */
+            border: solid;
             padding: 0.75rem 1.5rem;
             border-radius: 4px;
             cursor: pointer;
-            transition: background-color 0.3s ease;
+            transition: background-color 0.3s ease, color 0.3s ease; /* 색상 전환도 부드럽게 처리 */
             margin: 1rem 0.5rem;
 
         }
 
+        .profile-button a {
+            color: black; /* a 태그 내부 기본 글자색을 검정으로 */
+            text-decoration: none; /* 링크 밑줄 없애기 */
+        }
+
         .profile-button:hover {
             background-color: var(--primary-color);
+            border: 1px solid black;
         }
 
-        /* 푸터 스타일 */
-        footer {
-            background-color: var(--primary-color);
-            color: #fff;
-            padding: 2rem 0;
-            margin-top: 3rem;
-            position: relative;
-            bottom: 0;
-            width: 100%;
-        }
-
-        .footer-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0 1rem;
-        }
-
-        .team-members a {
-            color: #fff;
-            text-decoration: none;
-            margin-right: 1rem;
-            transition: color 0.3s ease;
-        }
-
-        .team-members a:hover {
-            color: var(--accent-color);
+        .profile-button:hover a {
+            color: white; /* 호버 시 a 태그 내부 글자색을 흰색으로 */
         }
     </style>
     <script src="https://cdn.jsdelivr.net/npm/jwt-decode@3.1.2/build/jwt-decode.min.js"></script>
@@ -348,6 +137,7 @@
     <hr class="nav-divider">
 
     <main>
+        <div class="profile-container">
         <h1>내 프로필</h1>
 
         <section>
@@ -364,15 +154,16 @@
 
         <div class="profile-actions">
             <button class="profile-button">
-                <a href="user_edit.html" style="color: white; text-decoration: none;">회원 정보 수정</a>
+                <a href="user_edit.html" >회원 정보 수정</a>
             </button>
             <button class="profile-button">
-                <a href="delete_account.html" style="color: white; text-decoration: none;">회원 탈퇴</a>
+                <a href="delete_account.html">회원 탈퇴</a>
             </button>
             <button class="profile-button">
-                <a href="my_bookmark.html" style="color: white; text-decoration: none;">내 북마크 목록 보기</a>
+                <a href="my_bookmark.html">내 북마크 목록 보기</a>
             </button>
         </div>
+    </div>
     </main>
 
     <footer>
