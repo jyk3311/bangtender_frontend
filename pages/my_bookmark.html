@@ -61,6 +61,13 @@ h1 {
     object-fit: cover;
 }
 
+/* 주류 텍스트 스타일 */
+.bookmark-item p {
+            margin: 10px 0;
+            font-size: 1.2rem;
+            color: #333;
+        }
+
 h2 {
     font-family: 'S-CoreDream-3Light';
     font-size: 1.8rem;
@@ -135,33 +142,16 @@ h2 {
     
     <main>
     <h1>내 북마크</h1>
+    <!-- 북마크한 주류 섹션 -->
     <section>
         <h2>북마크한 주류</h2>
-        <!-- 여기서 className을 class로 수정 -->
-        <div class="grid-container" id="liquor-bookmarks">
-            <div class="bookmark-item">
-                <img src="/placeholder.svg?height=200&width=200" alt="주류 1" />
-            </div>
-            <div class="bookmark-item">
-                <img src="/placeholder.svg?height=200&width=200" alt="주류 2" />
-            </div>
-            <div class="bookmark-item">
-                <img src="/placeholder.svg?height=200&width=200" alt="주류 3" />
-            </div>
-        </div>
+        <div class="grid-container" id="liquor-bookmarks"></div>
     </section>
-    
 
+    <!-- 북마크한 칵테일 섹션 -->
     <section>
         <h2>북마크한 칵테일</h2>
-        <div class="grid-container" id="cocktail-bookmarks">
-            <div class="bookmark-item">
-                <img src="/placeholder.svg?height=200&width=200" alt="칵테일 1" />
-            </div>
-            <div class="bookmark-item">
-                <img src="/placeholder.svg?height=200&width=200" alt="칵테일 2" />
-            </div>
-        </div>
+        <div class="grid-container" id="cocktail-bookmarks"></div>
     </section>
 
     <p id="no-bookmarks-message" style="display: none;">북마크한 항목이 없습니다.</p>
@@ -224,37 +214,38 @@ h2 {
             liquorContainer.innerHTML = '';
             cocktailContainer.innerHTML = '';
 
-            // 북마크한 주류 표시
+            // 북마크한 주류 표시 (이름과 가격)
             if (liquorBookmarks.length > 0) {
-                liquorBookmarks.forEach(liquor => {
-                    const liquorItem = document.createElement('div');
-                    liquorItem.classList.add('bookmark-item');
-                    const imgElement = document.createElement('img');
-                    imgElement.src = `${liquor.img}`;
-                    imgElement.alt = liquor.name;
-                    imgElement.addEventListener('click', () => {
-                        window.location.href = `liquor_detail.html?id=${liquor.id}`;  // 주류 상세 페이지로 이동
+                    liquorBookmarks.forEach(liquor => {
+                        const liquorItem = document.createElement('div');
+                        liquorItem.classList.add('bookmark-item');
+                        liquorItem.innerHTML = `
+                            <img src="${liquor.img}" alt="${liquor.name}">
+                            <p>${liquor.name}</p>
+                            <p>가격: ${liquor.price} 원</p> <!-- 가격 추가 -->
+                        `;
+                        liquorItem.addEventListener('click', () => {
+                            window.location.href = `liquor_detail.html?id=${liquor.id}`;  // 주류 상세 페이지로 이동
+                        });
+                        liquorContainer.appendChild(liquorItem);
                     });
-                    liquorItem.appendChild(imgElement);
-                    liquorContainer.appendChild(liquorItem);
-                });
-            }
+                }
 
-            // 북마크한 칵테일 표시
-            if (cocktailBookmarks.length > 0) {
-                cocktailBookmarks.forEach(cocktail => {
-                    const cocktailItem = document.createElement('div');
-                    cocktailItem.classList.add('bookmark-item');
-                    const imgElement = document.createElement('img');
-                    imgElement.src = `${cocktail.img}`;
-                    imgElement.alt = cocktail.name;
-                    imgElement.addEventListener('click', () => {
-                        window.location.href = `cocktail_detail.html?id=${cocktail.id}`;  // 칵테일 상세 페이지로 이동
+                // 북마크한 칵테일 표시 (이름만 표시)
+                if (cocktailBookmarks.length > 0) {
+                    cocktailBookmarks.forEach(cocktail => {
+                        const cocktailItem = document.createElement('div');
+                        cocktailItem.classList.add('bookmark-item');
+                        cocktailItem.innerHTML = `
+                            <img src="${cocktail.img}" alt="${cocktail.name}">
+                            <p>${cocktail.name}</p> <!-- 칵테일 이름 표시 -->
+                        `;
+                        cocktailItem.addEventListener('click', () => {
+                            window.location.href = `cocktail_detail.html?id=${cocktail.id}`;  // 칵테일 상세 페이지로 이동
+                        });
+                        cocktailContainer.appendChild(cocktailItem);
                     });
-                    cocktailItem.appendChild(imgElement);
-                    cocktailContainer.appendChild(cocktailItem);
-                });
-            }
+                }
 
             // 북마크한 항목이 없을 때 메시지 표시
             if (liquorBookmarks.length === 0 && cocktailBookmarks.length === 0) {
