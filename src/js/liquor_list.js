@@ -3,7 +3,7 @@ import { navbar } from './navbar.js';
 document.addEventListener('DOMContentLoaded', async () => {
     navbar();
 
-    let nextUrl = 'http://3.37.67.87/api/v1/liquor/';
+    let nextUrl = 'https://api.bangtender.store/api/v1/liquor/';
     let isLoading = false;
     const addLiquorButton = document.getElementById('add-liquor-btn');
 

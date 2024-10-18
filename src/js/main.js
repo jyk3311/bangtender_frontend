@@ -3,7 +3,6 @@ import { navbar } from './navbar.js';
 document.addEventListener('DOMContentLoaded', async () => {
     navbar();
 
-    const BACKEND_URL = process.env.NEXT_PUBLIC_BACKEND_URL;
     const token = localStorage.getItem('access_token');
 
     try {

@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', async function () {
 
     // 칵테일 정보 불러오기
     try {
-        const response = await fetch(`http://3.37.67.87/api/v1/cocktail/${cocktailId}/`);
+        const response = await fetch(`https://api.bangtender.store/api/v1/cocktail/${cocktailId}/`);
         if (!response.ok) {
             throw new Error('데이터를 불러오지 못했습니다.');
         }
@@ -34,7 +34,7 @@ document.addEventListener('DOMContentLoaded', async function () {
         const formData = new FormData(form);
 
         try {
-            const response = await fetch(`http://3.37.67.87/api/v1/cocktail/${cocktailId}/`, {
+            const response = await fetch(`https://api.bangtender.store/api/v1/cocktail/${cocktailId}/`, {
                 method: 'PUT',
                 headers: {
                     'Authorization': 'Bearer ' + localStorage.getItem('access_token'),

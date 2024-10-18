@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', async function () {
 
         if (confirmDelete) {
             try {
-                const response = await fetch(`http://3.37.67.87/api/v1/cocktail/${cocktailId}/`, {
+                const response = await fetch(`https://api.bangtender.store/api/v1/cocktail/${cocktailId}/`, {
                     method: 'DELETE',
                     headers: {
                         'Authorization': 'Bearer ' + localStorage.getItem('access_token'),

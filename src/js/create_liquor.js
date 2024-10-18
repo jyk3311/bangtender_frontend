@@ -8,7 +8,7 @@ document.getElementById('post-form').addEventListener('submit', async (event) =>
     const formData = new FormData(form);
 
     try {
-        const response = await fetch('http://3.37.67.87/api/v1/liquor/', {
+        const response = await fetch('https://api.bangtender.store/api/v1/liquor/', {
             method: 'POST',
             headers: {
                 'Authorization': 'Bearer ' + localStorage.getItem('access_token'),

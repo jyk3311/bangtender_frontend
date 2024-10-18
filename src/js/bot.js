@@ -26,7 +26,7 @@ function streamMessage(message, role, messageDiv) {
 function sendMessageToBot(message) {
     const token = localStorage.getItem('access_token');  // 인증 토큰을 가져옴
 
-    fetch('http://3.37.67.87/api/v1/subcontents/bangtenderbot/', {
+    fetch('https://api.bangtender.store/api/v1/subcontents/bangtenderbot/', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
