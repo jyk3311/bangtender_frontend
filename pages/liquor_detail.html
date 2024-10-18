@@ -66,6 +66,8 @@ main{
 
         .liquor-info {
             flex: 1;
+            position: relative;
+            left: 50px;;
         }
 
         .product-info h2 {
@@ -115,6 +117,8 @@ main{
             justify-content: center;
             align-items: center;
             background-color: #cccccc;
+            position: relative;
+            bottom:20px; 
         }
 
         .liquor-img img {
@@ -162,6 +166,34 @@ main{
             width: 100%;
             align-items: flex-start;  /* 수직 정렬을 맞춤 */
             color: black;
+        }
+
+        /* 북마크 버튼 스타일 수정 */
+        #bookmark-button {
+            font-family: 'S-CoreDream-3Light';
+            display: block;
+            margin: 20px auto;     /* 중앙 정렬 및 위아래 여백 추가 */
+            position: relative;
+            bottom: -40px;    /* 아래쪽으로 위치 이동 */
+            background-color: white;     /* 버튼 색상 */
+            color: var(--primary-color);
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            position: relative;
+            bottom: -326px;
+            left: -400px;
+            z-index: 1;
+            border: 1px solid var(--msg-border-color);      /* 테두리 추가 */
+            border-radius: 40px;      /* 테두리 둥글게 */
+            font-weight: 1000;
+        }
+
+        #bookmark-button:hover {
+            background-color: var(--primary-color);
+            border: 1px solid black;
+            color: white; /* 호버 시 글자색 흰색으로 변경 */
         }
 
         /* 게시물 수정 버튼(관리자만) */
