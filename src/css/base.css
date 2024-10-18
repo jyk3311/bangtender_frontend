@@ -262,3 +262,19 @@ footer {
 .team-members a:hover {
     color: var(--accent-color);
 }
+
+.footer-text {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end; /* 오른쪽 정렬 */
+    flex: 1;
+}
+
+.footer-text .privacy-policy {
+    font-weight: bold; /* 개인정보처리방침을 굵게 설정 */
+    margin-right: 1rem; /* 저작권 문구와의 간격 */
+}
+
+.footer-text .copyright {
+    text-align: right;
+}
