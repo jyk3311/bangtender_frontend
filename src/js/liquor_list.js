@@ -64,8 +64,8 @@ document.addEventListener('DOMContentLoaded', async () => {
     // 더 많은 주류 데이터를 로드하는 함수
     async function loadMoreLiquors() {
         if (isLoading || !nextUrl) return;
-        if (nextUrl.startsWith('http://3.37.67.87')) {
-            nextUrl = nextUrl.replace('http://3.37.67.87', 'https:api.bangtender.store');
+        if (nextUrl.startsWith('http:')) {
+            nextUrl = nextUrl.replace('http:', 'https:');
         }
         isLoading = true;
         document.getElementById('loading').style.display = 'block';
