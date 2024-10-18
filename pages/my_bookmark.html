@@ -7,12 +7,12 @@
     <title>내 북마크</title>
     <link rel="stylesheet" href="../src/css/base.css?v=0.1">
     <style>
-    main {
-    margin: 0;
-    padding: 0 10rem;
-    font-family: 'S-CoreDream-3Light';
-    min-height: 100vh;    /* 화면 높이에 꽉 차도록 설정 */
-    background: linear-gradient(var(--user-msg-gradient-start), orange) !important;
+main {
+margin: 0;
+padding: 0 10rem;
+font-family: 'S-CoreDream-3Light';
+min-height: 100vh;    /* 화면 높이에 꽉 차도록 설정 */
+background: linear-gradient(var(--user-msg-gradient-start), orange) !important;
 }
 
 h1 {
@@ -28,11 +28,14 @@ h1 {
 /* 북마크 그리드 레이아웃 */
 .grid-container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* 그리드 자동 조정 */
-    gap: 1.5rem;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
     max-width: 1200px;
     margin: 0 auto;
     padding: 40px;
+    position: relative;
+    top: 50px;
+    padding-bottom: 170px;
 }
 
 /* 북마크 항목 스타일 */
@@ -129,37 +132,40 @@ h2 {
             </div>
         </div>
     </header>
-
+    
+    <main>
     <h1>내 북마크</h1>
-
     <section>
         <h2>북마크한 주류</h2>
-        <div className="grid-container" id="liquor-bookmarks">
-            <div className="bookmark-item">
+        <!-- 여기서 className을 class로 수정 -->
+        <div class="grid-container" id="liquor-bookmarks">
+            <div class="bookmark-item">
                 <img src="/placeholder.svg?height=200&width=200" alt="주류 1" />
             </div>
-            <div className="bookmark-item">
+            <div class="bookmark-item">
                 <img src="/placeholder.svg?height=200&width=200" alt="주류 2" />
             </div>
-            <div className="bookmark-item">
+            <div class="bookmark-item">
                 <img src="/placeholder.svg?height=200&width=200" alt="주류 3" />
             </div>
         </div>
     </section>
+    
 
     <section>
         <h2>북마크한 칵테일</h2>
-        <div className="grid-container" id="cocktail-bookmarks">
-            <div className="bookmark-item">
+        <div class="grid-container" id="cocktail-bookmarks">
+            <div class="bookmark-item">
                 <img src="/placeholder.svg?height=200&width=200" alt="칵테일 1" />
             </div>
-            <div className="bookmark-item">
+            <div class="bookmark-item">
                 <img src="/placeholder.svg?height=200&width=200" alt="칵테일 2" />
             </div>
         </div>
     </section>
 
     <p id="no-bookmarks-message" style="display: none;">북마크한 항목이 없습니다.</p>
+</main>
 
     <footer>
         <div class="footer-content">
