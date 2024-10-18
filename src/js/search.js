@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
 
     try {
-        const response = await fetch(`http://3.37.67.87/api/v1/subcontents/search/?message=${searchQuery}`, {
+        const response = await fetch(`https://api.bangtender.store/api/v1/subcontents/search/?message=${searchQuery}`, {
             method: 'GET',
         });
 
