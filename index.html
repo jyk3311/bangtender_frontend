@@ -20,8 +20,8 @@
             justify-content: center;
             align-items: center;
             flex-direction: column;
-            width: 100vw;
-            /* 가로로는 화면을 다 채움 */
+            width: 100vw;    /* 가로로는 화면을 다 채움 */
+
 
         }
 
@@ -44,16 +44,24 @@
         }
 
         .background-text h1 {
+            font-family: 'SMUSnowflake-Bold';
             font-size: 3rem;
             margin-bottom: 1rem;
+            color: white;
+            -webkit-text-stroke: 1.3px black;
         }
 
         .background-text p {
+            font-family: 'S-CoreDream-3Light';
+            color: black;
+            -webkit-text-stroke: 0.8px black;
             font-size: 1.2rem;
             margin-bottom: 1rem;
         }
 
         .background-text em {
+            font-family: 'Chosunilbo_myungjo';
+            color: black;
             font-size: 1rem;
             font-style: italic;
         }
@@ -72,7 +80,7 @@
             margin: 4rem auto 0;
             font-family: 'S-CoreDream-3Light';
             min-height: 100vh; /* 화면 높이에 꽉 차도록 설정 */
-            padding: 0px; /* 여백 삭제 */
+            padding: 20px 40px; /* 좌우 여백 추가 */
             background: linear-gradient(var(--user-msg-gradient-start), orange);
         }
 
@@ -88,7 +96,6 @@
             max-width: 1120px; /* 가로 길이 제한 */
             margin-left: auto; /* 중앙 정렬 */
             margin-right: auto; /* 중앙 정렬 */
-
         }
 
         .tip {
@@ -234,7 +241,7 @@
         <img src="src/images/002.png" alt="로고">
         <div class="background-text">
             <h1>BangTender</h1>
-            <p>방텐더는 "내 방 안의 바텐더" 라는 의미로<br> 사용자 맞춤 칵테일 추천 및 주류 정보를 제공하는 웹 애플리케이션입니다.(멘트 미정)</p>
+            <p>방텐더는 "내 방 안의 바텐더" 라는 의미로<br> 사용자 맞춤 칵테일 추천 및 주류 정보를 제공하는 웹 애플리케이션입니다.</p>
             <em>스크롤을 내려 여러분에게 딱 맞는 칵테일 추천을 받아보세요!</em>
         </div>
         <div class="scroll-down-icon">
