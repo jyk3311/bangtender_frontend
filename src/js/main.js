@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             headers['Authorization'] = `Bearer ${token}`;
         }
 
-        const response = await fetch(`${BACKEND_URL}/api/v1/subcontents/`, {
+        const response = await fetch(`https://api.bangtender.store/api/v1/subcontents/`, {
             method: 'GET',
             headers: headers,
         });
