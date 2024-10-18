@@ -80,6 +80,9 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     // 화면 하단 근처에 도달했는지 체크하는 함수
     function isNearBottom() {
+        console.log(window.innerHeight)
+        console.log(window.scrollY)
+        console.log(document.body.offsetHeight)
         return window.innerHeight + window.scrollY >= document.body.offsetHeight - 100;
     }
 
