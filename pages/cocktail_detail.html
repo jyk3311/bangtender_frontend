@@ -152,11 +152,11 @@
         /* 게시물 수정 버튼(관리자만) */
         #edit-button {
             display: block;     /* 관리자가 로그인하면 버튼을 표시 */
-            background-color: none;
+            background-color: white;
             color: var(--primary-color);
             padding: 0.5rem 1.2rem;
             margin: 1.5rem 0;
-            border-radius: 6px;
+            border-radius: 20px;
             cursor: pointer;
             font-size: 0.8rem;
             font-family: 'S-CoreDream-3Light';
@@ -171,11 +171,11 @@
         #delete-button {
             display: block;
             /* 관리자가 로그인하면 버튼을 표시 */
-            background-color: none;
+            background-color: white;
             color: var(--primary-color);
             padding: 0.5rem 1.2rem;
             margin: 1.5rem 0;
-            border-radius: 6px;
+            border-radius: 20px;
             cursor: pointer;
             font-size: 0.8rem;
             font-family: 'S-CoreDream-3Light';
@@ -187,15 +187,17 @@
         }
 
         /* 버튼 호버 시 배경색 변경 */
-        #edit-button {
+        #edit-button:hover {
             background-color: var(--primary-color);
             color: white;
+            border: solid var(--primary-color);
         }
 
         /* 버튼 호버 시 배경색 변경 */
-        #delete-button {
+        #delete-button:hover {
             background-color: var(--primary-color);
             color: white;
+            border: solid var(--primary-color);
         }
     </style>
 </head>
