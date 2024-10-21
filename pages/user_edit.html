@@ -7,19 +7,20 @@
     <title>회원 정보 수정</title>
     <link rel="stylesheet" href="../src/css/base.css?v=0.1">
     <style>
-
         /* 메인 컨테이너 스타일 */
         main {
             font-family: 'S-CoreDream-3Light';
         }
 
-        .edit-container{
+        .edit-container {
             max-width: 800px;
             margin: 6rem auto;
             padding: 40px;
-            background: linear-gradient(var(--liquor-container-color), #ffffff); /* 그라데이션 */
+            background: linear-gradient(var(--liquor-container-color), #ffffff);
+            /* 그라데이션 */
             border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);   /* 박스 그림자 */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            /* 박스 그림자 */
             border: solid;
         }
 
@@ -72,7 +73,8 @@
             transition: background-color 0.3s;
             display: inline-block;
             margin-top: 0.5rem;
-            margin-bottom: 60px;   /* 버튼 밑에 공간 주기 */
+            margin-bottom: 60px;
+            /* 버튼 밑에 공간 주기 */
             border: 1px solid black;
         }
 
@@ -207,45 +209,48 @@
 
     <main>
         <div class="edit-container">
-        <h1>회원 정보 수정</h1>
-        <form id="user-edit-form">
-            <label for="name">이름:</label>
-            <input type="text" id="name" name="name" required><br><br>
+            <h1>회원 정보 수정</h1>
+            <form id="user-edit-form">
+                <label for="name">이름:</label>
+                <input type="text" id="name" name="name" required><br><br>
 
-            <label for="email">이메일:</label>
-            <input type="email" id="email" name="email" required><br><br>
+                <label for="email">이메일:</label>
+                <input type="email" id="email" name="email" required><br><br>
 
-            <label for="address">주소:</label>
-            <input type="text" id="address" name="address" required>
-            <button type="button" id="postcode-button">우편번호 찾기</button>
+                <label for="address">주소:</label>
+                <input type="text" id="address" name="address" required>
+                <button type="button" id="postcode-button">우편번호 찾기</button>
+                <div>
+                    <button type="button" id="changePasswordBtn">비밀번호 변경</button>
+                </div>
 
-            <h2>내가 보유한 술</h2>
-            <!-- 검색 기능 추가 -->
-            <div class="search">
-                <input type="text" id="search-owned-liquor" placeholder="보유한 술 검색어 입력">
-                <div id="owned-liquor-results" class="dropdown-content"></div>
-            </div>
-            <!-- 태그 표시 -->
-            <div class="selected-tags" id="owned-liquor-tags"></div>
+                <h2>내가 보유한 술</h2>
+                <!-- 검색 기능 추가 -->
+                <div class="search">
+                    <input type="text" id="search-owned-liquor" placeholder="보유한 술 검색어 입력">
+                    <div id="owned-liquor-results" class="dropdown-content"></div>
+                </div>
+                <!-- 태그 표시 -->
+                <div class="selected-tags" id="owned-liquor-tags"></div>
 
-            <h2>좋아하는 술</h2>
-            <div class="search">
-                <input type="text" id="search-liked-liquor" placeholder="좋아하는 술 검색어 입력">
-                <div id="liked-liquor-results" class="dropdown-content"></div>
-            </div>
-            <div class="selected-tags" id="liked-liquor-tags"></div>
+                <h2>좋아하는 술</h2>
+                <div class="search">
+                    <input type="text" id="search-liked-liquor" placeholder="좋아하는 술 검색어 입력">
+                    <div id="liked-liquor-results" class="dropdown-content"></div>
+                </div>
+                <div class="selected-tags" id="liked-liquor-tags"></div>
 
-            <h2>싫어하는 술</h2>
-            <div class="search">
-                <input type="text" id="search-disliked-liquor" placeholder="싫어하는 술 검색어 입력">
-                <div id="disliked-liquor-results" class="dropdown-content"></div>
-            </div>
-            <div class="selected-tags" id="disliked-liquor-tags"></div>
+                <h2>싫어하는 술</h2>
+                <div class="search">
+                    <input type="text" id="search-disliked-liquor" placeholder="싫어하는 술 검색어 입력">
+                    <div id="disliked-liquor-results" class="dropdown-content"></div>
+                </div>
+                <div class="selected-tags" id="disliked-liquor-tags"></div>
 
-            <button type="submit">수정하기</button>
-        </form>
-        <p id="message"></p>
-    </div>
+                <button type="submit">수정하기</button>
+            </form>
+            <p id="message"></p>
+        </div>
     </main>
 
     <footer>
@@ -257,11 +262,11 @@
                 <a href="https://insight986.tistory.com/" target="_blank">배민석</a>
             </div>
             <!-- 개인정보처리방침과 저작권 텍스트를 나란히 오른쪽 정렬 -->
-        <div class="footer-text">
-            <p class="privacy-policy">개인정보처리방침</p>
-            <p class="copyright">&copy; 2024 방텐더. All rights reserved.</p>
+            <div class="footer-text">
+                <p class="privacy-policy">개인정보처리방침</p>
+                <p class="copyright">&copy; 2024 방텐더. All rights reserved.</p>
+            </div>
         </div>
-    </div>
     </footer>
 
     <script type="module">
@@ -471,6 +476,9 @@
                     document.getElementById('address').value = data.address;
                 }
             }).open();
+        });
+        document.getElementById('changePasswordBtn').addEventListener('click', function () {
+            window.location.href = 'change_password.html';
         });
     </script>
 </body>
