@@ -1,5 +1,5 @@
 import { navbar } from './navbar.js';
-
+import config from './config.js';
 document.addEventListener('DOMContentLoaded', async function () {
     navbar();
 
@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', async function () {
         }
 
         // 칵테일 정보 가져오기
-        const response = await fetch(`https://api.bangtender.store/api/v1/cocktail/${cocktailId}/`, {
+        const response = await fetch(`https://${config.backendApiUrl}/api/v1/cocktail/${cocktailId}/`, {
             method: 'GET',
             headers: headers
         });
@@ -65,7 +65,7 @@ document.addEventListener('DOMContentLoaded', async function () {
         // 북마크 버튼 클릭 이벤트 처리
         bookmarkButton.addEventListener('click', async () => {
             try {
-                const bookmarkResponse = await fetch(`https://api.bangtender.store/api/v1/cocktail/${cocktailId}/bookmark/`, {
+                const bookmarkResponse = await fetch(`https://${config.backendApiUrl}/api/v1/cocktail/${cocktailId}/bookmark/`, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',

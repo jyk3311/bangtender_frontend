@@ -1,3 +1,5 @@
+import config from './config.js';
+
 import { navbar } from './navbar.js';
 
 document.addEventListener('DOMContentLoaded', async () => {
@@ -12,7 +14,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
 
     try {
-        const response = await fetch(`https://api.bangtender.store/api/v1/subcontents/search/?message=${searchQuery}`, {
+        const response = await fetch(`https://${config.backendApiUrl}/api/v1/subcontents/search/?message=${searchQuery}`, {
             method: 'GET',
         });
 

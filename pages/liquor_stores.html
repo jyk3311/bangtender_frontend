@@ -147,7 +147,7 @@
         }
 
         function initMap() {
-            fetch('https://api.bangtender.store/api/v1/subcontents/map/', {
+            fetch(`https://${config.backendApiUrl}/api/v1/subcontents/map/`, {
                 method: 'GET',
                 headers: {
                     'Authorization': 'Bearer ' + localStorage.getItem('access_token')

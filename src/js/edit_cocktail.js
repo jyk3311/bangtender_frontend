@@ -1,4 +1,5 @@
 import { navbar } from './navbar.js';
+import config from './config.js';
 
 document.addEventListener('DOMContentLoaded', async function () {
     navbar();
@@ -11,7 +12,7 @@ document.addEventListener('DOMContentLoaded', async function () {
 
     // 칵테일 정보 불러오기
     try {
-        const response = await fetch(`https://api.bangtender.store/api/v1/cocktail/${cocktailId}/`);
+        const response = await fetch(`https://${config.backendApiUrl}/api/v1/cocktail/${cocktailId}/`);
         if (!response.ok) {
             throw new Error('데이터를 불러오지 못했습니다.');
         }
