@@ -1,4 +1,5 @@
 import { navbar } from './navbar.js';
+import config from './config.js';
 
 document.addEventListener('DOMContentLoaded', async () => {
     navbar();
@@ -14,7 +15,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             headers['Authorization'] = `Bearer ${token}`;
         }
 
-        const response = await fetch(`https://api.bangtender.store/api/v1/subcontents/`, {
+        const response = await fetch(`${config.backendApiUrl}/api/v1/subcontents/`, {
             method: 'GET',
             headers: headers,
         });
