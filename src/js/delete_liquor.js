@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', async function () {
 
         if (confirmDelete) {
             try {
-                const response = await fetch(`https://${config.backendApiUrl}/api/v1/liquor/${liquorId}/`, {
+                const response = await fetch(`${config.backendApiUrl}/api/v1/liquor/${liquorId}/`, {
                     method: 'DELETE',
                     headers: {
                         'Authorization': 'Bearer ' + localStorage.getItem('access_token'),

@@ -199,7 +199,7 @@
             try {
                 const decodedToken = jwt_decode(token);
                 const id = decodedToken.user_id;
-                const response = await fetch(`https://${config.backendApiUrl}/api/v1/accounts/${id}/`, {
+                const response = await fetch(`${config.backendApiUrl}/api/v1/accounts/${id}/`, {
                     method: 'GET',
                     headers: {
                         'Authorization': `Bearer ${token}`,

@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', async function () {
 
     // 주류 정보 불러오기
     try {
-        const response = await fetch(`https://${config.backendApiUrl}/api/v1/liquor/${liquorId}/`);
+        const response = await fetch(`${config.backendApiUrl}/api/v1/liquor/${liquorId}/`);
         if (!response.ok) {
             throw new Error('Failed to fetch liquor details');
         }
@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', async function () {
         const formData = new FormData(form);
 
         try {
-            const response = await fetch(`https://api.bangtender.store/api/v1/liquor/${liquorId}/`, {
+            const response = await fetch(`${config.backendApiUrl}/api/v1/liquor/${liquorId}/`, {
                 method: 'PUT',
                 headers: {
                     'Authorization': 'Bearer ' + localStorage.getItem('access_token'),
