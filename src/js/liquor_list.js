@@ -97,6 +97,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     loadMoreLiquors();
 
     // 스크롤 이벤트 추가
+    const mainElement = document.querySelector('main');
     mainElement.addEventListener('scroll', () => {
         const { scrollTop, scrollHeight, clientHeight } = mainElement;
         if (scrollTop + clientHeight >= scrollHeight - 10) {
