@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', async function () {
         }
 
         // GET 요청 시 토큰 포함
-        const response = await fetch(`https://${config.backendApiUrl}/api/v1/liquor/${liquorId}/`, {
+        const response = await fetch(`${config.backendApiUrl}/api/v1/liquor/${liquorId}/`, {
             method: 'GET',
             headers: headers
         });
@@ -61,7 +61,7 @@ document.addEventListener('DOMContentLoaded', async function () {
         // 북마크 버튼 클릭 이벤트 처리
         bookmarkButton.addEventListener('click', async () => {
             try {
-                const bookmarkResponse = await fetch(`https://${config.backendApiUrl}/api/v1/liquor/${liquorId}/bookmark/`, {
+                const bookmarkResponse = await fetch(`${config.backendApiUrl}/api/v1/liquor/${liquorId}/bookmark/`, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',

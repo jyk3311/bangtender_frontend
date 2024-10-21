@@ -7,11 +7,12 @@
     <title>챗봇 페이지</title>
     <link rel="stylesheet" href="../src/css/base.css?v=0.1">
     <style>
-
-        main{
+        main {
             font-family: 'S-CoreDream-3Light';
-            min-height: 100vh; /* 화면 높이에 꽉 차도록 설정 */
-            padding: 10px; /* 상하좌우 여백 */
+            min-height: 100vh;
+            /* 화면 높이에 꽉 차도록 설정 */
+            padding: 10px;
+            /* 상하좌우 여백 */
 
         }
 
@@ -32,7 +33,7 @@
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             border-radius: 10px;
             overflow: hidden;
-            
+
 
         }
 
@@ -43,7 +44,8 @@
             flex-direction: column;
             position: relative;
             padding: 20px;
-            overflow-y: auto;           /* 스크롤바 추가 가능 */
+            overflow-y: auto;
+            /* 스크롤바 추가 가능 */
             background: linear-gradient(var(--chat-bg-gradient-start), #ffffff);
             background-size: cover;
             border: 2px solid var(--msg-border-color);
@@ -51,14 +53,14 @@
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             color: var(--dark-bg-color);
             border: solid black;
-            }
+        }
 
-            .vertical-title {
-                text-align: center;
-                font-size: 2rem;
-                color:black;
-                margin-bottom: 20px;
-            }
+        .vertical-title {
+            text-align: center;
+            font-size: 2rem;
+            color: black;
+            margin-bottom: 20px;
+        }
 
         .chat-container {
             flex: 1;
@@ -69,7 +71,7 @@
             background-color: none;
             border-radius: 10px;
             padding: 10px;
-            
+
         }
 
         .chat-area {
@@ -135,7 +137,7 @@
             position: relative;
             word-wrap: break-word;
             word-break: break-word;
-            
+
         }
 
         .bot-message {
@@ -146,7 +148,7 @@
             position: relative;
             word-wrap: break-word;
             word-break: break-word;
-            
+
         }
 
 
@@ -212,8 +214,6 @@
             outline: none;
             font-family: 'S-CoreDream-3Light';
         }
-
-
     </style>
 </head>
 
@@ -264,25 +264,25 @@
     </header>
 
     <hr class="nav-divider">
-<main>
-    <div class="container">
-        <div class="main-content">
-            <h1 class="vertical-title">방텐더봇</h1>
+    <main>
+        <div class="container">
+            <div class="main-content">
+                <h1 class="vertical-title">방텐더봇</h1>
 
-            <div class="chat-container">
-                <div class="chat-area">
-                    <div class="chat-messages" id="chat-messages">
+                <div class="chat-container">
+                    <div class="chat-area">
+                        <div class="chat-messages" id="chat-messages">
+                        </div>
                     </div>
-                </div>
 
-                <div class="input-area">
-                    <input type="text" id="user-input" placeholder="방텐더 봇에게 물어볼 질문을 적어주세요.">
-                    <button id="send-button">전송</button>
+                    <div class="input-area">
+                        <input type="text" id="user-input" placeholder="방텐더 봇에게 물어볼 질문을 적어주세요.">
+                        <button id="send-button">전송</button>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-</main>
+    </main>
 
     <footer>
         <div class="footer-content">
@@ -293,11 +293,11 @@
                 <a href="https://insight986.tistory.com/" target="_blank">배민석</a>
             </div>
             <!-- 개인정보처리방침과 저작권 텍스트를 나란히 오른쪽 정렬 -->
-        <div class="footer-text">
-            <p class="privacy-policy">개인정보처리방침</p>
-            <p class="copyright">&copy; 2024 방텐더. All rights reserved.</p>
+            <div class="footer-text">
+                <p class="privacy-policy">개인정보처리방침</p>
+                <p class="copyright">&copy; 2024 방텐더. All rights reserved.</p>
+            </div>
         </div>
-    </div>
     </footer>
 
     <script type="module" src="../src/js/bot.js"></script>

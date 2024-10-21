@@ -9,7 +9,7 @@ document.getElementById('post-form').addEventListener('submit', async (event) =>
     const formData = new FormData(form);
 
     try {
-        const response = await fetch(`https://${config.backendApiUrl}/api/v1/cocktail/`, {
+        const response = await fetch(`${config.backendApiUrl}/api/v1/cocktail/`, {
             method: 'POST',
             headers: {
                 'Authorization': 'Bearer ' + localStorage.getItem('access_token'),

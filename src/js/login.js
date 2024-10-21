@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', async function () {
         const username = document.getElementById('username').value;
         const password = document.getElementById('password').value;
 
-        const response = await fetch(`https://${config.backendApiUrl}/api/v1/accounts/login/`, {
+        const response = await fetch(`${config.backendApiUrl}/api/v1/accounts/login/`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
