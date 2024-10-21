@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 return;
             }
 
-            const url = `https://${config.backendApiUrl}/api/v1/accounts/`;
+            const url = `${config.backendApiUrl}/api/v1/accounts/`;
             const requestData = {
                 password: password
             };

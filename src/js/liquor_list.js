@@ -4,7 +4,7 @@ import config from './config.js';
 document.addEventListener('DOMContentLoaded', async () => {
     navbar();
 
-    let nextUrl = `https://${config.backendApiUrl}/api/v1/liquor/`;
+    let nextUrl = `${config.backendApiUrl}/api/v1/liquor/`;
     let isLoading = false;
     const addLiquorButton = document.getElementById('add-liquor-btn');
 
@@ -97,8 +97,9 @@ document.addEventListener('DOMContentLoaded', async () => {
     loadMoreLiquors();
 
     // 스크롤 이벤트 추가
-    window.addEventListener('scroll', () => {
-        if (window.innerHeight + window.scrollY <= document.body.offsetHeight + 350) {
+    mainElement.addEventListener('scroll', () => {
+        const { scrollTop, scrollHeight, clientHeight } = mainElement;
+        if (scrollTop + clientHeight >= scrollHeight - 10) {
             loadMoreLiquors();
         }
     });

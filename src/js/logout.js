@@ -1,7 +1,7 @@
 import config from './config.js';
 
 export function logoutUser() {
-    fetch(`https://${config.backendApiUrl}/api/v1/accounts/logout/`, {
+    fetch(`${config.backendApiUrl}/api/v1/accounts/logout/`, {
         method: "POST",
         headers: {
             "Content-Type": "application/json"

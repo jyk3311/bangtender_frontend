@@ -196,7 +196,7 @@ h2 {
             const userId = decodedToken.user_id;
 
             // 북마크 데이터 요청
-            const response = await fetch(`https://${config.backendApiUrl}/api/v1/accounts/${userId}/bookmark/`, {
+            const response = await fetch(`${config.backendApiUrl}/api/v1/accounts/${userId}/bookmark/`, {
                 method: 'GET',
                 headers: {
                     'Authorization': `Bearer ${token}`,
