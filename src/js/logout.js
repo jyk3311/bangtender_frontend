@@ -1,5 +1,7 @@
+import config from './config.js';
+
 export function logoutUser() {
-    fetch("https://api.bangtender.store/api/v1/accounts/logout/", {
+    fetch(`https://${config.backendApiUrl}/api/v1/accounts/logout/`, {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
