@@ -7,8 +7,7 @@
     <title>주변 주류 매장 찾기</title>
     <link rel="stylesheet" href="../src/css/base.css?v=0.1">
     <style>
-
-        h1{
+        h1 {
             font-family: 'S-CoreDream-3Light';
             text-align: center;
         }
@@ -53,9 +52,7 @@
             padding-bottom: 0.5rem;
             border-bottom: 1px solid #ddd;
         }
-
     </style>
-    <script type="text/javascript" src="../src/js/config.js"></script>
 </head>
 
 <body>
@@ -123,15 +120,16 @@
                 <a href="https://insight986.tistory.com/" target="_blank">배민석</a>
             </div>
             <!-- 개인정보처리방침과 저작권 텍스트를 나란히 오른쪽 정렬 -->
-        <div class="footer-text">
-            <p class="privacy-policy">개인정보처리방침</p>
-            <p class="copyright">&copy; 2024 방텐더. All rights reserved.</p>
+            <div class="footer-text">
+                <p class="privacy-policy">개인정보처리방침</p>
+                <p class="copyright">&copy; 2024 방텐더. All rights reserved.</p>
+            </div>
         </div>
-    </div>
     </footer>
 
     <script type="module">
         import { navbar } from '../src/js/navbar.js';
+        import config from '../src/js/config.js';
 
         document.addEventListener('DOMContentLoaded', () => {
             navbar();
@@ -139,7 +137,7 @@
 
         function loadKakaoMapSDK() {
             const script = document.createElement("script");
-            script.src = `//dapi.kakao.com/v2/maps/sdk.js?appkey=${config.apikey}&libraries=services&autoload=false`;
+            script.src = `//dapi.kakao.com/v2/maps/sdk.js?appkey=${config.kakaoMapApiKey}&libraries=services&autoload=false`;
             document.head.appendChild(script);
             script.onload = function () {
                 kakao.maps.load(function () {
