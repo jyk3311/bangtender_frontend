@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             } else {
                 addCocktailButton.style.display = 'none';
             }
-
+            document.getElementById('tip-content').textContent = data.info.content
             return data;
         } catch (error) {
             console.error('Error fetching cocktails:', error);

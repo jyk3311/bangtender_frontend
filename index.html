@@ -7,6 +7,16 @@
     <title>방텐더 - 메인 페이지</title>
     <link rel="stylesheet" href="/src/css/base.css?v=0.1">
     <style>
+        header{
+            background: var(--primary-color) !important;
+            border: none !important;
+        }
+        /* 내비게이션 링크 스타일 */
+        nav a {
+            color: var(--light-text-color) !important;
+            color: white !important;            /* 내비게이션 메뉴 색 */
+        }
+
         /* 배경 이미지 */
         .background-image {
             background-image: url('src/images/배경후보3.jpeg');
@@ -185,6 +195,12 @@
         .cocktail-title span.highlight {
             color: var(--liquor-container-color);
         }
+
+        footer{
+            background: var(--primary-color) !important;
+            border: none !important;
+        }
+
     </style>
 </head>
 
@@ -253,7 +269,7 @@
 
     <main>
         <div class="tip-container">
-            <p class="tip" id="tip-content">Tips : 그거 아셨나요? 맨해튼은 칵테일의 여왕이라는 별명을 가지고 있습니다.</p>
+            <p class="tip" id="tip-content"></p>
 
         </div>
 
