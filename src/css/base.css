@@ -9,12 +9,13 @@
     --dark-bg-color: #2c3e50;
 
     /* 그라데이션 색상 */
---chat-bg-gradient-start: #fff569; /* 연한 노랑 */
+--chat-bg-gradient-start: #5C9DF2; /* 챗봇 배경색 */
 --chat-bg-gradient-end: #ffffff; /* 흰색 */
 --user-msg-gradient-start: #ffffff; /* 유저 메시지 흰색 */
 --user-msg-gradient-end: #9fe870; /* 유저 메시지 연두색 */
---bot-msg-bg-color: #ffffff; /* 봇 메시지 흰색 */
+--bot-msg-bg-color: #ffffff; 
 --msg-border-color: #2c3e50; /* 메시지 테두리 색상 */
+--liquor-container-color: #957DC1;  /* 주류 컨테이너, 봇 채팅 */
 }
 
 /* 모든 요소의 기본 여백과 패딩을 제거 & 박스 모델 통일 */
@@ -61,13 +62,11 @@ header {
     font-family: 'S-CoreDream-3Light';
     background-color: white;
     padding: 14px 8px 8px 20px;
-    position: sticky;
-    /* 스크롤 시에도 상단에 고정 */
+    position: sticky;  /* 스크롤 시에도 상단에 고정 */
     top: 0;
-    z-index: 1000;
-    /* 다른 요소 위에 표시 */
+    z-index: 1000;    /* 다른 요소 위에 표시 */
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    border: 1px solid var(--msg-border-color); /* 테두리 추가 */
+    border: 1px solid var(--msg-border-color);    /* 테두리 추가 */
 }
 
 .header-content {
@@ -232,6 +231,7 @@ main{
 
 /* 푸터 스타일 */
 footer {
+    font-family: 'S-CoreDream-3Light';
     background-color: #ffffff;
     color: black;
     padding: 2rem 0;
@@ -261,4 +261,20 @@ footer {
 
 .team-members a:hover {
     color: var(--accent-color);
+}
+
+.footer-text {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end; /* 오른쪽 정렬 */
+    flex: 1;
+}
+
+.footer-text .privacy-policy {
+    font-weight: bold; /* 개인정보처리방침을 굵게 설정 */
+    margin-right: 1rem; /* 저작권 문구와의 간격 */
+}
+
+.footer-text .copyright {
+    text-align: right;
 }
