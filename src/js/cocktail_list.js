@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             } else {
                 addCocktailButton.style.display = 'none';
             }
-
+            document.getElementById('tip-content').textContent = data.info.content
             return data;
         } catch (error) {
             console.error('Error fetching cocktails:', error);
@@ -78,7 +78,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         }
     }
 
-    
+
 
     // 초기 칵테일 데이터를 로드
     loadMoreCocktails();

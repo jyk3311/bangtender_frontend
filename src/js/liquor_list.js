@@ -21,6 +21,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                 throw new Error('서버 상태가 이상합니다.');
             }
             const data = await response.json();
+            document.getElementById('tip-content').textContent = data.info.content
 
             // is_superuser에 따라 게시물 등록 버튼 처리
             if (data.is_superuser) {
@@ -94,10 +95,9 @@ document.addEventListener('DOMContentLoaded', async () => {
     // 초기 주류 데이터를 로드
     loadMoreLiquors();
 
-    const mainElement = document.querySelector('main');
-    mainElement.addEventListener('scroll', () => {
-        const { scrollTop, scrollHeight, clientHeight } = mainElement;
-        if (scrollTop + clientHeight >= scrollHeight - 10) {
+    // 스크롤 이벤트 추가
+    window.addEventListener('scroll', () => {
+        if (window.innerHeight + window.scrollY <= document.body.offsetHeight + 350) {
             loadMoreLiquors();
         }
     });
