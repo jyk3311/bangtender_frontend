@@ -60,7 +60,7 @@ body {
 
 header {
     font-family: 'S-CoreDream-3Light';
-    background-color: white;
+    background: var(--primary-color);
     padding: 14px 8px 8px 20px;
     position: sticky;  /* 스크롤 시에도 상단에 고정 */
     top: 0;
@@ -153,8 +153,7 @@ nav ul ul li a:hover {
     padding: 0.5rem;
     border: 1px solid var(--primary-color);
     border-radius: 20px 0 0 20px;
-    outline: none;
-    /* 선택 시 윤곽선 제거 */
+    outline: none;    /* 선택 시 윤곽선 제거 */
 }
 
 .search-bar button {
@@ -233,7 +232,7 @@ main{
 /* 푸터 스타일 */
 footer {
     font-family: 'S-CoreDream-3Light';
-    background-color: #ffffff;
+    background: linear-gradient(var(--user-msg-gradient-start), #ecf0f1);
     color: black;
     padding: 2rem 0;
     position: relative;

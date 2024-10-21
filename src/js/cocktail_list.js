@@ -78,7 +78,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         }
     }
 
-    
+
 
     // 초기 칵테일 데이터를 로드
     loadMoreCocktails();
