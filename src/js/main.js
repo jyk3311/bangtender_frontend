@@ -59,7 +59,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                 imgElement.src = `${liquor.img}`;
                 imgElement.alt = liquor.name;
                 imgElement.addEventListener('click', () => {
-                    window.location.href = `pages/liquor_detail.html?id=${liquor.id}`;  // 상세 페이지로 이동
+                    window.location.href = `pages/cocktail_detail.html?id=${liquor.id}`;  // 상세 페이지로 이동
                 });
                 liquorItem.appendChild(imgElement);
                 userContainer.appendChild(liquorItem);
