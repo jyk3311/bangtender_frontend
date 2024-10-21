@@ -78,21 +78,16 @@ document.addEventListener('DOMContentLoaded', async () => {
         }
     }
 
-    // 화면 하단 근처에 도달했는지 체크하는 함수
-    function isNearBottom() {
-        return window.innerHeight + window.scrollY >= document.body.offsetHeight - 350;
-    }
-
-    // 스크롤 이벤트 핸들러
-    function handleScroll() {
-        if (isNearBottom()) {
-            loadMoreCocktails();
-        }
-    }
+    
 
     // 초기 칵테일 데이터를 로드
     loadMoreCocktails();
 
-    // 스크롤 이벤트 추가
-    window.addEventListener('scroll', handleScroll);
+    const mainElement = document.querySelector('main');
+    mainElement.addEventListener('scroll', () => {
+        const { scrollTop, scrollHeight, clientHeight } = mainElement;
+        if (scrollTop + clientHeight >= scrollHeight - 10) {
+            loadMoreCocktails();
+        }
+    });
 });

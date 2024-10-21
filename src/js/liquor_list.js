@@ -94,9 +94,10 @@ document.addEventListener('DOMContentLoaded', async () => {
     // 초기 주류 데이터를 로드
     loadMoreLiquors();
 
-    // 스크롤 이벤트 추가
-    window.addEventListener('scroll', () => {
-        if (window.innerHeight + window.scrollY <= document.body.offsetHeight + 350) {
+    const mainElement = document.querySelector('main');
+    mainElement.addEventListener('scroll', () => {
+        const { scrollTop, scrollHeight, clientHeight } = mainElement;
+        if (scrollTop + clientHeight >= scrollHeight - 10) {
             loadMoreLiquors();
         }
     });
