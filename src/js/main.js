@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         const data = await response.json();
 
         // Tip 정보 표시
-        document.getElementById('tip-content').textContent = `Tips: ${data.info.content}`;
+        document.getElementById('tip-content').textContent = `${data.info.content}`;
 
         // 추천 칵테일 표시
         const recommendedCocktails = data.cocktail_list;

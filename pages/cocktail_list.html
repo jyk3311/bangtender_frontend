@@ -8,11 +8,14 @@
     <link rel="stylesheet" href="../src/css/base.css?v=0.1">
     <style>
 
-        main {
+
+main {
+            
             margin: 0;
             padding: 0 10rem;
             font-family: 'S-CoreDream-3Light';
             min-height: 100vh; /* 화면 높이에 꽉 차도록 설정 */
+            
         }
 
         .tip-container {
@@ -78,16 +81,14 @@
         /* 그리드 레이아웃 설정 */
         .cocktail-grid {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            /* 4열 그리드 */
-            gap: 2rem;
-            /* 칵테일 항목 사이의 간격 */
+            grid-template-columns: repeat(4, 1fr);   /* 4열 그리드 */
+            gap: 2rem;    /* 칵테일 항목 사이의 간격 */
             max-width: 1200px;
             margin: 0 auto;
             padding: 40px;
             position: relative;
             top: 60px;
-            padding-bottom: 170px;
+            flex-grow: 1; /* 남은 공간을 채우도록 설정 */
         }
 
         /* 각 칵테일 항목 스타일 */
@@ -115,6 +116,15 @@
             color: #333;
         }
 
+        footer {
+    font-family: 'S-CoreDream-3Light';
+    background-color: #ffffff;
+    color: black;
+    padding: 2rem 0;
+    height: 10rem;
+    border: 1px solid var(--msg-border-color);
+    margin-top: auto; /* 푸터를 콘텐츠 아래로 밀어냄 */
+}
     </style>
 </head>
 
@@ -168,9 +178,9 @@
     <main>
         <div class="tip-container">
             <div class="tip" id="tip-box">
-                <p id="tip-content">Tips : 그거 아셨나요? 맨해튼은 칵테일의 여왕이라는 별명을 가지고 있습니다.</p>
+                <p><span id="tip-content"></span></p>
             </div>
-
+        </div>
             <h1>칵테일 목록</h1>
             <button id="add-cocktail-btn" style="display: none;">게시물 등록</button>
             <div id="cocktail-list" class="cocktail-grid"></div>

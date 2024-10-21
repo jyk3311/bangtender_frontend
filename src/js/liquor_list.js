@@ -21,6 +21,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                 throw new Error('서버 상태가 이상합니다.');
             }
             const data = await response.json();
+            document.getElementById('tip-content').textContent = data.info.content
 
             // is_superuser에 따라 게시물 등록 버튼 처리
             if (data.is_superuser) {
