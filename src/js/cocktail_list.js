@@ -63,7 +63,9 @@ document.addEventListener('DOMContentLoaded', async () => {
     // 더 많은 칵테일 데이터를 로드하는 함수
     async function loadMoreCocktails() {
         if (isLoading || !nextUrl) return;
-
+        if (nextUrl.startsWith('http:')) {
+            nextUrl = nextUrl.replace('http:', 'https:');
+        }
         isLoading = true;
         document.getElementById('loading').style.display = 'block';
 
@@ -78,7 +80,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     // 화면 하단 근처에 도달했는지 체크하는 함수
     function isNearBottom() {
-        return window.innerHeight + window.scrollY >= document.body.offsetHeight - 300;
+        return window.innerHeight + window.scrollY >= document.body.offsetHeight - 350;
     }
 
     // 스크롤 이벤트 핸들러

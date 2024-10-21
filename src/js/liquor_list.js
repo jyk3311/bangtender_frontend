@@ -64,6 +64,9 @@ document.addEventListener('DOMContentLoaded', async () => {
     // 더 많은 주류 데이터를 로드하는 함수
     async function loadMoreLiquors() {
         if (isLoading || !nextUrl) return;
+        if (nextUrl.startsWith('http:')) {
+            nextUrl = nextUrl.replace('http:', 'https:');
+        }
         isLoading = true;
         document.getElementById('loading').style.display = 'block';
 
@@ -93,7 +96,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     // 스크롤 이벤트 추가
     window.addEventListener('scroll', () => {
-        if (window.innerHeight + window.scrollY >= document.body.offsetHeight - 300) {
+        if (window.innerHeight + window.scrollY <= document.body.offsetHeight + 350) {
             loadMoreLiquors();
         }
     });

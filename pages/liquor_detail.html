@@ -7,21 +7,28 @@
     <title>주류 상세 정보</title>
     <link rel="stylesheet" href="../src/css/base.css?v=0.1">
     <style>
-        
 
-        /* liqur_detail 페이지 스타일 */
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
+main{
+            background: linear-gradient(var(--user-msg-gradient-start), orange);
+            min-height: 100vh;
             padding: 20px;
+            box-sizing: border-box;
+            font-weight: 1000;
+            margin-bottom: 0%;
         }
-
 
         .main-content {
             display: flex;
             background-color: #e0f2f1;
-            padding: 20px;
             position: relative;
+            padding: 50px 20px;
+            background: linear-gradient(var(--liquor-container-color), #ffffff); /* 그라데이션 */
+            background-size: cover;
+            border: 2px solid var(--msg-border-color); /* 테두리 추가 */
+            border-radius: 12px; /* 테두리 둥글게 */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 그림자 추가 */
+            color: var(--dark-bg-color);
+            border: solid;
         }
 
         .vertical-text {
@@ -59,6 +66,8 @@
 
         .liquor-info {
             flex: 1;
+            position: relative;
+            left: 50px;;
         }
 
         .product-info h2 {
@@ -73,17 +82,10 @@
 
         /* container 스타일 */
         .container {
+            font-family: 'S-CoreDream-3Light';
             max-width: 1200px;
             margin: 0 auto;
             padding: 20px;
-        }
-
-
-        .main-content {
-            display: flex;
-            background-color: #e0f2f1;
-            padding: 20px;
-            position: relative;
         }
 
 
@@ -115,12 +117,17 @@
             justify-content: center;
             align-items: center;
             background-color: #cccccc;
+            position: relative;
+            bottom:20px; 
         }
 
         .liquor-img img {
             max-width: 100%;
             max-height: 100%;
             border-radius: 5px;
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
         }
 
         .liquor-info {
@@ -138,9 +145,9 @@
         .liquor-content {
             margin-top: 20px;
             padding: 20px;
-            background-color: #eeeeee;
-            text-align: left;
-            /* 왼쪽 정렬 적용 */
+            background-color:none;
+            text-align: left;  /* 왼쪽 정렬 적용 */
+            color: black;
         }
 
         /* 주류 이름 스타일 - 사진과 겹치지 않도록 설정 */
@@ -148,6 +155,7 @@
             font-size: 2rem;
             margin-bottom: 20px;
             position: relative;
+            color: black;
             /* 부모 요소에 의존적인 위치 */
         }
 
@@ -156,18 +164,46 @@
             display: flex;
             margin-left: 60px;
             width: 100%;
-            align-items: flex-start;
-            /* 수직 정렬을 맞춤 */
+            align-items: flex-start;  /* 수직 정렬을 맞춤 */
+            color: black;
+        }
+
+        /* 북마크 버튼 스타일 수정 */
+        #bookmark-button {
+            font-family: 'S-CoreDream-3Light';
+            display: block;
+            margin: 20px auto;     /* 중앙 정렬 및 위아래 여백 추가 */
+            position: relative;
+            bottom: -40px;    /* 아래쪽으로 위치 이동 */
+            background-color: white;     /* 버튼 색상 */
+            color: var(--primary-color);
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            position: relative;
+            bottom: -326px;
+            left: -400px;
+            z-index: 1;
+            border: 1px solid var(--msg-border-color);      /* 테두리 추가 */
+            border-radius: 40px;      /* 테두리 둥글게 */
+            font-weight: 1000;
+        }
+
+        #bookmark-button:hover {
+            background-color: var(--primary-color);
+            border: 1px solid black;
+            color: white; /* 호버 시 글자색 흰색으로 변경 */
         }
 
         /* 게시물 수정 버튼(관리자만) */
         #edit-button{
                 display: block;     /* 관리자가 로그인하면 버튼을 표시 */
-                background-color: none;
+                background-color: white;
                 color: var(--primary-color);
                 padding: 0.5rem 1.2rem;
                 margin: 1.5rem 0;
-                border-radius: 6px;
+                border-radius: 20px;
                 cursor: pointer;
                 font-size: 0.8rem;
                 font-family: 'S-CoreDream-3Light';
@@ -180,11 +216,11 @@
             /* 게시물 삭제 버튼(관리자만) */
             #delete-button{
                 display: block;     /* 관리자가 로그인하면 버튼을 표시 */
-                background-color: none;
+                background-color: white;
                 color: var(--primary-color);
                 padding: 0.5rem 1.2rem;
                 margin: 1.5rem 0;
-                border-radius: 6px;
+                border-radius: 20px;
                 cursor: pointer;
                 font-size: 0.8rem;
                 font-family: 'S-CoreDream-3Light';
@@ -196,19 +232,19 @@
             }
 
             /* 버튼 호버 시 배경색 변경 */
-            #edit-button {
+            #edit-button:hover {
                 background-color: var(--primary-color);
                 color: white;
+                border: solid var(--primary-color);
             }
 
             /* 버튼 호버 시 배경색 변경 */
-            #delete-button {
+            #delete-button:hover {
                 background-color: var(--primary-color);
                 color: white;
+                border: solid var(--primary-color);
             }
 
-
-       
     </style>
 
 
@@ -303,8 +339,12 @@
                 <a href="https://velog.io/@mimi3123832/posts" target="_blank">남지민</a>
                 <a href="https://insight986.tistory.com/" target="_blank">배민석</a>
             </div>
-            <p>&copy; 2024 방텐더. All rights reserved.</p>
+            <!-- 개인정보처리방침과 저작권 텍스트를 나란히 오른쪽 정렬 -->
+        <div class="footer-text">
+            <p class="privacy-policy">개인정보처리방침</p>
+            <p class="copyright">&copy; 2024 방텐더. All rights reserved.</p>
         </div>
+    </div>
     </footer>
     <script type="module" src="../src/js/liquor_detail.js" defer></script>
 </body>
