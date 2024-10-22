@@ -1,4 +1,5 @@
 import { navbar } from './navbar.js';
+import config from './config.js';
 
 document.addEventListener('DOMContentLoaded', () => {
     navbar();
