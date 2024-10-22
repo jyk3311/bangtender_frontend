@@ -1,4 +1,5 @@
 import { logoutUser } from './logout.js';
+import config from './config.js';
 
 document.addEventListener("DOMContentLoaded", function () {
     const deleteAccountButton = document.getElementById('delete-account-btn');
@@ -15,7 +16,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 return;
             }
 
-            const url = "https://api.bangtender.store/api/v1/accounts/";
+            const url = `${config.backendApiUrl}/api/v1/accounts/`;
             const requestData = {
                 password: password
             };

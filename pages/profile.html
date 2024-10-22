@@ -7,14 +7,17 @@
     <title>프로필 페이지</title>
     <link rel="stylesheet" href="../src/css/base.css?v=0.1">
     <style>
-         /* 본문 중앙 배치 */
-        .profile-container{
-            max-width: 800px;   /* 중앙 배치 */
+        /* 본문 중앙 배치 */
+        .profile-container {
+            max-width: 800px;
+            /* 중앙 배치 */
             margin: 4rem auto;
             padding: 5rem;
             background: linear-gradient(var(--liquor-container-color), #ffffff);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);     /* 그림자 추가 */
-            border-radius: 10px;   /* 모서리 둥글게 */
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            /* 그림자 추가 */
+            border-radius: 10px;
+            /* 모서리 둥글게 */
             border: solid;
         }
 
@@ -26,7 +29,7 @@
             font-weight: bold;
             color: white;
             text-shadow: -1.6px 0px black, 0px 1.6px black, 1.6px 0px black, 0px -1.6px black;
-    
+
         }
 
         section {
@@ -50,7 +53,7 @@
             justify-content: center;
             /* 버튼들을 중앙 정렬 */
             margin-top: 2rem;
-            
+
         }
 
 
@@ -58,20 +61,24 @@
         .profile-button {
             font-family: 'S-CoreDream-3Light';
             background-color: white;
-            color: black; /* 기본 글자색을 검정으로 설정 */
+            color: black;
+            /* 기본 글자색을 검정으로 설정 */
             border: solid;
             padding: 0.75rem 1.5rem;
             border-radius: 20px;
             cursor: pointer;
-            transition: background-color 0.3s ease, color 0.3s ease; /* 색상 전환도 부드럽게 처리 */
+            transition: background-color 0.3s ease, color 0.3s ease;
+            /* 색상 전환도 부드럽게 처리 */
             margin: 1rem 0.5rem;
             font-weight: 700;
 
         }
 
         .profile-button a {
-            color: black; /* a 태그 내부 기본 글자색을 검정으로 */
-            text-decoration: none; /* 링크 밑줄 없애기 */
+            color: black;
+            /* a 태그 내부 기본 글자색을 검정으로 */
+            text-decoration: none;
+            /* 링크 밑줄 없애기 */
         }
 
         .profile-button:hover {
@@ -80,7 +87,8 @@
         }
 
         .profile-button:hover a {
-            color: white; /* 호버 시 a 태그 내부 글자색을 흰색으로 */
+            color: white;
+            /* 호버 시 a 태그 내부 글자색을 흰색으로 */
         }
     </style>
     <script src="https://cdn.jsdelivr.net/npm/jwt-decode@3.1.2/build/jwt-decode.min.js"></script>
@@ -139,32 +147,32 @@
 
     <main>
         <div class="profile-container">
-        <h1>내 프로필</h1>
+            <h1>내 프로필</h1>
 
-        <section>
-            <p>아이디: <span id="username"></span></p>
-            <p>이름: <span id="name"></span></p>
-            <p>이메일: <span id="email"></span></p>
-            <p>주소: <span id="address"></span></p>
-            <div id="my-liquor-container">
-                <p>보유한 술: <span id="owned-liquor"></span></p>
-                <p>좋아하는 술: <span id="favorite-liquor"></span></p>
-                <p>싫어하는 술: <span id="disliked-liquor"></span></p>
+            <section>
+                <p>아이디: <span id="username"></span></p>
+                <p>이름: <span id="name"></span></p>
+                <p>이메일: <span id="email"></span></p>
+                <p>주소: <span id="address"></span></p>
+                <div id="my-liquor-container">
+                    <p>보유한 술: <span id="owned-liquor"></span></p>
+                    <p>좋아하는 술: <span id="favorite-liquor"></span></p>
+                    <p>싫어하는 술: <span id="disliked-liquor"></span></p>
+                </div>
+            </section>
+
+            <div class="profile-actions">
+                <button class="profile-button">
+                    <a href="user_edit.html">회원 정보 수정</a>
+                </button>
+                <button class="profile-button">
+                    <a href="delete_account.html">회원 탈퇴</a>
+                </button>
+                <button class="profile-button">
+                    <a href="my_bookmark.html">내 북마크 목록 보기</a>
+                </button>
             </div>
-        </section>
-
-        <div class="profile-actions">
-            <button class="profile-button">
-                <a href="user_edit.html" >회원 정보 수정</a>
-            </button>
-            <button class="profile-button">
-                <a href="delete_account.html">회원 탈퇴</a>
-            </button>
-            <button class="profile-button">
-                <a href="my_bookmark.html">내 북마크 목록 보기</a>
-            </button>
         </div>
-    </div>
     </main>
 
     <footer>
@@ -176,15 +184,16 @@
                 <a href="https://insight986.tistory.com/" target="_blank">배민석</a>
             </div>
             <!-- 개인정보처리방침과 저작권 텍스트를 나란히 오른쪽 정렬 -->
-        <div class="footer-text">
-            <p class="privacy-policy">개인정보처리방침</p>
-            <p class="copyright">&copy; 2024 방텐더. All rights reserved.</p>
+            <div class="footer-text">
+                <p class="privacy-policy">개인정보처리방침</p>
+                <p class="copyright">&copy; 2024 방텐더. All rights reserved.</p>
+            </div>
         </div>
-    </div>
     </footer>
 
     <script type="module">
         import { navbar } from '../src/js/navbar.js';
+        import config from '../src/js/config.js';
 
         document.addEventListener('DOMContentLoaded', async function () {
             navbar();
@@ -198,7 +207,7 @@
             try {
                 const decodedToken = jwt_decode(token);
                 const id = decodedToken.user_id;
-                const response = await fetch(`https://api.bangtender.store/api/v1/accounts/${id}/`, {
+                const response = await fetch(`${config.backendApiUrl}/api/v1/accounts/${id}/`, {
                     method: 'GET',
                     headers: {
                         'Authorization': `Bearer ${token}`,

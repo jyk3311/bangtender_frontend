@@ -1,9 +1,9 @@
 import { navbar } from './navbar.js';
-
+import config from './config.js';
 document.addEventListener('DOMContentLoaded', async () => {
     navbar();
 
-    let nextUrl = 'https://api.bangtender.store/api/v1/cocktail/';
+    let nextUrl = `${config.backendApiUrl}/api/v1/cocktail/`;
     let isLoading = false;
     const addCocktailButton = document.getElementById('add-cocktail-btn');
 

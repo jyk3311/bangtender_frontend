@@ -1,7 +1,15 @@
 import { navbar } from './navbar.js';
+import config from './config.js';
 
 document.addEventListener('DOMContentLoaded', () => {
     navbar();
+
+    // 로그인 상태 확인
+    const token = localStorage.getItem('access_token');
+    if (!token) {
+        alert('로그인하지 않으면 이 페이지를 사용할 수 없습니다.');
+        window.location.href = '/pages/login.html';  // 메인 페이지로 리디렉션
+    }
 });
 
 const chatMessages = document.getElementById('chat-messages');
@@ -26,7 +34,7 @@ function streamMessage(message, role, messageDiv) {
 function sendMessageToBot(message) {
     const token = localStorage.getItem('access_token');  // 인증 토큰을 가져옴
 
-    fetch('https://api.bangtender.store/api/v1/subcontents/bangtenderbot/', {
+    fetch(`${config.backendApiUrl}/api/v1/subcontents/bangtenderbot/`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',

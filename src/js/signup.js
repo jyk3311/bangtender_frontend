@@ -1,4 +1,5 @@
 import { navbar } from './navbar.js';
+import config from './config.js';
 
 document.getElementById('signup-form').addEventListener('submit', async function (e) {
     navbar();
@@ -22,7 +23,7 @@ document.getElementById('signup-form').addEventListener('submit', async function
     };
 
     try {
-        const response = await fetch('https://api.bangtender.store/api/v1/accounts/', {
+        const response = await fetch(`${config.backendApiUrl}/api/v1/accounts/`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

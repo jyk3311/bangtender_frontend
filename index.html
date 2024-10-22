@@ -7,58 +7,67 @@
     <title>방텐더 - 메인 페이지</title>
     <link rel="stylesheet" href="/src/css/base.css?v=0.1">
     <style>
-header{
-    background: var(--primary-color) !important;
-    border: none !important;
-}
-/* 내비게이션 링크 스타일 */
-nav a {
-    color: var(--light-text-color) !important;
-    color: white !important;            /* 내비게이션 메뉴 색 */
-}
-nav a:hover {
-    color: var(--accent-color) !important;   /* 마우스 커서 가면 해당 색상으로 변경 */
-}
-/* 드롭다운 */
-nav ul ul {
-    background-color: var(--primary-color) !important;    /* 배경색 설정 */
-}
-/* 드롭다운 항목에 마우스 커서가 올라갔을 때 배경색 설정 */
-nav ul ul li a:hover {
-    background-color: var(--primary-color) !important;
-}
+        header {
+            background: var(--primary-color) !important;
+            border: none !important;
+        }
+
+        /* 내비게이션 링크 스타일 */
+        nav a {
+            color: var(--light-text-color) !important;
+            color: white !important;
+            /* 내비게이션 메뉴 색 */
+        }
+
+        nav a:hover {
+            color: var(--accent-color) !important;
+            /* 마우스 커서 가면 해당 색상으로 변경 */
+        }
+
+        /* 드롭다운 */
+        nav ul ul {
+            background-color: var(--primary-color) !important;
+            /* 배경색 설정 */
+        }
+
+        /* 드롭다운 항목에 마우스 커서가 올라갔을 때 배경색 설정 */
+        nav ul ul li a:hover {
+            background-color: var(--primary-color) !important;
+        }
 
         .search-bar input {
-    outline: none;    /* 선택 시 윤곽선 제거 */
-    color: black !important;
-    background-color: white !important;
-    border: none !important;
-}
+            outline: none;
+            /* 선택 시 윤곽선 제거 */
+            color: black !important;
+            background-color: white !important;
+            border: none !important;
+        }
 
-.search-bar button {
-    background-color: var(--accent-color);
-    color: var(--light-text-color);
-    border: none !important;
+        .search-bar button {
+            background-color: var(--accent-color);
+            color: var(--light-text-color);
+            border: none !important;
 
-}
+        }
 
-.search-bar button:hover {
-    background-color: var(--primary-color);
-    border: 1px solid white !important;
-}
+        .search-bar button:hover {
+            background-color: var(--primary-color);
+            border: 1px solid white !important;
+        }
 
-.user-actions button {
+        .user-actions button {
 
-    color: var(--primary-color) !important;
-    border: none;
-    background-color: white !important;
-}
+            color: var(--primary-color) !important;
+            border: none;
+            background-color: white !important;
+        }
 
-.user-actions button:hover {
-    background-color: var(--primary-color) !important;
-    color: white !important;
-    border: 1px solid white !important;    /* 테두리 추가 */
-}
+        .user-actions button:hover {
+            background-color: var(--primary-color) !important;
+            color: white !important;
+            border: 1px solid white !important;
+            /* 테두리 추가 */
+        }
 
 
 
@@ -76,7 +85,8 @@ nav ul ul li a:hover {
             justify-content: center;
             align-items: center;
             flex-direction: column;
-            width: 100vw;    /* 가로로는 화면을 다 채움 */
+            width: 100vw;
+            /* 가로로는 화면을 다 채움 */
 
 
         }
@@ -86,14 +96,16 @@ nav ul ul li a:hover {
             width: 450px;
             margin-bottom: 0px;
             position: relative;
-            left: -350px;     /* 로고 위치 왼쪽으로 */
+            left: -350px;
+            /* 로고 위치 왼쪽으로 */
         }
 
         .background-text {
             text-align: center;
             color: var(--light-text-color);
             position: relative;
-            left: -350px;    /* 로고 위치 왼쪽으로 */
+            left: -350px;
+            /* 로고 위치 왼쪽으로 */
         }
 
         .background-text h1 {
@@ -126,16 +138,19 @@ nav ul ul li a:hover {
         .scroll-down-icon img {
             width: 40px;
             height: auto;
-            cursor: pointer;
+            cursor: default;
         }
 
         main {
             margin: 0rem auto 0;
             margin-top: -100px;
             font-family: 'S-CoreDream-3Light';
-            min-height: auto; /* 최소 높이 제거 */
-            padding: 20px 40px; /* 좌우 여백 추가 */
-            padding-top: 120px; /* tip-container를 위한 공간 확보 */
+            min-height: auto;
+            /* 최소 높이 제거 */
+            padding: 20px 40px;
+            /* 좌우 여백 추가 */
+            padding-top: 120px;
+            /* tip-container를 위한 공간 확보 */
             padding-bottom: 50px;
             background: linear-gradient(var(--user-msg-gradient-start), orange);
         }
@@ -149,10 +164,14 @@ nav ul ul li a:hover {
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
             position: relative;
             top: 105px;
-            z-index: 1; /* background-image 위에 오도록 설정 */
-            max-width: 1120px; /* 가로 길이 제한 */
-            margin-left: auto; /* 중앙 정렬 */
-            margin-right: auto; /* 중앙 정렬 */
+            z-index: 1;
+            /* background-image 위에 오도록 설정 */
+            max-width: 1120px;
+            /* 가로 길이 제한 */
+            margin-left: auto;
+            /* 중앙 정렬 */
+            margin-right: auto;
+            /* 중앙 정렬 */
         }
 
         .tip {
@@ -241,18 +260,19 @@ nav ul ul li a:hover {
             color: var(--liquor-container-color);
         }
 
-        footer{
+        footer {
             background: var(--primary-color) !important;
             border: none !important;
             color: white !important;
         }
-        .team-members a {
-    color: white !important;
-        }
-        .team-members a:hover {
-    color: var(--accent-color) !important;
-}
 
+        .team-members a {
+            color: white !important;
+        }
+
+        .team-members a:hover {
+            color: var(--accent-color) !important;
+        }
     </style>
 </head>
 
@@ -359,11 +379,11 @@ nav ul ul li a:hover {
                 <a href="https://insight986.tistory.com/" target="_blank">배민석</a>
             </div>
             <!-- 개인정보처리방침과 저작권 텍스트를 나란히 오른쪽 정렬 -->
-        <div class="footer-text">
-            <p class="privacy-policy">개인정보처리방침</p>
-            <p class="copyright">&copy; 2024 방텐더. All rights reserved.</p>
+            <div class="footer-text">
+                <p class="privacy-policy">개인정보처리방침</p>
+                <p class="copyright">&copy; 2024 방텐더. All rights reserved.</p>
+            </div>
         </div>
-    </div>
     </footer>
 
     <script type="module" src="src/js/main.js"></script>
