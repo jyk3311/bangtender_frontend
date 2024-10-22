@@ -78,7 +78,7 @@ document.addEventListener('DOMContentLoaded', async function () {
                     } else {
                         bookmarkButton.textContent = '북마크';
                     }
-                    alert(result.message);
+                    alert('로그인이 필요한 서비스입니다.');
                 } else {
                     alert(result.detail || '북마크 요청 중 오류가 발생했습니다.');
                 }
