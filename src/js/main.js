@@ -68,7 +68,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         } else if (token && (!data.user_liquor_list || typeof data.user_liquor_list === 'string')) {
             // 로그인했지만 맞춤 데이터가 없을 때
             const userContainer = document.getElementById('user-liquors');
-            userContainer.innerHTML = '<p>사용자 데이터가 등록되지 않았습니다.</p>';
+            userContainer.innerHTML = '<p>사용자 맞춤 칵테일은 사용자가 보유한 술, 좋아하는 술을 기반으로 추천해주고 싫어하는 술은 제외시켜 줍니다.<br/> 칵테일 추천이 뜨지 않는다면 회원 정보 수정에 들어가서 나의 술 목록을 수정해보세요!</p>';
         } else {
             // 로그인하지 않은 경우
             const userContainer = document.getElementById('user-liquors');
