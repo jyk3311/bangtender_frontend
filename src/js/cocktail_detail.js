@@ -13,7 +13,8 @@ document.addEventListener('DOMContentLoaded', async function () {
         const headers = {
             'Content-Type': 'application/json',
         };
-        if (token) {
+        if (token) {  
+            bookmarkButton.style.display = 'block';
             headers['Authorization'] = `Bearer ${token}`;
         }
 
