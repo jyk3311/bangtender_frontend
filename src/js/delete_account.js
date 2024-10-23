@@ -1,7 +1,10 @@
 import { logoutUser } from './logout.js';
+import { navbar } from './navbar.js';
 import config from './config.js';
 
 document.addEventListener("DOMContentLoaded", function () {
+    navbar();
+
     const deleteAccountButton = document.getElementById('delete-account-btn');
 
     deleteAccountButton.addEventListener('click', function () {
