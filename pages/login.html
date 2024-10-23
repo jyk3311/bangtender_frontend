@@ -76,18 +76,11 @@ main input {
 
 #message {
     margin-top: 1rem;
-    color: white;
+    color: black;
 }
 
-/* 회원가입 링크 스타일 */
 .signup-link {
     margin-top: 1.5rem;
-}
-
-.signup-link p {
-    font-weight: 1000;
-    margin-bottom: 0.5rem;
-    color: #317c77;
 }
 
 .signup-button {
@@ -95,14 +88,16 @@ main input {
     background-color: white;
     color: var(--dark-bg-color);
     font-weight: 1000;
-    border: none;
     padding: 0.75rem 1rem;
     border-radius: 20px;
     cursor: pointer;
-    text-decoration: none; /* 밑줄 제거 */
     border: 1px solid var(--primary-color);
-    font-weight: 1000;
     width: 25%;
+}
+
+.signup-button:hover {
+    color: white;
+    background-color: var(--secondary-color);
 }
 
 .signup-button a {
@@ -112,11 +107,6 @@ main input {
 }
 .signup-button a:hover {
             color: var(--light-text-color); /* 회원가입 버튼 호버 시 텍스트 색상 변경 */
-        }
-
-        .signup-button:hover {
-            color: white;
-            background-color: var(--secondary-color);
         }
 
     </style>
@@ -154,7 +144,7 @@ main input {
                 </ul>
             </nav>
             <div class="search-bar">
-                <input type="search" placeholder="Search">
+                <input type="search" placeholder="명칭, 카테고리로 검색해주세요.">
                 <button>검색</button>
             </div>
             <div class="user-actions">
@@ -188,9 +178,7 @@ main input {
     
             <!-- 회원가입 버튼 추가 -->
             <div class="signup-link">
-                <button class="signup-button">
-                    <a href="signup.html">회원가입</a> 
-                </button>
+                <button class="signup-button" onclick="window.location.href='signup.html'">회원가입</button>
             </div>
         </div>
     </main>
@@ -205,7 +193,9 @@ main input {
             </div>
             <!-- 개인정보처리방침과 저작권 텍스트를 나란히 오른쪽 정렬 -->
         <div class="footer-text">
-            <p class="privacy-policy">개인정보처리방침</p>
+            <p class="privacy-policy">
+                <a href="https://teamsparta.notion.site/7b1dc644460946f08bab08b794de685f" target="_blank">개인정보처리방침</a>
+            </p>
             <p class="copyright">&copy; 2024 방텐더. All rights reserved.</p>
         </div>
     </div>

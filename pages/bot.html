@@ -16,6 +16,15 @@
 
         }
 
+        .bot-description {
+        text-align: center;
+        font-size: 16px;  /* 전송 버튼과 비슷한 크기 */
+        color: black;
+        margin-bottom: 10px;
+        font-family: 'S-CoreDream-3Light';
+        position: relative;
+        top: 45px;
+        }
 
         /* 본문 스타일 */
         .container {
@@ -33,8 +42,6 @@
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             border-radius: 10px;
             overflow: hidden;
-
-
         }
 
 
@@ -251,7 +258,7 @@
                 </ul>
             </nav>
             <div class="search-bar">
-                <input type="search" placeholder="검색...">
+                <input type="search" placeholder="명칭, 카테고리로 검색해주세요.">
                 <button>검색</button>
             </div>
             <div class="user-actions">
@@ -264,10 +271,11 @@
     </header>
 
     <hr class="nav-divider">
-    <main>
-        <div class="container">
-            <div class="main-content">
-                <h1 class="vertical-title">방텐더봇</h1>
+<main>
+    <div class="bot-description">방텐더봇에게 양주와 칵테일을 추천받아보세요.</div>
+    <div class="container">
+        <div class="main-content">
+            <h1 class="vertical-title">방텐더봇</h1>
 
                 <div class="chat-container">
                     <div class="chat-area">
@@ -294,7 +302,9 @@
             </div>
             <!-- 개인정보처리방침과 저작권 텍스트를 나란히 오른쪽 정렬 -->
             <div class="footer-text">
-                <p class="privacy-policy">개인정보처리방침</p>
+                <p class="privacy-policy">
+                    <a href="https://teamsparta.notion.site/7b1dc644460946f08bab08b794de685f" target="_blank">개인정보처리방침</a>
+                </p>
                 <p class="copyright">&copy; 2024 방텐더. All rights reserved.</p>
             </div>
         </div>
