@@ -15,6 +15,7 @@ document.addEventListener('DOMContentLoaded', async function () {
             'Content-Type': 'application/json',
         };
         if (token) {
+            bookmarkButton.style.display = 'block';
             headers['Authorization'] = `Bearer ${token}`;
         }
 
@@ -78,7 +79,6 @@ document.addEventListener('DOMContentLoaded', async function () {
                     } else {
                         bookmarkButton.textContent = '북마크';
                     }
-                    alert('로그인이 필요한 서비스입니다.');
                 } else {
                     alert(result.detail || '북마크 요청 중 오류가 발생했습니다.');
                 }
