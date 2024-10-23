@@ -295,3 +295,12 @@ footer {
 .footer-text .copyright {
     text-align: right;
 }
+
+.privacy-policy a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.privacy-policy a:hover {
+    color: var(--accent-color);
+}
